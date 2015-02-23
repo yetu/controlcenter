@@ -6,6 +6,9 @@ organization := "com.yetu"
 
 scalaVersion := "2.11.5"
 
+//needed for dependencies of silhouette: see https://github.com/mohiva/play-silhouette-seed/issues/20 for details:
+resolvers := ("Atlassian Releases" at "https://maven.atlassian.com/public/") +: resolvers.value
+
 resolvers += Resolver.bintrayRepo("yetu", "maven")
 
 pipelineStages := Seq(digest)

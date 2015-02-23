@@ -1,0 +1,8 @@
+# See http://about.travis-ci.org/docs/user/build-configuration/
+language: scala
+scala:
+    - 2.11.5
+jdk:
+    - oraclejdk7
+    - oraclejdk8
+    - openjdk7

@@ -2,6 +2,8 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+GET     /					        com.yetu.controlcenter.controllers.Application.entryPoint()
+
 # Used for health check during deployment and monitoring.
 GET     /health                     com.yetu.controlcenter.controllers.Health.check
 

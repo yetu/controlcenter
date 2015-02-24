@@ -11,7 +11,7 @@ resolvers := ("Atlassian Releases" at "https://maven.atlassian.com/public/") +: 
 
 resolvers += Resolver.bintrayRepo("yetu", "maven")
 
-pipelineStages := Seq(digest)
+pipelineStages := Seq(digest, gzip)
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb)
 

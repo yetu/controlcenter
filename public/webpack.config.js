@@ -21,7 +21,7 @@ module.exports = {
 		loaders: [
 			{test: /\.scss$/, loader: 'css!autoprefixer!sass?' +
 				'includePaths[]=' + __dirname + '/app/specific' +
-				'&includePaths[]=' + __dirname + '/bower_components/bootstrap-sass-official/assets/stylesheets'},
+				'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},
 
 			{test: /\.(png|jpg)$/, loader: 'url?limit=32768'},
 			{test: /\.jade$/, loader: 'jade'},

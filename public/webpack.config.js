@@ -3,7 +3,7 @@
 module.exports = {
 	context: __dirname,
 	entry: {
-		app: './app/app.js'
+		app: './app/app.jsx'
 	},
 	output: {
 		filename: 'bundle.js',
@@ -15,10 +15,12 @@ module.exports = {
 		modulesDirectories: ['node_modules', 'bower_components'],
 		alias: {
 			'specific': __dirname + '/app/specific'
-		}
+		},
+        extensions: ['', '.js', '.jsx']
 	},
 	module: {
 		loaders: [
+            {test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
 			{test: /\.scss$/, loader: 'css!autoprefixer!sass?' +
 				'includePaths[]=' + __dirname + '/app/specific' +
 				'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},

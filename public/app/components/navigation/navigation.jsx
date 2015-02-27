@@ -5,37 +5,33 @@ var React = require('react');
 var Navigation = React.createClass({
     getInitialState: function() {
         return {
-            selectedIndex: 0
+            selectedIndex: this.props.selectedIndex
         }
     },
 
     handleItemClick: function(index) {
-        this.setState({selectedIndex: index});
+        if (this.state.selectedIndex !== index) {
+            this.setState({selectedIndex: index});
+            this.props.onItemSelected(index);
+        }
     },
 
     render: function() {
+        var items = this.props.items.map(function(item, i) {
+            return (
+                <li className={this.state.selectedIndex === i ? 'selected' : ''} key={i}>
+                    <a href="#" onClick={this.handleItemClick.bind(this, i)}>{item.title}</a>
+                </li>
+            );
+        }, this);
+        
         return (
             <div>
                 <ul className="side-nav">
-                {this.props.items.map(function(item, i) {
-                    return (
-                        <li className={this.state.selectedIndex === i ? 'selected' : ''} key={i}>
-                            <a href="#" onClick={this.handleItemClick.bind(this, i)}>{item.title}</a>
-                        </li>
-                    );
-                }, this)}
+                    {items}
                 </ul>
             </div>
         );
-    },
-
-    componentDidMount: function() {
-        this.handleItemClick(this.state.selectedIndex);
-    },
-
-    componentDidUpdate: function() {
-        var item = this.props.items[this.state.selectedIndex];
-        React.render(React.createElement(item.page, item.props), document.getElementById('page'));
     }
 });
 

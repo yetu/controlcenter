@@ -7,16 +7,16 @@ var Device = React.createClass({
         return (
             <div className="row">
                 <div className="small-4 column">
-          {this.props.device.title}
+                    {this.props.device.title}
                 </div>
                 <div className="small-4 column">
-          {this.props.device.type}
+                    {this.props.device.type}
                 </div>
                 <div className="small-2 column">
                     Controller
                 </div>
                 <div className="small-2 column">
-          {this.props.device.connected ? 'connected' : 'not conn.'}
+                    {this.props.device.connected ? 'connected' : 'not conn.'}
                 </div>
             </div>
         );

@@ -26,7 +26,7 @@ var ControlCenter = React.createClass({
         };
 
         var navigationItems = [
-            {title: 'My devices', page: DevicesPage, props: {rooms: deviceRooms, addRoom: addRoom}},
+            {title: 'My devices', page: DevicesPage, props: {rooms: deviceRooms, addRoom: addRoom.bind(this, this)}},
             {title: 'My settings', page: SettingsPage}
         ];
         
@@ -43,7 +43,7 @@ var ControlCenter = React.createClass({
     render: function() {
         var navigationItem = this.state.navigationItems[this.state.selectedNavigationItem];
         var page = React.createElement(navigationItem.page, navigationItem.props);
-            
+
         return (
             <span>
                 <div className="row">

@@ -1,9 +1,7 @@
 'use strict';
 
 var React = require('react');
-
-var Room = require('../room/room.jsx');
-
+var Room = require('components/room');
 var DevicesPage = React.createClass({
 	render: function() {
 		return (

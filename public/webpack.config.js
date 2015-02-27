@@ -18,7 +18,8 @@ module.exports = {
 			'mixins': __dirname + '/app/mixins',
 			'actions': __dirname + '/app/actions/actions',
 			'pages': __dirname + '/app/pages',
-			'stores': __dirname + '/app/stores'
+			'stores': __dirname + '/app/stores',
+			'components': __dirname + '/app/components'
 		},
     extensions: ['', '.js', '.jsx']
 	},

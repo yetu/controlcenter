@@ -4,7 +4,7 @@ var React = require('react');
 
 var Device = React.createClass({
     mixins: [require("mixins/styles/styleMixin")],
-    style: require("./style.scss"),
+    style: require("./pages/devices/device/style.scss"),
     render: function() {
         return (
             <div className="row">

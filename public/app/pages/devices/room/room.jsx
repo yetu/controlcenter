@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var Device = require('../device/device.jsx');
+var Device = require('pages/devices/device/device.jsx');
 
 var Room = React.createClass({
 	render: function () {

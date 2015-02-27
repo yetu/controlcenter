@@ -1,5 +1,4 @@
 'use strict';
-
 var React = require('react');
 
 var Device = React.createClass({

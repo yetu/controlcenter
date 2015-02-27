@@ -46,6 +46,7 @@
     "pack-dev": "webpack -d -w --config ./public/webpack.config.js",
     "test": "npm run pack-dev && node ./node_modules/karma/bin/karma start ./public/app/specific/test/karma.conf.js --single-run",
     "tdd": "npm run pack-dev && node ./node_modules/karma/bin/karma start ./public/app/specific/test/karma.conf.js",
-    "build": "npm run clean && npm run pack && cp -r ./public/app/* ./public/dist"
+    "build": "npm run clean && npm run pack && cp -r ./public/app/* ./public/dist",
+    "precommit": "npm test"
   }
 }

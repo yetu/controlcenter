@@ -1,12 +1,6 @@
-/*
-var testpage=require('./testpage.jade')();
-var css=require('style!./test.scss');
-document.write(testpage);
-*/
-
 var React = require('react');
-var DevicesPage = require('./components/devices/devicespage/devicesPage.jsx');
-var SettingsPage = require('./components/settings/settingspage/settingsPage.jsx');
+var DevicesPage = require('pages/devices');
+var SettingsPage = require('pages/settings');
 var Navigation = require('./components/navigation/navigation.jsx');
 
 var deviceRooms = [

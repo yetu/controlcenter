@@ -1,7 +1,7 @@
 'use strict';
 
+//Move to react router
 var React = require('react');
-
 var Navigation = React.createClass({
     getInitialState: function() {
         return {

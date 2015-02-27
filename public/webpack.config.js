@@ -14,17 +14,20 @@ module.exports = {
 	resolve: {
 		modulesDirectories: ['node_modules', 'bower_components'],
 		alias: {
-			'specific': __dirname + '/app/specific'
+			'specific': __dirname + '/app/specific',
+			'mixins': __dirname + '/app/mixins',
+			'actions': __dirname + '/app/actions/actions',
+			'pages': __dirname + '/app/pages',
+			'stores': __dirname + '/app/stores'
 		},
-        extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx']
 	},
 	module: {
 		loaders: [
-            {test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
+			{test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
 			{test: /\.scss$/, loader: 'css!autoprefixer!sass?' +
-				'includePaths[]=' + __dirname + '/app/specific' +
-				'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},
-
+			'includePaths[]=' + __dirname + '/app/specific' +
+			'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},
 			{test: /\.(png|jpg)$/, loader: 'url?limit=32768'},
 			{test: /\.jade$/, loader: 'jade'},
 			{test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff'},

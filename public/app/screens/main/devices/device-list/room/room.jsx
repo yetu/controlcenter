@@ -1,8 +1,8 @@
 'use strict';
 
 var React = require('react');
-
-var Device = require('pages/devices/device/device.jsx');
+//How to we communicate subling components
+var Device = require('../device');
 
 var Room = React.createClass({
 	render: function () {

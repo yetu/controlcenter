@@ -1,18 +1,16 @@
 'use strict';
 
 var React = require('react');
-var Room = require('components/room');
+var DeviceList = require('./device-list');
+
+
 var DevicesPage = React.createClass({
-	render: function() {
+	render: function () {
 		return (
 			<div>
 				<h2>My devices</h2>
 				<a className="button" href="#">+ Add device</a>
-        {this.props.rooms.map(function(room, i) {
-	        return (
-		        <Room room={room} key={i} />
-	        );
-        }, this)}
+				<DeviceList/>
 				<a className="button" href="#" onClick={this.props.addRoom}>+ Add room</a>
 			</div>
 		);

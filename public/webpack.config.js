@@ -14,12 +14,11 @@ module.exports = {
 	resolve: {
 		modulesDirectories: ['node_modules', 'bower_components'],
 		alias: {
-			'specific': __dirname + '/app/specific',
-			'mixins': __dirname + '/app/mixins',
+			'setup': __dirname + '/app/project-setup',
 			'actions': __dirname + '/app/actions/actions',
-			'pages': __dirname + '/app/pages',
+			'screens': __dirname + '/app/screens',
 			'stores': __dirname + '/app/stores',
-			'components': __dirname + '/app/components'
+			'common': __dirname + '/app/common'
 		},
     extensions: ['', '.js', '.jsx']
 	},
@@ -27,7 +26,7 @@ module.exports = {
 		loaders: [
 			{test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
 			{test: /\.scss$/, loader: 'css!autoprefixer!sass?' +
-			'includePaths[]=' + __dirname + '/app/specific' +
+			'includePaths[]=' + __dirname + '/app/project-setup' +
 			'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},
 			{test: /\.(png|jpg)$/, loader: 'url?limit=32768'},
 			{test: /\.jade$/, loader: 'jade'},

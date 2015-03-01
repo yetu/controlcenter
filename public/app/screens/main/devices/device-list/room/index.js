@@ -1,2 +1,2 @@
 'use strict';
-module.exports = require('./pages/devices/room/room.jsx');
+module.exports = require('./room.jsx');

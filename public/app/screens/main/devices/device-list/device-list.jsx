@@ -6,15 +6,9 @@ var Room = require('./room');
 
 var DeviceList = React.createClass({
 
-	mixins: [],
-
 	render: function () {
 		return (
-			this.props.rooms.map(function(room) {
-				return (
-					<Room room={room} />
-				);
-			}, this)
+				<Room  />
 		)
 	}
 });

@@ -2,22 +2,20 @@
 var React = require('react');
 
 var Device = React.createClass({
-    mixins: [require("mixins/styles/styleMixin")],
-    style: require("./pages/devices/device/style.scss"),
     render: function() {
         return (
             <div className="row">
                 <div className="small-4 column">
-          {this.props.device.title}
+          adsfas
                 </div>
                 <div className="small-4 column">
-          {this.props.device.type}
+          adsfasdf
                 </div>
                 <div className="small-2 column">
                     Controller
                 </div>
                 <div className="small-2 column">
-          {this.props.device.connected ? 'connected' : 'not conn.'}
+         asdfsd
                 </div>
             </div>
         );

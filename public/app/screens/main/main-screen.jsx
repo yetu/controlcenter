@@ -1,5 +1,5 @@
 'use strict';
-
+var React = require("react");
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 var DevicesRegion = require('./devices');
@@ -8,13 +8,10 @@ var SettingsRegion = require('./settings');
 var Navigation = require('common/regions/navigation');
 var MainScreen = React.createClass({
 
-	mixins: [],
-
 	render: function () {
 		return (
-			<div class="main-wrapper">
+			<div className="main-wrapper">
 				<Navigation/>
-				// Subroute handler for main screen
 				<RouteHandler/>
 			</div>
 		)

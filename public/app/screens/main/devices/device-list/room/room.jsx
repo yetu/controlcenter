@@ -8,12 +8,8 @@ var Room = React.createClass({
 	render: function () {
 		return (
 			<div>
-				<h3>{this.props.room.title}</h3>
-        {this.props.room.devices.map(function (device, i) {
-	        return (
-		        <Device device={device} key={i} />
-	        )
-        }, this)}
+				<h3>Hello</h3>
+        <Device />
 			</div>
 		);
 	}

@@ -1,2 +1,2 @@
 'use strict';
-module.exports = require('./pages/devices/device/device.jsx');
+module.exports = require('./device.jsx');

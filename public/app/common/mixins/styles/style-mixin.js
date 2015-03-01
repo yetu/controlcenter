@@ -1,8 +1,12 @@
 'use strict';
 
 var StyleMixin = {
-	componentWillMount: function() {
+	componentWillMount: function () {
 		this.style.use();
+	},
+
+	componentWillUnmount: function () {
+		this.style.unuse();
 	}
 };
 

@@ -41,9 +41,7 @@ module.exports = {
 	externals: {
 	},
 	plugins: [
-		new ExtractTextPlugin("style.css", {
-			allChunks: true
-		})
+		new ExtractTextPlugin("style.css")
 	],
 	devtool: 'eval'
 };

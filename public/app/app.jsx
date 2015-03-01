@@ -22,24 +22,22 @@ var SettingsRegion = require('./screens/main').SettingsRegion;
 var ControlCenter = React.createClass({
 	render: function () {
 		return (
-			<div>
-				<RouteHandler/>
-			</div>
+			<RouteHandler/>
 		)
 	}
 });
 
 var routes = (
 	<Route path="/" handler={ControlCenter}>
-			<Route name="main" handler={MainScreen}>
-				<Route name="settings" handler={SettingsRegion}/>
-				<DefaultRoute name="devices" handler={DevicesRegion}/>
-			</Route>
-			<Redirect from="/" to="main"/>
-</Route>
+		<Route name="main" handler={MainScreen}>
+			<Route name="settings" handler={SettingsRegion}/>
+			<DefaultRoute name="devices" handler={DevicesRegion}/>
+		</Route>
+		<Redirect from="/" to="main"/>
+	</Route>
 );
 
-Router.run(routes, function(Handler, state) {
+Router.run(routes, function (Handler, state) {
 	React.render(<Handler params={ state.params } />, document.body);
 });
 

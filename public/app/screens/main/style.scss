@@ -1,0 +1,13 @@
+@import "theme";
+
+.main-screen {
+  @include grid-row();
+
+  .main-screen__navigation {
+    @include grid-column(4);
+  }
+
+  .main-screen__content {
+    @include grid-column(8);
+  }
+}

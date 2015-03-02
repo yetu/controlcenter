@@ -10,7 +10,7 @@ var DeviceRegion = React.createClass({
 			<div>
 				<h2>My devices</h2>
 				<a className="button" href="#">+ Add device</a>
-
+				<DeviceList/>
 			</div>
 		);
 	}

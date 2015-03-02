@@ -1,2 +1,2 @@
 'use strict';
-module.exports = require('./components/text-input/text-input.jsx');
+module.exports = require('./text-input.jsx');

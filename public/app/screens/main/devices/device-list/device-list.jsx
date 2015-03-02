@@ -8,7 +8,7 @@ var DeviceList = React.createClass({
 
 	render: function () {
 		return (
-				<Room  />
+				<Room />
 		)
 	}
 });

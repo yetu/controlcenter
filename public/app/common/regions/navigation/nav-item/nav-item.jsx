@@ -1,8 +1,6 @@
 'use strict';
 var React = require("react");
 var styles = require("./style.scss");
-var StyleMixin = require('mixins/styles');
-
 
 var NavigationItem = React.createClass({
 

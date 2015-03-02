@@ -1,10 +1,4 @@
 @import "normalize";
 
-@import "theme/variables/base";
-@import "theme/variables/colors";
-@import "theme/variables/typography";
-@import "theme/variables/grid";
-
-@import "theme/base";
+@import "theme";
 @import "theme/fonts/fonts";
-@import "theme/mixins";

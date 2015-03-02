@@ -14,6 +14,8 @@ class HealthCheckSpec extends BaseRoutesSpec {
       val Some(result) = route(FakeRequest(GET, healthUrl))
       status(result) mustEqual (OK)
       contentAsString(result) must include("alive")
+      contentAsString(result) must include("com.yetu")
+      contentAsString(result) must include("controlcenter")
     }
   }
 }

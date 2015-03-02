@@ -1,18 +1,18 @@
 'use strict';
 
 var React = require('react');
+var Reflux = require('reflux');
 var Room = require('./room');
+
+var roomStore = require('stores/room');
+var roomActions = require('../../../actions/room');
 
 // TODO: Rename to DevicesSection
 var DeviceRegion = React.createClass({
+    mixins: [Reflux.connect(roomStore, "rooms")],
+    
     getInitialState: function() {
-        return {
-            // TODO: Get from store, react on store changes
-            rooms: [
-                {title: "Living room", devices: []},
-                {title: "Bed room", devices: []}
-            ]
-        }
+        return {rooms: roomStore.getRooms()};
     },
     
     render: function () {
@@ -26,8 +26,13 @@ var DeviceRegion = React.createClass({
                 <h2>My devices</h2>
                 <a className="button" href="#">+ Add device</a>
                 {rooms}
+                <a className="button" href="#" onClick={this.handleAddRoom}>+ Add room</a>
             </div>
         );
+    },
+    
+    handleAddRoom: function() {
+        roomActions.createRoom();
     }
 });
 

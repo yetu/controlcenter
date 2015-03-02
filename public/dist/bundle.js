@@ -177,10 +177,36 @@
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../~/css-loader!../~/autoprefixer-loader!../~/sass-loader?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!./app/project-setup/all.scss */ 6);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../~/style-loader/addStyles.js */ 8)(content, {});
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		module.hot.accept("!!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/css-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/autoprefixer-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/sass-loader/index.js?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup/all.scss", function() {
+			var newContent = require("!!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/css-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/autoprefixer-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/sass-loader/index.js?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup/all.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 6 */,
+/* 6 */
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../~/css-loader!../~/autoprefixer-loader!../~/sass-loader?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!./app/project-setup/all.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../~/css-loader/cssToString.js */ 33)();
+	exports.push([module.id, "/*! normalize.css v3.0.2 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=\"button\"],input[type=\"reset\"],input[type=\"submit\"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=\"checkbox\"],input[type=\"radio\"]{box-sizing:border-box;padding:0}input[type=\"number\"]::-webkit-inner-spin-button,input[type=\"number\"]::-webkit-outer-spin-button{height:auto}input[type=\"search\"]{-webkit-appearance:textfield;box-sizing:content-box}input[type=\"search\"]::-webkit-search-cancel-button,input[type=\"search\"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}meta.foundation-version{font-family:\"/5.5.1/\"}meta.foundation-mq-small{font-family:\"/only screen/\";width:0}meta.foundation-mq-small-only{font-family:\"/only screen and (max-width: 40em)/\";width:0}meta.foundation-mq-medium{font-family:\"/only screen and (min-width:40.063em)/\";width:40.063em}meta.foundation-mq-medium-only{font-family:\"/only screen and (min-width:40.063em) and (max-width:64em)/\";width:40.063em}meta.foundation-mq-large{font-family:\"/only screen and (min-width:64.063em)/\";width:64.063em}meta.foundation-mq-large-only{font-family:\"/only screen and (min-width:64.063em) and (max-width:90em)/\";width:64.063em}meta.foundation-mq-xlarge{font-family:\"/only screen and (min-width:90.063em)/\";width:90.063em}meta.foundation-mq-xlarge-only{font-family:\"/only screen and (min-width:90.063em) and (max-width:120em)/\";width:90.063em}meta.foundation-mq-xxlarge{font-family:\"/only screen and (min-width:120.063em)/\";width:120.063em}meta.foundation-data-attribute-namespace{font-family:false}html,body{height:100%}*,*:before,*:after{box-sizing:border-box}html,body{font-size:100%}body{background:#fff;color:#222;padding:0;margin:0;font-family:\"Helvetica Neue\",Helvetica,Roboto,Arial,sans-serif;font-weight:normal;font-style:normal;line-height:1.5;position:relative;cursor:auto}a:hover{cursor:pointer}img{max-width:100%;height:auto}img{-ms-interpolation-mode:bicubic}#map_canvas img,#map_canvas embed,#map_canvas object,.map_canvas img,.map_canvas embed,.map_canvas object{max-width:none !important}.left{float:left !important}.right{float:right !important}.clearfix:before,.clearfix:after{content:\" \";display:table}.clearfix:after{clear:both}.hide{display:none}.invisible{visibility:hidden}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}img{display:inline-block;vertical-align:middle}textarea{height:auto;min-height:50px}select{width:100%}", ""]);
+
+/***/ },
 /* 7 */
 /*!**************************************!*\
   !*** ../~/react-router/lib/index.js ***!
@@ -218,7 +244,205 @@
 	exports.run = __webpack_require__(/*! ./runRouter */ 32);
 
 /***/ },
-/* 8 */,
+/* 8 */
+/*!**************************************!*\
+  !*** ../~/style-loader/addStyles.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isIE9 = memoize(function() {
+			return /msie 9\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0;
+	
+	module.exports = function(list, options) {
+		if(true) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isIE9();
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function createStyleElement() {
+		var styleElement = document.createElement("style");
+		var head = getHeadElement();
+		styleElement.type = "text/css";
+		head.appendChild(styleElement);
+		return styleElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement());
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement();
+			update = applyToTag.bind(null, styleElement);
+			remove = function () {
+				styleElement.parentNode.removeChild(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	function replaceText(source, id, replacement) {
+		var boundaries = ["/** >>" + id + " **/", "/** " + id + "<< **/"];
+		var start = source.lastIndexOf(boundaries[0]);
+		var wrappedReplacement = replacement
+			? (boundaries[0] + replacement + boundaries[1])
+			: "";
+		if (source.lastIndexOf(boundaries[0]) >= 0) {
+			var end = source.lastIndexOf(boundaries[1]) + boundaries[1].length;
+			return source.slice(0, start) + wrappedReplacement + source.slice(end);
+		} else {
+			return source + wrappedReplacement;
+		}
+	}
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(styleElement.styleSheet.cssText, index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap && typeof btoa === "function") {
+			try {
+				css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(JSON.stringify(sourceMap)) + " */";
+				css = "@import url(\"data:text/css;base64," + btoa(css) + "\")";
+			} catch(e) {}
+		}
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
 /* 9 */
 /*!********************************!*\
   !*** ./app/actions/actions.js ***!
@@ -2414,17 +2638,66 @@
 	module.exports = runRouter;
 
 /***/ },
-/* 33 */,
+/* 33 */
+/*!**************************************!*\
+  !*** ../~/css-loader/cssToString.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function() {
+		var list = [];
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+		return list;
+	}
+
+/***/ },
 /* 34 */
 /*!*************************************!*\
   !*** ./app/screens/main/style.scss ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../~/css-loader!../~/autoprefixer-loader!../~/sass-loader?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!./app/screens/main/style.scss */ 35);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../~/style-loader/addStyles.js */ 8)(content, {});
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		module.hot.accept("!!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/css-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/autoprefixer-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/sass-loader/index.js?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!/Users/azadorozhniy/work/yetu/controlcenter/public/app/screens/main/style.scss", function() {
+			var newContent = require("!!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/css-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/autoprefixer-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/sass-loader/index.js?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!/Users/azadorozhniy/work/yetu/controlcenter/public/app/screens/main/style.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 35 */,
+/* 35 */
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../~/css-loader!../~/autoprefixer-loader!../~/sass-loader?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!./app/screens/main/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../~/css-loader/cssToString.js */ 33)();
+	exports.push([module.id, "meta.foundation-version{font-family:\"/5.5.1/\"}meta.foundation-mq-small{font-family:\"/only screen/\";width:0}meta.foundation-mq-small-only{font-family:\"/only screen and (max-width: 40em)/\";width:0}meta.foundation-mq-medium{font-family:\"/only screen and (min-width:40.063em)/\";width:40.063em}meta.foundation-mq-medium-only{font-family:\"/only screen and (min-width:40.063em) and (max-width:64em)/\";width:40.063em}meta.foundation-mq-large{font-family:\"/only screen and (min-width:64.063em)/\";width:64.063em}meta.foundation-mq-large-only{font-family:\"/only screen and (min-width:64.063em) and (max-width:90em)/\";width:64.063em}meta.foundation-mq-xlarge{font-family:\"/only screen and (min-width:90.063em)/\";width:90.063em}meta.foundation-mq-xlarge-only{font-family:\"/only screen and (min-width:90.063em) and (max-width:120em)/\";width:90.063em}meta.foundation-mq-xxlarge{font-family:\"/only screen and (min-width:120.063em)/\";width:120.063em}meta.foundation-data-attribute-namespace{font-family:false}html,body{height:100%}*,*:before,*:after{box-sizing:border-box}html,body{font-size:100%}body{background:#fff;color:#222;padding:0;margin:0;font-family:\"Helvetica Neue\",Helvetica,Roboto,Arial,sans-serif;font-weight:normal;font-style:normal;line-height:1.5;position:relative;cursor:auto}a:hover{cursor:pointer}img{max-width:100%;height:auto}img{-ms-interpolation-mode:bicubic}#map_canvas img,#map_canvas embed,#map_canvas object,.map_canvas img,.map_canvas embed,.map_canvas object{max-width:none !important}.left{float:left !important}.right{float:right !important}.clearfix:before,.clearfix:after{content:\" \";display:table}.clearfix:after{clear:both}.hide{display:none}.invisible{visibility:hidden}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}img{display:inline-block;vertical-align:middle}textarea{height:auto;min-height:50px}select{width:100%}.main-screen{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5rem}.main-screen:before,.main-screen:after{content:\" \";display:table}.main-screen:after{clear:both}.main-screen .main-screen__navigation{padding-left:0.9375rem;padding-right:0.9375rem;width:33.33333%;float:left}.main-screen .main-screen__content{padding-left:0.9375rem;padding-right:0.9375rem;width:66.66667%;float:left}", ""]);
+
+/***/ },
 /* 36 */
 /*!*******************************************!*\
   !*** ./app/screens/main/devices/index.js ***!
@@ -3866,9 +4139,9 @@
 	
 	"use strict";
 	
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 102);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 105);
 	
-	var traverseAllChildren = __webpack_require__(/*! ./traverseAllChildren */ 103);
+	var traverseAllChildren = __webpack_require__(/*! ./traverseAllChildren */ 106);
 	var warning = __webpack_require__(/*! ./warning */ 82);
 	
 	var twoArgumentPooler = PooledClass.twoArgumentPooler;
@@ -4023,12 +4296,12 @@
 	"use strict";
 	
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 60);
-	var ReactOwner = __webpack_require__(/*! ./ReactOwner */ 104);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 105);
+	var ReactOwner = __webpack_require__(/*! ./ReactOwner */ 102);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 103);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
 	var invariant = __webpack_require__(/*! ./invariant */ 81);
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 106);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 104);
 	
 	/**
 	 * Every React component is in one of these life cycles.
@@ -4479,17 +4752,17 @@
 	var ReactEmptyComponent = __webpack_require__(/*! ./ReactEmptyComponent */ 107);
 	var ReactErrorUtils = __webpack_require__(/*! ./ReactErrorUtils */ 108);
 	var ReactLegacyElement = __webpack_require__(/*! ./ReactLegacyElement */ 66);
-	var ReactOwner = __webpack_require__(/*! ./ReactOwner */ 104);
+	var ReactOwner = __webpack_require__(/*! ./ReactOwner */ 102);
 	var ReactPerf = __webpack_require__(/*! ./ReactPerf */ 69);
 	var ReactPropTransferer = __webpack_require__(/*! ./ReactPropTransferer */ 109);
 	var ReactPropTypeLocations = __webpack_require__(/*! ./ReactPropTypeLocations */ 110);
 	var ReactPropTypeLocationNames = __webpack_require__(/*! ./ReactPropTypeLocationNames */ 111);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 105);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 103);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
 	var instantiateReactComponent = __webpack_require__(/*! ./instantiateReactComponent */ 112);
 	var invariant = __webpack_require__(/*! ./invariant */ 81);
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 106);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 104);
 	var keyOf = __webpack_require__(/*! ./keyOf */ 113);
 	var monitorCodeUse = __webpack_require__(/*! ./monitorCodeUse */ 114);
 	var mapObject = __webpack_require__(/*! ./mapObject */ 115);
@@ -11527,7 +11800,7 @@
 	
 	"use strict";
 	
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 106);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 104);
 	
 	var PropagationPhases = keyMirror({bubbled: null, captured: null});
 	
@@ -11588,317 +11861,6 @@
 
 /***/ },
 /* 102 */
-/*!*************************************!*\
-  !*** ../~/react/lib/PooledClass.js ***!
-  \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule PooledClass
-	 */
-	
-	"use strict";
-	
-	var invariant = __webpack_require__(/*! ./invariant */ 81);
-	
-	/**
-	 * Static poolers. Several custom versions for each potential number of
-	 * arguments. A completely generic pooler is easy to implement, but would
-	 * require accessing the `arguments` object. In each of these, `this` refers to
-	 * the Class itself, not an instance. If any others are needed, simply add them
-	 * here, or in their own files.
-	 */
-	var oneArgumentPooler = function(copyFieldsFrom) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, copyFieldsFrom);
-	    return instance;
-	  } else {
-	    return new Klass(copyFieldsFrom);
-	  }
-	};
-	
-	var twoArgumentPooler = function(a1, a2) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, a1, a2);
-	    return instance;
-	  } else {
-	    return new Klass(a1, a2);
-	  }
-	};
-	
-	var threeArgumentPooler = function(a1, a2, a3) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, a1, a2, a3);
-	    return instance;
-	  } else {
-	    return new Klass(a1, a2, a3);
-	  }
-	};
-	
-	var fiveArgumentPooler = function(a1, a2, a3, a4, a5) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, a1, a2, a3, a4, a5);
-	    return instance;
-	  } else {
-	    return new Klass(a1, a2, a3, a4, a5);
-	  }
-	};
-	
-	var standardReleaser = function(instance) {
-	  var Klass = this;
-	  ("production" !== process.env.NODE_ENV ? invariant(
-	    instance instanceof Klass,
-	    'Trying to release an instance into a pool of a different type.'
-	  ) : invariant(instance instanceof Klass));
-	  if (instance.destructor) {
-	    instance.destructor();
-	  }
-	  if (Klass.instancePool.length < Klass.poolSize) {
-	    Klass.instancePool.push(instance);
-	  }
-	};
-	
-	var DEFAULT_POOL_SIZE = 10;
-	var DEFAULT_POOLER = oneArgumentPooler;
-	
-	/**
-	 * Augments `CopyConstructor` to be a poolable class, augmenting only the class
-	 * itself (statically) not adding any prototypical fields. Any CopyConstructor
-	 * you give this may have a `poolSize` property, and will look for a
-	 * prototypical `destructor` on instances (optional).
-	 *
-	 * @param {Function} CopyConstructor Constructor that can be used to reset.
-	 * @param {Function} pooler Customizable pooler.
-	 */
-	var addPoolingTo = function(CopyConstructor, pooler) {
-	  var NewKlass = CopyConstructor;
-	  NewKlass.instancePool = [];
-	  NewKlass.getPooled = pooler || DEFAULT_POOLER;
-	  if (!NewKlass.poolSize) {
-	    NewKlass.poolSize = DEFAULT_POOL_SIZE;
-	  }
-	  NewKlass.release = standardReleaser;
-	  return NewKlass;
-	};
-	
-	var PooledClass = {
-	  addPoolingTo: addPoolingTo,
-	  oneArgumentPooler: oneArgumentPooler,
-	  twoArgumentPooler: twoArgumentPooler,
-	  threeArgumentPooler: threeArgumentPooler,
-	  fiveArgumentPooler: fiveArgumentPooler
-	};
-	
-	module.exports = PooledClass;
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ../~/webpack/~/node-libs-browser/~/process/browser.js */ 93)))
-
-/***/ },
-/* 103 */
-/*!*********************************************!*\
-  !*** ../~/react/lib/traverseAllChildren.js ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule traverseAllChildren
-	 */
-	
-	"use strict";
-	
-	var ReactElement = __webpack_require__(/*! ./ReactElement */ 60);
-	var ReactInstanceHandles = __webpack_require__(/*! ./ReactInstanceHandles */ 65);
-	
-	var invariant = __webpack_require__(/*! ./invariant */ 81);
-	
-	var SEPARATOR = ReactInstanceHandles.SEPARATOR;
-	var SUBSEPARATOR = ':';
-	
-	/**
-	 * TODO: Test that:
-	 * 1. `mapChildren` transforms strings and numbers into `ReactTextComponent`.
-	 * 2. it('should fail when supplied duplicate key', function() {
-	 * 3. That a single child and an array with one item have the same key pattern.
-	 * });
-	 */
-	
-	var userProvidedKeyEscaperLookup = {
-	  '=': '=0',
-	  '.': '=1',
-	  ':': '=2'
-	};
-	
-	var userProvidedKeyEscapeRegex = /[=.:]/g;
-	
-	function userProvidedKeyEscaper(match) {
-	  return userProvidedKeyEscaperLookup[match];
-	}
-	
-	/**
-	 * Generate a key string that identifies a component within a set.
-	 *
-	 * @param {*} component A component that could contain a manual key.
-	 * @param {number} index Index that is used if a manual key is not provided.
-	 * @return {string}
-	 */
-	function getComponentKey(component, index) {
-	  if (component && component.key != null) {
-	    // Explicit key
-	    return wrapUserProvidedKey(component.key);
-	  }
-	  // Implicit key determined by the index in the set
-	  return index.toString(36);
-	}
-	
-	/**
-	 * Escape a component key so that it is safe to use in a reactid.
-	 *
-	 * @param {*} key Component key to be escaped.
-	 * @return {string} An escaped string.
-	 */
-	function escapeUserProvidedKey(text) {
-	  return ('' + text).replace(
-	    userProvidedKeyEscapeRegex,
-	    userProvidedKeyEscaper
-	  );
-	}
-	
-	/**
-	 * Wrap a `key` value explicitly provided by the user to distinguish it from
-	 * implicitly-generated keys generated by a component's index in its parent.
-	 *
-	 * @param {string} key Value of a user-provided `key` attribute
-	 * @return {string}
-	 */
-	function wrapUserProvidedKey(key) {
-	  return '$' + escapeUserProvidedKey(key);
-	}
-	
-	/**
-	 * @param {?*} children Children tree container.
-	 * @param {!string} nameSoFar Name of the key path so far.
-	 * @param {!number} indexSoFar Number of children encountered until this point.
-	 * @param {!function} callback Callback to invoke with each child found.
-	 * @param {?*} traverseContext Used to pass information throughout the traversal
-	 * process.
-	 * @return {!number} The number of children in this subtree.
-	 */
-	var traverseAllChildrenImpl =
-	  function(children, nameSoFar, indexSoFar, callback, traverseContext) {
-	    var nextName, nextIndex;
-	    var subtreeCount = 0;  // Count of children found in the current subtree.
-	    if (Array.isArray(children)) {
-	      for (var i = 0; i < children.length; i++) {
-	        var child = children[i];
-	        nextName = (
-	          nameSoFar +
-	          (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
-	          getComponentKey(child, i)
-	        );
-	        nextIndex = indexSoFar + subtreeCount;
-	        subtreeCount += traverseAllChildrenImpl(
-	          child,
-	          nextName,
-	          nextIndex,
-	          callback,
-	          traverseContext
-	        );
-	      }
-	    } else {
-	      var type = typeof children;
-	      var isOnlyChild = nameSoFar === '';
-	      // If it's the only child, treat the name as if it was wrapped in an array
-	      // so that it's consistent if the number of children grows
-	      var storageName =
-	        isOnlyChild ? SEPARATOR + getComponentKey(children, 0) : nameSoFar;
-	      if (children == null || type === 'boolean') {
-	        // All of the above are perceived as null.
-	        callback(traverseContext, null, storageName, indexSoFar);
-	        subtreeCount = 1;
-	      } else if (type === 'string' || type === 'number' ||
-	                 ReactElement.isValidElement(children)) {
-	        callback(traverseContext, children, storageName, indexSoFar);
-	        subtreeCount = 1;
-	      } else if (type === 'object') {
-	        ("production" !== process.env.NODE_ENV ? invariant(
-	          !children || children.nodeType !== 1,
-	          'traverseAllChildren(...): Encountered an invalid child; DOM ' +
-	          'elements are not valid children of React components.'
-	        ) : invariant(!children || children.nodeType !== 1));
-	        for (var key in children) {
-	          if (children.hasOwnProperty(key)) {
-	            nextName = (
-	              nameSoFar + (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
-	              wrapUserProvidedKey(key) + SUBSEPARATOR +
-	              getComponentKey(children[key], 0)
-	            );
-	            nextIndex = indexSoFar + subtreeCount;
-	            subtreeCount += traverseAllChildrenImpl(
-	              children[key],
-	              nextName,
-	              nextIndex,
-	              callback,
-	              traverseContext
-	            );
-	          }
-	        }
-	      }
-	    }
-	    return subtreeCount;
-	  };
-	
-	/**
-	 * Traverses children that are typically specified as `props.children`, but
-	 * might also be specified through attributes:
-	 *
-	 * - `traverseAllChildren(this.props.children, ...)`
-	 * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
-	 *
-	 * The `traverseContext` is an optional argument that is passed through the
-	 * entire traversal. It can be used to store accumulations or anything else that
-	 * the callback might find relevant.
-	 *
-	 * @param {?*} children Children tree object.
-	 * @param {!function} callback To invoke upon traversing each child.
-	 * @param {?*} traverseContext Context for traversal.
-	 * @return {!number} The number of children in this subtree.
-	 */
-	function traverseAllChildren(children, callback, traverseContext) {
-	  if (children == null) {
-	    return 0;
-	  }
-	
-	  return traverseAllChildrenImpl(children, '', 0, callback, traverseContext);
-	}
-	
-	module.exports = traverseAllChildren;
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ../~/webpack/~/node-libs-browser/~/process/browser.js */ 93)))
-
-/***/ },
-/* 104 */
 /*!************************************!*\
   !*** ../~/react/lib/ReactOwner.js ***!
   \************************************/
@@ -12060,7 +12022,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ../~/webpack/~/node-libs-browser/~/process/browser.js */ 93)))
 
 /***/ },
-/* 105 */
+/* 103 */
 /*!**************************************!*\
   !*** ../~/react/lib/ReactUpdates.js ***!
   \**************************************/
@@ -12080,7 +12042,7 @@
 	"use strict";
 	
 	var CallbackQueue = __webpack_require__(/*! ./CallbackQueue */ 161);
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 102);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 105);
 	var ReactCurrentOwner = __webpack_require__(/*! ./ReactCurrentOwner */ 59);
 	var ReactPerf = __webpack_require__(/*! ./ReactPerf */ 69);
 	var Transaction = __webpack_require__(/*! ./Transaction */ 162);
@@ -12356,7 +12318,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ../~/webpack/~/node-libs-browser/~/process/browser.js */ 93)))
 
 /***/ },
-/* 106 */
+/* 104 */
 /*!***********************************!*\
   !*** ../~/react/lib/keyMirror.js ***!
   \***********************************/
@@ -12413,6 +12375,317 @@
 	};
 	
 	module.exports = keyMirror;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ../~/webpack/~/node-libs-browser/~/process/browser.js */ 93)))
+
+/***/ },
+/* 105 */
+/*!*************************************!*\
+  !*** ../~/react/lib/PooledClass.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule PooledClass
+	 */
+	
+	"use strict";
+	
+	var invariant = __webpack_require__(/*! ./invariant */ 81);
+	
+	/**
+	 * Static poolers. Several custom versions for each potential number of
+	 * arguments. A completely generic pooler is easy to implement, but would
+	 * require accessing the `arguments` object. In each of these, `this` refers to
+	 * the Class itself, not an instance. If any others are needed, simply add them
+	 * here, or in their own files.
+	 */
+	var oneArgumentPooler = function(copyFieldsFrom) {
+	  var Klass = this;
+	  if (Klass.instancePool.length) {
+	    var instance = Klass.instancePool.pop();
+	    Klass.call(instance, copyFieldsFrom);
+	    return instance;
+	  } else {
+	    return new Klass(copyFieldsFrom);
+	  }
+	};
+	
+	var twoArgumentPooler = function(a1, a2) {
+	  var Klass = this;
+	  if (Klass.instancePool.length) {
+	    var instance = Klass.instancePool.pop();
+	    Klass.call(instance, a1, a2);
+	    return instance;
+	  } else {
+	    return new Klass(a1, a2);
+	  }
+	};
+	
+	var threeArgumentPooler = function(a1, a2, a3) {
+	  var Klass = this;
+	  if (Klass.instancePool.length) {
+	    var instance = Klass.instancePool.pop();
+	    Klass.call(instance, a1, a2, a3);
+	    return instance;
+	  } else {
+	    return new Klass(a1, a2, a3);
+	  }
+	};
+	
+	var fiveArgumentPooler = function(a1, a2, a3, a4, a5) {
+	  var Klass = this;
+	  if (Klass.instancePool.length) {
+	    var instance = Klass.instancePool.pop();
+	    Klass.call(instance, a1, a2, a3, a4, a5);
+	    return instance;
+	  } else {
+	    return new Klass(a1, a2, a3, a4, a5);
+	  }
+	};
+	
+	var standardReleaser = function(instance) {
+	  var Klass = this;
+	  ("production" !== process.env.NODE_ENV ? invariant(
+	    instance instanceof Klass,
+	    'Trying to release an instance into a pool of a different type.'
+	  ) : invariant(instance instanceof Klass));
+	  if (instance.destructor) {
+	    instance.destructor();
+	  }
+	  if (Klass.instancePool.length < Klass.poolSize) {
+	    Klass.instancePool.push(instance);
+	  }
+	};
+	
+	var DEFAULT_POOL_SIZE = 10;
+	var DEFAULT_POOLER = oneArgumentPooler;
+	
+	/**
+	 * Augments `CopyConstructor` to be a poolable class, augmenting only the class
+	 * itself (statically) not adding any prototypical fields. Any CopyConstructor
+	 * you give this may have a `poolSize` property, and will look for a
+	 * prototypical `destructor` on instances (optional).
+	 *
+	 * @param {Function} CopyConstructor Constructor that can be used to reset.
+	 * @param {Function} pooler Customizable pooler.
+	 */
+	var addPoolingTo = function(CopyConstructor, pooler) {
+	  var NewKlass = CopyConstructor;
+	  NewKlass.instancePool = [];
+	  NewKlass.getPooled = pooler || DEFAULT_POOLER;
+	  if (!NewKlass.poolSize) {
+	    NewKlass.poolSize = DEFAULT_POOL_SIZE;
+	  }
+	  NewKlass.release = standardReleaser;
+	  return NewKlass;
+	};
+	
+	var PooledClass = {
+	  addPoolingTo: addPoolingTo,
+	  oneArgumentPooler: oneArgumentPooler,
+	  twoArgumentPooler: twoArgumentPooler,
+	  threeArgumentPooler: threeArgumentPooler,
+	  fiveArgumentPooler: fiveArgumentPooler
+	};
+	
+	module.exports = PooledClass;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ../~/webpack/~/node-libs-browser/~/process/browser.js */ 93)))
+
+/***/ },
+/* 106 */
+/*!*********************************************!*\
+  !*** ../~/react/lib/traverseAllChildren.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule traverseAllChildren
+	 */
+	
+	"use strict";
+	
+	var ReactElement = __webpack_require__(/*! ./ReactElement */ 60);
+	var ReactInstanceHandles = __webpack_require__(/*! ./ReactInstanceHandles */ 65);
+	
+	var invariant = __webpack_require__(/*! ./invariant */ 81);
+	
+	var SEPARATOR = ReactInstanceHandles.SEPARATOR;
+	var SUBSEPARATOR = ':';
+	
+	/**
+	 * TODO: Test that:
+	 * 1. `mapChildren` transforms strings and numbers into `ReactTextComponent`.
+	 * 2. it('should fail when supplied duplicate key', function() {
+	 * 3. That a single child and an array with one item have the same key pattern.
+	 * });
+	 */
+	
+	var userProvidedKeyEscaperLookup = {
+	  '=': '=0',
+	  '.': '=1',
+	  ':': '=2'
+	};
+	
+	var userProvidedKeyEscapeRegex = /[=.:]/g;
+	
+	function userProvidedKeyEscaper(match) {
+	  return userProvidedKeyEscaperLookup[match];
+	}
+	
+	/**
+	 * Generate a key string that identifies a component within a set.
+	 *
+	 * @param {*} component A component that could contain a manual key.
+	 * @param {number} index Index that is used if a manual key is not provided.
+	 * @return {string}
+	 */
+	function getComponentKey(component, index) {
+	  if (component && component.key != null) {
+	    // Explicit key
+	    return wrapUserProvidedKey(component.key);
+	  }
+	  // Implicit key determined by the index in the set
+	  return index.toString(36);
+	}
+	
+	/**
+	 * Escape a component key so that it is safe to use in a reactid.
+	 *
+	 * @param {*} key Component key to be escaped.
+	 * @return {string} An escaped string.
+	 */
+	function escapeUserProvidedKey(text) {
+	  return ('' + text).replace(
+	    userProvidedKeyEscapeRegex,
+	    userProvidedKeyEscaper
+	  );
+	}
+	
+	/**
+	 * Wrap a `key` value explicitly provided by the user to distinguish it from
+	 * implicitly-generated keys generated by a component's index in its parent.
+	 *
+	 * @param {string} key Value of a user-provided `key` attribute
+	 * @return {string}
+	 */
+	function wrapUserProvidedKey(key) {
+	  return '$' + escapeUserProvidedKey(key);
+	}
+	
+	/**
+	 * @param {?*} children Children tree container.
+	 * @param {!string} nameSoFar Name of the key path so far.
+	 * @param {!number} indexSoFar Number of children encountered until this point.
+	 * @param {!function} callback Callback to invoke with each child found.
+	 * @param {?*} traverseContext Used to pass information throughout the traversal
+	 * process.
+	 * @return {!number} The number of children in this subtree.
+	 */
+	var traverseAllChildrenImpl =
+	  function(children, nameSoFar, indexSoFar, callback, traverseContext) {
+	    var nextName, nextIndex;
+	    var subtreeCount = 0;  // Count of children found in the current subtree.
+	    if (Array.isArray(children)) {
+	      for (var i = 0; i < children.length; i++) {
+	        var child = children[i];
+	        nextName = (
+	          nameSoFar +
+	          (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
+	          getComponentKey(child, i)
+	        );
+	        nextIndex = indexSoFar + subtreeCount;
+	        subtreeCount += traverseAllChildrenImpl(
+	          child,
+	          nextName,
+	          nextIndex,
+	          callback,
+	          traverseContext
+	        );
+	      }
+	    } else {
+	      var type = typeof children;
+	      var isOnlyChild = nameSoFar === '';
+	      // If it's the only child, treat the name as if it was wrapped in an array
+	      // so that it's consistent if the number of children grows
+	      var storageName =
+	        isOnlyChild ? SEPARATOR + getComponentKey(children, 0) : nameSoFar;
+	      if (children == null || type === 'boolean') {
+	        // All of the above are perceived as null.
+	        callback(traverseContext, null, storageName, indexSoFar);
+	        subtreeCount = 1;
+	      } else if (type === 'string' || type === 'number' ||
+	                 ReactElement.isValidElement(children)) {
+	        callback(traverseContext, children, storageName, indexSoFar);
+	        subtreeCount = 1;
+	      } else if (type === 'object') {
+	        ("production" !== process.env.NODE_ENV ? invariant(
+	          !children || children.nodeType !== 1,
+	          'traverseAllChildren(...): Encountered an invalid child; DOM ' +
+	          'elements are not valid children of React components.'
+	        ) : invariant(!children || children.nodeType !== 1));
+	        for (var key in children) {
+	          if (children.hasOwnProperty(key)) {
+	            nextName = (
+	              nameSoFar + (nameSoFar ? SUBSEPARATOR : SEPARATOR) +
+	              wrapUserProvidedKey(key) + SUBSEPARATOR +
+	              getComponentKey(children[key], 0)
+	            );
+	            nextIndex = indexSoFar + subtreeCount;
+	            subtreeCount += traverseAllChildrenImpl(
+	              children[key],
+	              nextName,
+	              nextIndex,
+	              callback,
+	              traverseContext
+	            );
+	          }
+	        }
+	      }
+	    }
+	    return subtreeCount;
+	  };
+	
+	/**
+	 * Traverses children that are typically specified as `props.children`, but
+	 * might also be specified through attributes:
+	 *
+	 * - `traverseAllChildren(this.props.children, ...)`
+	 * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
+	 *
+	 * The `traverseContext` is an optional argument that is passed through the
+	 * entire traversal. It can be used to store accumulations or anything else that
+	 * the callback might find relevant.
+	 *
+	 * @param {?*} children Children tree object.
+	 * @param {!function} callback To invoke upon traversing each child.
+	 * @param {?*} traverseContext Context for traversal.
+	 * @return {!number} The number of children in this subtree.
+	 */
+	function traverseAllChildren(children, callback, traverseContext) {
+	  if (children == null) {
+	    return 0;
+	  }
+	
+	  return traverseAllChildrenImpl(children, '', 0, callback, traverseContext);
+	}
+	
+	module.exports = traverseAllChildren;
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ../~/webpack/~/node-libs-browser/~/process/browser.js */ 93)))
 
@@ -12731,7 +13004,7 @@
 	
 	"use strict";
 	
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 106);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 104);
 	
 	var ReactPropTypeLocations = keyMirror({
 	  prop: null,
@@ -13961,7 +14234,7 @@
 	var EventPluginHub = __webpack_require__(/*! ./EventPluginHub */ 169);
 	var EventPropagators = __webpack_require__(/*! ./EventPropagators */ 173);
 	var ExecutionEnvironment = __webpack_require__(/*! ./ExecutionEnvironment */ 76);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 105);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 103);
 	var SyntheticEvent = __webpack_require__(/*! ./SyntheticEvent */ 175);
 	
 	var isEventSupported = __webpack_require__(/*! ./isEventSupported */ 120);
@@ -15230,7 +15503,7 @@
 	
 	"use strict";
 	
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 105);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 103);
 	var Transaction = __webpack_require__(/*! ./Transaction */ 162);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
@@ -15316,7 +15589,7 @@
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 60);
 	var ReactDOM = __webpack_require__(/*! ./ReactDOM */ 62);
 	
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 106);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 104);
 	
 	// Store a reference to the <button> `ReactDOMComponent`. TODO: use string
 	var button = ReactElement.createFactory(ReactDOM.button.type);
@@ -15502,7 +15775,7 @@
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 60);
 	var ReactDOM = __webpack_require__(/*! ./ReactDOM */ 62);
 	var ReactMount = __webpack_require__(/*! ./ReactMount */ 67);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 105);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 103);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
 	var invariant = __webpack_require__(/*! ./invariant */ 81);
@@ -15743,7 +16016,7 @@
 	var ReactCompositeComponent = __webpack_require__(/*! ./ReactCompositeComponent */ 57);
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 60);
 	var ReactDOM = __webpack_require__(/*! ./ReactDOM */ 62);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 105);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 103);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
 	
@@ -15935,7 +16208,7 @@
 	var ReactCompositeComponent = __webpack_require__(/*! ./ReactCompositeComponent */ 57);
 	var ReactElement = __webpack_require__(/*! ./ReactElement */ 60);
 	var ReactDOM = __webpack_require__(/*! ./ReactDOM */ 62);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 105);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 103);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
 	var invariant = __webpack_require__(/*! ./invariant */ 81);
@@ -16078,10 +16351,10 @@
 	
 	var EventListener = __webpack_require__(/*! ./EventListener */ 187);
 	var ExecutionEnvironment = __webpack_require__(/*! ./ExecutionEnvironment */ 76);
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 102);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 105);
 	var ReactInstanceHandles = __webpack_require__(/*! ./ReactInstanceHandles */ 65);
 	var ReactMount = __webpack_require__(/*! ./ReactMount */ 67);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 105);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 103);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
 	var getEventTarget = __webpack_require__(/*! ./getEventTarget */ 188);
@@ -16275,7 +16548,7 @@
 	var ReactNativeComponent = __webpack_require__(/*! ./ReactNativeComponent */ 164);
 	var ReactPerf = __webpack_require__(/*! ./ReactPerf */ 69);
 	var ReactRootIndex = __webpack_require__(/*! ./ReactRootIndex */ 146);
-	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 105);
+	var ReactUpdates = __webpack_require__(/*! ./ReactUpdates */ 103);
 	
 	var ReactInjection = {
 	  Component: ReactComponent.injection,
@@ -17551,7 +17824,7 @@
 	
 	"use strict";
 	
-	var keyMirror = __webpack_require__(/*! ./keyMirror */ 106);
+	var keyMirror = __webpack_require__(/*! ./keyMirror */ 104);
 	
 	/**
 	 * When a component's children are updated, a series of update configuration
@@ -17593,7 +17866,7 @@
 	
 	var ReactTextComponent = __webpack_require__(/*! ./ReactTextComponent */ 72);
 	
-	var traverseAllChildren = __webpack_require__(/*! ./traverseAllChildren */ 103);
+	var traverseAllChildren = __webpack_require__(/*! ./traverseAllChildren */ 106);
 	var warning = __webpack_require__(/*! ./warning */ 82);
 	
 	/**
@@ -17763,7 +18036,7 @@
 	
 	"use strict";
 	
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 102);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 105);
 	var CallbackQueue = __webpack_require__(/*! ./CallbackQueue */ 161);
 	var ReactPutListenerQueue = __webpack_require__(/*! ./ReactPutListenerQueue */ 204);
 	var Transaction = __webpack_require__(/*! ./Transaction */ 162);
@@ -18379,7 +18652,7 @@
 	
 	"use strict";
 	
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 102);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 105);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
 	var invariant = __webpack_require__(/*! ./invariant */ 81);
@@ -20014,7 +20287,7 @@
 	
 	"use strict";
 	
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 102);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 105);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
 	var emptyFunction = __webpack_require__(/*! ./emptyFunction */ 151);
@@ -20753,7 +21026,7 @@
 	"use strict";
 	
 	var CallbackQueue = __webpack_require__(/*! ./CallbackQueue */ 161);
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 102);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 105);
 	var ReactBrowserEventEmitter = __webpack_require__(/*! ./ReactBrowserEventEmitter */ 119);
 	var ReactInputSelection = __webpack_require__(/*! ./ReactInputSelection */ 177);
 	var ReactPutListenerQueue = __webpack_require__(/*! ./ReactPutListenerQueue */ 204);
@@ -22350,7 +22623,7 @@
 	
 	"use strict";
 	
-	var PooledClass = __webpack_require__(/*! ./PooledClass */ 102);
+	var PooledClass = __webpack_require__(/*! ./PooledClass */ 105);
 	var ReactBrowserEventEmitter = __webpack_require__(/*! ./ReactBrowserEventEmitter */ 119);
 	
 	var assign = __webpack_require__(/*! ./Object.assign */ 73);
@@ -22400,10 +22673,36 @@
   \**************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../~/css-loader!../~/autoprefixer-loader!../~/sass-loader?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!./app/common/regions/navigation/style.scss */ 206);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../~/style-loader/addStyles.js */ 8)(content, {});
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		module.hot.accept("!!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/css-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/autoprefixer-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/sass-loader/index.js?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!/Users/azadorozhniy/work/yetu/controlcenter/public/app/common/regions/navigation/style.scss", function() {
+			var newContent = require("!!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/css-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/autoprefixer-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/sass-loader/index.js?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!/Users/azadorozhniy/work/yetu/controlcenter/public/app/common/regions/navigation/style.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 206 */,
+/* 206 */
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../~/css-loader!../~/autoprefixer-loader!../~/sass-loader?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!./app/common/regions/navigation/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../~/css-loader/cssToString.js */ 33)();
+	exports.push([module.id, "meta.foundation-version{font-family:\"/5.5.1/\"}meta.foundation-mq-small{font-family:\"/only screen/\";width:0}meta.foundation-mq-small-only{font-family:\"/only screen and (max-width: 40em)/\";width:0}meta.foundation-mq-medium{font-family:\"/only screen and (min-width:40.063em)/\";width:40.063em}meta.foundation-mq-medium-only{font-family:\"/only screen and (min-width:40.063em) and (max-width:64em)/\";width:40.063em}meta.foundation-mq-large{font-family:\"/only screen and (min-width:64.063em)/\";width:64.063em}meta.foundation-mq-large-only{font-family:\"/only screen and (min-width:64.063em) and (max-width:90em)/\";width:64.063em}meta.foundation-mq-xlarge{font-family:\"/only screen and (min-width:90.063em)/\";width:90.063em}meta.foundation-mq-xlarge-only{font-family:\"/only screen and (min-width:90.063em) and (max-width:120em)/\";width:90.063em}meta.foundation-mq-xxlarge{font-family:\"/only screen and (min-width:120.063em)/\";width:120.063em}meta.foundation-data-attribute-namespace{font-family:false}html,body{height:100%}*,*:before,*:after{box-sizing:border-box}html,body{font-size:100%}body{background:#fff;color:#222;padding:0;margin:0;font-family:\"Helvetica Neue\",Helvetica,Roboto,Arial,sans-serif;font-weight:normal;font-style:normal;line-height:1.5;position:relative;cursor:auto}a:hover{cursor:pointer}img{max-width:100%;height:auto}img{-ms-interpolation-mode:bicubic}#map_canvas img,#map_canvas embed,#map_canvas object,.map_canvas img,.map_canvas embed,.map_canvas object{max-width:none !important}.left{float:left !important}.right{float:right !important}.clearfix:before,.clearfix:after{content:\" \";display:table}.clearfix:after{clear:both}.hide{display:none}.invisible{visibility:hidden}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}img{display:inline-block;vertical-align:middle}textarea{height:auto;min-height:50px}select{width:100%}.cc_navigation .cc_navigation__list{display:block;margin:0;padding:0.875rem 0;list-style-type:none;list-style-position:outside;font-family:\"Helvetica Neue\",Helvetica,Roboto,Arial,sans-serif}.cc_navigation .cc_navigation__list li{margin:0 0 0.4375rem 0;font-size:0.875rem;font-weight:normal}.cc_navigation .cc_navigation__list li a:not(.button){display:block;color:#008CBA;margin:0;padding:0.4375rem 0.875rem}.cc_navigation .cc_navigation__list li a:not(.button):hover,.cc_navigation .cc_navigation__list li a:not(.button):focus{background:rgba(0,0,0,0.025);color:#1cc7ff}.cc_navigation .cc_navigation__list li.active>a:first-child:not(.button){color:#1cc7ff;font-weight:normal;font-family:\"Helvetica Neue\",Helvetica,Roboto,Arial,sans-serif}.cc_navigation .cc_navigation__list li.divider{border-top:1px solid;height:0;padding:0;list-style:none;border-top-color:white}.cc_navigation .cc_navigation__list li.heading{color:#008CBA;font-size:0.875rem;font-weight:bold;text-transform:uppercase}", ""]);
+
+/***/ },
 /* 207 */
 /*!*******************************************************!*\
   !*** ./app/screens/main/devices/device-list/index.js ***!
@@ -23987,10 +24286,36 @@
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../~/css-loader!../~/autoprefixer-loader!../~/sass-loader?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!./app/common/regions/navigation/nav-item/style.scss */ 230);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../~/style-loader/addStyles.js */ 8)(content, {});
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		module.hot.accept("!!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/css-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/autoprefixer-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/sass-loader/index.js?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!/Users/azadorozhniy/work/yetu/controlcenter/public/app/common/regions/navigation/nav-item/style.scss", function() {
+			var newContent = require("!!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/css-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/autoprefixer-loader/index.js!/Users/azadorozhniy/work/yetu/controlcenter/node_modules/sass-loader/index.js?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!/Users/azadorozhniy/work/yetu/controlcenter/public/app/common/regions/navigation/nav-item/style.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
-/* 230 */,
+/* 230 */
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../~/css-loader!../~/autoprefixer-loader!../~/sass-loader?includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/app/project-setup&includePaths[]=/Users/azadorozhniy/work/yetu/controlcenter/public/bower_components/foundation/scss!./app/common/regions/navigation/nav-item/style.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../~/css-loader/cssToString.js */ 33)();
+	exports.push([module.id, "meta.foundation-version{font-family:\"/5.5.1/\"}meta.foundation-mq-small{font-family:\"/only screen/\";width:0}meta.foundation-mq-small-only{font-family:\"/only screen and (max-width: 40em)/\";width:0}meta.foundation-mq-medium{font-family:\"/only screen and (min-width:40.063em)/\";width:40.063em}meta.foundation-mq-medium-only{font-family:\"/only screen and (min-width:40.063em) and (max-width:64em)/\";width:40.063em}meta.foundation-mq-large{font-family:\"/only screen and (min-width:64.063em)/\";width:64.063em}meta.foundation-mq-large-only{font-family:\"/only screen and (min-width:64.063em) and (max-width:90em)/\";width:64.063em}meta.foundation-mq-xlarge{font-family:\"/only screen and (min-width:90.063em)/\";width:90.063em}meta.foundation-mq-xlarge-only{font-family:\"/only screen and (min-width:90.063em) and (max-width:120em)/\";width:90.063em}meta.foundation-mq-xxlarge{font-family:\"/only screen and (min-width:120.063em)/\";width:120.063em}meta.foundation-data-attribute-namespace{font-family:false}html,body{height:100%}*,*:before,*:after{box-sizing:border-box}html,body{font-size:100%}body{background:#fff;color:#222;padding:0;margin:0;font-family:\"Helvetica Neue\",Helvetica,Roboto,Arial,sans-serif;font-weight:normal;font-style:normal;line-height:1.5;position:relative;cursor:auto}a:hover{cursor:pointer}img{max-width:100%;height:auto}img{-ms-interpolation-mode:bicubic}#map_canvas img,#map_canvas embed,#map_canvas object,.map_canvas img,.map_canvas embed,.map_canvas object{max-width:none !important}.left{float:left !important}.right{float:right !important}.clearfix:before,.clearfix:after{content:\" \";display:table}.clearfix:after{clear:both}.hide{display:none}.invisible{visibility:hidden}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}img{display:inline-block;vertical-align:middle}textarea{height:auto;min-height:50px}select{width:100%}.test{color:red}.test .anothertest{background:red}", ""]);
+
+/***/ },
 /* 231 */
 /*!**************************************************************!*\
   !*** ./app/screens/main/devices/device-list/device/index.js ***!

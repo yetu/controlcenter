@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-//How to we communicate subling components
+//TODO How do we communicate with sublying components
 var Device = require('../device');
 
 var Room = React.createClass({

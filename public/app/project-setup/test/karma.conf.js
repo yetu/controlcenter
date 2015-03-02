@@ -14,6 +14,8 @@ module.exports = function (config) {
 		basePath: '../../../',
 		frameworks: ['jasmine'],
 		files: [
+			'./app/project-setup/test/phantomjs-bind.polyfill.js',
+			'./**/*.spec.js'
 		],
 
 //		preprocessors: {

@@ -2,6 +2,10 @@
 var React = require('react');
 
 var Device = React.createClass({
+	getInitialState : function(){
+	    return {a:5};
+	},
+
 	render: function() {
 		return (
 			<div className="row">

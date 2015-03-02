@@ -3,7 +3,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 
-var roomActions = require('../../actions/room');
+var roomActions = require('actions/room');
 
 var _rooms = [
     {title: 'Living room', devices: [

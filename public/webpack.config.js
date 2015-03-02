@@ -15,7 +15,7 @@ module.exports = {
 		modulesDirectories: ['node_modules', 'bower_components'],
 		alias: {
 			'setup': __dirname + '/app/project-setup',
-			'actions': __dirname + '/app/actions/actions',
+			'actions': __dirname + '/app/actions',
 			'screens': __dirname + '/app/screens',
 			'stores': __dirname + '/app/stores',
 			'common': __dirname + '/app/common',

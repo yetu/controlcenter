@@ -1,0 +1,10 @@
+@import "theme";
+
+.cc-devices {
+  .cc-devices__button {
+    @include button()
+  }
+  .cc-devices__title {
+    
+  }
+}

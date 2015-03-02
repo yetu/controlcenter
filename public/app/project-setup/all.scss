@@ -1,5 +1,8 @@
-@import "theme/foundation-overrides";
-@import "theme/variables";
+@import "theme/variables/base";
+@import "theme/variables/colors";
+@import "theme/variables/typography";
+@import "theme/variables/grid";
+
 @import "theme/base";
 @import "theme/fonts";
 @import "theme/mixins";

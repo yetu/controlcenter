@@ -1,0 +1,28 @@
+// TYPOGRAPHY
+
+// default font size
+$rem-base: 18px;
+
+// default font
+$body-font-family: 'source_sans_prolight', 'Helvetica Neue', Arial;
+$body-font-color: $default-gray;
+
+// We use these to control header font styles
+$header-font-color: $active-gray;
+$header-line-height: 1.4;
+$header-top-margin: .2rem;
+$header-bottom-margin: .5rem;
+$header-text-rendering: optimizeLegibility;
+
+// predefined theme font sizes
+$h1-font-size: rem-calc(26);
+$h2-font-size: rem-calc(24);
+$h3-font-size: rem-calc(20);
+$h4-font-size: rem-calc(20);
+$h5-font-size: rem-calc(20);
+
+// small font: <small>
+$small-font-size: rem-calc(16);
+$small-font-color: scale-color($header-font-color, $lightness: 35%);
+
+$body-bg: $shade-white;

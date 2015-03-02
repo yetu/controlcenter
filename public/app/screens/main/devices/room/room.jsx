@@ -11,13 +11,13 @@ var Room = React.createClass({
             );
         });
         
-		return (
-			<div>
+        return (
+            <div>
                 <h2>{this.props.room.title}</h2>
                 {devices}
-			</div>
-		);
-	}
+            </div>
+        );
+    }
 });
 
 module.exports = Room;

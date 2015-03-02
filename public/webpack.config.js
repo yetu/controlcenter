@@ -1,4 +1,5 @@
 'use strict';
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	context: __dirname,
@@ -14,17 +15,21 @@ module.exports = {
 	resolve: {
 		modulesDirectories: ['node_modules', 'bower_components'],
 		alias: {
-			'specific': __dirname + '/app/specific'
+			'setup': __dirname + '/app/project-setup',
+			'actions': __dirname + '/app/actions/actions',
+			'screens': __dirname + '/app/screens',
+			'stores': __dirname + '/app/stores',
+			'common': __dirname + '/app/common',
+			'mixins': __dirname + '/app/common/mixins'
 		},
-        extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx']
 	},
 	module: {
 		loaders: [
-            {test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
-			{test: /\.scss$/, loader: 'css!autoprefixer!sass?' +
-				'includePaths[]=' + __dirname + '/app/specific' +
-				'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},
-
+			{test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
+			{test: /\.scss$/, loader: ExtractTextPlugin.extract('style','css!autoprefixer!sass?' +
+			'includePaths[]=' + __dirname + '/app/project-setup' +
+			'&includePaths[]=' + __dirname + '/bower_components/foundation/scss')},
 			{test: /\.(png|jpg)$/, loader: 'url?limit=32768'},
 			{test: /\.jade$/, loader: 'jade'},
 			{test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff'},
@@ -35,5 +40,8 @@ module.exports = {
 	},
 	externals: {
 	},
+	plugins: [
+		new ExtractTextPlugin("style.css")
+	],
 	devtool: 'eval'
 };

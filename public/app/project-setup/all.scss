@@ -1,3 +1,5 @@
+@import "normalize";
+
 @import "theme/variables/base";
 @import "theme/variables/colors";
 @import "theme/variables/typography";
@@ -6,5 +8,3 @@
 @import "theme/base";
 @import "theme/fonts/fonts";
 @import "theme/mixins";
-
-@import "normalize";

@@ -1,29 +1,28 @@
 'use strict';
 
 var React = require('react'),
-	Router = require('react-router'),
-	styles = require("./style.scss"),
-	NavigationItem = require("./nav-item");
-
-var Link = Router.Link;
+    Link = require('react-router').Link,
+    styles = require("./style.scss");
 
 var Navigation = React.createClass({
 
-	render: function () {
-		return (
-			<div className="cc_navigation">
-				<ul className="cc_navigation__list">
-					<li>
-						<Link to="devices">Dashboard</Link>
-					</li>
-					<li>
-						<Link to="settings">Dashboard</Link>
-					</li>
-
-				</ul>
-			</div>
-		);
-	}
+    render: function () {
+        var items = this.props.items.map(function(item, i) {
+            return (
+                <li>
+                    <Link to={item.linkTo} key={i}>{item.title}</Link>
+                </li>
+            );
+        });
+        
+        return (
+            <div className="cc_navigation">
+                <ul className="cc_navigation__list">
+                    {items}
+                </ul>
+            </div>
+        );
+    }
 });
 
 module.exports = Navigation;

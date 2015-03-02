@@ -42,12 +42,11 @@
   },
   "scripts": {
     "clean": "rm -rf ./public/app/dist && rm -rf ./public/dist ",
-    "pack": "webpack -p --config ./public/webpack.config.js ",
-    "pack-dev": "webpack -d --config ./public/webpack.config.js",
-    "pack-dev-watch": "webpack -d -w --config ./public/webpack.config.js",
-    "test": "npm run pack-dev && node ./node_modules/karma/bin/karma start ./public/app/proje/test/karma.conf.js --single-run",
-    "tdd": "npm run pack-dev && node ./node_modules/karma/bin/karma start ./public/app/specific/test/karma.conf.js",
-    "build": "npm run clean && npm run pack && cp -r ./public/app/* ./public/dist",
+    "bundle": "webpack -p --config ./public/webpack.config.js ",
+    "bundle-dev": "webpack -d -w --config ./public/webpack.config.js",
+    "test": "npm run bundle && node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js --single-run",
+    "tdd": "npm run bundle-dev && node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js",
+    "build": "npm run clean && npm run bundle && cp -r ./public/app/* ./public/dist",
     "precommit": "npm test"
   }
 }

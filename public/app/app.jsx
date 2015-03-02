@@ -41,7 +41,7 @@ Router.run(routes, function (Handler, state) {
 	React.render(<Handler params={ state.params } />, document.body);
 });
 
-
+// TODO: Remove this code
 //var addRoom = function() {
 //    deviceRooms.push({title: 'New room', devices: []});
 //    // TODO: This doesn't integrate well with the component lifecycle. shouldn't we call #setProps instead?

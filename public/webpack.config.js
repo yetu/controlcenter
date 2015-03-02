@@ -26,6 +26,7 @@ module.exports = {
 	module: {
 		loaders: [
 			{test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
+			{test: /\.spec\.js$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
 			{test: /\.scss$/, loader: 'style!css!autoprefixer!sass?' +
 			'includePaths[]=' + __dirname + '/app/project-setup' +
 			'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},

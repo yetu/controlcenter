@@ -8,19 +8,8 @@ var Device = React.createClass({
 
 	render: function() {
 		return (
-			<div className="row">
-				<div className="small-4 column">
-					Stub device
-				</div>
-				<div className="small-4 column">
-					Stub device
-				</div>
-				<div className="small-2 column">
-					Controller
-				</div>
-				<div className="small-2 column">
-					Device
-				</div>
+			<div>
+                <h3>{this.props.device.title}</h3>
 			</div>
 		);
 	}

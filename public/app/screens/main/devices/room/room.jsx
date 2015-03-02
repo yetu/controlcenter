@@ -1,15 +1,20 @@
 'use strict';
 
 var React = require('react');
-//TODO How do we communicate with sublying components
 var Device = require('screens/main/devices/device/index');
 
 var Room = React.createClass({
-	render: function () {
+    render: function () {
+        var devices = this.props.room.devices.map(function(device, i) {
+            return (
+                <Device device={device} key={i} />
+            );
+        });
+        
 		return (
 			<div>
-				<h3>Hello</h3>
-        <Device />
+                <h2>{this.props.room.title}</h2>
+                {devices}
 			</div>
 		);
 	}

@@ -2,7 +2,7 @@
 
 var React = require('react');
 //TODO How do we communicate with sublying components
-var Device = require('../device');
+var Device = require('screens/main/devices/device/index');
 
 var Room = React.createClass({
 	render: function () {

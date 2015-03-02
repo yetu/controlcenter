@@ -3,7 +3,9 @@
 var React = require('react');
 var Reflux = require("reflux");
 
-var appStyle = require('./project-setup/all.scss');
+
+// if style! is used here, it will attach the style to DOM automatically
+require('./project-setup/all.scss');
 
 var actions = require("./actions");
 

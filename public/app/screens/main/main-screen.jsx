@@ -7,12 +7,21 @@ var Navigation = require('common/regions/navigation');
 var style = require("./style.scss");
 
 var MainScreen = React.createClass({
+    
+    getInitialState: function() {
+        return {
+            navItems: [
+                {title: "My devices", linkTo: "devices"},
+                {title: "My settings", linkTo: "settings"}
+            ]
+        }
+    },
 
 	render: function () {
 		return (
 			<div className="main-screen">
 				<div className="main-screen__navigation">
-					<Navigation/>
+					<Navigation items={this.state.navItems}/>
 				</div>
 				<div className="main-screen__content">
 					<RouteHandler/>

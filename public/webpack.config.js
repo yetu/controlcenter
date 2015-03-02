@@ -1,5 +1,4 @@
 'use strict';
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	context: __dirname,
@@ -27,9 +26,9 @@ module.exports = {
 	module: {
 		loaders: [
 			{test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
-			{test: /\.scss$/, loader: ExtractTextPlugin.extract('style','css!autoprefixer!sass?' +
+			{test: /\.scss$/, loader: 'style!css!autoprefixer!sass?' +
 			'includePaths[]=' + __dirname + '/app/project-setup' +
-			'&includePaths[]=' + __dirname + '/bower_components/foundation/scss')},
+			'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},
 			{test: /\.(png|jpg)$/, loader: 'url?limit=32768'},
 			{test: /\.jade$/, loader: 'jade'},
 			{test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&minetype=application/font-woff'},
@@ -40,8 +39,5 @@ module.exports = {
 	},
 	externals: {
 	},
-	plugins: [
-		new ExtractTextPlugin("style.css")
-	],
 	devtool: 'eval'
 };

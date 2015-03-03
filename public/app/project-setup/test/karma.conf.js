@@ -15,14 +15,14 @@ module.exports = function (config) {
 		frameworks: ['jasmine'],
 		files: [
 			'./app/project-setup/test/phantomjs-bind.polyfill.js',
-			'./**/*.spec.js'
+			'./**/*.spec.js*'
 		],
 
 //		preprocessors: {
 //			'app/**/(!test|specific)/*.js': 'coverage'
 //		},
 		preprocessors: {
-			'./**/*.spec.js': ['webpack']
+			'./**/*.spec.js*': ['webpack']
 		},
 
 		webpack: {

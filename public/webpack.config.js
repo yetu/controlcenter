@@ -28,7 +28,10 @@ module.exports = {
 			{test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
 			// style! attaches the css to the DOM automatically,
 			// which is not optimal for components
-			{test: /\.scss$/, loader: 'css!autoprefixer!sass?' +
+			{test: /project-setup\/.*\.scss$/, loader: 'css!autoprefixer!sass?' +
+			'includePaths[]=' + __dirname + '/app/project-setup' +
+			'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},
+			{test: /\/(screens|common)\/.*\.scss$/, loader: 'style/useable!css!autoprefixer!sass?' +
 			'includePaths[]=' + __dirname + '/app/project-setup' +
 			'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},
 			{test: /\.(png|jpg)$/, loader: 'url?limit=32768'},

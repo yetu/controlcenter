@@ -18,13 +18,18 @@ var MainScreen = React.createClass({
 
 	render: function () {
 		return (
-			<div className="main-screen row">
-				<div className="main-screen__navigation column small-5 ">
-					<Navigation items={this.state.navItems}/>
-				</div>
-				<div className="main-screen__content column small-15">
-					<RouteHandler/>
-				</div>
+      <div className="main-screen">
+        <div className="row visible-for-small-only">
+          <Navigation items={this.state.navItems}/>
+        </div>
+        <div className="row">
+          <div className="main-screen__navigation column medium-5 hide-for-small-only">
+            <Navigation items={this.state.navItems}/>
+          </div>
+          <div className="main-screen__content column medium-15 small-20">
+            <RouteHandler/>
+          </div>
+        </div>
 			</div>
 		)
 	}

@@ -17,9 +17,9 @@ var NotFoundRoute = Router.NotFoundRoute;
 var Redirect = Router.Redirect;
 var Link = Router.Link;
 
-var MainScreen = require('./screens/main').MainScreen;
-var DevicesRegion = require('./screens/main').DevicesRegion;
-var SettingsRegion = require('./screens/main').SettingsRegion;
+var MainScreen = require('./screens/main');
+var DevicesRegion = require('./screens/main/sections/devices');
+var SettingsRegion = require('./screens/main/sections/settings');
 
 var routes = (
   <Route path="/" handler={MainScreen}>

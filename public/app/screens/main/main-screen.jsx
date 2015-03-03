@@ -3,7 +3,7 @@ var React = require("react");
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 
-var Navigation = require('common/regions/navigation');
+var Navigation = require('./navigation');
 var navigationStore = require('stores/navigation')
 
 var style = require("./style.scss");
@@ -35,8 +35,4 @@ var MainScreen = React.createClass({
 	}
 });
 
-module.exports = {
-	MainScreen: MainScreen,
-	DevicesRegion: require('./devices'),
-	SettingsRegion: require('./settings')
-};
+module.exports = MainScreen;

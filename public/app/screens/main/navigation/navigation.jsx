@@ -2,10 +2,10 @@
 
 var React = require('react'),
   Link = require('react-router').Link,
-  styles = require("./style.scss");
+  StyleMixin = require('mixins/style-mixin');
 
 var Navigation = React.createClass({
-
+  mixins: [StyleMixin(require("./style.scss"))],
   render: function () {
     var items = this.props.items.map(function (item, i) {
       return (

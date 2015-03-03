@@ -1,7 +1,5 @@
 name := """controlcenter"""
 
-version := "1.0.0"
-
 organization := "com.yetu"
 
 scalaVersion := "2.11.5"

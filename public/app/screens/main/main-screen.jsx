@@ -18,11 +18,11 @@ var MainScreen = React.createClass({
 
 	render: function () {
 		return (
-			<div className="main-screen">
-				<div className="main-screen__navigation">
+			<div className="main-screen row">
+				<div className="main-screen__navigation column small-5 ">
 					<Navigation items={this.state.navItems}/>
 				</div>
-				<div className="main-screen__content">
+				<div className="main-screen__content column small-15">
 					<RouteHandler/>
 				</div>
 			</div>

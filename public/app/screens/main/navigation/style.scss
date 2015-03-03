@@ -1,13 +1,11 @@
 @import "theme";
 
 .cc_navigation {
-  .cc_navigation__list {
-    @include side-nav();
+  @include icon-bar();
 
-    .cc_navigation__link {
-      &.active {
-        font-weight: bold;
-      }
+  .cc_navigation__link {
+    &.active {
+      font-weight: bold;
     }
   }
 }

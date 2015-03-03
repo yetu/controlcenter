@@ -17,14 +17,15 @@ var MainScreen = React.createClass({
     },
 
 	render: function () {
+    var navigation = <Navigation items={this.state.navItems} orientation="medium-vertical small-horizontal"/>;
 		return (
       <div className="main-screen">
         <div className="row visible-for-small-only">
-          <Navigation items={this.state.navItems}/>
+          {navigation}
         </div>
         <div className="row">
           <div className="main-screen__navigation column medium-5 hide-for-small-only">
-            <Navigation items={this.state.navItems}/>
+            {navigation}
           </div>
           <div className="main-screen__content column medium-15 small-20">
             <RouteHandler/>

@@ -4,13 +4,13 @@ var Reflux = require("reflux");
 
 var settingsStore = Reflux.createState({
 
-	init: function () {
+  init: function () {
 
-	},
+  },
 
-	changeSettings: function () {
-		console.log('BOOM!!');
-	}
+  changeSettings: function () {
+    console.log('BOOM!!');
+  }
 });
 
 module.exports = settingsStore;

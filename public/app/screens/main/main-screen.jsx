@@ -9,29 +9,29 @@ var navigationStore = require('stores/navigation')
 var style = require("./style.scss");
 
 var MainScreen = React.createClass({
-    
-    getInitialState: function() {
-        return {
-            navItems: navigationStore.getItems()
-        }
-    },
 
-	render: function () {
-		return (
-			<div className="main-screen">
-				<div className="main-screen__navigation">
-					<Navigation items={this.state.navItems}/>
-				</div>
-				<div className="main-screen__content">
-					<RouteHandler/>
-				</div>
-			</div>
-		)
-	}
+  getInitialState: function () {
+    return {
+      navItems: navigationStore.getItems()
+    }
+  },
+
+  render: function () {
+    return (
+      <div className="main-screen">
+        <div className="main-screen__navigation">
+          <Navigation items={this.state.navItems}/>
+        </div>
+        <div className="main-screen__content">
+          <RouteHandler/>
+        </div>
+      </div>
+    )
+  }
 });
 
 module.exports = {
-	MainScreen: MainScreen,
-	DevicesRegion: require('./devices'),
-	SettingsRegion: require('./settings')
+  MainScreen: MainScreen,
+  DevicesRegion: require('./devices'),
+  SettingsRegion: require('./settings')
 };

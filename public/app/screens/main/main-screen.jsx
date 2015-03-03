@@ -4,16 +4,15 @@ var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 
 var Navigation = require('common/regions/navigation');
+var navigationStore = require('stores/navigation')
+
 var style = require("./style.scss");
 
 var MainScreen = React.createClass({
     
     getInitialState: function() {
         return {
-            navItems: [
-                {title: "My devices", linkTo: "devices"},
-                {title: "My settings", linkTo: "settings"}
-            ]
+            navItems: navigationStore.getItems()
         }
     },
 
@@ -36,5 +35,3 @@ module.exports = {
 	DevicesRegion: require('./devices'),
 	SettingsRegion: require('./settings')
 };
-
-

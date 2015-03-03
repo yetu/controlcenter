@@ -1,8 +1,9 @@
 // Override all variables/mixins from foundation here
 // Add new variables here
 
-$include-html-classes: true;
+$include-html-classes: false;
 $include-html-global-classes: true;
 
 // this is used for Headers
 $include-html-type-classes: true;
+$include-html-grid-classes: true;

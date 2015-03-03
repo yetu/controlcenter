@@ -3,6 +3,8 @@
 var React = require('react');
 var Device = require('screens/main/devices/device/index');
 
+require('./style.scss');
+
 var Room = React.createClass({
     render: function () {
         var devices = this.props.room.devices.map(function(device, i) {

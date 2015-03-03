@@ -5,7 +5,7 @@ import com.typesafe.sbt.packager.universal.Keys._
 import sbt.Keys.{name, version, _}
 import sbt._
 
-version in ThisBuild := "1.0.0" + "-" + gitHeadCommitSha
+version in ThisBuild := "2.0.0" + "-" + gitHeadCommitSha
 
 //
 // Settings related to publishing this project artifact to nexus during (during deployment)

@@ -5,7 +5,7 @@ var Reflux = require("reflux");
 
 
 // if style! is used here, it will attach the style to DOM automatically
-require('./project-setup/all.scss');
+require('style!./project-setup/all.scss');
 
 var actions = require("./actions");
 

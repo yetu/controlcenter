@@ -26,7 +26,8 @@ module.exports = {
 	module: {
 		loaders: [
 			{test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM&harmony'},
-			// style! attaches the css to the DOM automatically, which is not optimal
+			// style! attaches the css to the DOM automatically,
+			// which is not optimal for components
 			{test: /\.scss$/, loader: 'css!autoprefixer!sass?' +
 			'includePaths[]=' + __dirname + '/app/project-setup' +
 			'&includePaths[]=' + __dirname + '/bower_components/foundation/scss'},

@@ -7,13 +7,13 @@ var React = require('react'),
 var Navigation = React.createClass({
 
     render: function () {
-        var items = this.props.items.map(function(item, i) {
-            return (
-                <li>
-                    <Link to={item.linkTo} key={i}>{item.title}</Link>
-                </li>
-            );
-        });
+            var items = this.props.items.map(function(item, i) {
+                return (
+                    <li>
+                        <Link to={item.linkTo} key={i} className="cc_navigation__link">{item.title}</Link>
+                    </li>
+                );
+            });
         
         return (
             <div className="cc_navigation">

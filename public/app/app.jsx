@@ -20,62 +20,24 @@ var DevicesRegion = require('./screens/main').DevicesRegion;
 var SettingsRegion = require('./screens/main').SettingsRegion;
 
 var ControlCenter = React.createClass({
-	render: function () {
-		return (
-			<RouteHandler/>
-		)
-	}
+    render: function () {
+        return (
+            <RouteHandler/>
+        )
+    }
 });
 
 var routes = (
-	<Route path="/" handler={ControlCenter}>
-		<Route name="main" handler={MainScreen}>
-			<Route name="settings" handler={SettingsRegion}/>
-			<DefaultRoute name="devices" handler={DevicesRegion}/>
-		</Route>
-		<Redirect from="/" to="main"/>
-	</Route>
+    <Route path="/" handler={ControlCenter}>
+        <Route name="main" handler={MainScreen}>
+            <Route name="settings" handler={SettingsRegion}/>
+            <Route name="devices" handler={DevicesRegion}/>
+            <Redirect from="/" to="devices"/>
+        </Route>
+        <Redirect from="/" to="main"/>
+    </Route>
 );
 
 Router.run(routes, function (Handler, state) {
-	React.render(<Handler params={ state.params } />, document.body);
+    React.render(<Handler params={state.params} />, document.body);
 });
-
-// TODO: Remove this code
-//var addRoom = function() {
-//    deviceRooms.push({title: 'New room', devices: []});
-//    // TODO: This doesn't integrate well with the component lifecycle. shouldn't we call #setProps instead?
-//    // TODO: Use Flux pattern
-//    render();
-//};
-//
-//var navigationItems = [
-//    {title: 'My devices', page: DevicesPage, props: {rooms: deviceRooms, addRoom: addRoom}},
-//    {title: 'My settings', page: SettingsPage},
-//];
-//
-//function render() {
-//    React.render(<Navigation items={navigationItems} />, document.getElementById('navigation'));
-//}
-//
-//
-//
-//
-//render();
-//
-//var deviceRooms = [
-//	{
-//		title: 'Home', devices: [
-//		{title: 'yetu Home Gateway', type: 'Home Gateway', connected: true},
-//		{title: 'Nest', type: 'Thermostat', connected: true}
-//	]
-//	},
-//	{
-//		title: 'Living room', devices: [
-//		{title: 'Nest', type: 'Thermostat', connected: false}
-//	]
-//	},
-//	{title: 'Bed room', devices: []}
-//];
-//
-

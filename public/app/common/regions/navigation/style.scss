@@ -1,7 +1,13 @@
 @import "theme";
 
-.cc_navigation{
-  .cc_navigation__list{
+.cc_navigation {
+  .cc_navigation__list {
     @include side-nav();
+
+    .cc_navigation__link {
+      &.active {
+        font-weight: bold;
+      }
+    }
   }
 }

@@ -6,6 +6,10 @@ $include-html-global-classes: true;
 
 // this is used for Headers
 $include-html-type-classes: true;
-$include-html-grid-classes: true;
+
+$include-html-grid-classes: false;
+
+// this is used as extensions for sass-based styles
 $include-html-visibility-classes: true;
+
 $include-html-icon-bar-classes: true;

@@ -23,11 +23,11 @@ var MainScreen = React.createClass({
 
     return (
       <div className="main-screen">
-        <div className="main-screen__top-row main-screen--visible-for-small-only">
+        <div className="main-screen__top-row -visible-for-small-only">
           {navigation}
         </div>
         <div className="main-screen__content-row">
-          <div className="main-screen__sidebar-column main-screen--hidden-for-small">
+          <div className="main-screen__sidebar-column -hidden-for-small">
             {navigation}
           </div>
           <div className="main-screen__content-column">

@@ -1,10 +1,36 @@
 @import "theme";
 
-.cc-devices {
-  .cc-devices__device {
-    .cc-devices__device--title {
-      font-weight: bold;
-      
+.cc-device__row {
+  @include grid-row();
+
+  .cc-device__title-column {
+    @include grid-column(6);
+    font-size: 18px;
+    color: $primary-color;
+  }
+
+  .cc-device__type-column {
+    @include grid-column(6);
+    font-size: 18px;
+  }
+
+  .cc-device__control-column {
+    @include grid-column(4);
+  }
+
+  .cc-device__state-image-column {
+    @include grid-column(1);
+    background-repeat: no-repeat;
+    &.cc-device__state-img-connected {
+      background-image: url("./img/state-connected.svg");
     }
+    &.cc-device__state-img-disconnected {
+      background-image: url("./img/state-disconnected.svg");
+    }
+  }
+
+  .cc-device__state-text-column {
+    @include grid-column(3);
+    font-size: 16px;
   }
 }

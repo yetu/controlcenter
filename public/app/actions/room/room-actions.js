@@ -1,5 +1,3 @@
-'use strict';
-
 var Reflux = require('reflux');
 
 var roomActions = Reflux.createActions([

@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react');
 var Reflux = require('reflux');
 var Room = require('./room');
@@ -15,11 +13,11 @@ var DeviceRegion = React.createClass({
       Reflux.connect(roomStore, "rooms"),
       StyleMixin(require('./style.scss'))
     ],
-    
+
     getInitialState: function() {
         return {rooms: roomStore.getRooms()};
     },
-    
+
     render: function () {
         var rooms = this.state.rooms.map(function(room, i) {
             return (
@@ -35,7 +33,7 @@ var DeviceRegion = React.createClass({
             </div>
         );
     },
-    
+
     handleAddRoom: function() {
         roomActions.createRoom();
     }

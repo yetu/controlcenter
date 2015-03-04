@@ -1,7 +1,9 @@
 'use strict';
 
 var React = require('react');
-var Device = require('screens/main/devices/device/index');
+var Device = require('../device');
+
+require('./style.scss');
 
 var Room = React.createClass({
     render: function () {

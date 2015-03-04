@@ -1,0 +1,12 @@
+@import "theme";
+
+.cc_navigation {
+  @include icon-bar();
+
+  .cc_navigation__link {
+    // .active is applied to selected link by foundation automatically
+    &.active {
+      font-weight: bold;
+    }
+  }
+}

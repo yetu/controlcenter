@@ -7,11 +7,11 @@ var roomActions = require('actions/room');
 
 var _rooms = [
     {title: 'Living room', devices: [
-        {title: 'yetu Home Gateway'},
-        {title: 'Nest'}
+        {title: 'yetu Home Gateway', type: 'Home Gateway', state: 'connected'},
+        {title: 'Nest', type: 'Thermostat', state: 'not conn.'}
     ]},
     {title: 'Bed room', devices: [
-        {title: 'Nest'}
+        {title: 'Nest', type: 'Thermostat', state: 'connected'}
     ]},
     {title: 'Bath room', devices: []}
 ];

@@ -7,11 +7,14 @@ var Room = require('./room');
 var roomStore = require('stores/room');
 var roomActions = require('actions/room');
 
-require('./style.scss');
+var StyleMixin = require('mixins/style-mixin');
 
 // TODO: Rename to DevicesSection
 var DeviceRegion = React.createClass({
-    mixins: [Reflux.connect(roomStore, "rooms")],
+    mixins: [
+      Reflux.connect(roomStore, "rooms"),
+      StyleMixin(require('./style.scss'))
+    ],
     
     getInitialState: function() {
         return {rooms: roomStore.getRooms()};

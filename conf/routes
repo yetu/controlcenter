@@ -3,6 +3,8 @@
 # ~~~~
 
 GET        /                              @com.yetu.controlcenter.controllers.Application.entryPoint
+GET        /profile                       @com.yetu.controlcenter.controllers.Application.profile
+
 
 # Silhouette / Authentication routes
 GET        /signOut                       @com.yetu.play.authenticator.controllers.ApplicationController.signOut

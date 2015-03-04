@@ -4,6 +4,11 @@
 
 GET        /                              @com.yetu.controlcenter.controllers.Application.entryPoint
 GET        /profile                       @com.yetu.controlcenter.controllers.Application.profile
+GET        /household                     @com.yetu.controlcenter.controllers.Application.household(path= "")
+GET        /household/*path                @com.yetu.controlcenter.controllers.Application.household(path)
+POST       /household/*path                @com.yetu.controlcenter.controllers.Application.household(path)
+PUT        /household/*path                @com.yetu.controlcenter.controllers.Application.household(path)
+DELETE     /household/*path                @com.yetu.controlcenter.controllers.Application.household(path)
 
 
 # Silhouette / Authentication routes

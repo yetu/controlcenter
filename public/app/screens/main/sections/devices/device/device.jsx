@@ -1,4 +1,3 @@
-'use strict';
 var React = require('react');
 var StyleMixin = require('mixins/style-mixin');
 

@@ -4,36 +4,39 @@ var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 
 var Navigation = require('./navigation');
-var navigationStore = require('stores/navigation')
+var navigationStore = require('stores/navigation');
+var StyleMixin = require('mixins/style-mixin');
 
 var style = require("./style.scss");
 
 var MainScreen = React.createClass({
-    
-    getInitialState: function() {
-        return {
-            navItems: navigationStore.getItems()
-        }
-    },
+  mixins: [StyleMixin(require('./style.scss'))],
 
-	render: function () {
+  getInitialState: function () {
+    return {
+      navItems: navigationStore.getItems()
+    }
+  },
+
+  render: function () {
     var navigation = <Navigation items={this.state.navItems} orientation="medium-vertical small-horizontal"/>;
-		return (
+
+    return (
       <div className="main-screen">
-        <div className="row visible-for-small-only">
+        <div className="main-screen__top-row main-screen--small-only">
           {navigation}
         </div>
-        <div className="row">
-          <div className="main-screen__navigation column medium-5 hide-for-small-only">
+        <div className="main-screen__content-row">
+          <div className="main-screen__sidebar-column main-screen--hidden-for-small">
             {navigation}
           </div>
-          <div className="main-screen__content column medium-15 small-20">
+          <div className="main-screen__content-column">
             <RouteHandler/>
           </div>
         </div>
-			</div>
-		)
-	}
+      </div>
+    )
+  }
 });
 
 module.exports = MainScreen;

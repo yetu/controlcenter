@@ -2,12 +2,37 @@
 
 .main-screen {
   @include grid-row();
+  height: 100%;
+}
 
-  .main-screen__navigation {
-    @include grid-column(4);
-  }
+.main-screen__top-row-small-only {
+  @include grid-row();
+}
 
-  .main-screen__content {
-    @include grid-column(8);
+.main-screen__content-row {
+  @include grid-row();
+  height: 100%;
+}
+
+.main-screen--small-only{
+  @extend .visible-for-small-only
+}
+
+.main-screen__sidebar-column {
+  @include grid-column(6);
+  height: 100%;
+}
+
+.main-screen__content-column {
+  @include grid-column(20);
+  background-color: $shade-gray;
+  height: 100%;
+
+  @media #{$medium-up} {
+    @include grid-column(14);
   }
+}
+
+.main-screen--hidden-for-small {
+  @extend .hide-for-small-only;
 }

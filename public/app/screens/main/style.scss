@@ -14,9 +14,6 @@
   height: 100%;
 }
 
-.main-screen--small-only{
-  @extend .visible-for-small-only
-}
 
 .main-screen__sidebar-column {
   @include grid-column(6);
@@ -35,4 +32,8 @@
 
 .main-screen--hidden-for-small {
   @extend .hide-for-small-only;
+}
+
+.main-screen--visible-for-small-only{
+  @extend .visible-for-small-only
 }

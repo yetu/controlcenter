@@ -29,6 +29,8 @@ var MainScreen = React.createClass({
           <div className="main-screen__sidebar-column -hidden-for-small">
             {navigation}
           </div>
+
+
           <div className="main-screen__content-column">
             <RouteHandler/>
           </div>

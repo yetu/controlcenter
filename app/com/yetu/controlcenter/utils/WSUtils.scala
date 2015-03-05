@@ -41,6 +41,19 @@ object WSUtils {
     }
   }
 
+    /**
+     * * Adds leading slash to the url if it does not exist
+     * @param url
+     * @return
+     */
+    def addLeadingSlash (url:String): String = {
+        if(url.length == 0 || url.startsWith("/") ){
+            url
+        }else{
+            s"/$url"
+        }
+    }
+
   /**
    * * Removes trailing slash from url if exist
    * @param url

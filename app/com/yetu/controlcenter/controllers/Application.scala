@@ -60,7 +60,7 @@ class Application @Inject()(implicit val env: Environment[User, SessionAuthentic
     def household(path: String) = SecuredAction.async { implicit request =>
         val result = for {
             accessToken <- getAccessToken(request)
-            result <- WSUtils.wrapResponse(WS.url(s"${Config.householdServicesHost}${WSUtils.removeTrailingSlash(path)}")
+            result <- WSUtils.wrapResponse(WS.url(s"${Config.householdServicesHost}${WSUtils.addLeadingSlash(path)}")
                     .withHeaders(WSUtils.authorizationHeader(accessToken))
                     .withBody(request.body.asText.getOrElse("")),
                 request.method)

@@ -6,7 +6,7 @@ import play.api.test.Helpers._
 
 class HealthCheckSpec extends BaseRoutesSpec {
 
-	val healthUrl = "/health"
+  val healthUrl = "/health"
 
   "health controller" must {
 

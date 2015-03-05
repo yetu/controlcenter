@@ -1,30 +1,18 @@
 @import "theme";
 
 .cc-switch-control {
-  background-color: $default-gray;
-  padding: 2px;
-  display: inline-block;
-  user-select: none;
+  background-repeat: no-repeat;
+  background-size: cover;
   cursor: default;
-
-  &__button {
-    width: 30px;
-    text-align: center;
-    display: inline-block;
-    visibility: hidden;
-  }
+  height: 30px;
+  width: 90px;
 
   &__off {
-    // TODO: Replace with color variable as soon as defined by designers
-    background-color: #ff0000;
+    background-image: url('./img/off.png');
   }
 
   &__on {
-    // TODO: Replace with color variable as soon as defined by designers
-    background-color: #008000;
+    background-image: url('./img/on.png');
   }
 
-  &__checked {
-    visibility: visible;
-  }
 }

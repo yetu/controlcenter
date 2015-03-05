@@ -11,10 +11,7 @@ var SwitchControl = React.createClass({
 
   render: function () {
     return (
-      <div className="cc-switch-control" onClick={this.toggle}>
-        <div className={'cc-switch-control__button cc-switch-control__off ' + (this.state.checked ? '' : 'cc-switch-control__checked')}>Off</div>
-        <div className={'cc-switch-control__button cc-switch-control__on ' + (this.state.checked ? 'cc-switch-control__checked' : '')}>On</div>
-      </div>
+      <div className={'cc-switch-control ' + (this.state.checked ? 'cc-switch-control__on' : 'cc-switch-control__off')} onClick={this.toggle} />
     );
   },
 

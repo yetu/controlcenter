@@ -1,5 +1,6 @@
 var React = require('react');
 var styleMixin = require('mixins/style-mixin');
+var SwitchControl = require('./controls/switch');
 
 var Device = React.createClass({
   mixins: [ styleMixin(require('./style.scss')) ],
@@ -9,10 +10,16 @@ var Device = React.createClass({
       <div className="cc-device__row">
         <div className="cc-device__title-column">{this.props.device.title}</div>
         <div className="cc-device__type-column">{this.props.device.type}</div>
-        <div className="cc-device__control-column">Control</div>
+        <div className="cc-device__control-column">{this.control()}</div>
         <div className={'cc-device__state-image-column ' + this.stateImageClass()}>&nbsp;</div>
         <div className="cc-device__state-text-column">{this.connectedText()}</div>
       </div>
+    );
+  },
+
+  control: function control () {
+    return (
+      <SwitchControl device={this.props.device} />
     );
   },
 

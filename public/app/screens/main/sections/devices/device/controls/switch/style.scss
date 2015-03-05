@@ -1,0 +1,28 @@
+@import "theme";
+
+.cc-switch-control {
+  background-color: $default-gray;
+  padding: 2px;
+  display: inline-block;
+  user-select: none;
+  cursor: default;
+
+  &__button {
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+    visibility: hidden;
+  }
+
+  &__off {
+    background-color: #ff0000;
+  }
+
+  &__on {
+    background-color: #008000;
+  }
+
+  &__checked {
+    visibility: visible;
+  }
+}

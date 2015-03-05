@@ -34,8 +34,7 @@ module.exports = {
 
   module: {
     loaders: [
-        { test: /\.js$/, loader: 'strict' },
-        { test: /\.jsx$/, loader: 'strict!jsx-loader?insertPragma=React.DOM&harmony' },
+        { test: /\.jsx?$/, loader: 'babel', exclude: /(node_modules|bower_components)/ },
         // style! attaches the css to the DOM automatically,
         // which is not optimal for components
         {

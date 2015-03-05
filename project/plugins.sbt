@@ -15,3 +15,6 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-web" % "1.1.1")
 addSbtPlugin("com.yetu" % "sbt-buildinfo" % "0.3.5")
 
 addSbtPlugin("no.arktekk.sbt" % "aether-deploy" % "0.13")
+
+// Use the Scalariform plugin to reformat the code
+addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.3.0")

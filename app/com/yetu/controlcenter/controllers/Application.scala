@@ -23,7 +23,7 @@ import scala.concurrent.Future
  * @param env The Silhouette environment.
  */
 class Application @Inject() (implicit val env: Environment[User, SessionAuthenticator], oauth2Dao: OAuth2InfoDAO)
-  extends Silhouette[User, SessionAuthenticator] {
+    extends Silhouette[User, SessionAuthenticator] {
 
   /**
    * * Main entry point that loads the frontend

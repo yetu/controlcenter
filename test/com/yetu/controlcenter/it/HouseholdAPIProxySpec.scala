@@ -28,8 +28,8 @@ class HouseholdAPIProxySpec extends BaseRoutesSpec with OneServerPerSuite {
     FakeApplication(withGlobal = Some(new FakeGlobal),
       additionalConfiguration = Map("householdServicesHost" -> householdRemoteURL),
       withRoutes = {
-        case ("GET", householdRemoteEndpoint) => HouseholdRemoteAPIController.get
-        case ("POST", householdRemoteEndpoint) => HouseholdRemoteAPIController.post
+        case ("GET", householdRemoteEndpoint)           => HouseholdRemoteAPIController.get
+        case ("POST", householdRemoteEndpoint)          => HouseholdRemoteAPIController.post
         case ("DELETE", householdRemoteEndpointGateway) => HouseholdRemoteAPIController.delete
       }
     )

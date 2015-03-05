@@ -1,10 +1,10 @@
-module.exports = function(styles) {
+module.exports = function mixin (styles) {
   return {
-    componentWillMount: function() {
+    componentWillMount: function componentWillMount () {
       styles.use();
     },
-    componentWillUnmount: function() {
+    componentWillUnmount: function componentWillUnmount () {
       styles.unuse();
     }
-  }
+  };
 };

@@ -1,5 +1,4 @@
-var React = require('react/addons'),
-  TestUtils = React.addons.TestUtils;
+var React = require('react/addons');
 
 var roomStore = require('../room-store.js');
 

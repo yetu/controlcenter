@@ -1,12 +1,8 @@
-var Reflux = require("reflux");
+var Reflux = require('reflux');
 
 var settingsStore = Reflux.createState({
 
-  init: function () {
-
-  },
-
-  changeSettings: function () {
+  changeSettings: function changeSettings () {
     console.log('BOOM!!');
   }
 });

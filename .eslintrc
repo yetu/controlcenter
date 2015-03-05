@@ -4,8 +4,7 @@
     },
 
     "env": {
-        "browser": true,
-        "jasmine": true
+        "browser": true
     },
 
     "globals": {
@@ -18,13 +17,16 @@
         // http://eslint.org/docs/rules/
 
         // Possible Errors
-        "no-extra-parens": 2,
+        "no-console": 0,
         "block-scoped-var": 2,
 
         // Best Practices
         "complexity": [1, 4],
         "no-eq-null": 2,
         "no-self-compare": 2,
+
+        // Strict Mode
+        "strict": 0, // Since it's added automatically by strict-loader
 
         // Stylistic issues
         "indent": [2, 2, { "indentSwitchCase": true }],

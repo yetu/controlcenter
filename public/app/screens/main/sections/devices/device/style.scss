@@ -1,35 +1,36 @@
 @import "theme";
 
-.cc-device__row {
+.cc-device {
   @include grid-row();
-
-  .cc-device__title-column {
+  &__title {
     @include grid-column(6);
     font-size: 18px;
     color: $primary-color;
   }
 
-  .cc-device__type-column {
+  &__type {
     @include grid-column(6);
     font-size: 18px;
   }
 
-  .cc-device__control-column {
+  &__control {
     @include grid-column(4);
   }
 
-  .cc-device__state-image-column {
+  &__state-image {
     @include grid-column(1);
     background-repeat: no-repeat;
-    &.cc-device__state-img-connected {
+
+    &-connected {
       background-image: url("./img/state-connected.svg");
     }
-    &.cc-device__state-img-disconnected {
+
+    &-disconnected {
       background-image: url("./img/state-disconnected.svg");
     }
   }
 
-  .cc-device__state-text-column {
+  &__state-text {
     @include grid-column(3);
     font-size: 16px;
   }

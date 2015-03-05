@@ -8,12 +8,12 @@ var Device = React.createClass({
 
   render: function render () {
     return (
-      <div className="cc-device__row">
-        <div className="cc-device__title-column">{this.props.device.title}</div>
-        <div className="cc-device__type-column">{this.props.device.type}</div>
-        <div className="cc-device__control-column">{this.control()}</div>
-        <div className={'cc-device__state-image-column ' + this.stateImageClass()}>&nbsp;</div>
-        <div className="cc-device__state-text-column">{this.connectedText()}</div>
+      <div className="cc-device">
+        <div className="cc-device__title">{this.props.device.title}</div>
+        <div className="cc-device__type">{this.props.device.type}</div>
+        <div className="cc-device__control">{this.control()}</div>
+        <div className={'cc-device__state-image ' + this.stateImageClass()}>&nbsp;</div>
+        <div className="cc-device__state-text">{this.connectedText()}</div>
       </div>
     );
   },
@@ -22,20 +22,17 @@ var Device = React.createClass({
     var control;
     switch (this.props.device.type) {
       case 'Home Gateway':
-        control = (
-          <SwitchControl device={this.props.device} />
-        );
+        control = SwitchControl;
         break;
       case 'Thermostat':
-        control = (
-          <SliderControl device={this.props.device} />
-        );
+        control = SliderControl;
+        break;
     }
-    return control;
+    return control ? React.createElement(control, {device: this.props.device}) : (<div>Unknown type</div>);
   },
 
-  stateImageClass: function setImageClass () {
-    var name = 'cc-device__state-img-';
+  stateImageClass: function stateImageClass () {
+    var name = 'cc-device__state-image-';
     if (this.props.device.state === 'connected') {
       return name + 'connected';
     } else {

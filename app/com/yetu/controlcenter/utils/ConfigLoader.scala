@@ -1,11 +1,11 @@
 package com.yetu.controlcenter.utils
 
-import com.typesafe.config.ConfigFactory
+import play.api.Play
+import play.api.Play.current
+
 
 object ConfigLoader {
 
-  private val config = ConfigFactory.load()
-
-  val householdServicesHost = WSUtils.addTrailingSlash(config.getString("householdServicesHost"))
+    val householdServicesHost = Play.configuration.getString("householdServicesHost").get
 
 }

@@ -46,7 +46,7 @@
     "clean": "rm -rf ./public/app/dist && rm -rf ./public/dist ",
     "bundle": "webpack -p --config ./public/webpack.config.js ",
     "bundle-dev": "webpack -d -w --config ./public/webpack.config.js",
-    "js-files": "find ./public \\( -name '*.js' -o -name '*.jsx' \\) ! -path './node_modules/*' ! -path './public/bower_components/*' ! -path './coverage/*' ! -path './public/dist/*' ! -path './jspm_packages'",
+    "js-files": "find ./public \\( -name '*.js' -o -name '*.jsx' \\) ! -path './node_modules/*' ! -path './public/bower_components/*' ! -path './coverage/*' ! -path './public/dist/*' ! -path '*.spec.js*' ! -path './public/app/project-setup/test/*'",
     "test": "npm run bundle && node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js --single-run",
     "tdd": "npm run bundle-dev && node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js",
     "build": "npm run clean && npm run bundle && cp -r ./public/app/* ./public/dist",

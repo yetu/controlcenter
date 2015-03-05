@@ -12,7 +12,7 @@ var Device = React.createClass({
         <div className="cc-device__title">{this.props.device.title}</div>
         <div className="cc-device__type">{this.props.device.type}</div>
         <div className="cc-device__control">{this.control()}</div>
-        <div className={'cc-device__state-image ' + this.stateImageClass()}>&nbsp;</div>
+        <div className={'cc-device__state-image ' + this.stateImageClass()}/>
         <div className="cc-device__state-text">{this.connectedText()}</div>
       </div>
     );

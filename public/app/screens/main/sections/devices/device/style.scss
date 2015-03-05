@@ -20,6 +20,7 @@
   &__state-image {
     @include grid-column(1);
     background-repeat: no-repeat;
+    height: 20px;
 
     &-connected {
       background-image: url("./img/state-connected.svg");

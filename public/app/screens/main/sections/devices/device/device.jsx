@@ -1,6 +1,7 @@
 var React = require('react');
 var styleMixin = require('mixins/style-mixin');
 var SwitchControl = require('./controls/switch');
+var SliderControl = require('./controls/slider');
 
 var Device = React.createClass({
   mixins: [ styleMixin(require('./style.scss')) ],
@@ -18,9 +19,19 @@ var Device = React.createClass({
   },
 
   control: function control () {
-    return (
-      <SwitchControl device={this.props.device} />
-    );
+    var control;
+    switch (this.props.device.type) {
+      case 'Home Gateway':
+        control = (
+          <SwitchControl device={this.props.device} />
+        );
+        break;
+      case 'Thermostat':
+        control = (
+          <SliderControl device={this.props.device} />
+        );
+    }
+    return control;
   },
 
   stateImageClass: function setImageClass () {

@@ -1,0 +1,27 @@
+@import "theme";
+
+.cc-settings-form {
+  @include form-row-base();
+
+  .cc-form-item {
+    @include grid-row();
+
+    .cc-form-item__label-container {
+      @include grid-column($columns: 5, $float: left);
+
+      .cc-form-item__label {
+        @include prefix-postfix-base();
+        @include prefix($bg: false, $is-button: false);
+        border: none;
+        text-align: left;
+      }
+    }
+    .cc-form-item__input-container {
+      @include grid-column($columns: 10);
+
+      .cc-form-item__input {
+        @include form-element();
+      }
+    }
+  }
+}

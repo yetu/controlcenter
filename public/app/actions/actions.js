@@ -4,10 +4,10 @@ var actions = Reflux.createActions([
   // user actions
   'addDevice',
   'removeDevice',
-  //room actions
+  // room actions
   'addRoom',
   'removeRoom',
-  //settings actions
+  // settings actions
   'changePassword'
 ]);
 

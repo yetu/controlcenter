@@ -1,7 +1,7 @@
 var React = require('react');
 
 var SettingsPage = React.createClass({
-  render: function () {
+  render: function render () {
     return (
       <div>
         <h2>My settings</h2>

@@ -33,7 +33,8 @@ You need to have the following installed in your system:
 To run the project with a real integration with yetu OAuth system, you should grab `application-local.conf` from [private repo](https://bitbucket.org/yetu/controlcenter-deployment).
 Copy the file to `conf/application.conf`.
 
-**Note: This file is added to .gitignore. You should not be able to commit it, but please pay close attention to not leak the private settings. **
+**Note:** *This file is added to .gitignore.  
+You should not be able to commit it, but please pay close attention to not leak the private settings.*
 
 
 ### Running the development version
@@ -58,8 +59,8 @@ If you run the project using `./dev.sh` - everything will work out-of-box!
 
 Otherwise, you can manually start hot-reload server using `npm start`.
 
-**Note:** You should have `frontendBundlePath = "//local.yetudev.com:8899/assets/"` set in `yetu` section of your `conf/application.conf`.
-Otherwise the hot-reloading will not work!
+**Note:** *You should have `frontendBundlePath = "//local.yetudev.com:8899/assets/"` set in `yetu` section of your `conf/application.conf`.  
+Otherwise the hot-reloading will not work!*
 
 
 ## Tests

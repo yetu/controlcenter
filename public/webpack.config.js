@@ -11,7 +11,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: __dirname + '/dist',
-    publicPath: 'assets/dist/',
+    publicPath: 'http://localhost:8899/assets/dist/',
     chunkFilename: '[id].chunk.js'
   },
   resolve: {
@@ -32,7 +32,6 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {test: /\.js$/, loader: 'strict'},
       {test: /\.jsx$/, loaders: ['react-hot', 'jsx?insertPragma=React.DOM&harmony']},
       // style! attaches the css to the DOM automatically,
       // which is not optimal for components

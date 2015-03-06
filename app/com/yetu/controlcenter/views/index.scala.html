@@ -18,9 +18,9 @@
     <link rel="icon" type="image/ico" href="favicon.ico"/>
   </head>
   <body>
-  @if(Play.current.configuration.getString("frontendBundlePath").isDefined) {
+  @if(Play.current.configuration.getString("yetu.frontendBundlePath").isDefined) {
     <script src="@{
-      Play.current.configuration.getString("frontendBundlePath") + "/assets/dist/bundle.js"
+      Play.current.configuration.getString("yetu.frontendBundlePath").get + "dist/bundle.js"
     }"></script>
   } else {
     <script src=" @routes.Assets.versioned("dist/bundle.js") "></script>

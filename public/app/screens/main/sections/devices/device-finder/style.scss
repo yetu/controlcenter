@@ -1,0 +1,7 @@
+@import "theme";
+
+.cc-device-finder {
+  &__button {
+    @include button()
+  }
+}

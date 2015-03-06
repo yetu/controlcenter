@@ -1,0 +1,60 @@
+@import "theme";
+
+.cc-device-finder-dialog {
+  @include grid-row();
+  background-color: #ffffff;
+  height: 80px;
+
+  // Make all columns take full table height
+  > div {
+    height: 100%;
+  }
+
+  &__status {
+    @include grid-column(3);
+    border-right: solid 1px;
+    border-color: #808080;
+    position: relative;
+
+    > div {
+      // TODO: Wrap properties into include class "centered(horz=true, vert=true)"
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+  }
+
+  &__text {
+    @include grid-column(14);
+    padding-left: 25px;
+    position: relative;
+
+    > div {
+      // TODO: Wrap properties into include class "centered(horz=false, vert=true)"
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%)
+    }
+  }
+
+  &__text-title {
+    text-transform: uppercase;
+  }
+
+  &__text-description {
+  }
+
+  &__action {
+    @include grid-column(3);
+    position: relative;
+  }
+
+  &__action-button {
+
+    @include button($button-tny);
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0;
+  }
+}

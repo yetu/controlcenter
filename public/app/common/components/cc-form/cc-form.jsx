@@ -14,14 +14,19 @@ var options = {
 var CCForm = React.createClass({
   mixins: [StyleMixin(require('./style.scss'))],
 
-  getInitialState: function () {
-    return {};
+  onChange: function(data){
+    var validValue = this.refs.form.getValue();
+
+    // Triggers callback only on valid value changes
+    if (validValue){
+      this.props.onValidChange(data);
+    }
   },
 
   render: function () {
     return (
-      <div className="cc-settings-form">
-        <Form rel="form" type={this.props.type} options={options} value={this.state.value} />
+      <div className="cc-form">
+        <Form ref="form" onChange={this.onChange} type={this.props.type} options={options} value={this.props.value} />
       </div>
     )
   }

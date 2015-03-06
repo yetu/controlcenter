@@ -1,0 +1,25 @@
+@import "theme";
+
+.cc-settings {
+  padding: 40px;
+
+  .cc-settings__title {
+
+  }
+
+  .cc-settings__section {
+    @include grid-row();
+    .cc-settings__section-form {
+      @include grid-column(13);
+    }
+
+    .cc-settings__section-avatar {
+      @include grid-column(7);
+    }
+
+  }
+
+  .cc-settings__save {
+    @include button();
+  }
+}

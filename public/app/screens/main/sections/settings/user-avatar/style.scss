@@ -1,0 +1,26 @@
+@import "theme";
+
+.cc-user-avatar{
+  @include grid-row(collapse);
+
+  position: relative;
+  padding: 5px;
+
+
+  .cc-user-avatar__image-content {
+    @include grid-column(10);
+
+  }
+
+  .cc-user-avatar__button-content {
+    @include grid-column(10);
+
+    .cc-user-avatar__button {
+      @include button($button-tny);
+      position: absolute;
+      bottom: 0;
+
+    }
+
+  }
+}

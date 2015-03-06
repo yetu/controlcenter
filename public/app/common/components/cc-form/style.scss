@@ -1,19 +1,28 @@
 @import "theme";
 
-.cc-settings-form {
+.cc-form {
   @include form-row-base();
+
+  /* fix for generated fieldset from form lib */
+  fieldset {
+    border: none;
+  }
 
   .cc-form-item {
     @include grid-row();
 
     .cc-form-item__label-container {
-      @include grid-column($columns: 5, $float: left);
+      @include grid-column($columns: 10, $float: left);
 
       .cc-form-item__label {
         @include prefix-postfix-base();
         @include prefix($bg: false, $is-button: false);
         border: none;
         text-align: left;
+        color: $default-text-black;
+        font-size: $rem-base;
+
+
       }
     }
     .cc-form-item__input-container {
@@ -21,6 +30,8 @@
 
       .cc-form-item__input {
         @include form-element();
+        color: $default-text-black;
+
       }
     }
   }

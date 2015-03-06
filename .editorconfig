@@ -10,11 +10,5 @@ indent_style = space
 indent_size = 2
 tab_width = 2
 
-[*.coffee]
-indent_style = space
-
-[{package.json,.travis.yml}]
-indent_style = space
-
 [COMMIT_EDITMSG]
 trim_trailing_whitespace = false

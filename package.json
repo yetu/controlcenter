@@ -56,8 +56,8 @@
     "tdd": "npm run bundle-dev && node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js",
     "build": "npm run clean && npm run bundle && cp -r ./public/app/* ./public/dist",
 
-    "eslint-codebase": "node_modules/.bin/eslint `npm run -s js-files` -c ./eslint-codebase.json",
-    "eslint-tests": "node_modules/.bin/eslint `npm run -s test-files` -c ./eslint-tests.json",
+    "eslint-codebase": "node_modules/.bin/eslint `npm run -s js-files` -c ./.eslintrc-codebase",
+    "eslint-tests": "node_modules/.bin/eslint `npm run -s test-files` -c ./.eslintrc-tests",
     "eslint": "npm run eslint-codebase && npm run eslint-tests",
     "lint": "npm run eslint",
 

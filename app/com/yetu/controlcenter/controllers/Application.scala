@@ -5,7 +5,7 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.{ Environment, Silhouette }
 import com.mohiva.play.silhouette.impl.authenticators.SessionAuthenticator
-import com.yetu.controlcenter.utils.{ WSUtils, ConfigLoader => Config }
+import com.yetu.controlcenter.utils.{ ConfigLoader => Config, WSUtils }
 import com.yetu.controlcenter.views
 import com.yetu.play.authenticator.models.User
 import com.yetu.play.authenticator.models.daos.OAuth2InfoDAO
@@ -32,7 +32,7 @@ class Application @Inject() (implicit val env: Environment[User, SessionAuthenti
   def entryPoint = SecuredAction {
     implicit request =>
       {
-        Ok(views.html.index())
+        Ok(views.html.index(Config.frontendConfig.get))
       }
   }
 

@@ -12,7 +12,7 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/dist',
+    path: path.join(__dirname, '/dist'),
     publicPath: 'http://localhost:8899/assets/dist/',
     chunkFilename: '[id].chunk.js'
   },
@@ -27,7 +27,7 @@ module.exports = {
       'common': path.join(__dirname, 'app/common'),
       'mixins': path.join(__dirname, 'app/common/mixins')
     },
-    extensions: ['', '.js', '.jsx']
+    extensions: [ '', '.js', '.jsx' ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -35,7 +35,11 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['react-hot', 'babel'], exclude: /(node_modules|bower_components)/ },
+      {
+        test: /\.jsx?$/,
+        loaders: [ 'react-hot', 'babel' ],
+        exclude: /(node_modules|bower_components)/
+      },
       // style! attaches the css to the DOM automatically,
       // which is not optimal for components
       {

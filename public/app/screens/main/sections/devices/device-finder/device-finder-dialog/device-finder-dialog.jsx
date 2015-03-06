@@ -5,21 +5,24 @@ var DeviceFinderDialog = React.createClass({
   mixins: [ styleMixin(require('./style.scss')) ],
 
   render: function render () {
+    var closeButton = this.props.closeAction ? <a className='cc-device-finder-dialog__close-button' href='#' onClick={this.props.closeAction}></a> : null;
+
     return (
-      <div className="cc-device-finder-dialog">
-        <div className="cc-device-finder-dialog__status">
+      <div className='cc-device-finder-dialog'>
+        <div className={'cc-device-finder-dialog__status ' + (this.props.showSeparator ? 'cc-device-finder-dialog__status-separator' : '')}>
           <div>
             {this.props.status}
           </div>
         </div>
-        <div className="cc-device-finder-dialog__text">
+        <div className='cc-device-finder-dialog__text'>
           <div>
-            <div className="cc-device-finder-dialog__text-title">{this.props.title}</div>
-            <div className="cc-device-finder-dialog__text-description">{this.props.description}</div>
+            <div className='cc-device-finder-dialog__text-title'>{this.props.title}</div>
+            <div className='cc-device-finder-dialog__text-description'>{this.props.description}</div>
           </div>
         </div>
-        <div className="cc-device-finder-dialog__action">
-          <a className="cc-device-finder-dialog__action-button" href="#" onClick={this.props.action}>{this.props.actionText}</a>
+        <div className='cc-device-finder-dialog__action'>
+          {closeButton}
+          <a className='cc-device-finder-dialog__action-button' href='#' onClick={this.props.action}>{this.props.actionText}</a>
         </div>
       </div>
     );

@@ -4,6 +4,7 @@
   @include grid-row();
   background-color: #ffffff;
   height: 80px;
+  box-shadow: 5px 2px 3px 0 $shadow;
 
   // Make all columns take full table height
   > div {
@@ -12,8 +13,6 @@
 
   &__status {
     @include grid-column(3);
-    border-right: solid 1px;
-    border-color: #808080;
     position: relative;
 
     > div {
@@ -25,10 +24,20 @@
     }
   }
 
+  &__status-separator {
+    border-right: dotted 2px;
+    // TODO: Use correct semantic color
+    border-color: $font-active-color;
+  }
+
   &__text {
     @include grid-column(14);
     padding-left: 25px;
     position: relative;
+    // TODO: Use correct semantic color
+    color: $font-active-color;
+    // TODO: font does not appear bold enough
+    font-weight: bolder;
 
     > div {
       // TODO: Wrap properties into include class "centered(horz=false, vert=true)"
@@ -48,13 +57,25 @@
   &__action {
     @include grid-column(3);
     position: relative;
+    padding: 10px;
   }
 
   &__action-button {
-
     @include button($button-tny);
     position: absolute;
-    bottom: 0;
     margin-bottom: 0;
+    bottom: 10px;
+    right: 10px;
   }
+
+  &__close-button {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 5px;
+      right: 10px;
+      background-image: url("./img/close.svg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
 }

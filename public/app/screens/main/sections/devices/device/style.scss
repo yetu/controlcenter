@@ -1,10 +1,38 @@
 @import "theme";
 
-.cc-devices {
-  .cc-devices__device {
-    .cc-devices__device--title {
-      font-weight: bold;
-      
+.cc-device {
+  @include grid-row();
+  &__title {
+    @include grid-column(6);
+    font-size: 18px;
+    color: $primary-color;
+  }
+
+  &__type {
+    @include grid-column(6);
+    font-size: 18px;
+  }
+
+  &__control {
+    @include grid-column(4);
+  }
+
+  &__state-image {
+    @include grid-column(1);
+    background-repeat: no-repeat;
+    height: 20px;
+
+    &-connected {
+      background-image: url("./img/state-connected.svg");
     }
+
+    &-disconnected {
+      background-image: url("./img/state-disconnected.svg");
+    }
+  }
+
+  &__state-text {
+    @include grid-column(3);
+    font-size: 16px;
   }
 }

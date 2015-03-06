@@ -1,22 +1,26 @@
-'use strict';
 var React = require('react');
-var StyleMixin = require('mixins/style-mixin');
+var styleMixin = require('mixins/style-mixin');
 
 var SwitchControl = React.createClass({
-  mixins: [StyleMixin(require('./style.scss'))],
+  mixins: [ styleMixin(require('./style.scss')) ],
 
-  getInitialState() {
-    return {checked: this.props.checked || false};
+  getInitialState: function getInitialState () {
+    return { checked: this.props.checked || false };
   },
 
-  render: function () {
+  render: function render () {
     return (
-      <div className={'cc-switch-control ' + (this.state.checked ? 'cc-switch-control__on' : 'cc-switch-control__off')} onClick={this.toggle} />
+      <div
+        className={
+          'cc-switch-control ' +
+          (this.state.checked ? 'cc-switch-control__on' : 'cc-switch-control__off')
+        }
+        onClick={this.toggle} />
     );
   },
 
-  toggle: function () {
-    this.setState({checked: !this.state.checked});
+  toggle: function toggle () {
+    this.setState({ checked: !this.state.checked });
   }
 
 });

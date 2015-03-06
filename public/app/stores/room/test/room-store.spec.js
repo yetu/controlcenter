@@ -1,4 +1,4 @@
-var React = require('react/addons');
+require('react/addons');
 
 var roomStore = require('../room-store.js');
 
@@ -11,7 +11,7 @@ describe('RoomStore', function () {
 
       expect(roomsAfter.length).toEqual(roomsBefore.length + 1);
 
-      var createdRoom = roomsAfter[roomsAfter.length - 1];
+      var createdRoom = roomsAfter[ roomsAfter.length - 1 ];
       expect(createdRoom.title).toBeDefined();
       expect(createdRoom.devices.length).toEqual(0);
     });

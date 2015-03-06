@@ -31,11 +31,18 @@ You need to have the following installed in your system:
 
 ### Configuration
 
+#### If you are working for yetu
 To run the project with a real integration with yetu OAuth system, you should grab `application-local.conf` from [private repo](https://bitbucket.org/yetu/controlcenter-deployment).
 Copy the file to `conf/application.conf`.
 
 **Note:** *This file is added to .gitignore.
 You should not be able to commit it, but please pay close attention to not leak the private settings.*
+
+#### If you are not working for yetu
+
+Have a look at `conf/application-example.conf`, copy to `conf/application.conf` and request your own OAuth2 credentials, currently please contact dev-support@yetu.com to obtain them.
+
+For more information on how to develop yetu apps, please see [this page](https://github.com/yetu/app-development-workflow/wiki/How-to-develop-Apps-for-the-yetu-platform%3F)
 
 
 ### Running the development version

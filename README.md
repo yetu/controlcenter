@@ -1,6 +1,7 @@
 # Controlcenter
 
 [![Build Status](https://travis-ci.org/yetu/controlcenter.svg?branch=master)](https://travis-ci.org/yetu/controlcenter)
+[![bitHound Score](https://www.bithound.io/yetu/controlcenter/badges/score.svg)](https://www.bithound.io/yetu/controlcenter)
 
 This is the base project for the yetu control center, containing server-side (scala-play framework based) and client-side (reactjs + reflux based) code.
 

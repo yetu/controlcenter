@@ -8,15 +8,10 @@
     width: 50px;
     height: 50px;
 
-    animation-name: rotate;
+    animation-name: cc-device-finder__rotate;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-
-    @keyframes rotate {
-      from { transform:rotate(0deg); }
-      to   { transform:rotate(360deg); }
-    }
   }
 
   &__button {
@@ -29,4 +24,9 @@
     font-weight: 800;
     text-transform: uppercase;
   }
+}
+
+@keyframes cc-device-finder__rotate {
+  from { transform:rotate(0deg); }
+  to   { transform:rotate(360deg); }
 }

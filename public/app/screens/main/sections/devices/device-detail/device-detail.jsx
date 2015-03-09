@@ -7,7 +7,7 @@ var DeviceDetail = React.createClass({
 
     return (
       <div>
-        <h1>Device Detail Page</h1>
+        <h1>{this.props.device.title}</h1>
       </div>
     );
   }

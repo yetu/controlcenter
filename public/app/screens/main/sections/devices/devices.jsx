@@ -1,7 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var Room = require('./room');
-var DeviceDetail = require('./device-detail/deviceDetail');
+var DeviceDetail = require('./device-detail/device-detail');
 
 var roomStore = require('stores/room');
 var roomActions = require('actions/room');
@@ -18,7 +18,8 @@ var DeviceRegion = React.createClass({
   getInitialState: function getInitialState () {
     return {
       rooms: roomStore.getRooms(),
-      page: 'devices'
+      page: 'devices',
+      currentDevice: null,
     };
   },
 
@@ -40,14 +41,14 @@ var DeviceRegion = React.createClass({
 
   deviceDetail: function deviceDetail() {
       return (
-        <DeviceDetail/>
+        <DeviceDetail device={this.state.currentDevice}/>
       )
   },
 
   render: function render () {
     var page = this.page();
     return(
-      <div>{{page}}</div>
+      <div>{page}</div>
     )
   },
 
@@ -55,14 +56,14 @@ var DeviceRegion = React.createClass({
     switch (this.state.page) {
       case 'devices':
         return this.allDevices();
-      case 'deviceDetail':
+      case 'device-detail':
         return this.deviceDetail();
     }
     return null;
   },
 
-  openDeviceDetailPage: function openDeviceDetailPage (){
-    this.setState({page:"deviceDetail"});
+  openDeviceDetailPage: function openDeviceDetailPage (device){
+    this.setState({currentDevice: device, page:"device-detail"});
   },
 
   handleAddRoom: function handleAddRoom () {

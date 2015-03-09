@@ -1,20 +1,40 @@
 var React = require('react');
 var styleMixin = require('mixins/style-mixin');
-
+var roomStore = require('stores/room');
 
 var DeviceDetail = React.createClass({
   mixins: [styleMixin(require('./style.scss'))],
-  render: function render () {
 
+  getInitialState: function getInitialState () {
+    return {
+      rooms: roomStore.getRooms(),
+      selectedRoom: this.props.room
+    };
+  },
+
+  createRoomDropDown: function(){
+    var rooms = this.state.rooms.map(function mapper (room, i) {
+        var option;
+        if(room.title===this.state.selectedRoom){
+          option = <option selected key={i} value={room.title}>{room.title}</option>
+        }
+        else {
+          option = <option key={i} value={room.title}>{room.title}</option>
+        }
+        return (
+          option
+        );
+    }.bind(this));
+    return rooms;
+
+  },
+
+  render: function render () {
     return (
       <div className="cc-device-detail">
-        <div className="cc-device-detail__header cc-device-detail__row">
-          <div className="cc_device-detail__left">
-            <h2>{this.props.device.title}</h2>
-          </div>
-          <div className="cc_device-detail__right">
-            <a className="cc-device-detail__close-button" onClick={this.props.onCloseClick}>X</a>
-          </div>
+        <div className="cc-device-detail__headers cc-device-detail__row">
+          <a className="cc-device-detail__close-button" onClick={this.props.onCloseClick}></a>
+          <h2 className="cc-device-detail__title">{this.props.device.title}</h2>
         </div>
         <div className="cc-device-detail__controls cc-device-detail__row">
           <div className="cc-device-detail__labels">
@@ -31,7 +51,9 @@ var DeviceDetail = React.createClass({
           </div>
           <div className="cc-device-detail__values">
             <div id="cc-device-detail__desc" className="cc-device-detail__value">{this.props.device.description}</div>
-            <div id="cc-device-detail__room" className="cc-device-detail__value">{this.props.room}</div>
+            <select id="cc-device-detail__room" className="cc-device-detail__value">
+              {this.createRoomDropDown()}
+            </select>
           </div>
         </div>
         <div className="cc-device-detail__accessrights cc-device-detail__row">

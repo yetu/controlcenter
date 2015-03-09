@@ -1,6 +1,6 @@
-var React = require("react");
-var Reflux = require("reflux");
-var StyleMixin = require('mixins/style-mixin');
+var React = require('react');
+var Reflux = require('reflux');
+var styleMixin = require('mixins/style-mixin');
 var t = require('tcomb-form');
 
 var CCForm = require('common/components/cc-form');
@@ -16,33 +16,33 @@ var ControlCenterUser = t.struct({
 
 var UserForm = React.createClass({
   mixins: [
-    StyleMixin(require('./style.scss')),
+    styleMixin(require('./style.scss')),
     Reflux.listenTo(userDataStore, 'onUserDataChanged')
   ],
 
-  onUserDataChanged: function (userData) {
+  onUserDataChanged: function onUserDataChanged (userData) {
     if (userData.model) {
       this.setState(userData.model);
     }
   },
 
-  getInitialState: function () {
-    return {}
+  getInitialState: function getInitialState () {
+    return {};
   },
 
-  componentWillMount: function () {
+  componentWillMount: function componentWillMount () {
     userDataActions.fetchUserData();
   },
 
-  onValidChange: function (value) {
+  onValidChange: function onValidChange (value) {
     userDataActions.updateUserData(value);
     console.log('Valid value', value);
   },
 
-  render: function () {
+  render: function render () {
     return (
       <CCForm type={ControlCenterUser} onValidChange={this.onValidChange} value={this.state}/>
-    )
+    );
   }
 });
 

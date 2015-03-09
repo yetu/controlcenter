@@ -4,8 +4,6 @@ require('reflux');
 // if style! is used here, it will attach the style to DOM automatically
 require('style!./project-setup/all.scss');
 
-require('./actions');
-
 var Router = require('react-router');
 var Route = Router.Route;
 var Redirect = Router.Redirect;

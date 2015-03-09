@@ -1,6 +1,5 @@
-var React = require('react');
 var Reflux = require('reflux');
-var reqwest = require("reqwest");
+var reqwest = require('reqwest');
 
 var userDataActions = require('actions/user-data');
 
@@ -8,21 +7,22 @@ var SettingsStore = Reflux.createStore({
 
   listenables: userDataActions,
 
-  init: function () {
+  init: function init () {
     this.userData = {
       model: {},
       error: {}
     };
   },
 
-  onSaveUserData: function () {
+  onSaveUserData: function onSaveUserData () {
     var self = this;
-    function onSaved(data) {
+
+    function onSaved (data) {
       self.updateModel(data);
     }
 
-    function onError(error) {
-      self.onErrorUpdate(error)
+    function onError (error) {
+      self.onErrorUpdate(error);
     }
 
     return reqwest({
@@ -32,17 +32,18 @@ var SettingsStore = Reflux.createStore({
     }).then(onSaved, onError);
   },
 
-  onUpdateUserData: function (userData) {
+  onUpdateUserData: function onUpdateUserData (userData) {
     this.updateModel(userData);
   },
 
-  onFetchUserData: function () {
+  onFetchUserData: function onFetchUserData () {
     var self = this;
-    function onUserData(userData) {
+
+    function onUserData (userData) {
       self.updateModel(userData);
     }
 
-    function onError(error) {
+    function onError (error) {
       console.error('Error on fetching', error);
       self.onErrorUpdate(null, error);
     }
@@ -54,7 +55,7 @@ var SettingsStore = Reflux.createStore({
     }).then(onUserData, onError);
   },
 
-  updateModel: function (model) {
+  updateModel: function updateModel (model) {
     this.userData = {
       model: model
     };
@@ -62,7 +63,7 @@ var SettingsStore = Reflux.createStore({
     this.trigger(this.userData);
   },
 
-  onErrorUpdate : function(error){
+  onErrorUpdate: function onErrorUpdate (error) {
     this.userData = {
       error: error
     };

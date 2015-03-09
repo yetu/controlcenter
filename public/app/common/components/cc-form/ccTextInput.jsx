@@ -1,9 +1,6 @@
-'use strict';
-
-var React = require("react");
 var cx = require('react/lib/cx');
 
-function ccFormInput(locals) {
+function ccFormInput (locals) {
   var formGroupClasses = {
     'cc-form-item': true,
     'cc-form-item--error': locals.hasError
@@ -18,18 +15,18 @@ function ccFormInput(locals) {
     <div className={cx(formGroupClasses)}>
       {
         locals.label ?
-          <div className="cc-form-item__label-container">
-            <label for="right-label" className="cc-form-item__label">{locals.label}</label>
+          <div className='cc-form-item__label-container'>
+            <label for='right-label' className='cc-form-item__label'>{locals.label}</label>
           </div> : null
         }
 
-      <div className="cc-form-item__input-container">
+      <div className='cc-form-item__input-container'>
         <input
           disabled={locals.disabled}
           className={cx(inputClasses)}
           name={locals.name}
           placeholder={locals.label}
-          onChange={function (evt) {
+          onChange={(evt) => {
             locals.onChange(evt.target.value);
           }}
           type={locals.type}

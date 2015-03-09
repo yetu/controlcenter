@@ -19,7 +19,7 @@ var Device = React.createClass({
   },
 
   onTitleClick : function onTitleClick() {
-    this.props.onDeviceClick(this.props.device);
+    this.props.onDeviceClick(this.props.device, this.props.room);
   },
 
   control: function control () {

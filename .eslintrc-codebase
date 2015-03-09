@@ -61,6 +61,6 @@
         "space-unary-ops": 2,
 
         // Legacy
-        "max-len": [2, 100]
+        "max-len": [2, 120]
     }
 }

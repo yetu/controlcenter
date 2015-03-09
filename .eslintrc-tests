@@ -57,7 +57,6 @@
         "space-after-keywords": 2,
         "space-before-blocks": 2,
         "space-before-function-parentheses": 2,
-        "space-in-brackets": [2, "always"],
         "spaced-line-comment": 2,
         "space-unary-ops": 2,
 

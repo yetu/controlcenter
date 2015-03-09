@@ -4,12 +4,14 @@
   @include grid-row(collapse);
 
   position: relative;
-  padding: 5px;
-
+  margin: convert-to-rem(8px);
 
   .cc-user-avatar__image-content {
     @include grid-column(10);
-
+    .cc-user-avatar__image{
+      width: convert-to-rem(85px);
+      height: convert-to-rem(85px);
+    }
   }
 
   .cc-user-avatar__button-content {
@@ -17,9 +19,9 @@
 
     .cc-user-avatar__button {
       @include button($button-tny);
+      margin-bottom: 0;
       position: absolute;
       bottom: 0;
-
     }
 
   }

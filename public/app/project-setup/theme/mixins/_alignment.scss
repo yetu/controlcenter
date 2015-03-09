@@ -1,0 +1,12 @@
+// Use this mixin to align an element within its parent.
+// The parent element needs #position to be set to #relative.
+@mixin alignment($horizontal:true, $vertical:true) {
+  position: absolute;
+
+  $left: if($horizontal, 50%, 0);
+  $top: if($vertical, 50%, 0);
+
+  left: $left;
+  top: $top;
+  transform: translate(-$left, -$top);
+}

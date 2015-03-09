@@ -1,5 +1,6 @@
 var React = require('react');
 var Reflux = require('reflux');
+var DeviceFinder = require('./device-finder');
 var Room = require('./room');
 
 var roomStore = require('stores/room');
@@ -21,16 +22,16 @@ var DeviceRegion = React.createClass({
   render: function render () {
     var rooms = this.state.rooms.map(function mapper (room, i) {
       return (
-          <Room room={room} key={i} />
+        <Room room={room} key={i} />
       );
     });
     return (
-        <div className='cc-devices'>
-            <h2 className='cc-devices__title'>My devices</h2>
-            <a className='cc-devices__button' href='#'>+ Add device</a>
-            {rooms}
-            <a className='cc-devices__button' href='#' onClick={this.handleAddRoom}>+ Add room</a>
-        </div>
+      <div className='cc-devices'>
+        <h2 className='cc-devices__title'>My devices</h2>
+        <DeviceFinder />
+        {rooms}
+        <a className='cc-devices__button' href='#' onClick={this.handleAddRoom}>+ Add room</a>
+      </div>
     );
   },
 

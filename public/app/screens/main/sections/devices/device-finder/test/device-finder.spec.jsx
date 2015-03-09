@@ -1,7 +1,11 @@
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
+var ReactTestUtils = require('test/ReactTestUtils.js');
 var DeviceFinder = require('../device-finder.jsx');
 var DeviceFinderDialog = require('../device-finder-dialog');
+
+var getSearchButton;
+var getDialog;
 
 describe('DeviceFinder', function () {
   it('initially only shows a button', function () {
@@ -26,18 +30,10 @@ describe('DeviceFinder', function () {
   });
 });
 
-function getSearchButton (deviceFinder) {
-  var buttons = TestUtils.scryRenderedDOMComponentsWithClass(deviceFinder, 'cc-device-finder__button');
-  if (buttons.length > 1) {
-    throw new Error('There should not be more than one button');
-  }
-  return buttons.length > 0 ? buttons[0] : null;
-}
+getSearchButton = function (deviceFinder) {
+  return ReactTestUtils.getComponentWithClass(deviceFinder, 'cc-device-finder__button');
+};
 
-function getDialog (deviceFinder) {
-  var dialogs = TestUtils.scryRenderedComponentsWithType(deviceFinder, DeviceFinderDialog);
-  if (dialogs.length > 1) {
-    throw new Error('There should not be more than one dialog');
-  }
-  return dialogs.length > 0 ? dialogs[0] : null;
-}
+getDialog = function (deviceFinder) {
+  return ReactTestUtils.getComponentWithType(deviceFinder, DeviceFinderDialog);
+};

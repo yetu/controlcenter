@@ -12,7 +12,7 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/dist',
+    path: path.join(__dirname, '/dist'),
     publicPath: 'http://localhost:8899/assets/dist/',
     chunkFilename: '[id].chunk.js'
   },
@@ -27,7 +27,7 @@ module.exports = {
       'common': path.join(__dirname, 'app/common'),
       'mixins': path.join(__dirname, 'app/common/mixins')
     },
-    extensions: ['', '.js', '.jsx']
+    extensions: [ '', '.js', '.jsx' ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -35,8 +35,9 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel'],
+      {
+        test: /\.jsx?$/,
+        loaders: [ 'react-hot', 'babel' ],
         exclude: /(node_modules|bower_components)/
       },
       // style! attaches the css to the DOM automatically,
@@ -44,19 +45,21 @@ module.exports = {
       {
         test: /project-setup\/.*\.scss$/,
         loader: 'css!autoprefixer!sass?' +
-      'includePaths[]=' + __dirname + '/app/project-setup' +
-      '&includePaths[]=' + __dirname + '/bower_components/foundation/scss'
+          'includePaths[]=' + path.join(__dirname, 'app/project-setup') +
+          '&includePaths[]=' + path.join(__dirname, 'bower_components/foundation/scss')
       },
       {
         test: /\/(screens|common)\/.*\.scss$/,
         loader: 'style/useable!css!autoprefixer!sass?' +
-      'includePaths[]=' + __dirname + '/app/project-setup' +
-      '&includePaths[]=' + __dirname + '/bower_components/foundation/scss'
+          'includePaths[]=' + path.join(__dirname, 'app/project-setup') +
+          '&includePaths[]=' + path.join(__dirname, 'bower_components/foundation/scss')
       },
       { test: /\.(png|jpg)$/, loader: 'url?limit=32768' },
       { test: /\.jade$/, loader: 'jade' },
-      { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=10000&minetype=application/font-woff' },
+      {
+        test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url?limit=10000&minetype=application/font-woff'
+      },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file' }
     ],
     noParse: []

@@ -49,13 +49,18 @@
     "clean": "rm -rf ./public/app/dist && rm -rf ./public/dist ",
     "bundle": "webpack -p --config ./public/webpack.config.js ",
     "bundle-dev": "webpack -d -w --config ./public/webpack.config.js",
-    "start" : "node public/hot-reload-server.js",
-    "js-files": "find ./public \\( -name '*.js' -o -name '*.jsx' \\) ! -path './node_modules/*' ! -path './public/bower_components/*' ! -path './coverage/*' ! -path './public/dist/*' ! -path '*.spec.js*' ! -path './public/app/project-setup/test/*",
+	"start" : "node public/hot-reload-server.js",
+    "js-files": "find ./public \\( -name '*.js' -o -name '*.jsx' \\) ! -path './node_modules/*' ! -path './public/bower_components/*' ! -path './coverage/*' ! -path './public/dist/*' ! -path '*.spec.js*' ! -path './public/app/project-setup/test/*'",
+    "test-files": "find ./public -name '*.spec.js*' ! -path './node_modules/*' ! -path './public/bower_components/*' ! -path './coverage/*' ! -path './public/dist/*'",
     "test": "npm run bundle && node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js --single-run",
     "tdd": "npm run bundle-dev && node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js",
     "build": "npm run clean && npm run bundle && cp -r ./public/app/* ./public/dist",
-    "eslint": "node_modules/.bin/eslint `npm run -s js-files`",
+
+    "eslint-codebase": "node_modules/.bin/eslint `npm run -s js-files` -c ./.eslintrc-codebase",
+    "eslint-tests": "node_modules/.bin/eslint `npm run -s test-files` -c ./.eslintrc-tests",
+    "eslint": "npm run eslint-codebase && npm run eslint-tests",
     "lint": "npm run eslint",
-    "precommit": "npm run-script lint && npm test"
+
+    "precommit": "npm run lint && npm test"
   }
 }

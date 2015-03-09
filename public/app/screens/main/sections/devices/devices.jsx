@@ -15,12 +15,12 @@ var DeviceRegion = React.createClass({
     styleMixin(require('./style.scss'))
   ],
 
-  getInitialState: function getInitialState() {
-    return {rooms: roomStore.getRooms()};
+  getInitialState: function getInitialState () {
+    return { rooms: roomStore.getRooms() };
   },
 
-  render: function render() {
-    var rooms = this.state.rooms.map(function mapper(room, i) {
+  render: function render () {
+    var rooms = this.state.rooms.map(function mapper (room, i) {
       return (
         <Room room={room} key={i} />
       );
@@ -35,7 +35,7 @@ var DeviceRegion = React.createClass({
     );
   },
 
-  handleAddRoom: function handleAddRoom() {
+  handleAddRoom: function handleAddRoom () {
     roomActions.createRoom();
   }
 });

@@ -6,20 +6,20 @@ var DeviceFinderActivity = {
   NONE: 'none',
   SEARCHING: 'searching',
   NO_DEVICES: 'noDevices'
-}
+};
 
 var DeviceFinder = React.createClass({
-  mixins: [styleMixin(require('./style.scss'))],
+  mixins: [ styleMixin(require('./style.scss')) ],
 
-  getInitialState: function getInitialState() {
+  getInitialState: function getInitialState () {
     return {
       activity: DeviceFinderActivity.NONE
-    }
+    };
   },
 
-  render: function render() {
-    var findingDevicesDialog = this.dialog();
-    var button = this.state.activity === DeviceFinderActivity.NONE ? this.button() : null;
+  render: function render () {
+    var findingDevicesDialog = this.getDialog();
+    var button = this.state.activity === DeviceFinderActivity.NONE ? this.getButton() : null;
     return (
       <div className="cc-device-finder">
         { findingDevicesDialog }
@@ -28,22 +28,22 @@ var DeviceFinder = React.createClass({
     );
   },
 
-  button: function () {
+  getButton: function getButton () {
     return <a className='cc-device-finder__button' href='#' onClick={this.startSearching}>+ Add device</a>;
   },
 
-  dialog: function dialog() {
+  getDialog: function getDialog () {
     switch (this.state.activity) {
       case DeviceFinderActivity.SEARCHING:
-        return this.searchDialog();
+        return this.getSearchDialog();
       case DeviceFinderActivity.NO_DEVICES:
-        return this.noResultsDialog();
+        return this.getNoResultsDialog();
       default:
         return null;
     }
   },
 
-  searchDialog: function () {
+  getSearchDialog: function getSearchDialog () {
     var status = <div className='cc-device-finder__spinner'/>;
     return <DeviceFinderDialog
       status={status}
@@ -53,7 +53,7 @@ var DeviceFinder = React.createClass({
       action={this.stopSearching} />;
   },
 
-  noResultsDialog: function () {
+  getNoResultsDialog: function getNoResultsDialog () {
     var status = <div className="cc-device-finder__status-warning">No devices found</div>;
     return <DeviceFinderDialog
       status={status}
@@ -65,26 +65,26 @@ var DeviceFinder = React.createClass({
       action={this.startSearching} />;
   },
 
-  startSearching: function startSearching() {
-      this.setState({activity: 'searching'});
+  startSearching: function startSearching () {
+      this.setState({ activity: 'searching' });
 
       // TODO: Remove mock up code as soon as backend logic is used
-      var displayNoDevicesDialog = function displayNoDevicesDialog() {
-        if (this.state.activity===DeviceFinderActivity.SEARCHING) {
-          this.setState({activity:'noDevices'})
+      var displayNoDevicesDialog = function displayNoDevicesDialog () {
+        if (this.state.activity === DeviceFinderActivity.SEARCHING) {
+          this.setState({ activity: 'noDevices' });
         }
       }.bind(this);
 
       setTimeout(displayNoDevicesDialog, 3000);
     },
 
-  stopSearching: function stopSearching() {
+  stopSearching: function stopSearching () {
     // TODO: stop search here
     this.closeDialog();
   },
 
-  closeDialog: function closeDialog() {
-    this.setState({activity: DeviceFinderActivity.NONE});
+  closeDialog: function closeDialog () {
+    this.setState({ activity: DeviceFinderActivity.NONE });
   }
 });
 

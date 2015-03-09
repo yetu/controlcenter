@@ -2,6 +2,7 @@
 
 .cc-device-finder-dialog {
   @include grid-row();
+  position: relative;
   background-color: #ffffff;
   height: 80px;
   box-shadow: 5px 2px 3px 0 $shadow;
@@ -28,8 +29,8 @@
 
   &__text {
     @include grid-column(14);
-    padding-left: 25px;
     position: relative;
+    padding-left: 25px;
     // TODO: Use correct semantic color
     color: $font-active-color;
     // TODO: font does not appear bold enough
@@ -37,28 +38,29 @@
 
     > div {
       @include alignment(false, true);
+      padding-left: inherit;
     }
-  }
 
-  &__text-title {
-    text-transform: uppercase;
-  }
+    &-title {
+      text-transform: uppercase;
+    }
 
-  &__text-description {
+    &-description {
+    }
   }
 
   &__action {
     @include grid-column(3);
     position: relative;
     padding: 10px;
-  }
 
-  &__action-button {
-    @include button($button-tny);
-    position: absolute;
-    margin-bottom: 0;
-    bottom: 10px;
-    right: 10px;
+    &-button {
+        @include button($button-tny);
+        position: absolute;
+        margin-bottom: 0;
+        bottom: 10px;
+        right: 10px;
+      }
   }
 
   &__close-button {

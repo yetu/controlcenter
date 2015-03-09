@@ -1,0 +1,10 @@
+@import "theme";
+
+.cc-slider-control {
+  display: table;
+
+  &__input {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}

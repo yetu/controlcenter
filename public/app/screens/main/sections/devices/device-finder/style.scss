@@ -1,0 +1,32 @@
+@import "theme";
+
+.cc-device-finder {
+  &__spinner {
+    background-image: url("./img/spinner.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 50px;
+    height: 50px;
+
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    @keyframes rotate {
+      from { transform:rotate(0deg); }
+      to   { transform:rotate(360deg); }
+    }
+  }
+
+  &__button {
+    @include button()
+  }
+
+  &__status-warning {
+    color: $alert-color;
+    // TODO: Font does not appear bold enough, use distinct font?
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+}

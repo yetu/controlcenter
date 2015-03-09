@@ -1,0 +1,76 @@
+@import "theme";
+
+.cc-device-finder-dialog {
+  @include grid-row();
+  position: relative;
+  background-color: #ffffff;
+  height: 80px;
+  box-shadow: 5px 2px 3px 0 $shadow;
+
+  // Make all columns take full table height
+  > div {
+    height: 100%;
+  }
+
+  &__status {
+    @include grid-column(3);
+    position: relative;
+
+    &-content {
+      @include alignment(true, true);
+    }
+  }
+
+  &__status-separator {
+    border-right: dotted 2px;
+    // TODO: Use correct semantic color
+    border-color: $font-active-color;
+  }
+
+  &__text {
+    @include grid-column(14);
+    position: relative;
+    padding-left: 25px;
+    // TODO: Use correct semantic color
+    color: $font-active-color;
+    // TODO: font does not appear bold enough
+    font-weight: bolder;
+
+    > div {
+      @include alignment(false, true);
+      padding-left: inherit;
+    }
+
+    &-title {
+      text-transform: uppercase;
+    }
+
+    &-description {
+    }
+  }
+
+  &__action {
+    @include grid-column(3);
+    position: relative;
+    padding: 10px;
+
+    &-button {
+        @include button($button-tny);
+        position: absolute;
+        margin-bottom: 0;
+        bottom: 10px;
+        right: 10px;
+      }
+  }
+
+  &__close-button {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 5px;
+      right: 10px;
+      background-image: url("./img/close.svg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+}

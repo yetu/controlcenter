@@ -7,14 +7,8 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 max_line_width = 80
 indent_style = space
+indent_size = 2
 tab_width = 2
-
-
-[*.coffee]
-indent_style = space
-
-[{package.json,.travis.yml}]
-indent_style = space
 
 [COMMIT_EDITMSG]
 trim_trailing_whitespace = false

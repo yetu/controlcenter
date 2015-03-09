@@ -1,0 +1,18 @@
+@import "theme";
+
+.cc-switch-control {
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: default;
+  height: 30px;
+  width: 90px;
+
+  &__off {
+    background-image: url('./img/off.png');
+  }
+
+  &__on {
+    background-image: url('./img/on.png');
+  }
+
+}

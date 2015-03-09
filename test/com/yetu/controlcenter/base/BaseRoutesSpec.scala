@@ -1,25 +1,25 @@
 package com.yetu.controlcenter.base
 
-import com.mohiva.play.silhouette.api.Logger
+import com.mohiva.play.silhouette.api.{ LoginInfo, Identity, Logger }
 import com.mohiva.play.silhouette.impl.authenticators.SessionAuthenticator
-import org.scalatest.concurrent.{AsyncAssertions, ScalaFutures}
+import org.scalatest.concurrent.{ AsyncAssertions, ScalaFutures }
 import org.scalatest.mock.MockitoSugar
-import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
-import play.api.libs.json.{JsNull, JsValue}
-import play.api.mvc.{AnyContentAsEmpty, Result}
+import org.scalatestplus.play.{ OneAppPerSuite, PlaySpec }
+import play.api.libs.json.{ JsNull, JsValue }
+import play.api.mvc.{ AnyContentAsEmpty, Result }
 import play.api.test.Helpers._
-import play.api.test.{FakeApplication, FakeHeaders, FakeRequest}
+import play.api.test.{ FakeApplication, FakeHeaders, FakeRequest }
 
 import scala.concurrent.Future
 
 class BaseRoutesSpec extends PlaySpec with ScalaFutures with AsyncAssertions with OneAppPerSuite with Logger with TestData with MockitoSugar {
 
-	// this import is required for the .withAuthenticator[]()()
-	import com.mohiva.play.silhouette.test.FakeRequestWithAuthenticator
+  // this import is required for the .withAuthenticator[]()()
+  import com.mohiva.play.silhouette.test.FakeRequestWithAuthenticator
 
-  def getRequestAuthenticated(url: String, headers: FakeHeaders = FakeHeaders()): Future[Result] = {
+  def getRequestAuthenticated(url: String, headers: FakeHeaders = FakeHeaders(), loginInfo: LoginInfo = FakeGlobal.identity.loginInfo, method: String = GET): Future[Result] = {
 
-    route(FakeRequest(GET, url, headers, AnyContentAsEmpty).withAuthenticator[SessionAuthenticator](FakeGlobal.identity.loginInfo)(FakeGlobal.env)
+    route(FakeRequest(method, url, headers, AnyContentAsEmpty).withAuthenticator[SessionAuthenticator](loginInfo)(FakeGlobal.env)
     ) match {
       case Some(response) =>
         logger.debug(s"content $url: ${contentAsString(response)}")
@@ -33,9 +33,9 @@ class BaseRoutesSpec extends PlaySpec with ScalaFutures with AsyncAssertions wit
     }
   }
 
-  def postRequestAuthenticated(url: String, parameters: JsValue = JsNull, fakeHeaders: FakeHeaders = FakeHeaders()): Future[Result] = {
+  def postRequestAuthenticated(url: String, parameters: JsValue = JsNull, fakeHeaders: FakeHeaders = FakeHeaders(), loginInfo: LoginInfo = FakeGlobal.identity.loginInfo): Future[Result] = {
     route(FakeRequest(POST, url, fakeHeaders, parameters)
-      .withAuthenticator[SessionAuthenticator](FakeGlobal.identity.loginInfo)(FakeGlobal.env)) match {
+      .withAuthenticator[SessionAuthenticator](loginInfo)(FakeGlobal.env)) match {
       case Some(response) =>
         logger.debug(s"response: ${contentAsString(response)}")
         logger.debug(s"response status: ${status(response)}")
@@ -49,6 +49,5 @@ class BaseRoutesSpec extends PlaySpec with ScalaFutures with AsyncAssertions wit
   //for all tests, use the FakeGlobal with Authentication mocked out.
   implicit override lazy val app: FakeApplication =
     FakeApplication(withGlobal = Some(new FakeGlobal))
-
 
 }

@@ -1,3 +1,6 @@
+import com.typesafe.sbt.SbtScalariform._
+import scalariform.formatter.preferences._
+
 name := """controlcenter"""
 
 organization := "com.yetu"
@@ -14,7 +17,7 @@ pipelineStages := Seq(digest, gzip)
 lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb)
 
 libraryDependencies ++= Seq(
-  "com.yetu" %% "yetu-play-authenticator" % "0.1.5",
+  "com.yetu" %% "yetu-play-authenticator" % "0.1.6",
   cache,
   ws,
   filters
@@ -40,3 +43,16 @@ scalacOptions ++= Seq(
   "-Ywarn-numeric-widen", // Warn when numerics are widened.
   "-language:implicitConversions" //allow implicit convertions defined by implicit def convertAtoB(a:A):B type functions
 )
+
+//********************************************************
+// Scalariform settings
+//********************************************************
+scalariformSettings
+
+defaultScalariformSettings
+
+ScalariformKeys.preferences := ScalariformKeys.preferences.value
+  .setPreference(AlignSingleLineCaseStatements, true)
+  .setPreference(DoubleIndentClassDeclaration, true)
+  .setPreference(PreserveDanglingCloseParenthesis, true)
+  .setPreference(PreserveSpaceBeforeArguments, true)

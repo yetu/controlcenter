@@ -6,7 +6,7 @@ var React = require('react/addons'),
 describe('Device', function () {
   describe('method', function () {
     it('does something', function () {
-      var deviceProps = {title: "manfred"};
+      var deviceProps = { title: 'manfred' };
       var deviceElement = TestUtils.renderIntoDocument(
         <Device device={deviceProps} />
       );

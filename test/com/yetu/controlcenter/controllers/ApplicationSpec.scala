@@ -1,18 +1,19 @@
 package com.yetu.controlcenter.controllers
 
-import com.yetu.controlcenter.base.BaseRoutesSpec
+import com.yetu.controlcenter.base.{ FakeGlobal, BaseRoutesSpec }
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 
-class ApplicationSpec extends BaseRoutesSpec{
+class ApplicationSpec extends BaseRoutesSpec {
   val indexUrl = "/"
+  val profile = "/profile"
+  val household = "/household"
 
   s"non-authenticated GET request on $indexUrl" must {
     "return a 303 response" in {
       val Some(response) = route(FakeRequest(GET, indexUrl))
       status(response) mustEqual (SEE_OTHER)
     }
-
   }
 
   s"authenticated GET request on $indexUrl" must {
@@ -20,6 +21,20 @@ class ApplicationSpec extends BaseRoutesSpec{
       val response = getRequestAuthenticated(indexUrl)
       status(response) mustEqual (OK)
       contentAsString(response) must include("Control Center")
+    }
+  }
+
+  s"GET request on $profile" must {
+    "return a 500 as there are no access tokens" in {
+      val response = getRequestAuthenticated(profile, loginInfo = FakeGlobal.identityWithoutAccessToken.loginInfo)
+      status(response) mustEqual (INTERNAL_SERVER_ERROR)
+    }
+  }
+
+  s"GET request on $household" must {
+    "return a 500 as there are no access tokens" in {
+      val response = getRequestAuthenticated(household, loginInfo = FakeGlobal.identityWithoutAccessToken.loginInfo)
+      status(response) mustEqual (INTERNAL_SERVER_ERROR)
     }
   }
 

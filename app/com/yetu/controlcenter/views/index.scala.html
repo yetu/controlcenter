@@ -1,3 +1,6 @@
+@import play.api.Play
+@import com.typesafe.config.ConfigRenderOptions
+@(config: play.api.Configuration)
 <!doctype html>
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -7,16 +10,23 @@
 <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>yetu Control Center</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<link rel="icon" type="image/ico" href="favicon.ico"/>
-	</head>
-	<body>
-      <script src="@routes.Assets.versioned("dist/bundle.js")"></script>
-	</body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>yetu Control Center</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" type="image/ico" href="favicon.ico"/>
+    <script>var config = @Html(config.underlying.root().render(ConfigRenderOptions.concise()));</script>
+  </head>
+  <body>
+  @if(Play.current.configuration.getString("yetu.frontendBundlePath").isDefined) {
+    <script src="@{
+      Play.current.configuration.getString("yetu.frontendBundlePath").get + "dist/bundle.js"
+    }"></script>
+  } else {
+    <script src=" @routes.Assets.versioned("dist/bundle.js") "></script>
+  }
+  </body>
 </html>

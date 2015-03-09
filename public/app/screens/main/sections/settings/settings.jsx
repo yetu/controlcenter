@@ -6,6 +6,7 @@ var StyleMixin = require('mixins/style-mixin');
 
 var UserForm = require("./user-form");
 var UserAvatar = require("./user-avatar");
+var UserInfo = require("./user-info");
 
 var userDataActions = require('actions/user-data');
 
@@ -31,9 +32,17 @@ var SettingsPage = React.createClass({
           </div>
         </div>
 
-        <span className="cc-settings__save" onClick={this.submitForm}>
+        <div className="cc-settings__divider"></div>
+
+        <div className="cc-settings__section">
+          <div className="cc-settings__section-info">
+            <UserInfo />
+          </div>
+        </div>
+
+        <a className="cc-settings__save" href="#" onClick={this.submitForm}>
           Save changes
-        </span>
+        </a>
       </div>
     );
   }

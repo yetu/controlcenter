@@ -9,14 +9,37 @@
 
   .cc-settings__section {
     @include grid-row();
+    margin-bottom: convert-to-rem(40px);
+
     .cc-settings__section-form {
-      @include grid-column(13);
+      @include grid-column(20);
+      padding-right: convert-to-rem(11px);
+
+      @media #{$medium-up} {
+        @include grid-column(13);
+      }
     }
 
     .cc-settings__section-avatar {
-      @include grid-column(7);
+      @include grid-column(20);
+
+      @media #{$medium-up} {
+        @include grid-column(7);
+      }
     }
 
+    .cc-settings__section-info {
+      @include grid-column(20);
+
+      @media #{$medium-up} {
+        @include grid-column(13);
+      }
+    }
+  }
+
+  .cc-settings__divider {
+    width: 100%;
+    border: 1px $passive-gray solid;
   }
 
   .cc-settings__save {

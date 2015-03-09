@@ -9,3 +9,9 @@
 %hidden-for-small-only {
   @extend .hide-for-small-only;
 }
+
+@mixin cc-label($font-size: $rem-base) {
+  color: $default-text-black;
+  font-size: convert-to-rem($font-size);
+  font-weight: bold;
+}

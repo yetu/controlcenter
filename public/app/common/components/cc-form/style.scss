@@ -6,10 +6,13 @@
   /* fix for generated fieldset from form lib */
   fieldset {
     border: none;
+    padding: 0;
+    margin: 0;
   }
 
   .cc-form-item {
     @include grid-row();
+    margin: convert-to-rem(10px) 0 0 0;
 
     .cc-form-item__label-container {
       @include grid-column($columns: 10, $float: left);
@@ -19,8 +22,7 @@
         @include prefix($bg: false, $is-button: false);
         border: none;
         text-align: left;
-        color: $default-text-black;
-        font-size: $rem-base;
+        @include cc-label();
 
 
       }
@@ -30,8 +32,10 @@
 
       .cc-form-item__input {
         @include form-element();
+        background: $light-gray;
+        height: convert-to-rem(35px);
         color: $default-text-black;
-
+        margin: 0;
       }
     }
   }

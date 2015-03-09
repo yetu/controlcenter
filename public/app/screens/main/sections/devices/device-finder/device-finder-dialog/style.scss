@@ -15,12 +15,8 @@
     @include grid-column(3);
     position: relative;
 
-    > div {
-      // TODO: Wrap properties into include class "centered(horz=true, vert=true)"
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%)
+    &-content {
+      @include alignment(true, true);
     }
   }
 
@@ -40,10 +36,7 @@
     font-weight: bolder;
 
     > div {
-      // TODO: Wrap properties into include class "centered(horz=false, vert=true)"
-      position: absolute;
-      top: 50%;
-      transform: translate(0, -50%)
+      @include alignment(false, true);
     }
   }
 

@@ -10,7 +10,7 @@ var DeviceFinderDialog = React.createClass({
     return (
       <div className='cc-device-finder-dialog'>
         <div className={'cc-device-finder-dialog__status ' + (this.props.showSeparator ? 'cc-device-finder-dialog__status-separator' : '')}>
-          <div>
+          <div className='cc-device-finder-dialog__status-content'>
             {this.props.status}
           </div>
         </div>

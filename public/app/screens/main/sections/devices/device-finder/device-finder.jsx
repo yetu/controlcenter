@@ -2,18 +2,24 @@ var React = require('react');
 var DeviceFinderDialog = require('./device-finder-dialog');
 var styleMixin = require('mixins/style-mixin');
 
+var DeviceFinderActivity = {
+  NONE: 'none',
+  SEARCHING: 'searching',
+  NO_DEVICES: 'noDevices'
+}
+
 var DeviceFinder = React.createClass({
   mixins: [styleMixin(require('./style.scss'))],
 
   getInitialState: function getInitialState() {
     return {
-      activity: null // Enum: null, searching, noDevices
+      activity: DeviceFinderActivity.NONE
     }
   },
 
   render: function render() {
     var findingDevicesDialog = this.dialog();
-    var button = this.state.activity ? null : this.button();
+    var button = this.state.activity === DeviceFinderActivity.NONE ? this.button() : null;
     return (
       <div className="cc-device-finder">
         { findingDevicesDialog }
@@ -28,12 +34,13 @@ var DeviceFinder = React.createClass({
 
   dialog: function dialog() {
     switch (this.state.activity) {
-      case 'searching':
+      case DeviceFinderActivity.SEARCHING:
         return this.searchDialog();
-      case 'noDevices':
+      case DeviceFinderActivity.NO_DEVICES:
         return this.noResultsDialog();
+      default:
+        return null;
     }
-    return null;
   },
 
   searchDialog: function () {
@@ -60,19 +67,24 @@ var DeviceFinder = React.createClass({
 
   startSearching: function startSearching() {
       this.setState({activity: 'searching'});
-      setTimeout(
-        function() {
-          if (this.state.activity==='searching') this.setState({activity:'noDevices'})
-        }.bind(this),
-        3000);
+
+      // TODO: Remove mock up code as soon as backend logic is used
+      var displayNoDevicesDialog = function displayNoDevicesDialog() {
+        if (this.state.activity===DeviceFinderActivity.SEARCHING) {
+          this.setState({activity:'noDevices'})
+        }
+      }.bind(this);
+
+      setTimeout(displayNoDevicesDialog, 3000);
     },
 
   stopSearching: function stopSearching() {
-    this.setState({activity: null});
+    // TODO: stop search here
+    this.closeDialog();
   },
 
   closeDialog: function closeDialog() {
-    this.setState({activity: null});
+    this.setState({activity: DeviceFinderActivity.NONE});
   }
 });
 

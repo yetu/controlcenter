@@ -9,13 +9,17 @@ var Device = React.createClass({
   render: function render () {
     return (
       <div className="cc-device">
-        <a className="cc-device__title" onClick={this.props.onDeviceClick}>{this.props.device.title}</a>
+        <a className="cc-device__title" onClick={this.onTitleClick}>{this.props.device.title}</a>
         <div className="cc-device__type">{this.props.device.type}</div>
         <div className="cc-device__control">{this.control()}</div>
         <div className={'cc-device__state-image ' + this.stateImageClass()}/>
         <div className="cc-device__state-text">{this.connectedText()}</div>
       </div>
     );
+  },
+
+  onTitleClick : function onTitleClick() {
+    this.props.onDeviceClick(this.props.device);
   },
 
   control: function control () {

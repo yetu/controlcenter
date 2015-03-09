@@ -6,14 +6,14 @@ var _rooms = [
   {
     title: 'Living room',
     devices: [
-      { title: 'yetu Home Gateway', type: 'Home Gateway', state: 'connected' },
-      { title: 'Nest', type: 'Thermostat', state: 'not conn.' }
+      { title: 'yetu Home Gateway', type: 'Home Gateway', state: 'connected', description:'test description' },
+      { title: 'Nest', type: 'Thermostat', state: 'not conn.', description:'test description' }
     ]
   },
   {
     title: 'Bed room',
     devices: [
-      { title: 'Nest', type: 'Thermostat', state: 'connected' }
+      { title: 'Nest', type: 'Thermostat', state: 'connected', description:'test description' }
     ]
   },
   {

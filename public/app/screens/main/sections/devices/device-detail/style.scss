@@ -1,0 +1,40 @@
+@import "theme";
+
+.cc-device-detail{
+  &__row{
+    @include grid-row();
+    width: 100%;
+    //TODO: define right font color here
+    color: $active-gray;
+    &:nth-child(odd){
+      background: $shade-row;
+    }
+    padding-top: 10px;
+  }
+  &__left, &__labels, &__left-btn{
+    @include grid-column();
+    position: relative;
+    height: 100%;
+    width: 300px;
+  }
+
+  &__lbl{
+    display: block;
+    margin-bottom: 10px;
+  }
+  &__right, &__values, &__right-btn{
+    @include grid-column();
+    position: relative;
+    height: 100%;
+  }
+  &__value{
+    display: block;
+    margin-bottom: 10px;
+  }
+  &__save-button{
+    @include button($button-tny);
+  }
+  &__delete-button{
+    text-transform: uppercase;
+  }
+}

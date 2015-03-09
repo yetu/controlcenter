@@ -20,6 +20,7 @@ var DeviceRegion = React.createClass({
       rooms: roomStore.getRooms(),
       page: 'devices',
       currentDevice: null,
+      currentRoom: null
     };
   },
 
@@ -41,7 +42,8 @@ var DeviceRegion = React.createClass({
 
   deviceDetail: function deviceDetail() {
       return (
-        <DeviceDetail device={this.state.currentDevice}/>
+        <DeviceDetail device={this.state.currentDevice} room={this.state.currentRoom}
+          onCloseClick={this.closeDeviceDetailPage}/>
       )
   },
 
@@ -62,8 +64,12 @@ var DeviceRegion = React.createClass({
     return null;
   },
 
-  openDeviceDetailPage: function openDeviceDetailPage (device){
-    this.setState({currentDevice: device, page:"device-detail"});
+  openDeviceDetailPage: function openDeviceDetailPage (device, room){
+    this.setState({currentDevice: device, page: 'device-detail', currentRoom: room});
+  },
+
+  closeDeviceDetailPage: function closeDeviceDetailPage (){
+    this.setState({currentDevice: null, page: 'devices', currentRoom: null});
   },
 
   handleAddRoom: function handleAddRoom () {

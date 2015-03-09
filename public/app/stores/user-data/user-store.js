@@ -22,7 +22,7 @@ var SettingsStore = Reflux.createStore({
     }
 
     function onError(error) {
-      self.updateModel({}, error)
+      self.onErrorUpdate(error)
     }
 
     return reqwest({
@@ -44,7 +44,7 @@ var SettingsStore = Reflux.createStore({
 
     function onError(error) {
       console.error('Error on fetching', error);
-      self.updateModel({}, error);
+      self.onErrorUpdate(null, error);
     }
 
     return reqwest({
@@ -54,14 +54,20 @@ var SettingsStore = Reflux.createStore({
     }).then(onUserData, onError);
   },
 
-  updateModel: function (model, error) {
-    var self = this;
+  updateModel: function (model) {
     this.userData = {
-      model: model,
-      error: error || {}
+      model: model
     };
 
-    this.trigger(self.userData);
+    this.trigger(this.userData);
+  },
+
+  onErrorUpdate : function(error){
+    this.userData = {
+      error: error
+    };
+
+    this.trigger(this.userData);
   }
 });
 

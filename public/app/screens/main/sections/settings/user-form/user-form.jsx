@@ -6,7 +6,7 @@ var t = require('tcomb-form');
 var CCForm = require('common/components/cc-form');
 
 var userDataStore = require('stores/user-data');
-var settingsActions = require('actions/user-data');
+var userDataActions = require('actions/user-data');
 
 
 var ControlCenterUser = t.struct({
@@ -21,7 +21,7 @@ var UserForm = React.createClass({
   ],
 
   onUserDataChanged: function (userData) {
-    if (userData.error != null && userData.model) {
+    if (userData.model) {
       this.setState(userData.model);
     }
   },
@@ -31,11 +31,11 @@ var UserForm = React.createClass({
   },
 
   componentWillMount: function () {
-    settingsActions.fetchUserData();
+    userDataActions.fetchUserData();
   },
 
   onValidChange: function (value) {
-    settingsActions.updateUserData(value);
+    userDataActions.updateUserData(value);
     console.log('Valid value', value);
   },
 

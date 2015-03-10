@@ -1,0 +1,40 @@
+@import "theme";
+
+.cc-form {
+  @include form-row-base();
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &-item {
+    @include grid-row();
+    margin: convert-to-rem(10px) 0 0 0;
+
+    &__label {
+      @include grid-column($columns: 10, $float: left);
+
+      &-text {
+        @include prefix-postfix-base();
+        @include prefix($bg: false, $is-button: false);
+        @include cc-label();
+        border: none;
+        text-align: left;
+      }
+    }
+
+    &__input {
+      @include grid-column($columns: 10);
+
+      &-text {
+        @include form-element();
+        background: $light-gray;
+        height: convert-to-rem(35px);
+        color: $default-text-black;
+        margin: 0;
+      }
+    }
+  }
+}

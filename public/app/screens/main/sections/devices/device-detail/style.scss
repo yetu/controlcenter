@@ -1,26 +1,28 @@
 @import "theme";
 
+// TODO: has to be a basic element
+.cc__row {
+  @include grid-row();
+  width: 100%;
+  // TODO: define right font color here
+  color: $active-gray;
+  padding: 10px 5% 0 5%;
+  &:nth-child(even) {
+    background: $shade-row-even;
+  }
+  &:nth-child(odd) {
+    background: $shade-row-odd;
+  }
+  &:last-child{
+    background: none;
+    padding-bottom: 10px;
+  }
+}
+
 .cc-device-detail {
   position: relative;
   &__title{
     margin: 15px 0 20px 0;
-  }
-  &__row {
-    @include grid-row();
-    width: 100%;
-    //TODO: define right font color here
-    color: $active-gray;
-    padding: 10px 5% 0 5%;
-    &:nth-child(even) {
-      background: $shade-row-even;
-    }
-    &:nth-child(odd) {
-      background: $shade-row-odd;
-    }
-    &:last-child{
-      background: none;
-      padding-bottom: 10px;
-    }
   }
   &__close-button{
     position:absolute;

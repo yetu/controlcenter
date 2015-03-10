@@ -14,31 +14,29 @@ var Device = React.createClass({
           {this.props.device.title}
         </Link>
         <div className="cc-device__type">{this.props.device.type}</div>
-        <div className="cc-device__control">{this.control()}</div>
-        <div className={'cc-device__state-image ' + this.stateImageClass()}/>
-        <div className="cc-device__state-text">{this.connectedText()}</div>
+        <div className="cc-device__control">{this.getControl()}</div>
+        <div className={'cc-device__state-image ' + this.getStateImageClass()}/>
+        <div className="cc-device__state-text">{this.getConnectedText()}</div>
       </div>
     );
   },
 
-  onTitleClick: function onTitleClick () {
-    this.props.onDeviceClick(this.props.device, this.props.room);
-  },
-
-  control: function control () {
-    var ctrl;
+  getControl: function getControl () {
+    var control;
     switch (this.props.device.type) {
       case 'Home Gateway':
-        ctrl = SwitchControl;
+        control = SwitchControl;
         break;
       case 'Thermostat':
-        ctrl = SliderControl;
+        control = SliderControl;
         break;
     }
-    return ctrl ? React.createElement(ctrl, {device: this.props.device}) : (<div>Unknown type</div>);
+    return control
+      ? React.createElement(control, { device: this.props.device })
+      : (<div>Unknown type</div>);
   },
 
-  stateImageClass: function stateImageClass () {
+  getStateImageClass: function getStateImageClass () {
     var name = 'cc-device__state-image-';
     if (this.props.device.state === 'connected') {
       return name + 'connected';
@@ -47,7 +45,7 @@ var Device = React.createClass({
     }
   },
 
-  connectedText: function connectedText () {
+  getConnectedText: function getConnectedText () {
     if (this.props.device.state === 'connected') {
       return 'Connected';
     } else {

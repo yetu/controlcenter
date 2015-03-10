@@ -48,11 +48,11 @@ var DeviceDetail = React.createClass({
   render: function render () {
     return (
       <div className="cc-device-detail">
-        <div className="cc-device-detail__headers cc-device-detail__row">
+        <div className="cc-device-detail__headers cc__row">
           <Link className="cc-device-detail__close-button" to="devices"></Link>
           <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
         </div>
-        <div className="cc-device-detail__controls cc-device-detail__row">
+        <div className="cc-device-detail__controls cc__row">
           <div className="cc-device-detail__labels">
             <label className="cc-device-detail__lbl">Controls</label>
           </div>
@@ -60,7 +60,7 @@ var DeviceDetail = React.createClass({
             TODO: Here the controls have to placed!
           </div>
         </div>
-        <div className="cc-device-detail__properties cc-device-detail__row">
+        <div className="cc-device-detail__properties cc__row">
           <div className="cc-device-detail__labels">
             <label htmlFor="cc-device-detail_desc" className="cc-device-detail__lbl">Description</label>
             <label htmlFor="cc-device-detail_room" className="cc-device-detail__lbl">Room</label>
@@ -74,10 +74,10 @@ var DeviceDetail = React.createClass({
             </select>
           </div>
         </div>
-        <div className="cc-device-detail__accessrights cc-device-detail__row">
+        <div className="cc-device-detail__accessrights cc__row">
           <h2>Access rights</h2>
         </div>
-        <div className="cc-device-detail__details cc-device-detail__row">
+        <div className="cc-device-detail__details cc__row">
           <h2>Device Details</h2>
           <div className="cc-device-detail__labels">
             <label htmlFor="cc-device-detail_type" className="cc-device-detail__lbl">Type</label>
@@ -88,7 +88,7 @@ var DeviceDetail = React.createClass({
             <div id="cc-device-detail__id" className="cc-device-detail__value">{this.state.device.id}</div>
           </div>
         </div>
-        <div className="cc-device-detail__buttons cc-device-detail__row">
+        <div className="cc-device-detail__buttons cc__row">
           <div className="cc-device-detail__left-btn">
             <a className="cc-device-detail__save-button" onClick={this.saveChanges}>Save changes</a>
           </div>

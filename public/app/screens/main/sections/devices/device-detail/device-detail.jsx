@@ -8,7 +8,8 @@ var DeviceDetail = React.createClass({
   getInitialState: function getInitialState () {
     return {
       rooms: roomStore.getRooms(),
-      selectedRoom: this.props.room
+      selectedRoom: this.props.room,
+      description: this.props.device.description
     };
   },
 
@@ -25,9 +26,13 @@ var DeviceDetail = React.createClass({
   roomChange: function roomChange(e){
     this.setState({selectedRoom: e.target.value});
   },
+  descriptionChange: function descriptionChange(e){
+    this.setState({description: e.target.value});
+  },
 
   saveChanges: function saveChanges(){
-    console.log(this.state.selectedRoom);
+    console.log('Room:',this.state.selectedRoom);
+    console.log('Description:',this.state.description);
     //TODO: implement saving changes
   },
 
@@ -52,7 +57,8 @@ var DeviceDetail = React.createClass({
             <label htmlFor="cc-device-detail_room" className="cc-device-detail__lbl">Room</label>
           </div>
           <div className="cc-device-detail__values">
-            <div id="cc-device-detail__desc" className="cc-device-detail__value">{this.props.device.description}</div>
+            <input type="text" id="cc-device-detail__desc" className="cc-device-detail__value"
+              value={this.state.description} onChange={this.descriptionChange}></input>
             <select id="cc-device-detail__room" className="cc-device-detail__value"
               defaultValue={this.state.selectedRoom} onChange={this.roomChange}>
               {this.createRoomDropDown()}

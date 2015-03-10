@@ -41,7 +41,7 @@ var DeviceDetail = React.createClass( {
 
   saveChanges: function saveChanges () {
     console.log( 'Room:', this.state.selectedRoom );
-    console.log( 'Description:', this.state.description );
+    console.log( 'Description:', this.state.device.description );
     // TODO: implement saving changes
   },
 

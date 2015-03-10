@@ -12,21 +12,23 @@ var DeviceDetail = React.createClass({
     };
   },
 
-  createRoomDropDown: function(){
+  createRoomDropDown: function createRoomDropDown(){
     var rooms = this.state.rooms.map(function mapper (room, i) {
-        var option;
-        if(room.title===this.state.selectedRoom){
-          option = <option selected key={i} value={room.title}>{room.title}</option>
-        }
-        else {
-          option = <option key={i} value={room.title}>{room.title}</option>
-        }
-        return (
-          option
-        );
-    }.bind(this));
+      return (
+        <option key={i} value={room.title}>{room.title}</option>
+      );
+    });
     return rooms;
 
+  },
+
+  roomChange: function roomChange(e){
+    this.setState({selectedRoom: e.target.value});
+  },
+
+  saveChanges: function saveChanges(){
+    console.log(this.state.selectedRoom);
+    //TODO: implement saving changes
   },
 
   render: function render () {
@@ -51,7 +53,8 @@ var DeviceDetail = React.createClass({
           </div>
           <div className="cc-device-detail__values">
             <div id="cc-device-detail__desc" className="cc-device-detail__value">{this.props.device.description}</div>
-            <select id="cc-device-detail__room" className="cc-device-detail__value">
+            <select id="cc-device-detail__room" className="cc-device-detail__value"
+              defaultValue={this.state.selectedRoom} onChange={this.roomChange}>
               {this.createRoomDropDown()}
             </select>
           </div>
@@ -72,7 +75,7 @@ var DeviceDetail = React.createClass({
         </div>
         <div className="cc-device-detail__buttons cc-device-detail__row">
           <div className="cc-device-detail__left-btn">
-            <a className="cc-device-detail__save-button">Save changes</a>
+            <a className="cc-device-detail__save-button" onClick={this.saveChanges}>Save changes</a>
           </div>
           <div className="cc-device-detail__right-btn">
             <a className="cc-device-detail__delete-button">Delete device</a>

@@ -1,1 +1,1 @@
-module.exports = require('./deviceDetail.jsx');
+module.exports = require('./device-detail.jsx');

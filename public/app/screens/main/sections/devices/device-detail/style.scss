@@ -57,6 +57,10 @@
     font-size: 16px;
     background: $hint-gray;
   }
+  &__save-button {
+    @include button($button-tny);
+    margin-top: 10px;
+  }
   &__delete-button {
     text-transform: uppercase;
     margin-top: 10px;

@@ -20,7 +20,6 @@
         @include prefix-postfix-base();
         @include prefix($bg: false, $is-button: false);
         @include cc-label();
-
         border: none;
         text-align: left;
       }

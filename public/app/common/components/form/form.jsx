@@ -1,15 +1,14 @@
 var React = require('react');
 var styleMixin = require('mixins/style-mixin');
-var tForms = require('tcomb-form');
-var Form = tForms.form.Form;
+var TForm = require('tcomb-form').form.Form;
 
 var options = {
   templates: {
-    textbox: require('./cc-text-input.jsx')
+    textbox: require('./text-input.jsx')
   }
 };
 
-var CCForm = React.createClass({
+var Form = React.createClass({
   mixins: [
     styleMixin(require('./style.scss'))
   ],
@@ -26,11 +25,11 @@ var CCForm = React.createClass({
   render: function render () {
     return (
       <div className='cc-form'>
-        <Form ref='form' onChange={this.onChange} type={this.props.type} options={options} value={this.props.value} />
+        <TForm ref='form' onChange={this.onChange} type={this.props.type} options={options} value={this.props.value} />
       </div>
     );
   }
 });
 
 
-module.exports = CCForm;
+module.exports = Form;

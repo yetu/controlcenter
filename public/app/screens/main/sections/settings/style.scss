@@ -3,10 +3,6 @@
 .cc-settings {
   padding: 40px;
 
-  &__title {
-
-  }
-
   &__section {
     @include grid-row();
     margin-bottom: convert-to-rem(40px);

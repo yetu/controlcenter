@@ -20,7 +20,7 @@ function ccFormInput (locals) {
               <label for='right-label' className='cc-form-item__label-text'>{locals.label}</label>
             </div>
           : null
-        }
+      }
 
       <div className='cc-form-item__input'>
         <input

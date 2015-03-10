@@ -3,7 +3,6 @@
 .cc-user-info {
   .cc-user-info-item {
     @include grid-row();
-
     margin: convert-to-rem(20px) 0;
 
     &__label {

@@ -3,15 +3,15 @@
 .cc-settings {
   padding: 40px;
 
-  .cc-settings__title {
+  &__title {
 
   }
 
-  .cc-settings__section {
+  &__section {
     @include grid-row();
     margin-bottom: convert-to-rem(40px);
 
-    .cc-settings__section-form {
+    &-form {
       @include grid-column(20);
       padding-right: convert-to-rem(11px);
 
@@ -20,7 +20,7 @@
       }
     }
 
-    .cc-settings__section-avatar {
+    &-avatar {
       @include grid-column(20);
 
       @media #{$medium-up} {
@@ -28,7 +28,7 @@
       }
     }
 
-    .cc-settings__section-info {
+    &-info {
       @include grid-column(20);
 
       @media #{$medium-up} {
@@ -37,12 +37,12 @@
     }
   }
 
-  .cc-settings__divider {
+  &__divider {
     width: 100%;
     border: 1px $passive-gray solid;
   }
 
-  .cc-settings__save {
+  &__save {
     @include button();
   }
 }

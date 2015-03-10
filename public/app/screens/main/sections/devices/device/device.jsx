@@ -1,11 +1,11 @@
-var React = require( 'react' );
-var Link = require( 'react-router' ).Link;
-var styleMixin = require( 'mixins/style-mixin' );
-var SwitchControl = require( './controls/switch' );
-var SliderControl = require( './controls/slider' );
+var React = require('react');
+var Link = require('react-router').Link;
+var styleMixin = require('mixins/style-mixin');
+var SwitchControl = require('./controls/switch');
+var SliderControl = require('./controls/slider');
 
-var Device = React.createClass( {
-  mixins: [styleMixin( require( './style.scss' ) )],
+var Device = React.createClass({
+  mixins: [styleMixin(require('./style.scss'))],
 
   render: function render () {
     return (
@@ -22,7 +22,7 @@ var Device = React.createClass( {
   },
 
   onTitleClick: function onTitleClick () {
-    this.props.onDeviceClick( this.props.device, this.props.room );
+    this.props.onDeviceClick(this.props.device, this.props.room);
   },
 
   control: function control () {
@@ -35,7 +35,7 @@ var Device = React.createClass( {
         ctrl = SliderControl;
         break;
     }
-    return ctrl ? React.createElement( ctrl, {device: this.props.device} ) : (<div>Unknown type</div>);
+    return ctrl ? React.createElement(ctrl, {device: this.props.device}) : (<div>Unknown type</div>);
   },
 
   stateImageClass: function stateImageClass () {
@@ -54,6 +54,6 @@ var Device = React.createClass( {
       return 'Disconnected';
     }
   }
-} );
+});
 
 module.exports = Device;

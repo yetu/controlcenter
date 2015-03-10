@@ -1,6 +1,6 @@
-var Reflux = require( 'reflux' );
+var Reflux = require('reflux');
 
-var roomActions = require( 'actions/room' );
+var roomActions = require('actions/room');
 
 var _rooms = [
   {
@@ -22,7 +22,7 @@ var _rooms = [
   }
 ];
 
-var roomStore = Reflux.createStore( {
+var roomStore = Reflux.createStore({
   listenables: [roomActions],
 
   getRooms: function getRooms () {
@@ -30,22 +30,22 @@ var roomStore = Reflux.createStore( {
     return _rooms.slice();
   },
 
-  getDevice: function getDevice ( id ) {
-    var filteredDevices = _rooms.reduce( function concatDevices ( devices, room ) {
-      return devices.concat( room.devices );
-    }, [] ).filter( function isDevice ( device ) {
+  getDevice: function getDevice (id) {
+    var filteredDevices = _rooms.reduce(function concatDevices (devices, room) {
+      return devices.concat(room.devices);
+    }, []).filter(function isDevice (device) {
       return device.id === id;
-    } );
+    });
     return filteredDevices[0];
   },
 
-  getRoomFromDevice: function getRoomFromDevice ( device ) {
-    var filteredRooms = _rooms.filter( function filterRooms ( r ) {
-      var devices = r.devices.filter( function isDevice ( d ) {
+  getRoomFromDevice: function getRoomFromDevice (device) {
+    var filteredRooms = _rooms.filter(function filterRooms (r) {
+      var devices = r.devices.filter(function isDevice (d) {
         return d.id === device.id;
-      } );
+      });
       return devices.length > 0;
-    } );
+    });
     return filteredRooms[0];
   },
 
@@ -56,14 +56,14 @@ var roomStore = Reflux.createStore( {
       title: 'New room',
       devices: []
     };
-    this.updateRooms( _rooms.concat( room ) );
+    this.updateRooms(_rooms.concat(room));
   },
 
-  updateRooms: function updateRooms ( rooms ) {
+  updateRooms: function updateRooms (rooms) {
     _rooms = rooms;
     // Trigger rooms update to all listening controller views
-    this.trigger( rooms );
+    this.trigger(rooms);
   }
-} );
+});
 
 module.exports = roomStore;

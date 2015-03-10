@@ -51,11 +51,17 @@
     display: block;
     margin-bottom: 10px;
   }
-  select {
-    width: auto;
-    font-family: source_sans_prolight, 'Helvetica Neue', Arial;
-    font-size: 16px;
-    background: $hint-gray;
+  &__properties{
+    select {
+      width: 50%;
+      font-family: source_sans_prolight, 'Helvetica Neue', Arial;
+      font-size: 16px;
+      background: $hint-gray;
+    }
+    input {
+      width: 50%;
+      font-size: 16px;
+    }
   }
   &__save-button {
     @include button($button-tny);

@@ -19,7 +19,7 @@ var DeviceDetail = React.createClass({
     };
   },
 
-  createRoomDropDown: function createRoomDropDown () {
+  getRoomDropDown: function createRoomDropDown () {
 
     var rooms = this.state.rooms.map(function mapper (room, i) {
       return (
@@ -30,10 +30,10 @@ var DeviceDetail = React.createClass({
 
   },
 
-  roomChange: function roomChange (e) {
+  onRoomChange: function roomChange (e) {
     this.setState({selectedRoom: e.target.value});
   },
-  descriptionChange: function descriptionChange (e) {
+  onDescriptionChange: function descriptionChange (e) {
     var device = this.state.device;
     device.description = e.target.value;
     this.setState({device: device});
@@ -67,10 +67,10 @@ var DeviceDetail = React.createClass({
           </div>
           <div className="cc-device-detail__values">
             <input type="text" id="cc-device-detail__desc" className="cc-device-detail__value"
-              value={this.state.device.description} onChange={this.descriptionChange}></input>
+              value={this.state.device.description} onChange={this.onDescriptionChange}></input>
             <select id="cc-device-detail__room" className="cc-device-detail__value"
-              defaultValue={this.state.selectedRoom.title} onChange={this.roomChange}>
-              {this.createRoomDropDown()}
+              defaultValue={this.state.selectedRoom.title} onChange={this.onRoomChange}>
+              {this.getRoomDropDown()}
             </select>
           </div>
         </div>

@@ -7,14 +7,14 @@ var Room = React.createClass({
   render: function render () {
     var devices = this.props.room.devices.map(function mapper (device, i) {
       return (
-        <Device device={device} key={i} room={this.props.room.title} onDeviceClick={this.props.onDeviceClick} />
+        <Device device={device} key={i}/>
       );
     }.bind(this));
 
     return (
       <div>
         <h2>{this.props.room.title}</h2>
-                {devices}
+        {devices}
       </div>
     );
   }

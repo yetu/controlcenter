@@ -1,22 +1,29 @@
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 var roomStore = require('stores/room');
 
 var DeviceDetail = React.createClass({
-  mixins: [styleMixin(require('./style.scss'))],
+  mixins: [
+    styleMixin(require('./style.scss')),
+    Router.State ],
+
 
   getInitialState: function getInitialState () {
+    var device = roomStore.getDevice(this.getParams().deviceId)
     return {
+      device: device ,
       rooms: roomStore.getRooms(),
-      selectedRoom: this.props.room,
-      description: this.props.device.description
+      selectedRoom: roomStore.getRoomFromDevice(device)
     };
   },
 
   createRoomDropDown: function createRoomDropDown(){
+
     var rooms = this.state.rooms.map(function mapper (room, i) {
       return (
-        <option key={i} value={room.title}>{room.title}</option>
+        <option key={i} value={room.id}>{room.title}</option>
       );
     });
     return rooms;
@@ -27,7 +34,9 @@ var DeviceDetail = React.createClass({
     this.setState({selectedRoom: e.target.value});
   },
   descriptionChange: function descriptionChange(e){
-    this.setState({description: e.target.value});
+    var device = this.state.device;
+    device.description = e.target.value;
+    this.setState({device: device});
   },
 
   saveChanges: function saveChanges(){
@@ -40,8 +49,8 @@ var DeviceDetail = React.createClass({
     return (
       <div className="cc-device-detail">
         <div className="cc-device-detail__headers cc-device-detail__row">
-          <a className="cc-device-detail__close-button" onClick={this.props.onCloseClick}></a>
-          <h2 className="cc-device-detail__title">{this.props.device.title}</h2>
+          <Link className="cc-device-detail__close-button" to="devices"></Link>
+          <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
         </div>
         <div className="cc-device-detail__controls cc-device-detail__row">
           <div className="cc-device-detail__labels">
@@ -58,9 +67,9 @@ var DeviceDetail = React.createClass({
           </div>
           <div className="cc-device-detail__values">
             <input type="text" id="cc-device-detail__desc" className="cc-device-detail__value"
-              value={this.state.description} onChange={this.descriptionChange}></input>
+              value={this.state.device.description} onChange={this.descriptionChange}></input>
             <select id="cc-device-detail__room" className="cc-device-detail__value"
-              defaultValue={this.state.selectedRoom} onChange={this.roomChange}>
+              defaultValue={this.state.selectedRoom.title} onChange={this.roomChange}>
               {this.createRoomDropDown()}
             </select>
           </div>
@@ -75,8 +84,8 @@ var DeviceDetail = React.createClass({
             <label htmlFor="cc-device-detail_id" className="cc-device-detail__lbl">ID</label>
           </div>
           <div className="cc-device-detail__values">
-            <div id="cc-device-detail__type" className="cc-device-detail__value">{this.props.device.type}</div>
-            <div id="cc-device-detail__id" className="cc-device-detail__value">{this.props.device.id}</div>
+            <div id="cc-device-detail__type" className="cc-device-detail__value">{this.state.device.type}</div>
+            <div id="cc-device-detail__id" className="cc-device-detail__value">{this.state.device.id}</div>
           </div>
         </div>
         <div className="cc-device-detail__buttons cc-device-detail__row">

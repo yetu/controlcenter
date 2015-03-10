@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router').Link;
 var styleMixin = require('mixins/style-mixin');
 var SwitchControl = require('./controls/switch');
 var SliderControl = require('./controls/slider');
@@ -9,7 +10,7 @@ var Device = React.createClass({
   render: function render () {
     return (
       <div className="cc-device">
-        <a className="cc-device__title" onClick={this.onTitleClick}>{this.props.device.title}</a>
+        <Link className="cc-device__title" to="device" params={{deviceId: this.props.device.id}}>{this.props.device.title}</Link>
         <div className="cc-device__type">{this.props.device.type}</div>
         <div className="cc-device__control">{this.control()}</div>
         <div className={'cc-device__state-image ' + this.stateImageClass()}/>

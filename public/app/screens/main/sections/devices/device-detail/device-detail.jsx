@@ -1,48 +1,48 @@
-var React = require('react');
-var Router = require('react-router');
+var React = require( 'react' );
+var Router = require( 'react-router' );
 var Link = Router.Link;
-var styleMixin = require('mixins/style-mixin');
-var roomStore = require('stores/room');
+var styleMixin = require( 'mixins/style-mixin' );
+var roomStore = require( 'stores/room' );
 
-var DeviceDetail = React.createClass({
+var DeviceDetail = React.createClass( {
   mixins: [
-    styleMixin(require('./style.scss')),
-    Router.State ],
+    styleMixin( require( './style.scss' ) ),
+    Router.State],
 
 
   getInitialState: function getInitialState () {
-    var device = roomStore.getDevice(this.getParams().deviceId)
+    var device = roomStore.getDevice( this.getParams().deviceId );
     return {
-      device: device ,
+      device: device,
       rooms: roomStore.getRooms(),
-      selectedRoom: roomStore.getRoomFromDevice(device)
+      selectedRoom: roomStore.getRoomFromDevice( device )
     };
   },
 
-  createRoomDropDown: function createRoomDropDown(){
+  createRoomDropDown: function createRoomDropDown () {
 
-    var rooms = this.state.rooms.map(function mapper (room, i) {
+    var rooms = this.state.rooms.map( function mapper ( room, i ) {
       return (
         <option key={i} value={room.id}>{room.title}</option>
       );
-    });
+    } );
     return rooms;
 
   },
 
-  roomChange: function roomChange(e){
-    this.setState({selectedRoom: e.target.value});
+  roomChange: function roomChange ( e ) {
+    this.setState( {selectedRoom: e.target.value} );
   },
-  descriptionChange: function descriptionChange(e){
+  descriptionChange: function descriptionChange ( e ) {
     var device = this.state.device;
     device.description = e.target.value;
-    this.setState({device: device});
+    this.setState( {device: device} );
   },
 
-  saveChanges: function saveChanges(){
-    console.log('Room:',this.state.selectedRoom);
-    console.log('Description:',this.state.description);
-    //TODO: implement saving changes
+  saveChanges: function saveChanges () {
+    console.log( 'Room:', this.state.selectedRoom );
+    console.log( 'Description:', this.state.description );
+    // TODO: implement saving changes
   },
 
   render: function render () {

@@ -9,7 +9,7 @@ var Room = React.createClass({
       return (
         <Device device={device} key={i}/>
       );
-    }.bind(this));
+    });
 
     return (
       <div>

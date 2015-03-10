@@ -6,19 +6,19 @@
 
     margin: convert-to-rem(20px) 0;
 
-    &__label-container {
+    &__label {
       @include grid-column($columns: 10, $float: left);
 
-      .cc-user-info-item__label {
-          text-align: left;
-          @include cc-label();
+      &-text {
+        @include cc-label();
+        text-align: left;
       }
     }
 
-    &__value-container {
+    &__value {
       @include grid-column($columns: 10);
 
-      .cc-user-info-item__value {
+      &-text {
         @include cc-label(16px);
       }
     }

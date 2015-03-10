@@ -9,8 +9,8 @@
   .cc-user-avatar__image-content {
     @include grid-column(10);
     .cc-user-avatar__image{
-      width: convert-to-rem(85px);
-      height: convert-to-rem(85px);
+      width: 75px;
+      height: 75px;
     }
   }
 

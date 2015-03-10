@@ -1,7 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var styleMixin = require('mixins/style-mixin');
-var t = require('tcomb-form');
+var tForms = require('tcomb-form');
 
 var CCForm = require('common/components/cc-form');
 
@@ -9,9 +9,9 @@ var userDataStore = require('stores/user-data');
 var userDataActions = require('actions/user-data');
 
 
-var ControlCenterUser = t.struct({
-  firstName: t.Str,
-  lastName: t.Str
+var ControlCenterUser = tForms.struct({
+  firstName: tForms.Str,
+  lastName: tForms.Str
 });
 
 var UserForm = React.createClass({
@@ -36,7 +36,6 @@ var UserForm = React.createClass({
 
   onValidChange: function onValidChange (value) {
     userDataActions.updateUserData(value);
-    console.log('Valid value', value);
   },
 
   render: function render () {

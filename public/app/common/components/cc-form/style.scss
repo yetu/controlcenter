@@ -3,34 +3,33 @@
 .cc-form {
   @include form-row-base();
 
-  /* fix for generated fieldset from form lib */
   fieldset {
     border: none;
     padding: 0;
     margin: 0;
   }
 
-  .cc-form-item {
+  &-item {
     @include grid-row();
     margin: convert-to-rem(10px) 0 0 0;
 
-    .cc-form-item__label-container {
+    &__label {
       @include grid-column($columns: 10, $float: left);
 
-      .cc-form-item__label {
+      &-text {
         @include prefix-postfix-base();
         @include prefix($bg: false, $is-button: false);
-        border: none;
-        text-align: left;
         @include cc-label();
 
-
+        border: none;
+        text-align: left;
       }
     }
-    .cc-form-item__input-container {
+
+    &__input {
       @include grid-column($columns: 10);
 
-      .cc-form-item__input {
+      &-text {
         @include form-element();
         background: $light-gray;
         height: convert-to-rem(35px);

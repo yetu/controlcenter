@@ -20,7 +20,6 @@ var UserInfo = React.createClass({
 
   onUserDataChanged: function onUserDataChanged (userData) {
     if (userData.model) {
-
       this.setState({
         model: userData.model
       });
@@ -36,33 +35,32 @@ var UserInfo = React.createClass({
     return (
       <div className='cc-user-info'>
         <div className='cc-user-info-item'>
-          <div className='cc-user-info-item__label-container'>
-            <span className='cc-user-info-item__label'>
+          <div className='cc-user-info-item__label'>
+            <span className='cc-user-info-item__label-text'>
               Password
             </span>
           </div>
 
-          <div className='cc-user-info-item__value-container'>
-            <span className='cc-user-info-item__value'>
+          <div className='cc-user-info-item__value'>
+            <span className='cc-user-info-item__value-text'>
               .............
             </span>
           </div>
         </div>
 
         <div className='cc-user-info-item'>
-          <div className='cc-user-info-item__label-container'>
-            <span className='cc-user-info-item__label'>
+          <div className='cc-user-info-item__label'>
+            <span className='cc-user-info-item__label-text'>
               Email
             </span>
           </div>
 
-          <div className='cc-user-info-item__value-container'>
-            <span className='cc-user-info-item__value'>
+          <div className='cc-user-info-item__value'>
+            <span className='cc-user-info-item__value-text'>
               {this.state.model.email}
             </span>
           </div>
         </div>
-
       </div>
     );
   }

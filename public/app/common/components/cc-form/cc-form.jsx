@@ -1,11 +1,11 @@
 var React = require('react');
 var styleMixin = require('mixins/style-mixin');
-var t = require('tcomb-form');
-var Form = t.form.Form;
+var tForms = require('tcomb-form');
+var Form = tForms.form.Form;
 
 var options = {
   templates: {
-    textbox: require('./ccTextInput.jsx')
+    textbox: require('./cc-text-input.jsx')
   }
 };
 

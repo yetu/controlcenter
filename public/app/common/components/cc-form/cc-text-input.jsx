@@ -1,4 +1,4 @@
-require('react');
+var React = require('react');
 var cx = require('react/lib/cx');
 
 function ccFormInput (locals) {
@@ -8,20 +8,21 @@ function ccFormInput (locals) {
   };
 
   var inputClasses = {
-    'cc-form-item__input': true,
-    'cc-form-item__input--error': locals.error
+    'cc-form-item__input-text': true,
+    'cc-form-item__input-text--error': locals.error
   };
 
   return (
     <div className={cx(formGroupClasses)}>
       {
-        locals.label ?
-          <div className='cc-form-item__label-container'>
-            <label for='right-label' className='cc-form-item__label'>{locals.label}</label>
-          </div> : null
+        locals.label
+          ? <div className='cc-form-item__label'>
+              <label for='right-label' className='cc-form-item__label-text'>{locals.label}</label>
+            </div>
+          : null
         }
 
-      <div className='cc-form-item__input-container'>
+      <div className='cc-form-item__input'>
         <input
           disabled={locals.disabled}
           className={cx(inputClasses)}

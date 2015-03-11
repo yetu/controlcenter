@@ -5,9 +5,21 @@ var React = require('react/addons'),
 var TestUtils = React.addons.TestUtils;
 var userDataStore = require('../user-store');
 
-describe('UserData Store', function test () {
-  describe('init', function test () {
-    it('init userData', function test () {
+describe('UserData Store', function () {
+
+  var xhr, server;
+  beforeEach(function () {
+    xhr = sinon.useFakeXMLHttpRequest();
+    server = sinon.fakeServer.create();
+  });
+
+  afterEach(function () {
+    xhr.restore();
+    server.restore();
+  });
+
+  describe('init', function () {
+    it('init userData', function () {
       userDataStore.init();
       TestUtils.isElementOfType();
       expect(userDataStore.userData).toBeDefined();
@@ -20,48 +32,86 @@ describe('UserData Store', function test () {
     });
   });
 
-  describe('onSaveUserData', function test () {
-    xit('store is subscribed to saveUserData action', function () {
-      spyOn(userDataStore, 'onSaveUserData');
+  describe('onSaveUserData', function () {
+
+    it('handles request errors and updates error', function () {
+      var status = 401;
+      server.respondWith('GET', '/profile', [
+        status,
+        {'Content-Type': 'application/json'}, ''
+      ]);
+
       userDataActions.saveUserData.trigger();
-      setTimeout(function () {
-        expect(userDataStore.onSaveUserData).toHaveBeenCalled();
-      }, 0);
+      server.respond();
+
+      expect(userDataStore.userData.error.status).toEqual(status);
+    });
+
+    it('handles successful response and updates model', function () {
+      var content = {message: 'testMessage'};
+      server.respondWith('GET', '/profile', [
+        200, {'Content-Type': 'application/json'}, JSON.stringify(content)
+      ]);
+
+      userDataActions.saveUserData.trigger();
+      server.respond();
+
+      expect(userDataStore.userData.model).toEqual(content);
     });
   });
 
-  describe('onFetchUserData', function test () {
-    xit('store is subscribed to fetchUserData action', function () {
-      spyOn(userDataStore, 'onFetchUserData');
+  describe('onFetchUserData', function () {
+
+    it('handles request errors and updates error', function () {
+      var status = 401;
+      server.respondWith('GET', '/profile', [
+        status,
+        {'Content-Type': 'application/json'}, ''
+      ]);
+
       userDataActions.fetchUserData.trigger();
-      setTimeout(function () {
-        expect(userDataStore.onFetchUserData).toHaveBeenCalled();
-      }, 0);
+      server.respond();
+
+      expect(userDataStore.userData.error.status).toEqual(status);
+    });
+
+    it('handles successful response and updates model', function () {
+      var content = {message: 'testMessage'};
+      server.respondWith('GET', '/profile', [
+        200, {'Content-Type': 'application/json'}, JSON.stringify(content)
+      ]);
+
+      userDataActions.fetchUserData.trigger();
+      server.respond();
+
+      expect(userDataStore.userData.model).toEqual(content);
     });
   });
 
-  describe('onUpdateUserData', function test () {
-    xit('store is subscribed to updateUserData action', function () {
-      spyOn(userDataStore, 'onUpdateUserData');
-      userDataActions.updateUserData.trigger();
-      setTimeout(function () {
-        expect(userDataStore.onUpdateUserData).toHaveBeenCalled();
-      }, 0);
+
+  describe('onUpdateUserData', function () {
+    it('calls userModel with arguments received from action', function () {
+      var content = {test: 'stubdata'};
+      var spyUpdateModel = sinon.spy(userDataStore, 'updateModel');
+      userDataActions.updateUserData.trigger(content);
+      expect(spyUpdateModel.called).toBe(true);
     });
+  });
 
-    xit('store is receives data from updateUserData action', function () {
-      var testData = {
-        a: 1,
-        b: 'testValue'
-      };
-
-      userDataActions.updateUserData.trigger(testData);
-      spyOn(userDataStore, 'onUpdateUserData');
-      setTimeout(function () {
-        expect(userDataStore.onUpdateUserData).toHaveBeenCalledWith(testData);
-      }, 0);
+  describe('updateModel', function () {
+    it('updates userData model', function () {
+      var content = {test: 'stubdata'};
+      userDataStore.updateModel(content);
+      expect(userDataStore.userData.model).toEqual(content);
     });
+  });
 
 
+  describe('updateError', function () {
+    it('updates userData error', function () {
+      var error = {errorInfo: 'some error info'};
+      userDataStore.updateError(error);
+      expect(userDataStore.userData.error).toEqual(error);
+    });
   });
 });

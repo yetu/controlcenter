@@ -26,7 +26,8 @@
 
     "globals": {
         "module": true,  // CommonJS module
-        "require": true  // CommonJS require
+        "require": true,  // CommonJS require
+        "sinon" : true // Sinon Js set by karma-sinon
     },
 
     "rules": {

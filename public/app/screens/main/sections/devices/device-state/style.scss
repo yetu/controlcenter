@@ -1,0 +1,21 @@
+@import "theme";
+
+.cc-device-state{
+  &__image {
+    @include grid-column(1);
+    background-repeat: no-repeat;
+    height: 20px;
+
+    &-connected {
+      background-image: url("./img/state-connected.svg");
+    }
+
+    &-disconnected {
+      background-image: url("./img/state-disconnected.svg");
+    }
+  }
+  &__text {
+    @include grid-column(3);
+    font-size: 16px;
+  }
+}

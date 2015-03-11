@@ -49,6 +49,25 @@
     position: relative;
     height: 100%;
   }
+  &__second-column{
+    @include grid-column(10);
+    position: relative;
+    height: 100%;
+  }
+  &__third-column{
+    @include grid-column(3);
+    position: relative;
+    height: 100%;
+    .cc-device-state {
+      margin-top: 35%;
+      &__image {
+        @include grid-column(5);
+      }
+      &__text {
+        @include grid-column(15);
+      }
+    }
+  }
   &__value {
     display: block;
     margin-bottom: 10px;

@@ -3,6 +3,7 @@ var Router = require('react-router');
 var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 var roomStore = require('stores/room');
+var DeviceState = require('./../device-state');
 
 var DeviceDetail = React.createClass({
   mixins: [
@@ -81,9 +82,12 @@ var DeviceDetail = React.createClass({
             <label htmlFor="cc-device-detail_type" className="cc-device-detail__label">Type</label>
             <label htmlFor="cc-device-detail_id" className="cc-device-detail__label">ID</label>
           </div>
-          <div className="cc-device-detail__values">
+          <div className="cc-device-detail__second-column">
             <div id="cc-device-detail__type" className="cc-device-detail__value">{this.state.device.type}</div>
             <div id="cc-device-detail__id" className="cc-device-detail__value">{this.state.device.id}</div>
+          </div>
+          <div className="cc-device-detail__third-column">
+            <DeviceState state={this.state.device.state}/>
           </div>
         </div>
         <div className="cc-device-detail__buttons cc__row">

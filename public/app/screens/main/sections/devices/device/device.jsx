@@ -3,6 +3,7 @@ var Link = require('react-router').Link;
 var styleMixin = require('mixins/style-mixin');
 var SwitchControl = require('./controls/switch');
 var SliderControl = require('./controls/slider');
+var DeviceState = require('./../device-state');
 
 var Device = React.createClass({
   mixins: [styleMixin(require('./style.scss'))],
@@ -15,8 +16,7 @@ var Device = React.createClass({
         </Link>
         <div className="cc-device__type">{this.props.device.type}</div>
         <div className="cc-device__control">{this.getControl()}</div>
-        <div className={'cc-device__state-image ' + this.getStateImageClass()}/>
-        <div className="cc-device__state-text">{this.getConnectedText()}</div>
+        <DeviceState state={this.props.device.state}/>
       </div>
     );
   },
@@ -34,23 +34,6 @@ var Device = React.createClass({
     return control
       ? React.createElement(control, { device: this.props.device })
       : (<div>Unknown type</div>);
-  },
-
-  getStateImageClass: function getStateImageClass () {
-    var name = 'cc-device__state-image-';
-    if (this.props.device.state === 'connected') {
-      return name + 'connected';
-    } else {
-      return name + 'disconnected';
-    }
-  },
-
-  getConnectedText: function getConnectedText () {
-    if (this.props.device.state === 'connected') {
-      return 'Connected';
-    } else {
-      return 'Disconnected';
-    }
   }
 });
 

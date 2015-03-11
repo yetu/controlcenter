@@ -16,7 +16,7 @@ var Device = React.createClass({
         </Link>
         <div className="cc-device__type">{this.props.device.type}</div>
         <div className="cc-device__control">{this.getControl()}</div>
-        <DeviceState state={this.props.device.state}/>
+        <DeviceState device={this.props.device}/>
       </div>
     );
   },

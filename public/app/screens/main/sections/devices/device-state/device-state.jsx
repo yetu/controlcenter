@@ -21,7 +21,7 @@ var DeviceState = React.createClass({
 
   getStateImageClass: function getStateImageClass () {
     var name = 'cc-device-state__image-';
-    if (this.props.state === stateEnum.CONNECTED) {
+    if (this.props.device.state === stateEnum.CONNECTED) {
       return name + stateEnum.CONNECTED;
     } else {
       return name + stateEnum.DISCONNECTED;
@@ -29,7 +29,7 @@ var DeviceState = React.createClass({
   },
 
   getConnectedText: function getConnectedText () {
-    if (this.props.state === stateEnum.CONNECTED) {
+    if (this.props.device.state === stateEnum.CONNECTED) {
       return 'Connected';
     } else {
       return 'Disconnected';

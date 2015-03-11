@@ -32,6 +32,7 @@ var DeviceDetail = React.createClass({
   onRoomChange: function onRoomChange (e) {
     this.setState({selectedRoom: e.target.value});
   },
+
   onDescriptionChange: function onDescriptionChange (e) {
     var device = this.state.device;
     device.description = e.target.value;
@@ -87,7 +88,7 @@ var DeviceDetail = React.createClass({
             <div id="cc-device-detail__id" className="cc-device-detail__value">{this.state.device.id}</div>
           </div>
           <div className="cc-device-detail__third-column">
-            <DeviceState state={this.state.device.state}/>
+            <DeviceState device={this.state.device}/>
           </div>
         </div>
         <div className="cc-device-detail__buttons cc__row">

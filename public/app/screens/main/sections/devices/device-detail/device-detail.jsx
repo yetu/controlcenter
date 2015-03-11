@@ -19,27 +19,25 @@ var DeviceDetail = React.createClass({
     };
   },
 
-  getRoomDropDown: function createRoomDropDown () {
-
+  getRoomDropDown: function getRoomDropDown () {
     var rooms = this.state.rooms.map(function mapper (room, i) {
       return (
         <option key={i} value={room.id}>{room.title}</option>
       );
     });
     return rooms;
-
   },
 
-  onRoomChange: function roomChange (e) {
+  onRoomChange: function onRoomChange (e) {
     this.setState({selectedRoom: e.target.value});
   },
-  onDescriptionChange: function descriptionChange (e) {
+  onDescriptionChange: function onDescriptionChange (e) {
     var device = this.state.device;
     device.description = e.target.value;
     this.setState({device: device});
   },
 
-  saveChanges: function saveChanges () {
+  onSave: function onSave () {
     console.log('Room:', this.state.selectedRoom);
     console.log('Description:', this.state.device.description);
     // TODO: implement saving changes
@@ -54,7 +52,7 @@ var DeviceDetail = React.createClass({
         </div>
         <div className="cc-device-detail__controls cc__row">
           <div className="cc-device-detail__labels">
-            <label className="cc-device-detail__lbl">Controls</label>
+            <label className="cc-device-detail__label">Controls</label>
           </div>
           <div className="cc-device-detail__values">
             TODO: Here the controls have to placed!
@@ -62,8 +60,8 @@ var DeviceDetail = React.createClass({
         </div>
         <div className="cc-device-detail__properties cc__row">
           <div className="cc-device-detail__labels">
-            <label htmlFor="cc-device-detail_desc" className="cc-device-detail__lbl">Description</label>
-            <label htmlFor="cc-device-detail_room" className="cc-device-detail__lbl">Room</label>
+            <label htmlFor="cc-device-detail_desc" className="cc-device-detail__label">Description</label>
+            <label htmlFor="cc-device-detail_room" className="cc-device-detail__label">Room</label>
           </div>
           <div className="cc-device-detail__values">
             <input type="text" id="cc-device-detail__desc" className="cc-device-detail__value"
@@ -80,8 +78,8 @@ var DeviceDetail = React.createClass({
         <div className="cc-device-detail__details cc__row">
           <h2>Device Details</h2>
           <div className="cc-device-detail__labels">
-            <label htmlFor="cc-device-detail_type" className="cc-device-detail__lbl">Type</label>
-            <label htmlFor="cc-device-detail_id" className="cc-device-detail__lbl">ID</label>
+            <label htmlFor="cc-device-detail_type" className="cc-device-detail__label">Type</label>
+            <label htmlFor="cc-device-detail_id" className="cc-device-detail__label">ID</label>
           </div>
           <div className="cc-device-detail__values">
             <div id="cc-device-detail__type" className="cc-device-detail__value">{this.state.device.type}</div>
@@ -89,10 +87,10 @@ var DeviceDetail = React.createClass({
           </div>
         </div>
         <div className="cc-device-detail__buttons cc__row">
-          <div className="cc-device-detail__left-btn">
-            <a className="cc-device-detail__save-button" onClick={this.saveChanges}>Save changes</a>
+          <div className="cc-device-detail__left-button">
+            <a className="cc-device-detail__save-button" onClick={this.onSave}>Save changes</a>
           </div>
-          <div className="cc-device-detail__right-btn">
+          <div className="cc-device-detail__right-button">
             <a className="cc-device-detail__delete-button">Delete device</a>
           </div>
         </div>

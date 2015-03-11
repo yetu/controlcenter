@@ -34,17 +34,17 @@
     width: 15px;
     height: 15px;
   }
-  &__labels, &__left-btn {
+  &__labels, &__left-button {
     @include grid-column(5);
     position: relative;
     height: 100%;
   }
 
-  &__lbl {
+  &__label {
     display: block;
     margin-bottom: 10px;
   }
-  &__values, &__right-btn {
+  &__values, &__right-button {
     @include grid-column(13);
     position: relative;
     height: 100%;

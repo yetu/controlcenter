@@ -20,7 +20,6 @@ var SettingsPage = React.createClass({
   render: function render () {
     return (
       <div className='cc-settings'>
-        <h2 className='cc-settings__title'>My settings</h2>
         <div className='cc-settings__section'>
           <div className='cc-settings__section-form'>
             <UserForm />

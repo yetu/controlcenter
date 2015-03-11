@@ -1,8 +1,14 @@
 var React = require('react');
 var Link = require('react-router').Link;
 var styleMixin = require('mixins/style-mixin');
+var stateEnum = {
+  CONNECTED: 'connected',
+  DISCONNECTED: 'disconnected'
+};
+
 var DeviceState = React.createClass({
   mixins: [styleMixin(require('./style.scss'))],
+
 
   render: function render () {
     return (
@@ -15,15 +21,15 @@ var DeviceState = React.createClass({
 
   getStateImageClass: function getStateImageClass () {
     var name = 'cc-device-state__image-';
-    if (this.props.state === 'connected') {
-      return name + 'connected';
+    if (this.props.state === stateEnum.CONNECTED) {
+      return name + stateEnum.CONNECTED;
     } else {
-      return name + 'disconnected';
+      return name + stateEnum.DISCONNECTED;
     }
   },
 
   getConnectedText: function getConnectedText () {
-    if (this.props.state === 'connected') {
+    if (this.props.state === stateEnum.CONNECTED) {
       return 'Connected';
     } else {
       return 'Disconnected';

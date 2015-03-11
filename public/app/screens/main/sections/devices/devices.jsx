@@ -1,6 +1,5 @@
 var React = require('react');
 var Reflux = require('reflux');
-var DeviceFinder = require('./device-finder');
 var Room = require('./room');
 
 var roomStore = require('stores/room');
@@ -28,7 +27,7 @@ var DeviceRegion = React.createClass({
     return (
       <div className='cc-devices'>
         <h2 className='cc-devices__title'>My devices</h2>
-        <DeviceFinder />
+        <a className='cc-devices__button' href='#'>+ Add device</a>
         {rooms}
         <a className='cc-devices__button' href='#' onClick={this.handleAddRoom}>+ Add room</a>
       </div>

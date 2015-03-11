@@ -1,0 +1,22 @@
+@import "theme";
+
+.cc-device-state{
+  &__image {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    float: left;
+    margin-right: 5px;
+
+    &-connected {
+      background-image: url("./img/state-connected.svg");
+    }
+
+    &-disconnected {
+      background-image: url("./img/state-disconnected.svg");
+    }
+  }
+  &__text {
+    font-size: convert-to-rem(16px);
+  }
+}

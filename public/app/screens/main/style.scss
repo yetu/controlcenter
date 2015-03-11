@@ -20,12 +20,14 @@
     }
 
     &-content {
-      @include grid-column(20);
-      @media #{$medium-up} {
-        @include grid-column(14);
-      }
-      background-color: $shade-gray;
+      @include grid-column(14);
       height: 100%;
+      padding: 50px;
+      background-color: $shade-gray;
+      @media #{$small-only} {
+        @include grid-column(20);
+        padding: 50px;
+      }
     }
   }
 }

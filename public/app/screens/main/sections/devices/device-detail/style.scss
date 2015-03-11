@@ -1,7 +1,5 @@
 @import "theme";
 
-
-
 .cc-device-detail {
   position: relative;
 
@@ -11,12 +9,15 @@
     // TODO: define right font color here
     color: $active-gray;
     padding: 10px 5% 0 5%;
+
     &:nth-child(even) {
       background: $shade-row-even;
     }
+
     &:nth-child(odd) {
       background: $shade-row-odd;
     }
+
     &:last-child{
       background: none;
       padding-bottom: 10px;
@@ -26,8 +27,9 @@
   &__title{
     margin: 15px 0 20px 0;
   }
+
   &__close-button{
-    position:absolute;
+    position: absolute;
     top: 10px;
     right: 10px;
     background-image: url("./img/close.svg");
@@ -36,64 +38,68 @@
     width: 15px;
     height: 15px;
   }
-  &__labels, &__left-button {
-    @include grid-column(5);
-    position: relative;
-    height: 100%;
+
+  &__controls{
+    padding-bottom: 10px;
+    &-label{
+      @include grid-column(5);
+    }
+
+    &-values{
+      @include grid-column(13);
+    }
   }
 
-  &__label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  &__values, &__right-button {
-    @include grid-column(13);
-    position: relative;
-    height: 100%;
-  }
-  &__second-column{
-    @include grid-column(10);
-    position: relative;
-    height: 100%;
-  }
-  &__third-column{
-    @include grid-column(3);
-    position: relative;
-    height: 100%;
-    .cc-device-state {
-      margin-top: 35%;
-      &__image {
-        @include grid-column(5);
+  &__properties-row,
+  &__access-rights-row,
+  &__details-row{
+    @include grid-row();
+    padding-bottom: 10px;
+    &-label{
+      @include grid-column(5);
+    }
+
+    &-value{
+      @include grid-column(7);
+      font-size: convert-to-rem(16px);
+
+      &-room{
+        width: 100%;
+        font-family: source_sans_prolight, 'Helvetica Neue', Arial;
+        background: $hint-gray;
       }
-      &__text {
-        @include grid-column(15);
+
+      &-description{
+        width: 100%;
       }
     }
   }
-  &__value {
-    display: block;
-    margin-bottom: 10px;
-  }
-  &__properties{
-    select {
-      width: 50%;
-      font-family: source_sans_prolight, 'Helvetica Neue', Arial;
-      font-size: 16px;
-      background: $hint-gray;
-    }
-    input {
-      width: 50%;
-      font-size: 16px;
+
+  &__details{
+    position: relative;
+
+    &-device-state{
+      position: absolute;
+      bottom: 10px;
+      right: 5%;
     }
   }
-  &__save-button {
-    @include button($button-tny);
-    margin-top: 10px;
+
+  &__save {
+    @include grid-column(5);
+    position: relative;
+
+    &-button {
+      @include button($button-tny);
+    }
   }
-  &__delete-button {
-    text-transform: uppercase;
-    margin-top: 5px;
-    display: block;
-    line-height: 32px;
+
+  &__delete {
+    @include grid-column(5);
+    position: relative;
+
+    &-button {
+      text-transform: uppercase;
+    }
   }
 }

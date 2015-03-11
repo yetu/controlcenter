@@ -53,49 +53,67 @@ var DeviceDetail = React.createClass({
           <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
         </div>
         <div className="cc-device-detail__controls">
-          <div className="cc-device-detail__labels">
-            <label className="cc-device-detail__label">Controls</label>
+          <div className="cc-device-detail__controls-label">
+            Controls
           </div>
-          <div className="cc-device-detail__values">
+          <div className="cc-device-detail__controls-values">
             TODO: Here the controls have to placed!
           </div>
         </div>
         <div className="cc-device-detail__properties">
-          <div className="cc-device-detail__labels">
-            <label htmlFor="cc-device-detail_desc" className="cc-device-detail__label">Description</label>
-            <label htmlFor="cc-device-detail_room" className="cc-device-detail__label">Room</label>
-          </div>
-          <div className="cc-device-detail__values">
-            <input type="text" id="cc-device-detail__desc" className="cc-device-detail__value"
+          <div className="cc-device-detail__properties-row">
+            <div className="cc-device-detail__properties-row-label">
+              <label htmlFor="cc-device-detail_desc">Description</label>
+            </div>
+            <div className="cc-device-detail__properties-row-value">
+              <input type="text" id="cc-device-detail__desc" className="cc-device-detail__properties-row-value-description"
               value={this.state.device.description} onChange={this.onDescriptionChange}></input>
-            <select id="cc-device-detail__room" className="cc-device-detail__value"
-              defaultValue={this.state.selectedRoom.title} onChange={this.onRoomChange}>
-              {this.getRoomSelectOptions()}
-            </select>
+            </div>
+          </div>
+          <div className="cc-device-detail__properties-row">
+            <div className="cc-device-detail__properties-row-label">
+              <label htmlFor="cc-device-detail_room">Room</label>
+            </div>
+            <div className="cc-device-detail__properties-row-value">
+              <select id="cc-device-detail__room" className="cc-device-detail__properties-row-value-room"
+                defaultValue={this.state.selectedRoom.title} onChange={this.onRoomChange}>
+                {this.getRoomSelectOptions()}
+              </select>
+            </div>
           </div>
         </div>
-        <div className="cc-device-detail__accessrights">
+        <div className="cc-device-detail__access-rights">
           <h2>Access rights</h2>
+          <div className="cc-device-detail__access-rights-row">
+          </div>
         </div>
         <div className="cc-device-detail__details">
           <h2>Device Details</h2>
-          <div className="cc-device-detail__labels">
-            <label htmlFor="cc-device-detail_type" className="cc-device-detail__label">Type</label>
-            <label htmlFor="cc-device-detail_id" className="cc-device-detail__label">ID</label>
+          <div className="cc-device-detail__details-row">
+            <div className="cc-device-detail__properties-row-label">
+              <label htmlFor="cc-device-detail_type">Type</label>
+            </div>
+            <div className="cc-device-detail__properties-row-value">
+              <span id="cc-device-detail__type">{this.state.device.type}</span>
+            </div>
           </div>
-          <div className="cc-device-detail__second-column">
-            <div id="cc-device-detail__type" className="cc-device-detail__value">{this.state.device.type}</div>
-            <div id="cc-device-detail__id" className="cc-device-detail__value">{this.state.device.id}</div>
+          <div className="cc-device-detail__details-row">
+            <div className="cc-device-detail__properties-row-label">
+              <label htmlFor="cc-device-detail_id">ID</label>
+            </div>
+            <div className="cc-device-detail__properties-row-value">
+              <span id="cc-device-detail__id">{this.state.device.id}</span>
+            </div>
           </div>
-          <div className="cc-device-detail__third-column">
+          <div className="cc-device-detail__details-device-state">
             <DeviceState device={this.state.device}/>
           </div>
         </div>
         <div className="cc-device-detail__buttons">
-          <div className="cc-device-detail__left-button">
+          <div className="cc-device-detail__save">
             <a className="cc-device-detail__save-button" onClick={this.onSave}>Save changes</a>
           </div>
-          <div className="cc-device-detail__right-button">
+          <div className="cc-device-detail__delete">
             <a className="cc-device-detail__delete-button">Delete device</a>
           </div>
         </div>

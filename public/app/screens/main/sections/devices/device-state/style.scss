@@ -2,9 +2,11 @@
 
 .cc-device-state{
   &__image {
-    @include grid-column(1);
-    background-repeat: no-repeat;
+    width: 20px;
     height: 20px;
+    background-repeat: no-repeat;
+    float: left;
+    margin-right: 5px;
 
     &-connected {
       background-image: url("./img/state-connected.svg");
@@ -15,7 +17,6 @@
     }
   }
   &__text {
-    @include grid-column(3);
-    font-size: 16px;
+    font-size: convert-to-rem(16px);
   }
 }

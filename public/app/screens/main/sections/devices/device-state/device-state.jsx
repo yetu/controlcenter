@@ -14,7 +14,7 @@ var DeviceState = React.createClass({
     return (
         <div className="cc-device-state">
           <div className={'cc-device-state__image ' + this.getStateImageClass()}/>
-          <div className="cc-device-state__text">{this.getConnectedText()}</div>
+          <span className="cc-device-state__text">{this.getConnectedText()}</span>
         </div>
     );
   },

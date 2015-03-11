@@ -16,4 +16,8 @@
   &__control {
     @include grid-column(4);
   }
+  &__state{
+    @include grid-column(4);
+  }
+
 }

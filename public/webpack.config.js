@@ -25,7 +25,8 @@ module.exports = {
       'screens': path.join(__dirname, 'app/screens'),
       'stores': path.join(__dirname, 'app/stores'),
       'common': path.join(__dirname, 'app/common'),
-      'mixins': path.join(__dirname, 'app/common/mixins')
+      'mixins': path.join(__dirname, 'app/common/mixins'),
+      'test': path.join(__dirname, 'app/common/test')
     },
     extensions: [ '', '.js', '.jsx' ]
   },
@@ -60,7 +61,7 @@ module.exports = {
         test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url?limit=10000&minetype=application/font-woff'
       },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file' }
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url' }
     ],
     noParse: []
   },

@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "dependencies": {
     "es5-shim": "^4.1.0",
+    "es6-promise": "^2.0.1",
     "react": "^0.12.2",
     "react-router": "^0.12.4",
-    "reflux": "^0.2.5"
+    "reflux": "^0.2.5",
+    "reqwest": "^1.1.5",
+    "tcomb-form": "^0.4.2"
   },
   "devDependencies": {
     "autoprefixer-loader": "1.1.0",
@@ -49,7 +52,7 @@
     "clean": "rm -rf ./public/app/dist && rm -rf ./public/dist ",
     "bundle": "webpack -p --config ./public/webpack.config.js ",
     "bundle-dev": "webpack -d -w --config ./public/webpack.config.js",
-	"start" : "node public/hot-reload-server.js",
+	  "start" : "node public/hot-reload-server.js",
     "js-files": "find ./public \\( -name '*.js' -o -name '*.jsx' \\) ! -path './node_modules/*' ! -path './public/bower_components/*' ! -path './coverage/*' ! -path './public/dist/*' ! -path '*.spec.js*' ! -path './public/app/project-setup/test/*'",
     "test-files": "find ./public -name '*.spec.js*' ! -path './node_modules/*' ! -path './public/bower_components/*' ! -path './coverage/*' ! -path './public/dist/*'",
     "test": "npm run bundle && node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js --single-run",

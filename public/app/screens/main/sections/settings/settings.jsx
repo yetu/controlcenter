@@ -1,44 +1,46 @@
 var React = require('react');
 
+var styleMixin = require('mixins/style-mixin');
+
+var UserForm = require('./user-form');
+var UserAvatar = require('./user-avatar');
+var UserInfo = require('./user-info');
+
+var userDataActions = require('actions/user-data');
+
 var SettingsPage = React.createClass({
+  mixins: [
+    styleMixin(require('./style.scss'))
+  ],
+
+  submitForm: function submitForm () {
+    userDataActions.saveUserData();
+  },
+
   render: function render () {
     return (
-      <div>
-        <h2>My settings</h2>
-        <div className="row">
-          <div className="small-3 column">First name</div>
-          <div className="small-5 column end">
-            <input type="text" />
+      <div className='cc-settings'>
+        <h2 className='cc-settings__title'>My settings</h2>
+        <div className='cc-settings__section'>
+          <div className='cc-settings__section-form'>
+            <UserForm />
+          </div>
+          <div className='cc-settings__section-avatar'>
+            <UserAvatar />
           </div>
         </div>
-        <div className="row">
-          <div className="small-3 column">Last name</div>
-          <div className="small-5 column end">
-            <input type="text" />
+
+        <div className='cc-settings__divider'></div>
+
+        <div className='cc-settings__section'>
+          <div className='cc-settings__section-info'>
+            <UserInfo />
           </div>
         </div>
-        <div className="row">
-          <div className="small-3 column">Password</div>
-          <div className="small-5 column">
-            <input type="password" />
-          </div>
-          <div className="small-3 column end">Edit</div>
-        </div>
-        <div className="row">
-          <div className="small-3 column">Email address</div>
-          <div className="small-5 column end">
-            <input type="text" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="small-3 column">Registration date</div>
-          <div className="small-5 column end">15.09.2014</div>
-        </div>
-        <div className="row">
-          <div className="small-3 column">Image</div>
-          <div className="small-5 column end">Image</div>
-        </div>
-        <a className="button" href="#">Save changes</a>
+
+        <a className='cc-settings__save' href='#' onClick={this.submitForm}>
+          Save changes
+        </a>
       </div>
     );
   }

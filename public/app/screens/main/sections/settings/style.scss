@@ -1,0 +1,44 @@
+@import "theme";
+
+.cc-settings {
+  padding: 40px;
+
+  &__section {
+    @include grid-row();
+    margin-bottom: convert-to-rem(40px);
+
+    &-form {
+      @include grid-column(20);
+      padding-right: convert-to-rem(11px);
+
+      @media #{$medium-up} {
+        @include grid-column(13);
+      }
+    }
+
+    &-avatar {
+      @include grid-column(20);
+
+      @media #{$medium-up} {
+        @include grid-column(7);
+      }
+    }
+
+    &-info {
+      @include grid-column(20);
+
+      @media #{$medium-up} {
+        @include grid-column(13);
+      }
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    border: 1px $passive-gray solid;
+  }
+
+  &__save {
+    @include button();
+  }
+}

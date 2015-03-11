@@ -8,10 +8,6 @@ var React = require('react'),
 var Navigation = React.createClass({
   mixins: [styleMixin(require('./style.scss')), State],
   render: function render () {
-    // TODO: Use mixins instead of CSS classes
-    // TODO: Pass number of elements to mixin instead of specifying class name
-    var classes = 'cc_navigation icon-bar two-up ' + this.props.orientation;
-
     var items = this.props.items.map(function mapper (item, i) {
       var classNames = cx({
         'cc_navigation__link': true,
@@ -26,8 +22,10 @@ var Navigation = React.createClass({
       );
     }.bind(this));
 
+    // TODO: Use "icon-bar" mixin instead of CSS classes
+    // TODO: Pass number of elements to mixin instead of specifying class name
     return (
-      <div className={classes}>
+      <div className={'cc_navigation icon-bar two-up ' + this.props.orientation}>
         {items}
       </div>
     );

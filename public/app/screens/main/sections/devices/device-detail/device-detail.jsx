@@ -63,16 +63,17 @@ var DeviceDetail = React.createClass({
         <div className="cc-device-detail__properties">
           <div className="cc-device-detail__properties-row">
             <div className="cc-device-detail__properties-row-label">
-              <label htmlFor="cc-device-detail_desc">Description</label>
+              <label htmlFor="cc-device-detail__desc">Description</label>
             </div>
             <div className="cc-device-detail__properties-row-value">
-              <input type="text" id="cc-device-detail__desc" className="cc-device-detail__properties-row-value-description"
-              value={this.state.device.description} onChange={this.onDescriptionChange}></input>
+              <input
+                type="text" id="cc-device-detail__desc" className="cc-device-detail__properties-row-value-description"
+                value={this.state.device.description} onChange={this.onDescriptionChange}></input>
             </div>
           </div>
           <div className="cc-device-detail__properties-row">
             <div className="cc-device-detail__properties-row-label">
-              <label htmlFor="cc-device-detail_room">Room</label>
+              <label htmlFor="cc-device-detail__room">Room</label>
             </div>
             <div className="cc-device-detail__properties-row-value">
               <select id="cc-device-detail__room" className="cc-device-detail__properties-row-value-room"

@@ -1,5 +1,4 @@
 var React = require('react');
-var Link = require('react-router').Link;
 var styleMixin = require('mixins/style-mixin');
 var stateEnum = {
   CONNECTED: 'connected',

@@ -22,14 +22,14 @@ var MainScreen = React.createClass({
 
     return (
       <div className='main-screen'>
-        <div className='main-screen__top-row -visible-for-small-only'>
+        <div className='main-screen__top-navigation'>
           {navigation}
         </div>
-        <div className='main-screen__content-row'>
-          <div className='main-screen__sidebar-column -hidden-for-small'>
+        <div className='main-screen__body'>
+          <div className='main-screen__body-side-navigation'>
             {navigation}
           </div>
-          <div className='main-screen__content-column'>
+          <div className='main-screen__body-content'>
             <RouteHandler/>
           </div>
         </div>

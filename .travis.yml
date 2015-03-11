@@ -6,3 +6,7 @@ jdk:
     - oraclejdk7
     - oraclejdk8
     - openjdk7
+before_install:
+    - npm install -g bower webpack
+    - npm install
+script: npm test && sbt ++$TRAVIS_SCALA_VERSION test

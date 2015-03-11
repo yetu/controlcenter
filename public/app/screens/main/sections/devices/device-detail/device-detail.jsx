@@ -3,13 +3,13 @@ var Router = require('react-router');
 var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 var roomStore = require('stores/room');
-var DeviceState = require('./../device-state');
+var DeviceState = require('../device-state');
 
 var DeviceDetail = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
-    Router.State],
-
+    Router.State
+  ],
 
   getInitialState: function getInitialState () {
     var device = roomStore.getDevice(this.getParams().deviceId);
@@ -20,7 +20,7 @@ var DeviceDetail = React.createClass({
     };
   },
 
-  getRoomDropDown: function getRoomDropDown () {
+  getRoomSelectOptions: function getRoomSelectOptions () {
     var rooms = this.state.rooms.map(function mapper (room, i) {
       return (
         <option key={i} value={room.id}>{room.title}</option>
@@ -48,11 +48,11 @@ var DeviceDetail = React.createClass({
   render: function render () {
     return (
       <div className="cc-device-detail">
-        <div className="cc-device-detail__headers cc__row">
+        <div className="cc-device-detail__headers">
           <Link className="cc-device-detail__close-button" to="devices"></Link>
           <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
         </div>
-        <div className="cc-device-detail__controls cc__row">
+        <div className="cc-device-detail__controls">
           <div className="cc-device-detail__labels">
             <label className="cc-device-detail__label">Controls</label>
           </div>
@@ -60,7 +60,7 @@ var DeviceDetail = React.createClass({
             TODO: Here the controls have to placed!
           </div>
         </div>
-        <div className="cc-device-detail__properties cc__row">
+        <div className="cc-device-detail__properties">
           <div className="cc-device-detail__labels">
             <label htmlFor="cc-device-detail_desc" className="cc-device-detail__label">Description</label>
             <label htmlFor="cc-device-detail_room" className="cc-device-detail__label">Room</label>
@@ -70,14 +70,14 @@ var DeviceDetail = React.createClass({
               value={this.state.device.description} onChange={this.onDescriptionChange}></input>
             <select id="cc-device-detail__room" className="cc-device-detail__value"
               defaultValue={this.state.selectedRoom.title} onChange={this.onRoomChange}>
-              {this.getRoomDropDown()}
+              {this.getRoomSelectOptions()}
             </select>
           </div>
         </div>
-        <div className="cc-device-detail__accessrights cc__row">
+        <div className="cc-device-detail__accessrights">
           <h2>Access rights</h2>
         </div>
-        <div className="cc-device-detail__details cc__row">
+        <div className="cc-device-detail__details">
           <h2>Device Details</h2>
           <div className="cc-device-detail__labels">
             <label htmlFor="cc-device-detail_type" className="cc-device-detail__label">Type</label>
@@ -91,7 +91,7 @@ var DeviceDetail = React.createClass({
             <DeviceState device={this.state.device}/>
           </div>
         </div>
-        <div className="cc-device-detail__buttons cc__row">
+        <div className="cc-device-detail__buttons">
           <div className="cc-device-detail__left-button">
             <a className="cc-device-detail__save-button" onClick={this.onSave}>Save changes</a>
           </div>

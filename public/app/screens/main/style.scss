@@ -31,4 +31,9 @@
       }
     }
   }
+
+  &__title {
+    font-size: convert-to-rem(32px);
+    text-transform: uppercase;
+  }
 }

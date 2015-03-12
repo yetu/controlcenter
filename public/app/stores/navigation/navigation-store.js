@@ -1,8 +1,8 @@
 var Reflux = require('reflux');
 
 var _items = [
-  { title: 'My devices', linkTo: 'devices' },
-  { title: 'My settings', linkTo: 'settings' }
+  { title: 'Devices', linkTo: 'devices' },
+  { title: 'Settings', linkTo: 'settings' }
 ];
 
 var navigationStore = Reflux.createStore({

@@ -3,14 +3,27 @@
 .cc_navigation {
   @include icon-bar();
 
-  &.icon-bar.vertical {
-    width: 100%;
+  &.icon-bar {
+    background: transparent;
+
+    &.vertical {
+      width: 100%;
+    }
   }
 
   .cc_navigation__link {
+    text-align: left;
+    color: $default-gray;
+
+    &.item {
+      // Removes all background colors, such as for :hover
+      background: transparent;
+    }
+
     // .active is applied to selected link by foundation automatically
     &.active {
       font-weight: bold;
+      color: $font-active-color;
     }
   }
 }

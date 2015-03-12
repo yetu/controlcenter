@@ -1,7 +1,8 @@
 @import "theme";
 
-.main-screen {
+$padding: 50px;
 
+.main-screen {
   height: 100%;
 
   &__top-navigation {
@@ -17,22 +18,24 @@
       @include grid-column(6);
       @extend %hidden-for-small-only;
       height: 100%;
-      padding-top: 50px;
+      padding-top: $padding;
+      padding-left: $padding;
     }
 
     &-content {
       @include grid-column(14);
       height: 100%;
-      padding: 50px;
+      padding: $padding;
       background-color: $shade-gray;
       @media #{$small-only} {
-        @include grid-column(20);
-        padding: 50px;
+        @include grid-column(22);
+        padding: $padding;
       }
     }
   }
 
   &__title {
+    color: $font-active-color;
     font-size: convert-to-rem(32px);
     text-transform: uppercase;
   }

@@ -47,10 +47,8 @@ var DeviceDetail = React.createClass({
   render: function render () {
     return (
       <div className="cc-device-detail">
-        <div className="cc-device-detail__headers">
-          <Link className="cc-device-detail__close-button" to="devices"></Link>
-          <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
-        </div>
+        <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
+        <Link className="cc-device-detail__close-button" to="devices"></Link>
         <div className="cc-device-detail__controls">
           <div className="cc-device-detail__controls-label">
             Controls

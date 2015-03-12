@@ -24,13 +24,8 @@
     }
   }
 
-  >div.cc-device-detail__headers {
-    padding-top: 0;
-  }
-
   &__title{
-    padding-top: $global-padding;
-    margin-bottom: 20px;
+    padding: $global-padding $global-padding 20px $global-padding;
   }
 
   &__close-button{

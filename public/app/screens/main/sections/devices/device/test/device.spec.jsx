@@ -10,7 +10,7 @@ describe('Device', function () {
       var deviceElement = TestUtils.renderIntoDocument(
         <Device device={deviceProps} />
       );
-      expect(deviceElement.state).toequal(null);
+      expect(deviceElement.state).toEqual(null);
     });
   });
 });

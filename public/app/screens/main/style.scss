@@ -1,7 +1,5 @@
 @import "theme";
 
-$padding: 50px;
-
 .main-screen {
   height: 100%;
 
@@ -18,18 +16,16 @@ $padding: 50px;
       @include grid-column(6);
       @extend %hidden-for-small-only;
       height: 100%;
-      padding-top: $padding;
-      padding-left: $padding;
+      padding-top: $global-padding;
+      padding-left: $global-padding;
     }
 
     &-content {
       @include grid-column(14);
       height: 100%;
-      padding: $padding;
       background-color: $shade-gray;
       @media #{$small-only} {
         @include grid-column(22);
-        padding: $padding;
       }
     }
   }

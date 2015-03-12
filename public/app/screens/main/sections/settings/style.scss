@@ -1,6 +1,8 @@
 @import "theme";
 
 .cc-settings {
+  padding: $global-padding;
+
   &__section {
     @include grid-row();
     margin-bottom: convert-to-rem(40px);

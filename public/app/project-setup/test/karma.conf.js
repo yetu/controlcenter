@@ -1,12 +1,12 @@
 var webpackConfig = require('../../../webpack.config');
 webpackConfig.cache = true;
-webpackConfig.module.postLoaders = [
-  {
-    test: /\.js$/,
-    exclude: /(.spec|setup|node_modules)/,
-    loader: 'istanbul-instrumenter'
-  }
-];
+// webpackConfig.module.postLoaders = [
+//   {
+//     test: /\.js$/,
+//     exclude: /(.spec|setup|node_modules)/,
+//     loader: 'istanbul-instrumenter'
+//   }
+// ];
 
 module.exports = function (config) {
   config.set({
@@ -46,7 +46,7 @@ module.exports = function (config) {
     logLevel: config.LOG_ERROR,
     autoWatch: true,
     // Chrome, ChromeCanary, Firefox, Safari, PhantomJS, IE
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
     captureTimeout: 60000,
     singleRun: false,
 

@@ -3,6 +3,10 @@
 .cc_navigation {
   @include icon-bar();
 
+  &.icon-bar.vertical {
+    width: 100%;
+  }
+
   .cc_navigation__link {
     // .active is applied to selected link by foundation automatically
     &.active {

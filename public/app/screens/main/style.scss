@@ -17,6 +17,7 @@
       @include grid-column(6);
       @extend %hidden-for-small-only;
       height: 100%;
+      padding-top: 50px;
     }
 
     &-content {

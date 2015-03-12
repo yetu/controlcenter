@@ -1,5 +1,5 @@
 var webpackConfig = require('../../../webpack.config');
-//webpackConfig.cache = true;
+webpackConfig.cache = true;
 webpackConfig.module.postLoaders = [
   {
     test: /\.js$/,
@@ -12,7 +12,7 @@ module.exports = function (config) {
   config.set({
     // base path, that will be used to resolve files and exclude
     basePath: '../../../',
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'sinon'],
     files: [
       './app/project-setup/test/phantomjs-bind.polyfill.js',
       './**/*.spec.js*'

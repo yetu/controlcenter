@@ -1,6 +1,5 @@
 var Reflux = require('reflux');
-var reqwest = require('reqwest');
-
+var $ = require('jquery');
 var userDataActions = require('actions/user-data');
 
 var SettingsStore = Reflux.createStore({
@@ -25,11 +24,12 @@ var SettingsStore = Reflux.createStore({
       self.updateError(error);
     }
 
-    return reqwest({
+    return $.ajax({
+      method: 'get',
       url: '/profile',
-      type: 'json',
-      method: 'get'
-    }).then(onSaved, onError);
+      dataType: 'json'
+    }).success(onSaved)
+      .fail(onError);
   },
 
   onUpdateUserData: function onUpdateUserData (userData) {
@@ -44,22 +44,21 @@ var SettingsStore = Reflux.createStore({
     }
 
     function onError (error) {
-      console.error('Error on fetching', error);
       self.updateError(error);
     }
 
-    return reqwest({
+    return $.ajax({
+      method: 'get',
       url: '/profile',
-      type: 'json',
-      method: 'get'
-    }).then(onUserData, onError);
+      dataType: 'json'
+    }).done(onUserData)
+      .fail(onError);
   },
 
   updateModel: function updateModel (model) {
     this.userData = {
       model: model
     };
-
     this.trigger(this.userData);
   },
 

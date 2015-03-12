@@ -1,7 +1,8 @@
 @import "theme";
 
 .cc_navigation {
-  @include icon-bar();
+  //TODO: use icon-bar mixin
+  //@include icon-bar();
 
   &.icon-bar {
     background: transparent;

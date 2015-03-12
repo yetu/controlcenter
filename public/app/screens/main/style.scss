@@ -1,40 +1,38 @@
 @import "theme";
 
 .main-screen {
-
-  @include grid-row();
   height: 100%;
 
-  &__top-row {
+  &__top-navigation {
     @include grid-row();
-
-    &.-visible-for-small-only {
-      @extend %visible-for-small-only;
-    }
+    @extend %visible-for-small-only;
   }
 
-  &__content-row {
+  &__body {
     @include grid-row();
     height: 100%;
-  }
 
-  &__sidebar-column {
-    @include grid-column(6);
-    height: 100%;
-
-    &.-hidden-for-small {
+    &-side-navigation {
+      @include grid-column(6);
       @extend %hidden-for-small-only;
+      height: 100%;
+      padding-top: $global-padding;
+      padding-left: $global-padding;
     }
-  }
 
-  &__content-column {
-    @include grid-column(20);
-    background-color: $shade-gray;
-    height: 100%;
-
-    @media #{$medium-up} {
+    &-content {
       @include grid-column(14);
+      height: 100%;
+      background-color: $shade-gray;
+      @media #{$small-only} {
+        @include grid-column(22);
+      }
     }
   }
 
+  &__title {
+    color: $font-active-color;
+    font-size: convert-to-rem(32px);
+    text-transform: uppercase;
+  }
 }

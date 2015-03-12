@@ -1,7 +1,7 @@
 @import "theme";
 
 .cc-settings {
-  padding: 40px;
+  padding: $global-padding;
 
   &__section {
     @include grid-row();

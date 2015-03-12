@@ -21,12 +21,11 @@ var DeviceDetail = React.createClass({
   },
 
   getRoomSelectOptions: function getRoomSelectOptions () {
-    var rooms = this.state.rooms.map(function mapper (room, i) {
+    return this.state.rooms.map(function mapper (room, i) {
       return (
         <option key={i} value={room.id}>{room.title}</option>
       );
     });
-    return rooms;
   },
 
   onRoomChange: function onRoomChange (e) {
@@ -48,16 +47,14 @@ var DeviceDetail = React.createClass({
   render: function render () {
     return (
       <div className="cc-device-detail">
-        <div className="cc-device-detail__headers">
-          <Link className="cc-device-detail__close-button" to="devices"></Link>
-          <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
-        </div>
+        <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
+        <Link className="cc-device-detail__close-button" to="devices"></Link>
         <div className="cc-device-detail__controls">
           <div className="cc-device-detail__controls-label">
             Controls
           </div>
           <div className="cc-device-detail__controls-values">
-            TODO: Here the controls have to placed!
+            TODO: Place device controls here
           </div>
         </div>
         <div className="cc-device-detail__properties">

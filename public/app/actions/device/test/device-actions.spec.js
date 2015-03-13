@@ -1,6 +1,7 @@
-var DeviceActions = require('../index');
-var Reflux = require('reflux');
-var _ = require('lodash');
+var deviceActions = require('../index');
+var qwest = require('qwest'),
+  promiseHelper = require('utils/promise');
+
 
 var mock = require('./device-actions.mock.js');
 
@@ -8,86 +9,102 @@ var apiHost = 'http://householdmockapi000.yetudev.com:8080';
 
 describe('device actions', function () {
 
-  var xhr, server;
-  beforeEach(function () {
-    xhr = sinon.useFakeXMLHttpRequest();
-    server = sinon.fakeServer.create();
-  });
-
-  afterEach(function () {
-    xhr.restore();
-    server.restore();
-  });
-
   describe('addDevice', function () {
-    it('calls its "completed" child action when device has been discovered', function (done) {
+    var postStub;
+    var getStub;
 
-      server.respondWith('POST', apiHost + '/gateway/discoveries', [
-        200,
-        {'Content-Type': 'application/json'},
-        JSON.stringify(mock.addDevice.sessionCreatedResponse)
-      ]);
-      DeviceActions.addDevice.listen(function () {
-        server.respond();
-      });
-
-
-      // server.respondWith('GET', apiHost + '/gateway', [
-      //   200,
-      //   {'Content-Type': 'application/json'},
-      //   JSON.stringify(mock.addDevice.gatewayResponse)
-      // ]);
-      // server.respond();
-
-      // var discoverySessionUrl = mock.addDevice.gatewayResponse.entities[0].href;
-
-      // server.respondWith('GET', discoverySessionUrl, [
-      //   200,
-      //   {'Content-Type': 'application/json'},
-      //   JSON.stringify(mock.addDevice.sessionStateRequested)
-      // ]);
-      // server.respond();
-
-      // server.respondWith('GET', discoverySessionUrl, [
-      //   200,
-      //   {'Content-Type': 'application/json'},
-      //   JSON.stringify(mock.addDevice.sessionStateCreated)
-      // ]);
-      // server.respond();
-
-      // server.respondWith('GET', discoverySessionUrl, [
-      //   200,
-      //   {'Content-Type': 'application/json'},
-      //   JSON.stringify(mock.addDevice.sessionStateFinished)
-      // ]);
-      // server.respond();
-
-      // var thingUrl = mock.addDevice.sessionStateFinished.links[1].href;
-
-      // server.respondWith('GET', thingUrl, [
-      //   200,
-      //   {'Content-Type': 'application/json'},
-      //   JSON.stringify(mock.addDevice.thingResponse)
-      // ]);
-      // server.respond();
-
-      // DeviceActions.addDevice.completed.listen(function (device) {
-      //   expect(obj).toEqual(mock.addDevice.thingResponse);
-      //   done();
-      // });
-
+    beforeEach(function () {
+      postStub = sinon.stub(qwest, 'post');
+      getStub = sinon.stub(qwest, 'get');
     });
 
-    it('calls its "failed" child action when an error has occured', function () {
-      var testData = { error: 'x__x' }
-      DeviceActions.addDevice.failed.listen(function (obj) {
-        expect(obj).toEqual(testData);
+    afterEach(function () {
+      postStub.restore();
+      getStub.restore();
+    });
+
+    it('calls "completed" child action when device has been discovered', function (done) {
+      // start device discovery
+      postStub.withArgs(apiHost + '/gateway/discoveries', {})
+        .returns(promiseHelper.when(mock.addDevice.sessionCreatedResponse));
+
+      // get gateway status
+      getStub.withArgs(apiHost + '/gateway')
+        .returns(promiseHelper.when(mock.addDevice.gatewayResponse));
+
+      // responce for polling discovery session
+      var discoverySessionUrl = mock.addDevice.gatewayResponse.entities[0].href;
+      getStub.withArgs(discoverySessionUrl).onFirstCall()
+        .returns(promiseHelper.when(mock.addDevice.sessionStateRequested))
+        .onSecondCall()
+        .returns(promiseHelper.when(mock.addDevice.sessionStateCreated));
+
+      // responce for polling discovery session
+      getStub.withArgs(discoverySessionUrl)
+        .returns(promiseHelper.when(mock.addDevice.sessionStateFinished));
+
+      deviceActions.addDevice.completed.listen(function () {
         done();
       });
 
-      DeviceActions.addDevice(testData);
+      deviceActions.addDevice();
     });
 
-  });
 
+    it('calls "failed" child action when discovery session was expired', function (done) {
+      // start device discovery
+      postStub.withArgs(apiHost + '/gateway/discoveries', {})
+        .returns(promiseHelper.when(mock.addDevice.sessionCreatedResponse));
+
+      // get gateway status
+      getStub.withArgs(apiHost + '/gateway')
+        .returns(promiseHelper.when(mock.addDevice.gatewayResponse));
+
+      // responce for polling discovery session
+      var discoverySessionUrl = mock.addDevice.gatewayResponse.entities[0].href;
+      getStub.withArgs(discoverySessionUrl).onFirstCall()
+        .returns(promiseHelper.when(mock.addDevice.sessionStateRequested))
+        .onSecondCall()
+        .returns(promiseHelper.when(mock.addDevice.sessionStateCreated));
+
+
+      // responce for polling discovery session
+      getStub.withArgs(discoverySessionUrl)
+        .returns(promiseHelper.when(mock.addDevice.sessionStateExpired));
+
+      deviceActions.addDevice.failed.listen(function () {
+        done();
+      });
+
+      deviceActions.addDevice();
+    });
+
+
+    it('calls "failed" child action when failed to start discovery', function (done) {
+      postStub.withArgs(apiHost + '/gateway/discoveries', {})
+        .returns(promiseHelper.fail(new Error('error')));
+
+      deviceActions.addDevice.failed.listen(function () {
+        done();
+      });
+
+      deviceActions.addDevice();
+    });
+
+    it('calls "failed" child action when failed to start discovery', function (done) {
+      // start device discovery
+      postStub.withArgs(apiHost + '/gateway/discoveries', {})
+        .returns(promiseHelper.when(mock.addDevice.sessionCreatedResponse));
+
+      // get gateway status
+      getStub.withArgs(apiHost + '/gateway')
+        .returns(promiseHelper.fail(new Error('commention error')));
+
+      deviceActions.addDevice.failed.listen(function () {
+        done();
+      });
+
+      deviceActions.addDevice();
+    });
+  });
 });

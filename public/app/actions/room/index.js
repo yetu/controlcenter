@@ -1,6 +1,6 @@
 var Reflux = require('reflux');
 
-var RoomActions  = Reflux.createActions([
+var RoomActions = Reflux.createActions([
   'addDevice',
   'removeDevice',
   // room actions

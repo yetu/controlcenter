@@ -48,6 +48,9 @@ module.exports = function (config) {
     // Chrome, ChromeCanary, Firefox, Safari, PhantomJS, IE
     browsers: ['PhantomJS'],
     captureTimeout: 60000,
+    browserDisconnectTimeout : 2000,
+    browserDisconnectTolerance : 0,
+    browserNoActivityTimeout : 20000,
     singleRun: false,
 
     junitReporter: {

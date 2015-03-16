@@ -4,6 +4,8 @@
   padding: $global-padding;
 
   .cc-devices__button {
-    @include button()
+    @include button();
+    // TODO: Use variable: $column-height
+    margin-top: 50px;
   }
 }

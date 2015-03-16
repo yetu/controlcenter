@@ -1,22 +1,24 @@
 var React = require('react');
 var Router = require('react-router');
+var Reflux = require('reflux');
 var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 var roomStore = require('stores/room');
+var deviceStore = require('stores/device');
 var DeviceState = require('../device-state');
 
 var DeviceDetail = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
-    Router.State
+    Router.State,
+    Reflux.listenTo(deviceStore, 'onStoreUpdate')
   ],
 
   getInitialState: function getInitialState () {
-    var device = roomStore.getDevice(this.getParams().deviceId);
     return {
-      device: device,
-      rooms: roomStore.getRooms(),
-      selectedRoom: roomStore.getRoomFromDevice(device)
+      device: {},
+      selectedRoom: {},
+      rooms: []
     };
   },
 
@@ -25,6 +27,15 @@ var DeviceDetail = React.createClass({
       return (
         <option key={i} value={room.id}>{room.title}</option>
       );
+    });
+  },
+
+  onStoreUpdate: function onStoreUpdate (data) {
+    var deviceId = this.getParams().deviceId;
+    this.setState({
+      rooms: data.rooms,
+      device: data.deviceById[deviceId],
+      selectedRoom: data.roomByDeviceId[deviceId]
     });
   },
 

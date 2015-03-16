@@ -15,8 +15,12 @@ var DeviceRegion = React.createClass({
     styleMixin(require('./style.scss'))
   ],
 
+  componentWillMount: function componentWillMount () {
+    roomActions.fetchRooms();
+  },
+
   getInitialState: function getInitialState () {
-    return { rooms: roomStore.getRooms() };
+    return { rooms: [] };
   },
 
   render: function render () {

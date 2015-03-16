@@ -1,32 +1,42 @@
 var React = require('react');
 var Router = require('react-router');
+var Reflux = require('reflux');
 var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 var roomStore = require('stores/room');
+var deviceStore = require('stores/device');
 var DeviceState = require('../device-state');
 
 var DeviceDetail = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
-    Router.State
+    Router.State,
+    Reflux.listenTo(deviceStore, 'onStoreUpdate')
   ],
 
   getInitialState: function getInitialState () {
-    var device = roomStore.getDevice(this.getParams().deviceId);
     return {
-      device: device,
-      rooms: roomStore.getRooms(),
-      selectedRoom: roomStore.getRoomFromDevice(device)
+      device: {},
+      selectedRoom: {},
+      rooms: []
     };
   },
 
   getRoomSelectOptions: function getRoomSelectOptions () {
-    var rooms = this.state.rooms.map(function mapper (room, i) {
+    return this.state.rooms.map(function mapper (room, i) {
       return (
         <option key={i} value={room.id}>{room.title}</option>
       );
     });
-    return rooms;
+  },
+
+  onStoreUpdate: function onStoreUpdate (data) {
+    var deviceId = this.getParams().deviceId;
+    this.setState({
+      rooms: data.rooms,
+      device: data.deviceById[deviceId],
+      selectedRoom: data.roomByDeviceId[deviceId]
+    });
   },
 
   onRoomChange: function onRoomChange (e) {
@@ -48,16 +58,14 @@ var DeviceDetail = React.createClass({
   render: function render () {
     return (
       <div className="cc-device-detail">
-        <div className="cc-device-detail__headers">
-          <Link className="cc-device-detail__close-button" to="devices"></Link>
-          <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
-        </div>
+        <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
+        <Link className="cc-device-detail__close-button" to="devices"></Link>
         <div className="cc-device-detail__controls">
           <div className="cc-device-detail__controls-label">
             Controls
           </div>
           <div className="cc-device-detail__controls-values">
-            TODO: Here the controls have to placed!
+            TODO: Place device controls here
           </div>
         </div>
         <div className="cc-device-detail__properties">

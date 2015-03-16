@@ -37,7 +37,7 @@ publishMavenStyle := true
 publishTo <<= version { (v: String) =>
   // Note: this is used by yetu internally to package and later deploy the application
   // If you wish to use it, you need to adapt the hardcoded nexus URLs
-  val nexus = "http://nexus.yetudev.com:8081/nexus/"
+  val nexus = "http://ah-nexus000.yetudev.com:8081/nexus/"
   if (v.trim.endsWith("SNAPSHOT"))
     Some("snapshots" at nexus + "content/repositories/snapshots")
   else

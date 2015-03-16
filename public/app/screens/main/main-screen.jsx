@@ -16,20 +16,18 @@ var MainScreen = React.createClass({
   },
 
   render: function render () {
-    var navigation = <Navigation
-      items={this.state.navItems}
-      orientation='medium-vertical small-horizontal'/>;
-
     return (
       <div className='main-screen'>
-        <div className='main-screen__top-row -visible-for-small-only'>
-          {navigation}
+        <div className='main-screen__top-navigation'>
+          <span className='main-screen__title'>Control Center</span>
+          <Navigation items={this.state.navItems} orientation='horizontal'/>
         </div>
-        <div className='main-screen__content-row'>
-          <div className='main-screen__sidebar-column -hidden-for-small'>
-            {navigation}
+        <div className='main-screen__body'>
+          <div className='main-screen__body-side-navigation'>
+            <span className='main-screen__title'>Control Center</span>
+            <Navigation items={this.state.navItems} orientation='vertical'/>
           </div>
-          <div className='main-screen__content-column'>
+          <div className='main-screen__body-content'>
             <RouteHandler/>
           </div>
         </div>

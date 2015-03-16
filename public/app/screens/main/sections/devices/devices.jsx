@@ -15,8 +15,12 @@ var DeviceRegion = React.createClass({
     styleMixin(require('./style.scss'))
   ],
 
+  componentWillMount: function componentWillMount () {
+    roomActions.fetchRooms();
+  },
+
   getInitialState: function getInitialState () {
-    return { rooms: roomStore.getRooms() };
+    return { rooms: [] };
   },
 
   render: function render () {
@@ -27,7 +31,6 @@ var DeviceRegion = React.createClass({
     });
     return (
       <div className='cc-devices'>
-        <h2 className='cc-devices__title'>My devices</h2>
         <DeviceFinder />
         {rooms}
         <a className='cc-devices__button' href='#' onClick={this.handleAddRoom}>+ Add room</a>

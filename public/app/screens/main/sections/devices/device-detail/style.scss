@@ -8,7 +8,7 @@
     @include grid-row();
     // TODO: define right font color here
     color: $active-gray;
-    padding: 10px 5% 0 5%;
+    padding: 10px $global-padding 0 $global-padding;
 
     &:nth-child(even) {
       background: $shade-row-even;
@@ -25,7 +25,7 @@
   }
 
   &__title{
-    margin: 15px 0 20px 0;
+    padding: $global-padding $global-padding 20px $global-padding;
   }
 
   &__close-button{

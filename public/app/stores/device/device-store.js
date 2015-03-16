@@ -1,11 +1,30 @@
-var Reflux = require('reflux');
-var _ = require('lodash');
+var Reflux = require('reflux'),
+  _ = require('lodash'),
+  deviceDiscovery = require('servcies/devices/discovery-service');
 
 var roomStore = require('stores/room');
 
 var deviceStore = Reflux.createStore({
   init: function init () {
     this.listenTo(roomStore, this.update);
+  },
+
+  getInitialState: function getInitialState () {
+    return {
+
+    };
+  },
+
+  onStartDiscovery: function startDiscovery () {
+    deviceDiscovery.startDiscovery().subscribe(function onNext () {
+
+    }, function onError () {
+
+    });
+  },
+
+  onCancelDiscovery: function cancelDiscovery () {
+    deviceDiscovery.cancelDiscovery();
   },
 
   createDeviceByIdMap: function createDeviceByIdMap (rooms) {

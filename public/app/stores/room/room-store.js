@@ -5,18 +5,18 @@ var roomActions = require('actions/room');
 var roomStore = Reflux.createStore({
   listenables: [roomActions],
 
+  getInitialState: function getInitialState () {
+    return {
+
+    };
+  },
+
   onFetchRoomsCompleted: function onFetchRoomsCompleted (rooms) {
     this.updateRooms(rooms);
   },
 
   onCreateRoom: function onCreateRoom () {
-    // TODO: generate uuid
-    // var room = {
-    //   id: Math.random(),
-    //   title: 'New room',
-    //   devices: []
-    // };
-    // this.updateRooms(_rooms.concat(room));
+
   },
 
   updateRooms: function updateRooms (rooms) {

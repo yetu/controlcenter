@@ -1,4 +1,4 @@
-var Device = require('../device.jsx');
+var Device = require('screens/main/sections/device-list/room/device/device.jsx');
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 

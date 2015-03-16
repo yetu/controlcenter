@@ -1,5 +1,6 @@
 var React = require('react');
 var Reflux = require('reflux');
+
 var Room = require('./room');
 var DeviceFinder = require('./device-finder');
 
@@ -8,8 +9,7 @@ var roomActions = require('actions/room');
 
 var styleMixin = require('mixins/style-mixin');
 
-// TODO: Rename to DevicesSection
-var DeviceRegion = React.createClass({
+var DevicesSection = React.createClass({
   mixins: [
     Reflux.connect(roomStore, 'rooms'),
     styleMixin(require('./style.scss'))
@@ -29,6 +29,7 @@ var DeviceRegion = React.createClass({
         <Room room={room} key={i} />
       );
     });
+
     return (
       <div className='cc-devices'>
         <DeviceFinder />
@@ -43,4 +44,4 @@ var DeviceRegion = React.createClass({
   }
 });
 
-module.exports = DeviceRegion;
+module.exports = DevicesSection;

@@ -1,5 +1,5 @@
 var React = require('react');
-var Device = require('../device');
+var Device = require('./device');
 
 require('./style.scss');
 

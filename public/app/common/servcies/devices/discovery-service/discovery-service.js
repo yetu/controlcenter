@@ -15,10 +15,10 @@ module.exports = {
 
   startDiscovery: function startDiscovery () {
     var $startDeviceDiscovery = Rx.Observable
-      .fromPromise(qwest.post(startDiscoveryUrl, {}));
+      .fromPromise(qwest.post(startDiscoveryUrl, {}, {responseType: 'json'}));
 
     var $fetchDiscoverySession = Rx.Observable
-      .fromPromise(qwest.get(gatewayStatusUrl))
+      .fromPromise(qwest.get(gatewayStatusUrl, null, {responseType: 'json'}))
       .map(function extractSessionUrl (data) {
         return data.entities[0].href;
       });
@@ -31,7 +31,7 @@ module.exports = {
       function combine (url) {
         return url;
       }).flatMap(function flatMap (url) {
-        return Rx.Observable.fromPromise(qwest.get(url));
+        return Rx.Observable.fromPromise(qwest.get(url, null, {responseType: 'json'}));
       }).flatMap(function flatMap (item) {
         return Rx.Observable.create(function create (observer) {
           if (item.properties.state === SessionState.FINISHED) {

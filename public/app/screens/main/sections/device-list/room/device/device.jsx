@@ -1,9 +1,9 @@
 var React = require('react');
 var Link = require('react-router').Link;
 var styleMixin = require('mixins/style-mixin');
-var SwitchControl = require('./controls/switch');
-var SliderControl = require('./controls/slider');
-var DeviceState = require('./../device-state');
+var SwitchControl = require('common/components/controls/switch');
+var SliderControl = require('common/components/controls/slider');
+var DeviceState = require('common/components/device-state');
 
 var Device = React.createClass({
   mixins: [styleMixin(require('./style.scss'))],

@@ -5,7 +5,9 @@ var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 var roomStore = require('stores/room');
 var deviceStore = require('stores/device');
-var DeviceState = require('../device-state');
+
+// TODO move to column
+var DeviceState = require('common/components/device-state');
 
 var DeviceDetail = React.createClass({
   mixins: [

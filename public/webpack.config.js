@@ -26,8 +26,7 @@ module.exports = {
       'stores': path.join(__dirname, 'app/stores'),
       'common': path.join(__dirname, 'app/common'),
       'mixins': path.join(__dirname, 'app/common/mixins'),
-      'utils': path.join(__dirname, 'app/utils'),
-      'test': path.join(__dirname, 'app/common/test')
+      'helpers': path.join(__dirname, 'app/common/helpers')
     },
     extensions: [ '', '.js', '.jsx' ]
   },

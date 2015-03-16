@@ -15,6 +15,22 @@
   .cc_navigation__link {
     text-align: left;
     color: $default-gray;
+    padding: 10px 0 10px 0;
+
+    &-image {
+      width: 20px;
+      height: 20px;
+      margin: 0 20px 0 10px;
+      background-color: $default-gray;
+      float: left;
+
+      &.devices {
+        mask-image: url('./img/devices.svg');
+      }
+      &.settings {
+        mask-image: url('./img/settings.svg');
+      }
+    }
 
     &.item {
       // Removes all background colors, such as for :hover
@@ -25,6 +41,10 @@
     &.active {
       font-weight: bold;
       color: $font-active-color;
+
+      .cc_navigation__link-image {
+        background-color: $font-active-color;
+      }
     }
   }
 }

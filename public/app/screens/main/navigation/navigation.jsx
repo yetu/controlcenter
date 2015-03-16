@@ -17,6 +17,7 @@ var Navigation = React.createClass({
       });
       return (
         <Link to={item.linkTo} key={i} className={classNames}>
+          <div className={'cc_navigation__link-image ' + item.image} />
           <span className="cc_navigation__link-label">{item.title}</span>
         </Link>
       );

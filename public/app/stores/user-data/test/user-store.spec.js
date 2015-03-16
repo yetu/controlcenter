@@ -1,6 +1,6 @@
 var React = require('react/addons'),
   qwest = require('qwest'),
-  PromiseHelper = require('utils/promise'),
+  PromiseHelper = require('helpers/promise'),
   userDataActions = require('actions/user-data');
 
 var TestUtils = React.addons.TestUtils;

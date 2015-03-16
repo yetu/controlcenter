@@ -1,15 +1,15 @@
-var deviceActions = require('../index');
+var deviceService = require('../discovery-service');
 var qwest = require('qwest'),
-  promiseHelper = require('utils/promise');
+  promiseHelper = require('helpers/promise');
 
-
-var mock = require('./device-actions.mock.js');
+var SessionState = require('../discovery-session-state.js');
+var mock = require('./discovery-service.mock.js');
 
 var apiHost = 'http://householdmockapi000.yetudev.com:8080';
 
-describe('device actions', function () {
+describe('Device discovery service', function () {
 
-  describe('addDevice', function () {
+  describe('startDiscovery', function () {
     var postStub;
     var getStub;
 
@@ -19,11 +19,12 @@ describe('device actions', function () {
     });
 
     afterEach(function () {
+
       postStub.restore();
       getStub.restore();
     });
 
-    it('calls "completed" child action when device has been discovered', function (done) {
+    it('resolves subscription with finished state when device has been discovered', function (done) {
       // start device discovery
       postStub.withArgs(apiHost + '/gateway/discoveries', {})
         .returns(promiseHelper.when(mock.addDevice.sessionCreatedResponse));
@@ -43,15 +44,14 @@ describe('device actions', function () {
       getStub.withArgs(discoverySessionUrl)
         .returns(promiseHelper.when(mock.addDevice.sessionStateFinished));
 
-      deviceActions.addDevice.completed.listen(function () {
+      deviceService.startDiscovery().subscribe(function onNext (next) {
+        expect(next.properties.state).toEqual(SessionState.FINISHED);
         done();
       });
-
-      deviceActions.addDevice();
     });
 
 
-    it('calls "failed" child action when discovery session was expired', function (done) {
+    it('resolves subscription with an error when discovery session has expired', function (done) {
       // start device discovery
       postStub.withArgs(apiHost + '/gateway/discoveries', {})
         .returns(promiseHelper.when(mock.addDevice.sessionCreatedResponse));
@@ -72,26 +72,24 @@ describe('device actions', function () {
       getStub.withArgs(discoverySessionUrl)
         .returns(promiseHelper.when(mock.addDevice.sessionStateExpired));
 
-      deviceActions.addDevice.failed.listen(function () {
+      deviceService.startDiscovery().subscribeOnError(function onError (error) {
+        expect(error).toBeDefined();
         done();
       });
-
-      deviceActions.addDevice();
     });
 
 
-    it('calls "failed" child action when failed to start discovery', function (done) {
+    it('resolves subscription with an error when failed to start discovery', function (done) {
       postStub.withArgs(apiHost + '/gateway/discoveries', {})
         .returns(promiseHelper.fail(new Error('error')));
 
-      deviceActions.addDevice.failed.listen(function () {
+      deviceService.startDiscovery().subscribeOnError(function onError (error) {
+        expect(error).toBeDefined();
         done();
       });
-
-      deviceActions.addDevice();
     });
 
-    it('calls "failed" child action when failed to start discovery', function (done) {
+    it('resolves subscription with an error when failed to start discovery', function (done) {
       // start device discovery
       postStub.withArgs(apiHost + '/gateway/discoveries', {})
         .returns(promiseHelper.when(mock.addDevice.sessionCreatedResponse));
@@ -100,11 +98,10 @@ describe('device actions', function () {
       getStub.withArgs(apiHost + '/gateway')
         .returns(promiseHelper.fail(new Error('commention error')));
 
-      deviceActions.addDevice.failed.listen(function () {
+      deviceService.startDiscovery().subscribeOnError(function onError (error) {
+        expect(error).toBeDefined();
         done();
       });
-
-      deviceActions.addDevice();
     });
   });
 });

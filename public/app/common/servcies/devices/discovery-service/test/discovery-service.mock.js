@@ -23,8 +23,8 @@ module.exports = {
         'method': 'POST'
       }],
       'links': [{
-          'rel': ['self'],
-          'href': 'http://householdmockapi000.yetudev.com:8080/gateway'
+        'rel': ['self'],
+        'href': 'http://householdmockapi000.yetudev.com:8080/gateway'
       }]
     },
 
@@ -40,7 +40,7 @@ module.exports = {
       'links': [
         {
           'rel': [
-              'self'
+            'self'
           ],
           'href': 'https://household-https.prod.yetu.me/gateway/discoveries/4d7f590e-c40d-11e4-8dfc-aa07a5b093db'
         }
@@ -59,7 +59,7 @@ module.exports = {
       'links': [
         {
           'rel': [
-              'self'
+            'self'
           ],
           'href': 'https://household-https.prod.yetu.me/gateway/discoveries/4d7f590e-c40d-11e4-8dfc-aa07a5b093db'
         }
@@ -78,15 +78,15 @@ module.exports = {
       'links': [
         {
           'rel': [
-              'self'
+            'self'
           ],
           'href': 'https://household-https.prod.yetu.me/gateway/discoveries/4d7f590e-c40d-11e4-8dfc-aa07a5b093db'
         },
         {
-           'rel': [
-               'http://yetu.com/rels/gateway/session/discovery/thing'
-           ],
-           'href': 'https://household-https.prod.yetu.me/things/bd8fbbb7-50e3-42cc-a00b-e55082249347'
+          'rel': [
+            'http://yetu.com/rels/gateway/session/discovery/thing'
+          ],
+          'href': 'https://household-https.prod.yetu.me/things/bd8fbbb7-50e3-42cc-a00b-e55082249347'
         }
       ]
     },

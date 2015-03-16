@@ -1,6 +1,8 @@
 var Rx = require('rx'),
   qwest = require('qwest');
 
+var SessionState = require('./discovery-session-state.js');
+
 var startDiscoveryUrl = 'http://householdmockapi000.yetudev.com:8080/gateway/discoveries';
 var gatewayStatusUrl = 'http://householdmockapi000.yetudev.com:8080/gateway';
 
@@ -32,10 +34,10 @@ module.exports = {
         return Rx.Observable.fromPromise(qwest.get(url));
       }).flatMap(function flatMap (item) {
         return Rx.Observable.create(function create (observer) {
-          if (item.properties.state === 'FINISHED') {
+          if (item.properties.state === SessionState.FINISHED) {
             observer.onNext(item);
             observer.onCompleted();
-          } else if (item.properties.state === 'EXPIRED') {
+          } else if (item.properties.state === SessionState.EXPIRED) {
             observer.onError(item);
           }
         });

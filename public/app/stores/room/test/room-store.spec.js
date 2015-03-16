@@ -4,7 +4,7 @@ var roomStore = require('../room-store.js');
 
 describe('RoomStore', function () {
   describe('onCreateRoom', function () {
-    it('adds a new room to the store', function () {
+    xit('adds a new room to the store', function () {
       var roomsBefore = roomStore.getRooms();
       roomStore.onCreateRoom();
       var roomsAfter = roomStore.getRooms();

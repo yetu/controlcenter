@@ -1,6 +1,6 @@
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var ReactTestUtils = require('test/ReactTestUtils.js');
+var ReactTestUtils = require('helpers/test');
 var DeviceFinder = require('../device-finder.jsx');
 var DeviceFinderDialog = require('../device-finder-dialog');
 

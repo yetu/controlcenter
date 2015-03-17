@@ -19,7 +19,7 @@ var Navigation = React.createClass({
 
       return (
         <Link to={item.linkTo} key={i} className={classNames}>
-          <div className={'cc_navigation__link-image ' + item.image} />
+          <i className={'cc_navigation__link-image ' + item.image}></i>
           <label className="cc_navigation__link-label">{item.title}</label>
         </Link>
       );
@@ -28,7 +28,7 @@ var Navigation = React.createClass({
 
     // TODO: Pass number of elements to mixin instead of specifying class name
     return (
-      <div className={'cc_navigation icon-bar two-up ' + this.props.orientation}>
+      <div className={'cc_navigation ' + this.props.orientation}>
         {items}
       </div>
     );

@@ -16,12 +16,12 @@ var MainScreen = React.createClass({
   render: function render () {
     return (
       <div className='main-screen'>
-        <div className='main-screen__top'>
+        <div className='main-screen__top visible-for-small-only'>
           <span className='main-screen__title'>Control Center</span>
           <Navigation items={this.state.navItems} orientation='horizontal'/>
         </div>
         <div className='main-screen__body'>
-          <div className='main-screen__body-left'>
+          <div className='main-screen__body-left hide-for-small-only'>
             <span className='main-screen__title'>Control Center</span>
             <Navigation items={this.state.navItems} orientation='vertical'/>
           </div>

@@ -6,7 +6,6 @@
 
   &__top {
     @include grid-row();
-    @extend %visible-for-small-only;
 
     padding-left: $column-width;
     padding-top: 10px;
@@ -18,7 +17,6 @@
 
     &-left {
       @include grid-column($side-nav-columns);
-      @extend %hidden-for-small-only;
       height: 100%;
       padding-top: $column-height;
       padding-left: $column-width;

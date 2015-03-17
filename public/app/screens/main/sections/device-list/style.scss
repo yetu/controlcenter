@@ -6,7 +6,7 @@
   @include section();
 
   .cc-devices__button {
-    @include button();
+    @include cc-button();
     // TODO: Use variable: $column-height
     margin-top: 50px;
   }

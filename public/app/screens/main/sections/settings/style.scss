@@ -45,6 +45,6 @@ $column-factor: $total-columns / $section-columns;
   }
 
   &__save {
-    @include button();
+    @include cc-button();
   }
 }

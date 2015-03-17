@@ -22,7 +22,7 @@ $column-factor: $total-columns / 5;
     @include grid-column($columns: 2 * $column-factor, $offset: 1 * $column-factor);
 
     .cc-user-avatar__button {
-      @include button($button-tny);
+      @include cc-button($button-tny);
       margin-bottom: 0;
       position: absolute;
       bottom: 0;

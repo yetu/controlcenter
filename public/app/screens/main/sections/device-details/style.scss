@@ -87,7 +87,7 @@ $column-factor: $total-columns / $content-columns;
       @include grid-column(5 * $column-factor);
 
       &-button {
-        @include button($button-tny);
+        @include cc-button($button-tny);
       }
     }
 

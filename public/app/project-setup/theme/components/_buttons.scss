@@ -3,19 +3,12 @@
 $button-tny: rem-calc(2);
 $button-font-tny: $button-font-med;
 
-//
-//@mixin button($padding:$button-med, $bg:$button-bg-color, $radius:false, $full-width:false, $disabled:false, $is-prefix:false, $bg-hover:null, $border-color:null, $transition: true) {
-//  // Copied from original "button" mixin:
-//  @include button-base;
-//  @include button-size($padding, $full-width);
-//  @include button-style($bg, $radius, $disabled, $bg-hover, $border-color);
-//
-//  @if $transition {
-//    @include single-transition(background-color);
-//  }
-//
-//  // Control center specific properties
-//  text-transform: uppercase;
-//  padding-bottom: $padding;
-//  box-shadow: 3px 3px 3px 0 $shadow;
-//}
+
+@mixin cc-button($padding:$button-med) {
+
+  @include button($padding, $bg:$button-bg-color, $radius:false, $full-width:false, $disabled:false, $is-prefix:false, $bg-hover:null, $border-color:null, $transition: true);
+
+  text-transform: uppercase;
+  padding-bottom: $padding;
+  box-shadow: 3px 3px 3px 0 $shadow;
+}

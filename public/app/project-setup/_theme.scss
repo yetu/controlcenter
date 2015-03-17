@@ -6,5 +6,6 @@
 // this package does not have fonts, as they ruin font file urls in components...
 @import "theme/mixins/alignment";
 @import "theme/mixins/buttons";
-@import "theme/mixins/visibility";
 @import "theme/mixins/custom-components";
+@import "theme/mixins/section";
+@import "theme/mixins/visibility";

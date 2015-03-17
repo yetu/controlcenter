@@ -147,7 +147,6 @@ $last-child-float: $opposite-direction !default;
 
   // If offset, calculate appropriate margins
   @if $offset { margin-#{$default-float}: grid-calc($offset, $total-columns) !important; }
-
 }
 
 // Create presentational classes for grid

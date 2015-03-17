@@ -10,7 +10,7 @@ var Device = React.createClass({
 
   render: function render () {
     return (
-      <div className="cc-device">
+      <div className="cc-device row">
         <div className="cc-device__title">
           <Link to="device" params={{deviceId: this.props.device.id}}>
             {this.props.device.title}

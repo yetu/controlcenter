@@ -1,7 +1,7 @@
 @import "theme";
 
 .cc-devices {
-  padding: $global-padding;
+  @include section();
 
   .cc-devices__button {
     @include button();

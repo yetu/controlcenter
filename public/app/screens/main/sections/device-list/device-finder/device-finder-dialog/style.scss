@@ -1,5 +1,7 @@
 @import "theme";
 
+$column-factor: $total-columns / $section-columns;
+
 .cc-device-finder-dialog {
   @include grid-row();
   position: relative;
@@ -13,7 +15,7 @@
   }
 
   &__status {
-    @include grid-column(3);
+    @include grid-column(2 * $column-factor);
     position: relative;
 
     &-content {
@@ -28,7 +30,7 @@
   }
 
   &__text {
-    @include grid-column(14);
+    @include grid-column(10 * $column-factor);
     position: relative;
     padding-left: 25px;
     // TODO: Use correct semantic color
@@ -50,7 +52,7 @@
   }
 
   &__action {
-    @include grid-column(3);
+    @include grid-column(2 * $column-factor);
     position: relative;
     padding: 10px;
 

@@ -1,0 +1,10 @@
+// Section describes whether a container acts as a default section or a dialog.
+// $type - The type of the section: 'dialog' for dialogs. Default: false.
+@mixin section($type: false) {
+  @if $type == dialog {
+    padding: $column-width 0 $column-width 0;
+  }
+  @else {
+    padding: $column-width;
+  }
+}

@@ -3,29 +3,33 @@
 .main-screen {
   height: 100%;
 
-  &__top-navigation {
+  &__top {
     @include grid-row();
     @extend %visible-for-small-only;
+
+    padding-left: $column-width;
+    padding-top: 10px;
   }
 
   &__body {
     @include grid-row();
     height: 100%;
 
-    &-side-navigation {
-      @include grid-column(6);
+    &-left {
+      @include grid-column($side-nav-columns);
       @extend %hidden-for-small-only;
       height: 100%;
-      padding-top: $global-padding;
-      padding-left: $global-padding;
+      padding-top: $column-height;
+      padding-left: $column-width;
     }
 
     &-content {
-      @include grid-column(14);
+      @include grid-column($content-columns);
       height: 100%;
       background-color: $shade-gray;
+      overflow: hidden;
       @media #{$small-only} {
-        @include grid-column(22);
+        @include grid-column($total-columns);
       }
     }
   }

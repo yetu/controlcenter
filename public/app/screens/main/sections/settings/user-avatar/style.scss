@@ -1,13 +1,15 @@
 @import "theme";
 
+$column-factor: $total-columns / 5;
+
 .cc-user-avatar{
-  @include grid-row(collapse);
+  @include grid-row();
 
   position: relative;
   margin: convert-to-rem(8px);
 
   .cc-user-avatar__image-content {
-    @include grid-column(10);
+    @include grid-column(2 * $column-factor);
     .cc-user-avatar__image{
       width: 75px;
       height: 75px;
@@ -15,7 +17,7 @@
   }
 
   .cc-user-avatar__button-content {
-    @include grid-column(10);
+    @include grid-column($columns: 2 * $column-factor, $offset: 1 * $column-factor);
 
     .cc-user-avatar__button {
       @include button($button-tny);
@@ -23,6 +25,5 @@
       position: absolute;
       bottom: 0;
     }
-
   }
 }

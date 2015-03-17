@@ -1,23 +1,25 @@
 @import "theme";
 
+$column-factor: $total-columns / $section-columns;
+
 .cc-device {
   @include grid-row();
+
   &__title {
-    @include grid-column(6);
+    @include grid-column(4 * $column-factor);
     font-size: 18px;
     color: $primary-color;
   }
 
   &__type {
-    @include grid-column(6);
+    @include grid-column(4 * $column-factor);
     font-size: 18px;
   }
 
   &__control {
-    @include grid-column(4);
+    @include grid-column(3 * $column-factor);
   }
   &__state{
-    @include grid-column(4);
+    @include grid-column(3 * $column-factor);
   }
-
 }

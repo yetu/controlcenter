@@ -1,7 +1,4 @@
-var qwest = require('qwest'),
-  PromiseHelper = require('helpers/promise'),
-  discoveryActions = require('actions/discovery'),
-  deviceDiscovery = require('servcies/devices/discovery-service');
+var deviceDiscovery = require('servcies/devices/discovery-service');
 
 var discoveryStore = require('../discovery-store');
 

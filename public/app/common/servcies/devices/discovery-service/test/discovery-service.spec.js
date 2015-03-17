@@ -19,7 +19,6 @@ describe('Device discovery service', function () {
     });
 
     afterEach(function () {
-
       postStub.restore();
       getStub.restore();
     });

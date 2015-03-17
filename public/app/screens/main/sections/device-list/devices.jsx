@@ -8,7 +8,7 @@ var styleMixin = require('mixins/style-mixin');
 
 var DevicesSection = React.createClass({
 
-  mixins : [
+  mixins: [
     styleMixin(require('./style.scss'))
   ],
 
@@ -16,7 +16,7 @@ var DevicesSection = React.createClass({
     return (
       <div className='cc-devices'>
         <DeviceFinder />
-
+        <Room />
         <a className='cc-devices__button' href='#' onClick={this.handleAddRoom}>+ Add room</a>
       </div>
     );

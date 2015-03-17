@@ -9,7 +9,9 @@ var deviceStore = Reflux.createStore({
     this.listenTo(deviceActions.fetchOne, this.onFetchDeviceInfo);
 
     this.deviceInfo = {
-      model: {},
+      model: {
+        devices: []
+      },
       error: {}
     };
   },
@@ -18,8 +20,8 @@ var deviceStore = Reflux.createStore({
     return this.deviceInfo;
   },
 
-  onFetchDeviceInfo : function onFetchDeviceInfo(){
-    console.log('Service call here')
+  onFetchDeviceInfo: function onFetchDeviceInfo () {
+    console.log('Service call here');
   },
 
   updateModel: function updateModel (model) {

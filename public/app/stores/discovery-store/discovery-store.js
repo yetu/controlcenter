@@ -1,10 +1,10 @@
 var Reflux = require('reflux'),
   deviceDiscovery = require('servcies/devices/discovery-service'),
-  userDataActions = require('actions/discovery');
+  deviceDiscoveryActions = require('actions/discovery');
 
 var DiscoveryStore = Reflux.createStore({
 
-  listenables: userDataActions,
+  listenables: deviceDiscoveryActions,
 
   init: function init () {
     this.discoveryData = {
@@ -22,11 +22,12 @@ var DiscoveryStore = Reflux.createStore({
     deviceDiscovery.startDiscovery().subscribe(function onNext (next) {
       self.updateModel(next);
     }, function onError (error) {
-      self.updateError(error)
+      console.error('Error', error);
+      self.updateError(error);
     });
   },
 
-  onRemoveDevice: function cancelDiscovery () {
+  onStopDiscovery: function onStopDiscovery () {
     deviceDiscovery.cancelDiscovery();
   },
 
@@ -34,7 +35,7 @@ var DiscoveryStore = Reflux.createStore({
     this.discoveryData = {
       model: model
     };
-    this.trigger(this.userData);
+    this.trigger(this.discoveryData);
   },
 
   updateError: function updateError (error) {

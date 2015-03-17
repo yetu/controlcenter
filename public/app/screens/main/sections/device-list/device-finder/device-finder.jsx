@@ -25,15 +25,21 @@ var DeviceFinder = React.createClass({
     };
   },
 
-  onDiscoveryChange: function onDiscoveryChange (data) {
-    this.setState({
-      currentStatus: status
-    });
+  onDiscoveryChange: function onDiscoveryChange (discoveryData) {
+    if (discoveryData.model) {
+      this.setState({
+        activity: DeviceFinderActivity.DEVICE_FOUND
+      });
+    } else if (discoveryData.error) {
+      this.setState({
+        activity: DeviceFinderActivity.NO_DEVICES
+      });
+    }
   },
 
   render: function render () {
     var findingDevicesDialog = this.getDialog();
-    var button = this.state.activity === DeviceFinderActivity.NONE ? this.getButton() : null;
+    var button = this.state.activity === DeviceFinderActivity.CLOSED ? this.getButton() : null;
 
     return (
       <div className='cc-device-finder'>
@@ -100,7 +106,7 @@ var DeviceFinder = React.createClass({
 
   startSearching: function startSearching () {
     this.setState({activity: DeviceFinderActivity.SEARCHING});
-
+    deviceDiscoveryActions.addDevice();
   },
 
   showFoundDeviceInfo: function showFoundDeviceInfo () {
@@ -108,7 +114,7 @@ var DeviceFinder = React.createClass({
   },
 
   stopSearching: function stopSearching () {
-
+    deviceDiscoveryActions.stopDiscovery();
     this.closeDialog();
   },
 

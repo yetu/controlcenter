@@ -6,16 +6,18 @@ var SessionState = require('./discovery-session-state.js');
 var startDiscoveryUrl = 'http://householdmockapi000.yetudev.com:8080/gateway/discoveries';
 var gatewayStatusUrl = 'http://householdmockapi000.yetudev.com:8080/gateway';
 
-var subject = new Rx.Subject();
-var $pollInterval = Rx.Observable
-  .interval(200)
-  .takeUntil(subject);
 
 module.exports = {
 
   startDiscovery: function startDiscovery () {
+    var subject = new Rx.Subject();
+
     var $startDeviceDiscovery = Rx.Observable
-      .fromPromise(qwest.post(startDiscoveryUrl, {}, {responseType: 'json'}));
+      .fromPromise(qwest.post(startDiscoveryUrl, {}));
+
+    var $pollInterval = Rx.Observable
+      .interval(200)
+      .takeUntil(subject);
 
     var $fetchDiscoverySession = Rx.Observable
       .fromPromise(qwest.get(gatewayStatusUrl, null, {responseType: 'json'}))
@@ -34,17 +36,16 @@ module.exports = {
         return Rx.Observable.fromPromise(qwest.get(url, null, {responseType: 'json'}));
       }).flatMap(function flatMap (item) {
         return Rx.Observable.create(function create (observer) {
-          if (item.properties.state === SessionState.FINISHED) {
+          if (item.properties.state === SessionState.EXPIRED) {
+            observer.onError(item);
+            subject.onNext('Finished');
+          } else if (item.properties.state === SessionState.FINISHED) {
             observer.onNext(item);
             observer.onCompleted();
-          } else if (item.properties.state === SessionState.EXPIRED) {
-            observer.onError(item);
+
+            subject.onNext('Finished');
           }
         });
       });
-  },
-
-  cancelDiscovery: function cancelDiscovery () {
-    return subject.onError('Canceled subscription');
   }
 };

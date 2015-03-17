@@ -13,32 +13,21 @@ var Device = React.createClass({
       <div className="cc-device row">
         <div className="cc-device__title">
           <Link to="device" params={{deviceId: this.props.device.id}}>
-            {this.props.device.title}
+            {this.props.device.name}
           </Link>
         </div>
-        <div className="cc-device__type">{this.props.device.type}</div>
-        <div className="cc-device__control">{this.getControl()}</div>
+        <div className="cc-device__type">{this.props.device.displayType}</div>
+        <div className="cc-device__control">
+          <SwitchControl device={this.props.device} />
+        </div>
         <div className="cc-device__state">
           <DeviceState device={this.props.device}/>
         </div>
       </div>
     );
-  },
-
-  getControl: function getControl () {
-    var control;
-    switch (this.props.device.type) {
-      case 'Home Gateway':
-        control = SwitchControl;
-        break;
-      case 'Thermostat':
-        control = SliderControl;
-        break;
-    }
-    return control
-      ? React.createElement(control, { device: this.props.device })
-      : (<div>Unknown type</div>);
   }
+
+
 });
 
 module.exports = Device;

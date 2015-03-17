@@ -1,7 +1,8 @@
 var Reflux = require('reflux'),
   _ = require('lodash');
 
-var deviceActions = require('../../actions/device');
+var deviceActions = require('actions/device');
+var devicesService = require('servcies/devices/devices-service');
 var discoveryStore = require('stores/discovery-store');
 
 var deviceStore = Reflux.createStore({
@@ -10,28 +11,34 @@ var deviceStore = Reflux.createStore({
     this.listenTo(deviceActions.fetchList, this.onFetchList);
 
     this.deviceList = {
-      model: {},
-      error: {}
+      model: [],
+      error: null
     };
+    this.onFetchList();
   },
 
   getInitialState: function getInitialState () {
     return this.deviceList;
   },
 
-  onDiscoveryUpdate: function onDisoveryUpdate (discoveryData) {
+  onDiscoveryUpdate: function onDisoveryUpdate () {
     this.onFetchList();
   },
 
   onFetchList: function onFetchList () {
-    console.log('onFetchList  Service call here...');
+    var self = this;
+    devicesService.fetchDeviceList().subscribe(function onNext (next) {
+      self.updateModel(next);
+    }, function onError (error) {
+      self.updateError(error);
+    });
   },
 
   updateModel: function updateModel (model) {
     this.deviceList = {
       model: model
     };
-    this.trigger(this.userData);
+    this.trigger(this.deviceList);
   },
 
   updateError: function updateError (error) {

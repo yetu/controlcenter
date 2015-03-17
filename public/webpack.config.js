@@ -60,9 +60,9 @@ module.exports = {
       { test: /\.jade$/, loader: 'jade' },
       {
         test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff'
+        loader: 'url?limit=10000&minetype=application/font-woff'
       },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000' }
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url' }
     ],
     noParse: []
   },

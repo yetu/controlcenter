@@ -1,19 +1,17 @@
 var React = require('react');
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
+var Reflux = require('reflux');
 
 var Navigation = require('./navigation');
 var navigationStore = require('stores/navigation');
 var styleMixin = require('mixins/style-mixin');
 
 var MainScreen = React.createClass({
-  mixins: [ styleMixin(require('./style.scss')) ],
-
-  getInitialState: function getInitialState () {
-    return {
-      navItems: navigationStore.getItems()
-    };
-  },
+  mixins: [
+    styleMixin(require('./style.scss')),
+    Reflux.connect(navigationStore, 'navItems')
+  ],
 
   render: function render () {
     return (
@@ -24,7 +22,7 @@ var MainScreen = React.createClass({
         </div>
         <div className='main-screen__body'>
           <div className='main-screen__body-side-navigation'>
-            <span className='main-screen__title'>Control Center</span>
+            <h1 className='main-screen__title'>Control Center</h1>
             <Navigation items={this.state.navItems} orientation='vertical'/>
           </div>
           <div className='main-screen__body-content'>

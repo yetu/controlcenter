@@ -6,7 +6,7 @@ var _items = [
 ];
 
 var navigationStore = Reflux.createStore({
-  getItems: function getItems () {
+  getInitialState: function getInitialState () {
     // We don't want callers to modify this array, thus we return a fresh copy
     return _items.slice();
   }

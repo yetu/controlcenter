@@ -1,4 +1,6 @@
-@import "theme";
+@import "components-theme";
+@import "theme/components/grid";
+@import "theme/components/cc-label";
 
 .cc-user-info {
   .cc-user-info-item {

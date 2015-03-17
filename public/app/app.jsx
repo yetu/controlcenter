@@ -2,7 +2,7 @@ var React = require('react');
 require('reflux');
 
 // if style! is used here, it will attach the style to DOM automatically
-require('style!./project-setup/all.scss');
+require('style!./project-setup/global-theme.scss');
 
 var Router = require('react-router');
 var Route = Router.Route;

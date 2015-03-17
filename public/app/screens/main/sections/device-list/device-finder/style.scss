@@ -1,4 +1,6 @@
-@import "theme";
+@import "components-theme";
+@import "theme/components/grid";
+@import "theme/components/buttons";
 
 @keyframes rotate {
   from { transform:rotate(0deg); }

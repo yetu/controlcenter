@@ -4,3 +4,10 @@ $row-width: 1100px;
 $total-columns: 22;
 $column-gutter: rem-calc(0);
 
+// Custom grid layout variables
+$column-width: $row-width / $total-columns;
+$column-height: $column-width;
+
+$side-nav-columns: 6;
+$content-columns: $total-columns - $side-nav-columns;
+$section-columns: $content-columns - 2;

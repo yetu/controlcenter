@@ -1,9 +1,9 @@
-@import "components-theme";
-@import "theme/components/icon-bar";
+@import "theme";
 
 .cc_navigation {
 
-  @include icon-bar();
+  //TODO: Use icon-bar mixin
+  //@include icon-bar();
 
   &.icon-bar {
     background: transparent;

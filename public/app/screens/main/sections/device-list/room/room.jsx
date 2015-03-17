@@ -4,6 +4,7 @@ var Device = require('./device');
 require('./style.scss');
 
 var Room = React.createClass({
+
   render: function render () {
     var devices = this.props.room.devices.map(function mapper (device, i) {
       return (

@@ -1,27 +1,42 @@
 var React = require('react');
+var Reflux = require('reflux');
 var DeviceFinderDialog = require('./device-finder-dialog');
+
+var deviceDiscoveryStore = require('stores/discovery-store');
+var deviceDiscoveryActions = require('actions/discovery');
 var styleMixin = require('mixins/style-mixin');
 
 var DeviceFinderActivity = {
-  NONE: 'none',
+  CLOSED: 'closed',
   SEARCHING: 'searching',
-  NO_DEVICES: 'noDevices'
+  NO_DEVICES: 'noDevices',
+  DEVICE_FOUND: 'deviceFound'
 };
 
 var DeviceFinder = React.createClass({
-  mixins: [ styleMixin(require('./style.scss')) ],
+  mixins: [
+    styleMixin(require('./style.scss')),
+    Reflux.listenTo(deviceDiscoveryStore, 'onDiscoveryChange')
+  ],
 
   getInitialState: function getInitialState () {
     return {
-      activity: DeviceFinderActivity.NONE
+      activity: DeviceFinderActivity.CLOSED
     };
+  },
+
+  onDiscoveryChange: function onDiscoveryChange (data) {
+    this.setState({
+      currentStatus: status
+    });
   },
 
   render: function render () {
     var findingDevicesDialog = this.getDialog();
     var button = this.state.activity === DeviceFinderActivity.NONE ? this.getButton() : null;
+
     return (
-      <div className="cc-device-finder">
+      <div className='cc-device-finder'>
         { findingDevicesDialog }
         { button }
       </div>
@@ -33,18 +48,22 @@ var DeviceFinder = React.createClass({
   },
 
   getDialog: function getDialog () {
-    switch (this.state.activity) {
-      case DeviceFinderActivity.SEARCHING:
-        return this.getSearchDialog();
-      case DeviceFinderActivity.NO_DEVICES:
-        return this.getNoResultsDialog();
-      default:
-        return null;
+    var dialogToRender = null; // no jsx markup dy default
+
+    if (this.state.activity === DeviceFinderActivity.SEARCHING) {
+      dialogToRender = this.getSearchDialog();
+    } else if (this.state.activity === DeviceFinderActivity.NO_DEVICES) {
+      dialogToRender = this.getNoResultsDialog();
+    } else if (this.state.activity === DeviceFinderActivity.DEVICE_FOUND) {
+      dialogToRender = this.getDeviceFoundDialog();
     }
+
+    return dialogToRender;
   },
 
   getSearchDialog: function getSearchDialog () {
     var status = <div className='cc-device-finder__spinner'/>;
+
     return <DeviceFinderDialog
       status={status}
       title='Searching for new devices'
@@ -54,7 +73,8 @@ var DeviceFinder = React.createClass({
   },
 
   getNoResultsDialog: function getNoResultsDialog () {
-    var status = <div className="cc-device-finder__status-warning">No devices found</div>;
+    var status = <div className='cc-device-finder__status-warning'>No devices found</div>;
+
     return <DeviceFinderDialog
       status={status}
       showSeparator='true'
@@ -65,26 +85,35 @@ var DeviceFinder = React.createClass({
       action={this.startSearching} />;
   },
 
+  getDeviceFoundDialog: function getNoResultsDialog () {
+    var status = <div className='cc-device-finder__status-warning'>Device found!</div>;
+
+    return <DeviceFinderDialog
+      status={status}
+      showSeparator='true'
+      title='Searching for new devices'
+      description='Please make sure that all devices are in discovery mode'
+      closeAction={this.closeDialog}
+      actionText='Ok'
+      action={this.showFoundDeviceInfo} />;
+  },
+
   startSearching: function startSearching () {
-      this.setState({ activity: 'searching' });
+    this.setState({activity: DeviceFinderActivity.SEARCHING});
 
-      // TODO: Remove mock up code as soon as backend logic is used
-      var displayNoDevicesDialog = function displayNoDevicesDialog () {
-        if (this.state.activity === DeviceFinderActivity.SEARCHING) {
-          this.setState({ activity: 'noDevices' });
-        }
-      }.bind(this);
+  },
 
-      setTimeout(displayNoDevicesDialog, 3000);
-    },
+  showFoundDeviceInfo: function showFoundDeviceInfo () {
+
+  },
 
   stopSearching: function stopSearching () {
-    // TODO: stop search here
+
     this.closeDialog();
   },
 
   closeDialog: function closeDialog () {
-    this.setState({ activity: DeviceFinderActivity.NONE });
+    this.setState({activity: DeviceFinderActivity.NONE});
   }
 });
 

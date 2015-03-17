@@ -1,22 +1,12 @@
 var React = require('react/addons'),
-// Reflux = require('reflux'),
+  qwest = require('qwest'),
+  PromiseHelper = require('helpers/promise'),
   userDataActions = require('actions/user-data');
 
 var TestUtils = React.addons.TestUtils;
 var userDataStore = require('../user-store');
 
 describe('UserData Store', function () {
-
-  var xhr, server;
-  beforeEach(function () {
-    xhr = sinon.useFakeXMLHttpRequest();
-    server = sinon.fakeServer.create();
-  });
-
-  afterEach(function () {
-    xhr.restore();
-    server.restore();
-  });
 
   describe('init', function () {
     it('init userData', function () {
@@ -34,57 +24,62 @@ describe('UserData Store', function () {
 
   describe('onSaveUserData', function () {
 
-    it('handles request errors and updates error', function () {
-      var status = 401;
-      server.respondWith('GET', '/profile', [
-        status,
-        {'Content-Type': 'application/json'}, ''
-      ]);
+    it('handles request errors and updates error', function (done) {
+      var error = {error: 'error'};
+      var stub = sinon.stub(qwest, 'get')
+        .returns(PromiseHelper.fail(error));
 
       userDataActions.saveUserData.trigger();
-      server.respond();
 
-      expect(userDataStore.userData.error.status).toEqual(status);
+      setTimeout(function () {
+        expect(userDataStore.userData.error).toEqual(error);
+        stub.restore();
+        done();
+      }, 0);
     });
 
-    it('handles successful response and updates model', function () {
+    it('handles successful response and updates model', function (done) {
       var content = {message: 'testMessage'};
-      server.respondWith('GET', '/profile', [
-        200, {'Content-Type': 'application/json'}, JSON.stringify(content)
-      ]);
+      var stub = sinon.stub(qwest, 'get')
+        .returns(PromiseHelper.when(content));
 
       userDataActions.saveUserData.trigger();
-      server.respond();
 
-      expect(userDataStore.userData.model).toEqual(content);
+      setTimeout(function () {
+        expect(userDataStore.userData.model).toEqual(content);
+        stub.restore();
+        done();
+      }, 0);
     });
   });
 
   describe('onFetchUserData', function () {
 
-    it('handles request errors and updates error', function () {
-      var status = 401;
-      server.respondWith('GET', '/profile', [
-        status,
-        {'Content-Type': 'application/json'}, ''
-      ]);
+    it('handles request errors and updates error', function (done) {
+      var error = {error: 'someError'};
+      var stub = sinon.stub(qwest, 'get')
+        .returns(PromiseHelper.fail(error));
 
       userDataActions.fetchUserData.trigger();
-      server.respond();
-
-      expect(userDataStore.userData.error.status).toEqual(status);
+      setTimeout(function () {
+        expect(userDataStore.userData.error).toEqual(error);
+        stub.restore();
+        done();
+      }, 0);
     });
 
-    it('handles successful response and updates model', function () {
+    it('handles successful response and updates model', function (done) {
       var content = {message: 'testMessage'};
-      server.respondWith('GET', '/profile', [
-        200, {'Content-Type': 'application/json'}, JSON.stringify(content)
-      ]);
+      var stub = sinon.stub(qwest, 'get')
+        .returns(PromiseHelper.when(content));
 
       userDataActions.fetchUserData.trigger();
-      server.respond();
 
-      expect(userDataStore.userData.model).toEqual(content);
+      setTimeout(function () {
+        expect(userDataStore.userData.model).toEqual(content);
+        stub.restore();
+        done();
+      }, 0);
     });
   });
 

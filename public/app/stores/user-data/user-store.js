@@ -1,5 +1,5 @@
 var Reflux = require('reflux');
-var $ = require('jquery');
+var qwest = require('qwest');
 var userDataActions = require('actions/user-data');
 
 var SettingsStore = Reflux.createStore({
@@ -24,12 +24,9 @@ var SettingsStore = Reflux.createStore({
       self.updateError(error);
     }
 
-    return $.ajax({
-      method: 'get',
-      url: '/profile',
-      dataType: 'json'
-    }).success(onSaved)
-      .fail(onError);
+    return qwest.get('/profile', null, {responseType: 'json'})
+      .then(onSaved)
+      .catch(onError);
   },
 
   onUpdateUserData: function onUpdateUserData (userData) {
@@ -47,12 +44,9 @@ var SettingsStore = Reflux.createStore({
       self.updateError(error);
     }
 
-    return $.ajax({
-      method: 'get',
-      url: '/profile',
-      dataType: 'json'
-    }).done(onUserData)
-      .fail(onError);
+    return qwest.get('/profile', null, {responseType: 'json'})
+      .then(onUserData)
+      .catch(onError);
   },
 
   updateModel: function updateModel (model) {

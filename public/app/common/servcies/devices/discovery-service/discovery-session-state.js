@@ -1,0 +1,6 @@
+module.exports = {
+  REQUESTED: 'REQUESTED',
+  CREATED: 'CREATED',
+  FINISHED: 'FINISHED',
+  EXPIRED: 'EXPIRED'
+};

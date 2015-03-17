@@ -1,12 +1,12 @@
 var webpackConfig = require('../../../webpack.config');
 webpackConfig.cache = true;
-webpackConfig.module.postLoaders = [
-  {
-    test: /\.js$/,
-    exclude: /(.spec|setup|node_modules)/,
-    loader: 'istanbul-instrumenter'
-  }
-];
+// webpackConfig.module.postLoaders = [
+//   {
+//     test: /\.js$/,
+//     exclude: /(.spec|setup|node_modules)/,
+//     loader: 'istanbul-instrumenter'
+//   }
+// ];
 
 module.exports = function (config) {
   config.set({

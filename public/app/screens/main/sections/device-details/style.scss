@@ -1,6 +1,7 @@
 @import "components-theme";
 @import "theme/components/grid";
 @import "theme/components/buttons";
+@import "theme/mixins/section";
 
 $column-factor: $total-columns / $content-columns;
 
@@ -8,11 +9,11 @@ $column-factor: $total-columns / $content-columns;
   @include section(dialog);
   position: relative;
 
-  &__title{
+  &__title {
     padding: 0 $column-width 20px $column-width;
   }
 
-  &__close-button{
+  &__close-button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -24,7 +25,7 @@ $column-factor: $total-columns / $content-columns;
   }
 
   // used a general element, because we do not want to repeatedly define the properties for each row
-  >div{
+  > div {
     @include grid-row();
 
     // TODO: define right font color here
@@ -39,7 +40,7 @@ $column-factor: $total-columns / $content-columns;
       background: $shade-row-odd;
     }
 
-    &:last-child{
+    &:last-child {
       background: none;
       padding-bottom: 10px;
     }
@@ -48,46 +49,33 @@ $column-factor: $total-columns / $content-columns;
   &__controls,
   &__properties,
   &__access-rights,
-  &__details{
+  &__details {
     @include grid-row();
 
-  &__close-button{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: url("./img/close.svg") no-repeat;
-    background-size: 100%;
-    width: 15px;
-    height: 15px;
-  }
-
-  &__controls{
-    padding-bottom: 10px;
-
-    &-label{
+    &-label {
       @include grid-column(5 * $column-factor);
     }
 
-    &-value{
+    &-value {
       @include grid-column(5 * $column-factor);
       font-size: convert-to-rem(16px);
 
-      &-room{
+      &-room {
         width: 100%;
         font-family: source_sans_prolight, 'Helvetica Neue', Arial;
         background: $hint-gray;
       }
 
-      &-description{
+      &-description {
         width: 100%;
       }
     }
   }
 
-  &__details{
+  &__details {
     position: relative;
 
-    &-device-state{
+    &-device-state {
       position: absolute;
       bottom: 10px;
       right: $column-width;

@@ -1,4 +1,5 @@
-@import "theme";
+@import "components-theme";
+@import "theme/components/grid";
 
 $column-factor: $total-columns / $section-columns;
 

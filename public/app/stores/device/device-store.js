@@ -1,6 +1,6 @@
 var Reflux = require('reflux'),
   _ = require('lodash'),
-  deviceDiscovery = require('servcies/devices/discovery-service');
+  deviceDiscovery = require('services/devices/discovery-service');
 
 var roomStore = require('stores/room');
 

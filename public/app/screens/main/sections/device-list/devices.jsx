@@ -19,10 +19,6 @@ var DevicesSection = React.createClass({
     roomActions.fetchRooms();
   },
 
-  getInitialState: function getInitialState () {
-    return { rooms: [] };
-  },
-
   render: function render () {
     var rooms = this.state.rooms.map(function mapper (room, i) {
       return (

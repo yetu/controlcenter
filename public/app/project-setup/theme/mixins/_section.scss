@@ -2,9 +2,9 @@
 // $type - The type of the section: 'dialog' for dialogs. Default: false.
 @mixin section($type: false) {
   @if $type == dialog {
-    padding: $column-width 0 $column-width 0;
+    padding: $global-padding 0 $global-padding 0;
   }
   @else {
-    padding: $column-width;
+    padding: $global-padding;
   }
 }

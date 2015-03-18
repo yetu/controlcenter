@@ -1,9 +1,9 @@
-@import "theme";
+@import "components-theme";
+@import "theme/components/icon-bar";
 
 .cc_navigation {
 
-  //TODO: Use icon-bar mixin
-  //@include icon-bar();
+  @include icon-bar();
 
   &.vertical {
     width: 100%;

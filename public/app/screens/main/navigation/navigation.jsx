@@ -27,7 +27,7 @@ var Navigation = React.createClass({
     }.bind(this));
 
     return (
-      <div className={'cc_navigation icon-bar two-up ' + this.props.orientation}>
+      <div className={'cc_navigation ' + this.props.orientation}>
         {items}
       </div>
     );

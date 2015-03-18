@@ -1,6 +1,7 @@
 // this file contains all imports needed globally for the whole application
 // but not for the components
 @import "normalize";
+@import "foundation/functions";
 
 // turn off all classes by default
 $include-html-classes: false;
@@ -12,6 +13,7 @@ $include-html-type-classes: true;
 
 // this is used for toggling landscape/portrait and breakpoints-based visibility
 $include-html-visibility-classes: true;
+$include-html-icon-bar-classes: true;
 
 
 
@@ -25,4 +27,5 @@ $include-html-visibility-classes: true;
 @import "foundation/components/visibility";
 
 @import "theme/mixins/alignment";
+@import "theme/components/icon-bar";
 

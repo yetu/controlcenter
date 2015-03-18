@@ -1,5 +1,3 @@
-@import "foundation/components/icon-bar";
-
 // ICON BAR
 $icon-bar-bg: transparent;
 $icon-bar-active-color: $light-gray;
@@ -7,3 +5,5 @@ $icon-bar-font-color: $passive-gray;
 $icon-bar-font-color-hover: $active-gray;
 $icon-bar-hover-color: $hint-gray;
 $icon-bar-font-size: $h2-font-size;
+
+@import "foundation/components/icon-bar";

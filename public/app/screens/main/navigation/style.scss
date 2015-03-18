@@ -1,9 +1,6 @@
 @import "components-theme";
-@import "theme/components/icon-bar";
 
 .cc_navigation {
-
-  @include icon-bar();
 
   &.vertical {
     width: 100%;
@@ -19,8 +16,6 @@
 
     &-image {
       float: left;
-      width: $icon-bar-image-width;
-      height: $icon-bar-image-height;
 
       margin: 0 20px 0 10px !important;
 

@@ -19,7 +19,7 @@ var Navigation = React.createClass({
 
       return (
         <Link to={item.linkTo} key={i} className={classNames}>
-          <i className={'cc_navigation__link-image ' + item.image}></i>
+          <i className={'cc_navigation__link-image ' + item.image}>&nbsp;</i>
           <label className="cc_navigation__link-label">{item.title}</label>
         </Link>
       );
@@ -27,7 +27,7 @@ var Navigation = React.createClass({
     }.bind(this));
 
     return (
-      <div className={'cc_navigation ' + this.props.orientation}>
+      <div className={'cc_navigation icon-bar two-up' + ' ' + this.props.orientation}>
         {items}
       </div>
     );

@@ -19,15 +19,13 @@ var Navigation = React.createClass({
 
       return (
         <Link to={item.linkTo} key={i} className={classNames}>
-          <div className={'cc_navigation__link-image ' + item.image} />
-          <span className="cc_navigation__link-label">{item.title}</span>
+          <i className={'cc_navigation__link-image ' + item.image}></i>
+          <label className="cc_navigation__link-label">{item.title}</label>
         </Link>
       );
 
     }.bind(this));
 
-    // TODO: Use icon-bar mixin
-    // TODO: Pass number of elements to mixin instead of specifying class name
     return (
       <div className={'cc_navigation icon-bar two-up ' + this.props.orientation}>
         {items}

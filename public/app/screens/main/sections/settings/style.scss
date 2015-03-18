@@ -1,4 +1,7 @@
-@import "theme";
+@import "components-theme";
+@import "theme/components/grid";
+@import "theme/components/buttons";
+@import "theme/mixins/section";
 
 $column-factor: $total-columns / $section-columns;
 
@@ -42,6 +45,6 @@ $column-factor: $total-columns / $section-columns;
   }
 
   &__save {
-    @include button();
+    @include cc-button();
   }
 }

@@ -1,0 +1,16 @@
+// this file contains all imports needed for components
+// but no global definitions
+@import "foundation/functions";
+
+@include exports("global") {
+  // this declaration should prevent global module from loading
+}
+
+$include-html-classes: false;
+
+
+@import "theme/variables/colors";
+@import "theme/variables/typography";
+@import "theme/variables/layout";
+
+@import "theme/mixins/alignment";

@@ -1,0 +1,28 @@
+// this file contains all imports needed globally for the whole application
+// but not for the components
+@import "normalize";
+
+// turn off all classes by default
+$include-html-classes: false;
+
+// Basic markup-related classes should be ON
+$include-html-global-classes: true;
+// this is used for Headers, should be ON
+$include-html-type-classes: true;
+
+// this is used for toggling landscape/portrait and breakpoints-based visibility
+$include-html-visibility-classes: true;
+
+
+
+@import "theme/variables/colors";
+@import "theme/variables/typography";
+@import "theme/fonts/fonts";
+
+// This entries should not be rearranged as the order has implications
+@import "foundation/components/global";
+@import "foundation/components/type";
+@import "foundation/components/visibility";
+
+@import "theme/mixins/alignment";
+

@@ -5,46 +5,45 @@
   //TODO: Use icon-bar mixin
   //@include icon-bar();
 
-  &.icon-bar {
-    background: transparent;
-
-    &.vertical {
-      width: 100%;
-    }
+  &.vertical {
+    width: 100%;
   }
 
-  .cc_navigation__link {
+  & * {
+    cursor: pointer;
+  }
+
+  &__link {
     text-align: left;
-    color: $default-gray;
     padding: 10px 0 10px 0;
 
     &-image {
-      width: 20px;
-      height: 20px;
-      margin: 0 20px 0 10px;
-      background-color: $default-gray;
       float: left;
+      width: $icon-bar-image-width;
+      height: $icon-bar-image-height;
+
+      margin: 0 20px 0 10px !important;
 
       &.devices {
-        mask-image: url('./img/devices.svg');
+        background-image: url('./img/devices.svg');
       }
+
       &.settings {
-        mask-image: url('./img/settings.svg');
+        background-image: url('./img/settings.svg');
       }
     }
 
-    &.item {
-      // Removes all background colors, such as for :hover
-      background: transparent;
+
+    &:hover {
+      .cc_navigation__link-image {
+
+      }
     }
 
     // .active is applied to selected link by foundation automatically
     &.active {
-      font-weight: bold;
-      color: $font-active-color;
+      &-image {
 
-      .cc_navigation__link-image {
-        background-color: $font-active-color;
       }
     }
   }

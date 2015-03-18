@@ -1,4 +1,7 @@
-@import "theme";
+@import "components-theme";
+@import "theme/components/grid";
+@import "theme/components/forms";
+@import "theme/components/cc-label";
 
 .cc-form {
   @include form-row-base();

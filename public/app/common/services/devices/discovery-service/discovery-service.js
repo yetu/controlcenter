@@ -1,4 +1,4 @@
-var Rx = require('rx'),
+var Rx = require('rx/dist/rx.all.min'),
   qwest = require('qwest');
 
 var SessionState = require('./discovery-session-state.js');

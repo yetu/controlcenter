@@ -27,7 +27,7 @@ module.exports = {
       'common': path.join(__dirname, 'app/common'),
       'mixins': path.join(__dirname, 'app/common/mixins'),
       'helpers': path.join(__dirname, 'app/common/helpers'),
-      'servcies': path.join(__dirname, 'app/common/servcies')
+      'services': path.join(__dirname, 'app/common/services')
     },
     extensions: [ '', '.js', '.jsx' ]
   },
@@ -60,9 +60,9 @@ module.exports = {
       { test: /\.jade$/, loader: 'jade' },
       {
         test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=10000&minetype=application/font-woff'
+        loader: 'url?limit=10000&mimetype=application/font-woff'
       },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url' }
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000' }
     ],
     noParse: []
   },

@@ -1,0 +1,14 @@
+@import "foundation/components/buttons";
+
+$button-tny: rem-calc(2);
+$button-font-tny: $button-font-med;
+
+
+@mixin cc-button($padding:$button-med) {
+
+  @include button($padding, $bg:$button-bg-color, $radius:false, $full-width:false, $disabled:false, $is-prefix:false, $bg-hover:null, $border-color:null, $transition: true);
+
+  text-transform: uppercase;
+  padding-bottom: $padding;
+  box-shadow: 3px 3px 3px 0 $shadow;
+}

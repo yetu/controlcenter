@@ -6,9 +6,7 @@ var roomStore = Reflux.createStore({
   listenables: [roomActions],
 
   getInitialState: function getInitialState () {
-    return {
-
-    };
+    return [];
   },
 
   onFetchRoomsCompleted: function onFetchRoomsCompleted (rooms) {

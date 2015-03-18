@@ -1,4 +1,6 @@
-@import "theme";
+@import "components-theme";
+@import "theme/components/grid";
+@import "theme/components/buttons";
 
 @keyframes rotate {
   from { transform:rotate(0deg); }
@@ -20,7 +22,7 @@
   }
 
   &__button {
-    @include button();
+    @include cc-button();
   }
 
   &__status-warning {

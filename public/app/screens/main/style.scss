@@ -11,6 +11,14 @@
     padding-top: 10px;
   }
 
+  &__header {
+    padding: $global-padding 0 $global-padding $global-padding;
+  }
+
+  &__nav {
+    padding-left: $global-padding;
+  }
+
   &__body {
     @include grid-row();
     height: 100%;
@@ -18,8 +26,6 @@
     &-left {
       @include grid-column($side-nav-columns);
       height: 100%;
-      padding-top: $column-height;
-      padding-left: $column-width;
     }
 
     &-content {

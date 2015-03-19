@@ -19,7 +19,11 @@ var Navigation = React.createClass({
 
       return (
         <Link to={item.linkTo} key={i} className={classNames}>
+<<<<<<< Updated upstream
+          <i className={'cc_navigation__link-image ' + item.image}>&nbsp;</i>
+=======
           <i className={'cc_navigation__link-image' + ' ' + 'icon-' + item.image}></i>
+>>>>>>> Stashed changes
           <label className="cc_navigation__link-label">{item.title}</label>
         </Link>
       );

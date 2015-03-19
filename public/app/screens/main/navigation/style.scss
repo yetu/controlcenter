@@ -16,30 +16,7 @@
 
     &-image {
       float: left;
-
-      margin: 0 20px 0 10px !important;
-
-      &.devices {
-        background-image: url('./img/devices.svg');
-      }
-
-      &.settings {
-        background-image: url('./img/settings.svg');
-      }
-    }
-
-
-    &:hover {
-      .cc_navigation__link-image {
-
-      }
-    }
-
-    // .active is applied to selected link by foundation automatically
-    &.active {
-      &-image {
-
-      }
+      margin: -5px 20px 0 10px !important;
     }
   }
 }

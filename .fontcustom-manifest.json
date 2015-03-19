@@ -1,0 +1,64 @@
+{
+  "checksum": {
+    "previous": "df307e8026f61de537020a0f75d6b749210decd68752466b3325c68efe5eea63",
+    "current": "df307e8026f61de537020a0f75d6b749210decd68752466b3325c68efe5eea63"
+  },
+  "fonts": [
+    "./public/app/project-setup/theme/fonts/icon-font.ttf",
+    "./public/app/project-setup/theme/fonts/icon-font.svg",
+    "./public/app/project-setup/theme/fonts/icon-font.woff",
+    "./public/app/project-setup/theme/fonts/icon-font.eot"
+  ],
+  "glyphs": {
+    "apps": {
+      "codepoint": 61696,
+      "source": "./public/app/screens/main/navigation/img/apps.svg"
+    },
+    "community": {
+      "codepoint": 61697,
+      "source": "./public/app/screens/main/navigation/img/community.svg"
+    },
+    "devices": {
+      "codepoint": 61698,
+      "source": "./public/app/screens/main/navigation/img/devices.svg"
+    },
+    "rules": {
+      "codepoint": 61699,
+      "source": "./public/app/screens/main/navigation/img/rules.svg"
+    },
+    "settings": {
+      "codepoint": 61700,
+      "source": "./public/app/screens/main/navigation/img/settings.svg"
+    }
+  },
+  "options": {
+    "autowidth": false,
+    "config": "fontcustom.yml",
+    "css_selector": ".icon-{{glyph}}",
+    "debug": false,
+    "font_ascent": 448,
+    "font_descent": 64,
+    "font_design_size": 16,
+    "font_em": 512,
+    "font_name": "icon-font",
+    "force": false,
+    "input": {
+      "templates": "./public/app/screens/main/navigation/img/",
+      "vectors": "./public/app/screens/main/navigation/img/"
+    },
+    "no_hash": true,
+    "output": {
+      "css": "./public/app/project-setup/theme/fonts",
+      "fonts": "./public/app/project-setup/theme/fonts",
+      "preview": "./public/app/project-setup/theme/fonts"
+    },
+    "preprocessor_path": "./theme/fonts/",
+    "quiet": false,
+    "templates": [
+      "scss"
+    ]
+  },
+  "templates": [
+    "./public/app/project-setup/theme/fonts/_icon-font.scss"
+  ]
+}

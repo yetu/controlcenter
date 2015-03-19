@@ -1,14 +1,26 @@
-@import "foundation/components/buttons";
-
 $button-tny: rem-calc(2);
-$button-font-tny: $button-font-med;
+$button-font-tny: rem-calc(16);
+$button-med: rem-calc(16);
 
 
-@mixin cc-button($padding:$button-med) {
-
-  @include button($padding, $bg:$button-bg-color, $radius:false, $full-width:false, $disabled:false, $is-prefix:false, $bg-hover:null, $border-color:null, $transition: true);
+.cc-button {
+  @extend .button;
 
   text-transform: uppercase;
-  padding-bottom: $padding;
+  padding-bottom: $button-med;
   box-shadow: 3px 3px 3px 0 $shadow;
+
+  &.tiny {
+    text-transform: uppercase;
+  }
+
+  &.secondary {
+    background: transparent;
+    text-transform: none;
+    border: none;
+    box-shadow: none;
+    color: $primary-color;
+  }
 }
+
+@import "foundation/components/buttons";

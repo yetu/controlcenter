@@ -21,10 +21,6 @@
     animation-timing-function: linear;
   }
 
-  &__button {
-    @include cc-button();
-  }
-
   &__status-warning {
     color: $alert-color;
     // TODO: Font does not appear bold enough, use distinct font?

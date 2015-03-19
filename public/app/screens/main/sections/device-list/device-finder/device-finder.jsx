@@ -29,7 +29,7 @@ var DeviceFinder = React.createClass({
   },
 
   getButton: function getButton () {
-    return <a className='cc-device-finder__button' href='#' onClick={this.startSearching}>+ Add device</a>;
+    return <a className='cc-device-finder__button cc-button' href='#' onClick={this.startSearching}>+ Add device</a>;
   },
 
   getDialog: function getDialog () {

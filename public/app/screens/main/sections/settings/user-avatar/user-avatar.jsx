@@ -12,7 +12,7 @@ var UserAvatar = React.createClass({
           <img className='cc-user-avatar__image' src='http://placehold.it/80x80'/>
         </div>
         <div className='cc-user-avatar__button-content'>
-          <span className='cc-user-avatar__button'>Change picture</span>
+          <a className='cc-user-avatar__button cc-button tiny'>Change picture</a>
         </div>
       </div>
     );

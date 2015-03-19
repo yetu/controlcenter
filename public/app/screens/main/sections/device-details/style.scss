@@ -86,18 +86,10 @@ $column-factor: $total-columns / $content-columns;
   &__buttons {
     &-save {
       @include grid-column(5 * $column-factor);
-
-      &-button {
-        @include cc-button($button-tny);
-      }
     }
 
     &-delete {
       @include grid-column(5 * $column-factor);
-
-      &-button {
-        text-transform: uppercase;
-      }
     }
   }
 }

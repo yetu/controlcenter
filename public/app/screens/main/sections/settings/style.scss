@@ -43,8 +43,4 @@ $column-factor: $total-columns / $section-columns;
     width: 100%;
     border: 1px $passive-gray solid;
   }
-
-  &__save {
-    @include cc-button();
-  }
 }

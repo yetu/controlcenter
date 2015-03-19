@@ -1,5 +1,8 @@
 @import "components-theme";
+@import "theme/components/grid";
 
 .cc-room {
-
+  &__header {
+    height: $column-height;
+  }
 }

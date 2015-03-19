@@ -30,7 +30,7 @@ var DevicesSection = React.createClass({
       <div className='cc-devices'>
         <DeviceFinder />
         {rooms}
-        <a className='cc-devices__button' href='#' onClick={this.handleAddRoom}>+ Add room</a>
+        <a className='cc-devices__button cc-button' href='#' onClick={this.handleAddRoom}>+ Add room</a>
       </div>
     );
   },

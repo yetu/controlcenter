@@ -12,8 +12,8 @@ var Room = React.createClass({
     });
 
     return (
-      <div>
-        <h2>{this.props.room.title}</h2>
+      <div className="cc-room">
+        <h2 className="cc-room__header">{this.props.room.title}</h2>
         {devices}
       </div>
     );

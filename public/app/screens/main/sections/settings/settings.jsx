@@ -37,7 +37,7 @@ var SettingsPage = React.createClass({
           </div>
         </div>
 
-        <a className='cc-settings__save' href='#' onClick={this.submitForm}>
+        <a className='cc-settings__save cc-button' href='#' onClick={this.submitForm}>
           Save changes
         </a>
       </div>

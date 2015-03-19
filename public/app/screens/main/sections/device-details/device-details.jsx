@@ -124,10 +124,10 @@ var DeviceDetail = React.createClass({
         </div>
         <div className="cc-device-detail__buttons">
           <div className="cc-device-detail__buttons-save">
-            <a className="cc-device-detail__buttons-save-button" onClick={this.onSave}>Save changes</a>
+            <a className="cc-device-detail__buttons-save-button cc-button tiny" onClick={this.onSave}>Save changes</a>
           </div>
           <div className="cc-device-detail__buttons-delete">
-            <a className="cc-device-detail__buttons-delete-button">Delete device</a>
+            <a className="cc-device-detail__buttons-delete-button cc-button tiny secondary">Delete device</a>
           </div>
         </div>
       </div>

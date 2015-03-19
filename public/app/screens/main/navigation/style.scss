@@ -6,12 +6,16 @@
     width: 100%;
   }
 
+  &.vertical &__link {
+    text-align: left;
+  }
+
   & * {
     cursor: pointer;
   }
 
   &__link {
-    text-align: left;
+
     padding: 10px 0 10px 0;
 
     &-image {

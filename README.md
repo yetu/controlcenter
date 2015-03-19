@@ -85,6 +85,13 @@ Are currently run with npm:
 npm test
 ```
 
+## Compiling fonts
+
+1. Install  [fontcustom](http://fontcustom.com/)
+2. Run `fontcustom compile` in project root
+
+See `fontcustom.yml` for configuration.
+
 ## Adding dependencies
 
 After you have added any library using `npm` or `bower`, you have to apply the next steps:

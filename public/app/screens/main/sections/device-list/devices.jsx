@@ -3,6 +3,7 @@ var Reflux = require('reflux');
 
 var Room = require('./room');
 var DeviceFinder = require('./device-finder');
+var Button = require('common/components/controls/button');
 
 var roomStore = require('stores/room');
 var roomActions = require('actions/room');
@@ -30,7 +31,7 @@ var DevicesSection = React.createClass({
       <div className='cc-devices'>
         <DeviceFinder />
         {rooms}
-        <a className='cc-devices__button cc-button' href='#' onClick={this.handleAddRoom}>+ Add room</a>
+        <Button onClick={ this.handleAddRoom }> + Add Room </Button>
       </div>
     );
   },

@@ -8,6 +8,7 @@ var deviceStore = require('stores/device');
 
 // TODO move to column
 var DeviceState = require('common/components/device-state');
+var Button = require('common/components/controls/button');
 
 var DeviceDetail = React.createClass({
   mixins: [
@@ -124,10 +125,14 @@ var DeviceDetail = React.createClass({
         </div>
         <div className="cc-device-detail__buttons">
           <div className="cc-device-detail__buttons-save">
-            <a className="cc-device-detail__buttons-save-button cc-button tiny" onClick={this.onSave}>Save changes</a>
+            <Button size='tiny' onClick={ this.onSave }>
+              Save changes
+            </Button>
           </div>
           <div className="cc-device-detail__buttons-delete">
-            <a className="cc-device-detail__buttons-delete-button cc-button tiny secondary">Delete device</a>
+            <Button size='tiny' secondary='true'>
+              Delete device
+            </Button>
           </div>
         </div>
       </div>

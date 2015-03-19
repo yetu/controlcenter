@@ -1,11 +1,9 @@
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var ReactTestUtils = require('helpers/test');
+var VDOM = require('helpers/test');
 var DeviceFinder = require('../device-finder.jsx');
 var DeviceFinderDialog = require('../device-finder-dialog');
-
-var getSearchButton;
-var getDialog;
+var Button = require('common/components/controls/button');
 
 describe('DeviceFinder', function () {
   it('initially only shows a button', function () {
@@ -13,8 +11,8 @@ describe('DeviceFinder', function () {
       <DeviceFinder />
     );
 
-    expect(getSearchButton(deviceFinder)).not.toBe(null);
-    expect(getDialog(deviceFinder)).toBe(null);
+    expect(VDOM.isRendered(deviceFinder, Button)).toBe(true);
+    expect(VDOM.isRendered(deviceFinder, DeviceFinderDialog)).toBe(false);
   });
 
   it('hides the search button and shows the search dialog when the search button is clicked', function () {
@@ -22,18 +20,10 @@ describe('DeviceFinder', function () {
       <DeviceFinder />
     );
 
-    TestUtils.SimulateNative.click(getSearchButton(deviceFinder));
+    VDOM.click(VDOM.byType(deviceFinder, Button)[0]);
 
-    expect(getSearchButton(deviceFinder)).toBe(null);
-    expect(getDialog(deviceFinder)).not.toBe(null);
+    expect(VDOM.isRendered(deviceFinder, Button)).toBe(false);
+    expect(VDOM.isRendered(deviceFinder, DeviceFinderDialog)).toBe(true);
 
   });
 });
-
-getSearchButton = function (deviceFinder) {
-  return ReactTestUtils.getComponentWithClass(deviceFinder, 'cc-device-finder__button');
-};
-
-getDialog = function (deviceFinder) {
-  return ReactTestUtils.getComponentWithType(deviceFinder, DeviceFinderDialog);
-};

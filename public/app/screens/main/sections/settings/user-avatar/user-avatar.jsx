@@ -1,5 +1,6 @@
 var React = require('react');
 var styleMixin = require('mixins/style-mixin');
+var Button = require('common/components/controls/button');
 
 var UserAvatar = React.createClass({
   mixins: [
@@ -12,7 +13,7 @@ var UserAvatar = React.createClass({
           <img className='cc-user-avatar__image' src='http://placehold.it/80x80'/>
         </div>
         <div className='cc-user-avatar__button-content'>
-          <a className='cc-user-avatar__button cc-button tiny'>Change picture</a>
+          <Button size='tiny'>Change picture</Button>
         </div>
       </div>
     );

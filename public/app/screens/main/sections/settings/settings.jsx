@@ -6,6 +6,8 @@ var UserForm = require('./user-form');
 var UserAvatar = require('./user-avatar');
 var UserInfo = require('./user-info');
 
+var Button = require('common/components/controls/button');
+
 var userDataActions = require('actions/user-data');
 
 var SettingsPage = React.createClass({
@@ -37,9 +39,9 @@ var SettingsPage = React.createClass({
           </div>
         </div>
 
-        <a className='cc-settings__save cc-button' href='#' onClick={this.submitForm}>
+        <Button onClick={ this.submitForm }>
           Save changes
-        </a>
+        </Button>
       </div>
     );
   }

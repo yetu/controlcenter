@@ -20,7 +20,7 @@ var DeviceFinderDialog = React.createClass({
         </div>
         <div className='cc-device-finder-dialog__text'>
           <div>
-            <div className='cc-device-finder-dialog__text-title'>{this.props.title}</div>
+            <h4>{this.props.title}</h4>
             <div className='cc-device-finder-dialog__text-description'>{this.props.description}</div>
           </div>
         </div>

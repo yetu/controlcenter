@@ -1,6 +1,6 @@
 @import "foundation/components/grid";
 
-$row-width: 1100px;
+$row-width: rem-calc(1100);
 $total-columns: 22;
 $column-gutter: rem-calc(0);
 

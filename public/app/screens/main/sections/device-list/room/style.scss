@@ -2,7 +2,9 @@
 @import "theme/components/grid";
 
 .cc-room {
+  @extend vertically-centered-content();
+
   &__header {
-    height: $column-height;
+    height: $basic-padding;
   }
 }

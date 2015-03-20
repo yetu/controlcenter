@@ -10,15 +10,17 @@ var Device = React.createClass({
 
   render: function render () {
     return (
-      <div className="cc-device row">
-        <div className="cc-device__title">
-          <Link to="device" params={{deviceId: this.props.device.id}}>
-            {this.props.device.title}
+      <div className='cc-device row'>
+        <div className='cc-device__title'>
+          <Link to='device' params={{deviceId: this.props.device.id}}>
+            <h5>{this.props.device.title}</h5>
           </Link>
         </div>
-        <div className="cc-device__type">{this.props.device.type}</div>
-        <div className="cc-device__control">{this.getControl()}</div>
-        <div className="cc-device__state">
+        <div className='cc-device__type'>
+          <h5 className='subheader'>{this.props.device.type}</h5>
+        </div>
+        <div className='cc-device__control'>{this.getControl()}</div>
+        <div className='cc-device__state'>
           <DeviceState device={this.props.device}/>
         </div>
       </div>

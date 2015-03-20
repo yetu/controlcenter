@@ -10,3 +10,17 @@
   top: $top;
   transform: translate(-$left, -$top);
 }
+
+@mixin vertically-centered () {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin vertically-centered-content () {
+  &::before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}

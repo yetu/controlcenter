@@ -13,7 +13,7 @@ var Room = React.createClass({
 
     return (
       <div className="cc-room">
-        <h2 className="cc-room__header">{this.props.room.title}</h2>
+        <h3 className="cc-room__header">{this.props.room.title}</h3>
         {devices}
       </div>
     );

@@ -2,9 +2,13 @@
 // but no global definitions
 @import "foundation/functions";
 
-@include exports("global") {
-  // this declaration should prevent global module from loading
-}
+// Do not touch it
+// This is a hacky hack from foundation itself, it helps us keep styles clean
+@include exports("global") {}
+
+// DO NOT MOVE OR THE UNIVERSE WILL DIE!!!111
+@import "foundation/components/global";
+
 
 $include-html-classes: false;
 

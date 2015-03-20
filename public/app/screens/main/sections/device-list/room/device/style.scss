@@ -7,14 +7,17 @@ $column-factor: $total-columns / $section-columns;
   @include grid-row();
 
   &__title {
+    @include vertically-centered-content();
+
     @include grid-column(4 * $column-factor);
-    font-size: 18px;
-    color: $primary-color;
+
+    * {
+      color: $primary-color;
+    }
   }
 
   &__type {
     @include grid-column(4 * $column-factor);
-    font-size: 18px;
   }
 
   &__control {

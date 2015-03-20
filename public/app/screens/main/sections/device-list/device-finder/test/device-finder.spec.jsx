@@ -16,10 +16,10 @@ describe('DeviceFinder', function () {
       <DeviceFinder />
     );
 
-    var btn = $(deviceFinder).byType(Button);
+    var button = $(deviceFinder).byType(Button);
     var dialog = $(deviceFinder).byType(DeviceFinderDialog);
 
-    expect(btn).toBeRendered();
+    expect(button).toBeRendered();
     expect(dialog).not.toBeRendered();
   });
 
@@ -30,10 +30,10 @@ describe('DeviceFinder', function () {
 
     $(deviceFinder).byType(Button).click();
 
-    var btn = $(deviceFinder).byType(Button);
+    var button = $(deviceFinder).byType(Button);
     var dialog = $(deviceFinder).byType(DeviceFinderDialog);
 
-    expect(btn).not.toBeRendered();
+    expect(button).not.toBeRendered();
     expect(dialog).toBeRendered();
 
   });

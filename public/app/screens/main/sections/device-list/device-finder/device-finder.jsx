@@ -71,12 +71,12 @@ var DeviceFinder = React.createClass({
   },
 
   startSearching: function startSearching () {
-    this.setState({activity: 'searching'});
+    this.setState({ activity: DeviceFinderActivity.SEARCHING });
 
     // TODO: Remove mock up code as soon as backend logic is used
     var displayNoDevicesDialog = function displayNoDevicesDialog () {
       if (this.state.activity === DeviceFinderActivity.SEARCHING) {
-        this.setState({activity: 'noDevices'});
+        this.setState({ activity: DeviceFinderActivity.NO_DEVICES });
       }
     }.bind(this);
 

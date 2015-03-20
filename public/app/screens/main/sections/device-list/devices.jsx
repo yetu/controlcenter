@@ -28,9 +28,10 @@ var DevicesSection = React.createClass({
     });
 
     return (
-      <div className='cc-devices'>
+      <div className='cc-devices grid-14 padded'>
         <DeviceFinder />
         {rooms}
+        <div className='row fixed-height'/>
         <Button onClick={ this.handleAddRoom }> + Add Room </Button>
       </div>
     );

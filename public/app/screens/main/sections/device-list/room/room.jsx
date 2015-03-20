@@ -12,8 +12,12 @@ var Room = React.createClass({
     });
 
     return (
-      <div className="cc-room">
-        <h3 className="cc-room__header">{this.props.room.title}</h3>
+      <div className='cc-room '>
+        <div className='row fixed-height'>
+          <div className='columns small-14 padded-left'>
+            <h3 className='cc-room__header'>{this.props.room.title}</h3>
+          </div>
+        </div>
         {devices}
       </div>
     );

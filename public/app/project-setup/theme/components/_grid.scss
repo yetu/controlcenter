@@ -1,13 +1,16 @@
-@import "foundation/components/grid";
+@import "theme/mixins/grid-generator";
 
 $row-width: rem-calc(1100);
 $total-columns: 22;
-$column-gutter: rem-calc(0);
-
-// Custom grid layout variables
-$column-width: $row-width / $total-columns;
-$column-height: $column-width;
-
 $side-nav-columns: 6;
 $content-columns: $total-columns - $side-nav-columns;
 $section-columns: $content-columns - 2;
+$column-gutter: rem-calc(0);
+
+$column-width: $row-width / $total-columns;
+$column-height: $column-width;
+
+
+.grid-14 {
+  @include grid-generator($section-columns);
+}

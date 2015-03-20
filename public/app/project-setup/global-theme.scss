@@ -16,7 +16,8 @@ $include-html-visibility-classes: true;
 $include-html-icon-bar-classes: true;
 $include-html-button-classes: true;
 
-
+$include-html-grid-classes: true;
+$include-xl-html-grid-classes: true;
 
 @import "theme/variables/colors";
 @import "theme/variables/typography";
@@ -32,3 +33,4 @@ $include-html-button-classes: true;
 @import "theme/components/icon-bar";
 @import "theme/components/buttons";
 @import "theme/components/type";
+@import "theme/components/grid";

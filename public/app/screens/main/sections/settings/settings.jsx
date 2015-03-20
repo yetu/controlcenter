@@ -21,7 +21,7 @@ var SettingsPage = React.createClass({
 
   render: function render () {
     return (
-      <div className='cc-settings'>
+      <div className='cc-settings grid-14 padded'>
         <div className='cc-settings__section'>
           <div className='cc-settings__section-form'>
             <UserForm />

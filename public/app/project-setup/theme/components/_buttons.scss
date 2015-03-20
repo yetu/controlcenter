@@ -7,8 +7,11 @@ $button-med: rem-calc(16);
   @extend .button;
 
   text-transform: uppercase;
-  padding-bottom: $button-med;
   box-shadow: 3px 3px 3px 0 $shadow;
+  padding: $button-med rem-calc(8) $button-med rem-calc(8);
+  min-width: rem-calc(125);
+  line-height: rem-calc(18);
+  margin: 0;
 
   &.tiny {
     text-transform: uppercase;

@@ -2,12 +2,12 @@
 @import "components-theme";
 @import "theme/components/grid";
 @import "theme/components/buttons";
-@import "theme/mixins/section";
+// @import "theme/mixins/section";
 
 $column-factor: $total-columns / $content-columns;
 
 .cc-device-detail {
-  @include section(dialog);
+  // @include section(dialog);
   position: relative;
 
   &__title {

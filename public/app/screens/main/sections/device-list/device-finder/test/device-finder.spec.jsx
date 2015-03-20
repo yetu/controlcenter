@@ -1,18 +1,26 @@
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
-var VDOM = require('helpers/test');
+var $ = require('helpers/test');
 var DeviceFinder = require('../device-finder.jsx');
 var DeviceFinderDialog = require('../device-finder-dialog');
 var Button = require('common/components/controls/button');
 
 describe('DeviceFinder', function () {
+
+  beforeEach(function () {
+    jasmine.addMatchers($.jasmineMatchers);
+  });
+
   it('initially only shows a button', function () {
     var deviceFinder = TestUtils.renderIntoDocument(
       <DeviceFinder />
     );
 
-    expect(VDOM.isRendered(deviceFinder, Button)).toBe(true);
-    expect(VDOM.isRendered(deviceFinder, DeviceFinderDialog)).toBe(false);
+    var btn = $(deviceFinder).byType(Button);
+    var dialog = $(deviceFinder).byType(DeviceFinderDialog);
+
+    expect(btn).toBeRendered();
+    expect(dialog).not.toBeRendered();
   });
 
   it('hides the search button and shows the search dialog when the search button is clicked', function () {
@@ -20,10 +28,13 @@ describe('DeviceFinder', function () {
       <DeviceFinder />
     );
 
-    VDOM.click(VDOM.byType(deviceFinder, Button)[0]);
+    $(deviceFinder).byType(Button).click();
 
-    expect(VDOM.isRendered(deviceFinder, Button)).toBe(false);
-    expect(VDOM.isRendered(deviceFinder, DeviceFinderDialog)).toBe(true);
+    var btn = $(deviceFinder).byType(Button);
+    var dialog = $(deviceFinder).byType(DeviceFinderDialog);
+
+    expect(btn).not.toBeRendered();
+    expect(dialog).toBeRendered();
 
   });
 });

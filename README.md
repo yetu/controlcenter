@@ -88,7 +88,7 @@ npm test
 ## Compiling fonts
 
 1. Install  [fontcustom](http://fontcustom.com/)
-2. Run `fontcustom compile` in project root
+2. Run `npm run fonts` in project root
 
 See `fontcustom.yml` for configuration.
 

@@ -62,10 +62,14 @@
     "test": "npm run bundle && node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js --single-run",
     "tdd": "node ./node_modules/karma/bin/karma start ./public/app/project-setup/test/karma.conf.js",
     "build": "npm run clean && npm run bundle && cp -r ./public/app/* ./public/dist",
+
     "eslint-codebase": "node_modules/.bin/eslint `npm run -s js-files` -c ./.eslintrc-codebase",
     "eslint-tests": "node_modules/.bin/eslint `npm run -s test-files` -c ./.eslintrc-tests",
     "eslint": "npm run eslint-codebase && npm run eslint-tests",
     "lint": "npm run eslint",
+
+    "fonts": "fontcustom compile",
+
     "precommit": "npm run lint && npm test"
   }
 }

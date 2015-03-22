@@ -8,7 +8,8 @@
     "react": "^0.12.2",
     "react-router": "^0.12.4",
     "reflux": "^0.2.5",
-    "tcomb-form": "^0.4.2"
+    "tcomb-form": "^0.4.2",
+    "whatwg-fetch": "^0.7.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "1.1.0",

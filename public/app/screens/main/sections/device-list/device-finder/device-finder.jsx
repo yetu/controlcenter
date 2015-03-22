@@ -1,5 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
+var _ = require('lodash');
+
 var DeviceFinderDialog = require('./device-finder-dialog');
 
 var deviceDiscoveryStore = require('stores/discovery-store');
@@ -18,6 +20,14 @@ var DeviceFinder = React.createClass({
     styleMixin(require('./style.scss')),
     Reflux.listenTo(deviceDiscoveryStore, 'onDiscoveryChange')
   ],
+
+  activityMap: function activityMap (ctx) {
+    return {
+      [DeviceFinderActivity.SEARCHING]: ctx.getSearchDialog,
+      [DeviceFinderActivity.NO_DEVICES]: ctx.getNoResultsDialog,
+      [DeviceFinderActivity.DEVICE_FOUND]: ctx.getDeviceFoundDialog
+    };
+  },
 
   getInitialState: function getInitialState () {
     return {
@@ -38,7 +48,8 @@ var DeviceFinder = React.createClass({
   },
 
   render: function render () {
-    var findingDevicesDialog = this.getDialog();
+    var fn = this.activityMap(this)[this.state.activity] || _.noop;
+    var findingDevicesDialog = fn();
     var button = this.state.activity === DeviceFinderActivity.CLOSED ? this.getButton() : null;
 
     return (
@@ -51,20 +62,6 @@ var DeviceFinder = React.createClass({
 
   getButton: function getButton () {
     return <a className='cc-device-finder__button' href='#' onClick={this.startSearching}>+ Add device</a>;
-  },
-
-  getDialog: function getDialog () {
-    var dialogToRender = null; // no jsx markup dy default
-
-    if (this.state.activity === DeviceFinderActivity.SEARCHING) {
-      dialogToRender = this.getSearchDialog();
-    } else if (this.state.activity === DeviceFinderActivity.NO_DEVICES) {
-      dialogToRender = this.getNoResultsDialog();
-    } else if (this.state.activity === DeviceFinderActivity.DEVICE_FOUND) {
-      dialogToRender = this.getDeviceFoundDialog();
-    }
-
-    return dialogToRender;
   },
 
   getSearchDialog: function getSearchDialog () {
@@ -91,7 +88,7 @@ var DeviceFinder = React.createClass({
       action={this.startSearching} />;
   },
 
-  getDeviceFoundDialog: function getNoResultsDialog () {
+  getDeviceFoundDialog: function getDeviceFoundDialog () {
     var status = <div className='cc-device-finder__status-warning'>Device found!</div>;
 
     return <DeviceFinderDialog
@@ -110,16 +107,16 @@ var DeviceFinder = React.createClass({
   },
 
   showFoundDeviceInfo: function showFoundDeviceInfo () {
-
+    this.setState({activity: DeviceFinderActivity.CLOSED});
   },
 
   stopSearching: function stopSearching () {
-    deviceDiscoveryActions.stopDiscovery();
+    this.setState({activity: DeviceFinderActivity.CLOSED});
     this.closeDialog();
   },
 
   closeDialog: function closeDialog () {
-    this.setState({activity: DeviceFinderActivity.NONE});
+    this.setState({activity: DeviceFinderActivity.CLOSED});
   }
 });
 

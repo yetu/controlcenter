@@ -1,5 +1,4 @@
-var Reflux = require('reflux'),
-  _ = require('lodash');
+var Reflux = require('reflux');
 
 var deviceActions = require('../../actions/device');
 var discoveryStore = require('stores/discovery-store');

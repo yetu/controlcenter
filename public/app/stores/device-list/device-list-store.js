@@ -1,5 +1,4 @@
-var Reflux = require('reflux'),
-  _ = require('lodash');
+var Reflux = require('reflux');
 
 var deviceActions = require('actions/device');
 var devicesService = require('servcies/devices/devices-service');
@@ -27,11 +26,9 @@ var deviceStore = Reflux.createStore({
 
   onFetchList: function onFetchList () {
     var self = this;
-    devicesService.fetchDeviceList().subscribe(function onNext (next) {
-      self.updateModel(next);
-    }, function onError (error) {
-      self.updateError(error);
-    });
+    devicesService.fetchDeviceList()
+      .subscribe(self.updateModel.bind(self),
+      self.updateError.bind(self));
   },
 
   updateModel: function updateModel (model) {

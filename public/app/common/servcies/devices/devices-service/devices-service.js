@@ -12,13 +12,18 @@ function extractProperties (sirenData) {
 
 function extractThingsUrls (sirenThingsUrls) {
   sirenThingsUrls = sirenThingsUrls || [];
+
+  function filterNullValues (item) {
+    return item !== null && item.href !== null;
+  }
+
+  function extractHref (item) {
+    return item.href;
+  }
+
   var urls = sirenThingsUrls.entities
-    .filter(function filterNullValues (item) {
-      return item !== null && item.href !== null;
-    })
-    .map(function extractHref (item) {
-      return item.href;
-    });
+    .filter(filterNullValues)
+    .map(extractHref);
 
   // create observable from array of urls
   return Rx.Observable.from(urls);
@@ -35,9 +40,7 @@ var $deviceList = Rx.Observable.fromPromise(qwest.get(thingsUrl, null, {response
 
 // TODO add device control actions here (change room, remove adjust)
 module.exports = {
-  fetchDeviceInfo: function fetchDeviceInfo (deviceUrl) {
-    return deviceInfo(deviceUrl);
-  },
+  fetchDeviceInfo: deviceInfo,
 
   fetchDeviceList: function fetchDeviceList () {
     return $deviceList.flatMap(extractThingsUrls)

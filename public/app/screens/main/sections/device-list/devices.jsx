@@ -16,9 +16,12 @@ var DevicesSection = React.createClass({
   render: function render () {
     return (
       <div className='cc-devices grid-14 padded'>
-        <DeviceFinder />
+        <header className='cc-devices__header'>
+          <DeviceFinder />
+        </header>
         <Room title='Living Room' />
-        <a className='cc-devices__button' href='#' onClick={ this.handleAddRoom }>+ Add room</a>
+        <div className='row fixed-height'/>
+        <Button onClick={ this.handleAddRoom }> + Add Room </Button>
       </div>
     );
   }

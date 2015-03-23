@@ -26,7 +26,7 @@ var Navigation = React.createClass({
 
     }.bind(this));
 
-    // Adjust the two-up class according to Foundation icon bar conventions (three-up, four-up, ...)
+    // TODO: Adjust the two-up class according to Foundation icon bar conventions (three-up, four-up, ...)
     return (
       // Adjust the two-up class according to Foundation icon bar conventions (three-up, four-up, ...)
       <div className={'cc_navigation icon-bar two-up' + ' ' + this.props.orientation}>

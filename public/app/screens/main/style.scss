@@ -37,7 +37,6 @@
       @include grid-column($content-columns);
       height: 100%;
       background-color: $shade-gray;
-      overflow: hidden;
       @media #{$small-only} {
         @include grid-column($total-columns);
       }

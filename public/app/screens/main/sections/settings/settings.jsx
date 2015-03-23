@@ -25,21 +25,25 @@ var SettingsPage = React.createClass({
       <div className='cc-settings grid-14 padded'>
         <Header></Header>
         <div className='cc-settings__section'>
-          <div className='cc-settings__section-form'>
-            <UserForm />
-          </div>
-          <div className='cc-settings__section-avatar'>
-            <UserAvatar />
+          <div className='cc-settings__section-form row'>
+            <div className='columns medium-8 padded-left'>
+              <UserForm />
+            </div>
+            <div className='columns medium-6'>
+              <UserAvatar />
+            </div>
           </div>
         </div>
 
-        <div className='cc-settings__divider'></div>
+        <div className='cc-settings__divider row fixed-height-1'></div>
 
-        <div className='cc-settings__section'>
+        <div className='cc-settings__section row'>
           <div className='cc-settings__section-info'>
             <UserInfo />
           </div>
         </div>
+
+        <div className='row fixed-height-1'></div>
 
         <Button onClick={ this.submitForm }>
           Save changes

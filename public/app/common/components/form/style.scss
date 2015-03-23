@@ -1,5 +1,4 @@
 @import "components-theme";
-@import "theme/components/grid";
 @import "theme/components/forms";
 @import "theme/components/cc-label";
 
@@ -13,11 +12,11 @@
   }
 
   &-item {
-    @include grid-row();
     margin: convert-to-rem(10px) 0 0 0;
 
     &__label {
-      @include grid-column($columns: 10, $float: left);
+
+      padding: 0 !important;
 
       &-text {
         @include prefix-postfix-base();
@@ -29,7 +28,8 @@
     }
 
     &__input {
-      @include grid-column($columns: 10);
+
+      padding: 0 !important;
 
       &-text {
         @include form-element();

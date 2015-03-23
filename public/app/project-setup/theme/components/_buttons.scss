@@ -14,6 +14,8 @@ $button-med: rem-calc(16);
   margin: 0;
 
   &.tiny {
+    line-height: normal;
+    padding: 1.5 * $button-tny $button-tny $button-tny $button-tny;
     text-transform: uppercase;
   }
 

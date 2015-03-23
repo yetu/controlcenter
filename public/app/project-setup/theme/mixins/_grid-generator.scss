@@ -15,15 +15,18 @@
   .row {
     @include grid-row;
 
-    &.fixed-height {
-      height: $column-height; // should it be $basic-padding?
+    @for $i from 1 through 5 {
+      &.fixed-height-#{$i} {
 
-      .columns {
-        @include vertically-centered-content();
-        height: $column-height; // should it be $basic-padding?
+        height: $i * $column-height; // should it be $basic-padding?
 
-        & * {
-          @include vertically-centered();
+        .columns {
+          @include vertically-centered-content();
+          height: $i * $column-height; // should it be $basic-padding?
+
+          & * {
+            @include vertically-centered();
+          }
         }
       }
     }

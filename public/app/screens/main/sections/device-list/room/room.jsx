@@ -32,7 +32,7 @@ var Room = React.createClass({
 
     return (
       <div className='cc-room '>
-        <div className='row fixed-height'>
+        <div className='row fixed-height-1'>
           <div className='columns small-14 padded-left'>
             <h3 className='cc-room__header'>{this.props.title}</h3>
           </div>

@@ -10,6 +10,9 @@ $column-gutter: rem-calc(0);
 $column-width: $row-width / $total-columns;
 $column-height: $column-width;
 
+.grid-22 {
+  @include grid-generator($total-columns);
+}
 
 .grid-14 {
   @include grid-generator($section-columns);

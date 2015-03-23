@@ -12,6 +12,8 @@
     padding-left: $basic-padding;
     padding-top: $half-padding;
     padding-right: $basic-padding;
+
+    background-color: $shade-white;
   }
 
   &__header {
@@ -19,6 +21,10 @@
   }
 
   &__nav {
+    padding-left: $basic-padding;
+  }
+
+  &__left-header {
     padding-left: $basic-padding;
   }
 
@@ -36,7 +42,6 @@
     &-content {
       @include grid-column($content-columns);
       height: 100%;
-      background-color: $shade-gray;
       @media #{$small-only} {
         @include grid-column($total-columns);
       }

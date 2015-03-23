@@ -35,7 +35,7 @@ var UserInfo = React.createClass({
     return (
       <div className='cc-user-info grid-14'>
         <div className='cc-user-info-item row fixed-height-1'>
-          <div className='cc-user-info-item__label columns medium-4 padded-left'>
+          <div className='cc-user-info-item__label columns medium-4'>
             <span className='cc-user-info-item__label-text'>
               Password
             </span>
@@ -49,7 +49,7 @@ var UserInfo = React.createClass({
         </div>
 
         <div className='cc-user-info-item row fixed-height-1'>
-          <div className='cc-user-info-item__label columns medium-4 padded-left'>
+          <div className='cc-user-info-item__label columns medium-4'>
             <span className='cc-user-info-item__label-text'>
               Email
             </span>

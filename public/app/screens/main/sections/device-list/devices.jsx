@@ -4,7 +4,6 @@ var Reflux = require('reflux');
 var Room = require('./room');
 var DeviceFinder = require('./device-finder');
 var Button = require('common/components/controls/button');
-var Header = require('common/components/header');
 
 var roomActions = require('actions/room');
 
@@ -19,9 +18,11 @@ var DevicesSection = React.createClass({
   render: function render () {
     return (
       <div className='cc-devices grid-14 padded'>
-        <Header>
-          <DeviceFinder />
-        </Header>
+        <div className='row fixed-height-3'>
+          <div className='columns'>
+            <DeviceFinder />
+          </div>
+        </div>
         <Room title='Living Room' />
         <div className='row fixed-height-1'/>
         <Button onClick={ this.handleAddRoom }> + Add Room </Button>

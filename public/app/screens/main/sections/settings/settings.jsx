@@ -7,7 +7,6 @@ var UserAvatar = require('./user-avatar');
 var UserInfo = require('./user-info');
 
 var Button = require('common/components/controls/button');
-var Header = require('common/components/header');
 
 var userDataActions = require('actions/user-data');
 
@@ -23,7 +22,9 @@ var SettingsPage = React.createClass({
   render: function render () {
     return (
       <div className='cc-settings grid-14 padded'>
-        <Header></Header>
+        <div className='cc-settings__header row fixed-height-3 hide-for-small'>
+          <div className='columns'></div>
+        </div>
         <div className='cc-settings__section'>
           <div className='cc-settings__section-form row'>
             <div className='columns medium-8 padded-left'>
@@ -38,7 +39,7 @@ var SettingsPage = React.createClass({
         <div className='cc-settings__divider row fixed-height-1'></div>
 
         <div className='cc-settings__section row'>
-          <div className='cc-settings__section-info'>
+          <div className='cc-settings__section-info columns padded-left'>
             <UserInfo />
           </div>
         </div>

@@ -46,9 +46,11 @@ var SettingsPage = React.createClass({
 
         <div className='row fixed-height-1'></div>
 
-        <Button onClick={ this.submitForm }>
-          Save changes
-        </Button>
+        <div className='row small-text-center medium-text-left'>
+          <Button onClick={ this.submitForm }>
+            Save changes
+          </Button>
+        </div>
       </div>
     );
   }

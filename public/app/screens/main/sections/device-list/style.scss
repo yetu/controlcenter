@@ -3,12 +3,4 @@
 
 .cc-devices {
 
-  &__header {
-    @include vertically-centered-content();
-    height: 2 * $basic-padding + $column-width;
-
-    * {
-      @include vertically-centered();
-    }
-  }
 }

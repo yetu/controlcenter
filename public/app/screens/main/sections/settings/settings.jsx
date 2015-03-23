@@ -7,6 +7,7 @@ var UserAvatar = require('./user-avatar');
 var UserInfo = require('./user-info');
 
 var Button = require('common/components/controls/button');
+var Header = require('common/components/header');
 
 var userDataActions = require('actions/user-data');
 
@@ -22,6 +23,7 @@ var SettingsPage = React.createClass({
   render: function render () {
     return (
       <div className='cc-settings grid-14 padded'>
+        <Header></Header>
         <div className='cc-settings__section'>
           <div className='cc-settings__section-form'>
             <UserForm />

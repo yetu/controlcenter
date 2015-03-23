@@ -1,0 +1,11 @@
+@import "components-theme";
+@import "theme/components/grid";
+
+.cc-header {
+  @include vertically-centered-content();
+  height: 2 * $basic-padding + $column-width;
+
+  * {
+    @include vertically-centered();
+  }
+}

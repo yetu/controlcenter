@@ -34,7 +34,7 @@ var ValueUpDown = React.createClass({
     this.setState({value: Math.max(this.state.value - this.state.step, this.state.min)});
   },
 
-  onUpClick: function onDownClick () {
+  onUpClick: function onUpClick () {
     this.setState({value: Math.min(this.state.value + this.state.step, this.state.max)});
   }
 

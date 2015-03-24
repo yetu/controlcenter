@@ -1,0 +1,29 @@
+@import "components-theme";
+
+.cc-value-updown {
+  cursor: default;
+  user-select: none;
+
+  &__buttons {
+    width: 90px;
+    height: 29px;
+    > * {
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 50%;
+      height: 100%;
+    }
+  }
+
+  &__down {
+    background-image: url('./img/down.png');
+  }
+
+  &__up {
+    background-image: url('./img/up.png');
+  }
+
+  &__value {
+    margin-left: 10px;
+  }
+}

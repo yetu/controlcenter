@@ -11,17 +11,19 @@ var Device = React.createClass({
   render: function render () {
     // Should have been a separate grid-14 but we live in a cruel world...
     return (
-      <div className="cc-device row">
-        <div className="cc-device__title">
-          <Link to="device" params={{deviceId: this.props.device.id}}>
-            { this.props.device.name }
+      <div className='cc-device row fixed-height-1'>
+        <div className='cc-device__title columns small-4 padded-left'>
+          <Link to='device' params={{ deviceId: this.props.device.id }}>
+            <h5>{ this.props.device.name }</h5>
           </Link>
         </div>
-        <div className="cc-device__type">{ this.props.device.displayType }</div>
-        <div className="cc-device__control">
+        <div className='cc-device__type columns small-4 text-center'>
+          <h5 className='subheader'>{this.props.device.type}</h5>
+        </div>
+        <div className="cc-device__control columns small-3 text-left">
           <SwitchControl device={ this.props.device } />
         </div>
-        <div className="cc-device__state">
+        <div className="cc-device__state columns small-3 padded-left">
           <DeviceState device={ this.props.device }/>
         </div>
       </div>

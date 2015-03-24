@@ -1,57 +1,41 @@
-var Reflux = require('reflux'),
-  _ = require('lodash'),
-  deviceDiscovery = require('services/devices/discovery-service');
+var Reflux = require('reflux');
 
-var roomStore = require('stores/room');
+var deviceActions = require('../../actions/device');
+var discoveryStore = require('stores/discovery-store');
 
 var deviceStore = Reflux.createStore({
   init: function init () {
-    this.listenTo(roomStore, this.update);
+    this.listenTo(deviceActions.fetchOne, this.onFetchDeviceInfo);
+
+    this.deviceInfo = {
+      model: {
+        devices: []
+      },
+      error: {}
+    };
   },
 
   getInitialState: function getInitialState () {
-    return {
+    return this.deviceInfo;
+  },
 
+  onFetchDeviceInfo: function onFetchDeviceInfo () {
+    console.log('Service call here');
+  },
+
+  updateModel: function updateModel (model) {
+    this.deviceInfo = {
+      model: model
     };
+    this.trigger(this.userData);
   },
 
-  onStartDiscovery: function startDiscovery () {
-    deviceDiscovery.startDiscovery().subscribe(function onNext () {
-
-    }, function onError () {
-
-    });
-  },
-
-  onCancelDiscovery: function cancelDiscovery () {
-    deviceDiscovery.cancelDiscovery();
-  },
-
-  createDeviceByIdMap: function createDeviceByIdMap (rooms) {
-    var devices = _.reduce(rooms, function reducer (acc, room) {
-      return acc.concat(room.devices);
-    }, []);
-    return _.indexBy(devices, 'id');
-  },
-
-  createRoomByDeviceIdMap: function createRoomByDeviceIdMap (rooms) {
-    return _.reduce(rooms, function roomReducer (acc, room) {
-      _.forEach(room.devices, function deviceIterator (device) {
-        acc[device.id] = room;
-      });
-      return acc;
-    }, {});
-  },
-
-  update: function update (rooms) {
-
-    var data = {
-      rooms: rooms,
-      deviceById: this.createDeviceByIdMap(rooms),
-      roomByDeviceId: this.createRoomByDeviceIdMap(rooms)
+  updateError: function updateError (error) {
+    this.deviceInfo = {
+      error: error
     };
 
-    this.trigger(data);
+    this.trigger(this.deviceInfo);
   }
 });
 

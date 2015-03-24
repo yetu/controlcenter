@@ -3,7 +3,6 @@ var Router = require('react-router');
 var Reflux = require('reflux');
 var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
-var roomStore = require('stores/room');
 var deviceStore = require('stores/device');
 
 // TODO move to column

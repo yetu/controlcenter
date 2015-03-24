@@ -1,8 +1,8 @@
 var Reflux = require('reflux');
 
 var deviceActions = Reflux.createActions([
-  'addDevice',
-  'removeDevice'
+  'fetchList',
+  'fetchOne'
 ]);
 
 module.exports = deviceActions;

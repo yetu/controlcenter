@@ -5,10 +5,6 @@ var roomActions = require('actions/room');
 var roomStore = Reflux.createStore({
   listenables: [roomActions],
 
-  getInitialState: function getInitialState () {
-    return [];
-  },
-
   onFetchRoomsCompleted: function onFetchRoomsCompleted (rooms) {
     this.updateRooms(rooms);
   },

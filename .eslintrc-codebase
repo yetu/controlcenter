@@ -26,7 +26,8 @@
     "globals": {
         "module": true,  // CommonJS module
         "require": true,  // CommonJS require
-        "React": true    // ReactJs
+        "React": true,    // ReactJs
+        "fetch": true    // Fetch js
     },
 
     "rules": {

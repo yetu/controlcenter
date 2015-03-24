@@ -51,43 +51,65 @@ $column-factor: $total-columns / $content-columns;
   &__details {
     @include grid-row();
 
-    &-label {
-      @include grid-column(5 * $column-factor);
-    }
-
-    &-value {
-      @include grid-column(5 * $column-factor);
-      font-size: convert-to-rem(16px);
-
-      &-room {
-        width: 100%;
-        font-family: source_sans_prolight, 'Helvetica Neue', Arial;
-        background: $hint-gray;
-      }
-
-      &-description {
-        width: 100%;
-      }
-    }
-  }
-
-  &__details {
-    position: relative;
-
-    &-device-state {
+    &__close-button {
       position: absolute;
-      bottom: 10px;
-      right: $column-width;
-    }
-  }
-
-  &__buttons {
-    &-save {
-      @include grid-column(5 * $column-factor);
+      top: 10px;
+      right: 10px;
+      background: url("./img/close.svg") no-repeat;
+      background-size: 100%;
+      width: 15px;
+      height: 15px;
     }
 
-    &-delete {
-      @include grid-column(5 * $column-factor);
+    &__controls {
+      padding-bottom: 10px;
+
+      &-label {
+        @include grid-column(5 * $column-factor);
+      }
+
+      &-value {
+        @include grid-column(5 * $column-factor);
+        font-size: convert-to-rem(16px);
+
+        &-room {
+          width: 100%;
+          font-family: source_sans_prolight, 'Helvetica Neue', Arial;
+          background: $hint-gray;
+        }
+
+        &-description {
+          width: 100%;
+        }
+      }
+    }
+
+    &__details {
+      position: relative;
+
+      &-device-state {
+        position: absolute;
+        bottom: 10px;
+        right: $column-width;
+      }
+    }
+
+    &__buttons {
+      &-save {
+        @include grid-column(5 * $column-factor);
+
+        &-button {
+          @include button($button-tny);
+        }
+      }
+
+      &-delete {
+        @include grid-column(5 * $column-factor);
+
+        &-button {
+          text-transform: uppercase;
+        }
+      }
     }
   }
 }

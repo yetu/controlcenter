@@ -1,22 +1,11 @@
 @import "components-theme";
 
-.cc-device-state{
-  &__image {
-    width: 20px;
-    height: 20px;
-    background-repeat: no-repeat;
-    float: left;
-    margin-right: 5px;
+.cc-device-state {
 
-    &-connected {
-      background-image: url("./img/state-connected.svg");
-    }
-
-    &-disconnected {
-      background-image: url("./img/state-disconnected.svg");
-    }
-  }
   &__text {
+    line-height: normal;
+    margin-left: $half-padding;
     font-size: convert-to-rem(16px);
   }
+
 }

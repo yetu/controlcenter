@@ -3,9 +3,10 @@
 .cc-switch-control {
   background-repeat: no-repeat;
   background-size: cover;
-  cursor: default;
-  height: 30px;
   width: 90px;
+  height: 30px;
+  cursor: default;
+  user-select: none;
 
   &__off {
     background-image: url('./img/off.png');

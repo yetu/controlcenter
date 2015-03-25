@@ -27,5 +27,3 @@ $h4-font-reduction: rem-calc(2) !default;
 // small font: <small>
 $small-font-size: rem-calc(16);
 $small-font-color: scale-color($header-font-color, $lightness: 35%);
-
-$body-bg: $shade-white;

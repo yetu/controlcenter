@@ -3,6 +3,7 @@
 
 .main-screen {
   height: 100%;
+  background-image: url('img/background.svg');
 
   &__top {
     @include grid-row();
@@ -27,6 +28,7 @@
     &-left {
       @include grid-column($side-nav-columns);
       height: 100%;
+      background-color: $light-gray;
     }
 
     &-content {

@@ -34,3 +34,7 @@ $include-xl-html-grid-classes: true;
 @import "theme/components/buttons";
 @import "theme/components/type";
 @import "theme/components/grid";
+
+body {
+  background-color: transparent;
+}

@@ -3,17 +3,16 @@ var Router = require('react-router');
 var Reflux = require('reflux');
 var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
-var deviceStore = require('stores/device');
 
-// TODO move to column
 var DeviceState = require('common/components/device-state');
 var Button = require('common/components/controls/button');
+var Icon = require('common/components/icon');
+var SwitchControl = require('common/components/controls/switch');
 
 var DeviceDetail = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
-    Router.State,
-    Reflux.listenTo(deviceStore, 'onStoreUpdate')
+    Router.State
   ],
 
   getInitialState: function getInitialState () {
@@ -29,15 +28,6 @@ var DeviceDetail = React.createClass({
       return (
         <option key={i} value={room.id}>{room.title}</option>
       );
-    });
-  },
-
-  onStoreUpdate: function onStoreUpdate (data) {
-    var deviceId = this.getParams().deviceId;
-    this.setState({
-      rooms: data.rooms,
-      device: data.deviceById[deviceId],
-      selectedRoom: data.roomByDeviceId[deviceId]
     });
   },
 
@@ -59,81 +49,122 @@ var DeviceDetail = React.createClass({
 
   render: function render () {
     return (
-      <div className="cc-device-detail">
-        <h2 className="cc-device-detail__title">{this.state.device.title}</h2>
-        <Link className="cc-device-detail__close-button" to="devices"></Link>
-        <div className="cc-device-detail__controls">
-          <div className="cc-device-detail__controls">
-            <div className="cc-device-detail__controls-label">
-              Controls
-            </div>
-            <div className="cc-device-detail__controls-value">
-              TODO: Place device controls here
-            </div>
+
+      <div className='cc-device-details grid-14 padded'>
+        <div className='cc-settings__header row fixed-height-3'>
+          <Link className='cc-device-details__closeButton' to='devices'>
+            <Icon type='close' size='small' />
+          </Link>
+          <div className='columns'>
+            <h2>{ this.state.device.name }</h2>
           </div>
         </div>
-        <div className="cc-device-detail__properties">
-          <div className="cc-device-detail__properties">
-            <div className="cc-device-detail__properties-label">
-              <label htmlFor="cc-device-detail__desc">Description</label>
-            </div>
-            <div className="cc-device-detail__properties-value">
-              <input
-                type="text" id="cc-device-detail__desc" className="cc-device-detail__properties-value-description"
-                value={this.state.device.description} onChange={this.onDescriptionChange}></input>
-            </div>
+
+        <div className='row fixed-height-1'>
+          <div className='columns medium-4'>
+            <h5>Controls</h5>
           </div>
-          <div className="cc-device-detail__properties">
-            <div className="cc-device-detail__properties-label">
-              <label htmlFor="cc-device-detail__room">Room</label>
-            </div>
-            <div className="cc-device-detail__properties-value">
-              <select id="cc-device-detail__room" className="cc-device-detail__properties-value-room"
-                defaultValue={this.state.selectedRoom.title} onChange={this.onRoomChange}>
-                {this.getRoomSelectOptions()}
-              </select>
-            </div>
+          <div className='columns medium-10'>
+            <SwitchControl device={ this.state.device } />
           </div>
         </div>
-        <div className="cc-device-detail__access-rights">
-          <h2>Access rights</h2>
-          <div className="cc-device-detail__access-rights">
+
+        <div className='row fixed-height-1'>
+          <div className='columns medium-4'>
+            <h5>Description</h5>
+          </div>
+          <div className='columns medium-4'>
+            <input
+              type='text' className='cc-device-details__input'
+              value={ this.state.device.description } onChange={ this.onDescriptionChange }>
+            </input>
+          </div>
+          <div className='columns medium-6'></div>
+        </div>
+
+        <div className='row fixed-height-1'>
+          <div className='columns medium-4'>
+            <h5>Room</h5>
+          </div>
+          <div className='columns medium-4'>
+            <select className='cc-device-details__select'
+              defaultValue={ this.state.selectedRoom.title } onChange={ this.onRoomChange }>
+              { this.getRoomSelectOptions() }
+            </select>
+          </div>
+          <div className='columns medium-6'></div>
+        </div>
+
+        <div className='row fixed-height-1'>
+          <div className='columns medium-4'>
+            <h3 className='bold'>Access rights</h3>
+          </div>
+          <div className='columns medium-10'></div>
+        </div>
+
+        <div className='row fixed-height-1'>
+          <div className='columns medium-4'>
+            <h5>Playback control</h5>
+          </div>
+          <div className='columns medium-4'>
+            <select className='cc-device-details__select'></select>
+          </div>
+          <div className='columns medium-6'></div>
+        </div>
+
+        <div className='row fixed-height-1'>
+          <div className='columns medium-4'>
+            <h5>Configuration</h5>
+          </div>
+          <div className='columns medium-4'>
+            <select className='cc-device-details__select'></select>
+          </div>
+          <div className='columns medium-6'></div>
+        </div>
+
+        <div className='row fixed-height-1'>
+          <div className='columns medium-4'>
+            <h3 className='bold'>Device details</h3>
+          </div>
+          <div className='columns medium-10'>
           </div>
         </div>
-        <div className="cc-device-detail__details">
-          <h2>Device Details</h2>
-          <div className="cc-device-detail__details">
-            <div className="cc-device-detail__properties-label">
-              <label htmlFor="cc-device-detail_type">Type</label>
-            </div>
-            <div className="cc-device-detail__properties-value">
-              <span id="cc-device-detail__type">{this.state.device.type}</span>
-            </div>
+
+        <div className='row fixed-height-1'>
+          <div className='columns medium-4'>
+            <h5>Type</h5>
           </div>
-          <div className="cc-device-detail__details">
-            <div className="cc-device-detail__properties-label">
-              <label htmlFor="cc-device-detail_id">ID</label>
-            </div>
-            <div className="cc-device-detail__properties-value">
-              <span id="cc-device-detail__id">{this.state.device.id}</span>
-            </div>
-          </div>
-          <div className="cc-device-detail__details-device-state">
-            <DeviceState device={this.state.device}/>
+          <div className='columns medium-10'>
+            { this.state.device.type }
           </div>
         </div>
-        <div className="cc-device-detail__buttons">
-          <div className="cc-device-detail__buttons-save">
-            <Button size='tiny' onClick={ this.onSave }>
+
+        <div className='row fixed-height-1'>
+          <div className='columns medium-4'>
+            <h5>ID</h5>
+          </div>
+          <div className='columns medium-4'>
+            { this.state.device.id }
+          </div>
+          <div className='columns medium-3'></div>
+          <div className='columns medium-3'>
+            <DeviceState device={ this.state.device }/>
+          </div>
+        </div>
+
+        <div className='row fixed-height-2'>
+          <div className='columns medium-4'>
+            <Button onClick={ this.onSave }>
               Save changes
             </Button>
           </div>
-          <div className="cc-device-detail__buttons-delete">
-            <Button size='tiny' secondary='true'>
-              Delete device
+          <div className='columns medium-10'>
+            <Button secondary='true'>
+              Delete this device
             </Button>
           </div>
         </div>
+
       </div>
     );
   }

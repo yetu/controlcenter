@@ -21,7 +21,7 @@ $button-med: rem-calc(16);
 
   &.secondary {
     background: transparent;
-    text-transform: none;
+    text-transform: uppercase;
     border: none;
     box-shadow: none;
     color: $primary-color;

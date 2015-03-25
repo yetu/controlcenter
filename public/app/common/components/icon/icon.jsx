@@ -16,6 +16,7 @@ module.exports = React.createClass({
 
     var className = cx({
       'cc-icon': true,
+      [this.props.size || '']: true,
       [this.getIconTypeClass()]: true
     });
 

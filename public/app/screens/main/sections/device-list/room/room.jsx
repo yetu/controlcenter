@@ -8,12 +8,9 @@ require('./style.scss');
 var Room = React.createClass({
 
   mixins: [
+    Reflux.connect(deviceListStore),
     Reflux.listenTo(deviceListStore, 'onDeviceListUpdate')
   ],
-
-  getInitialState: function getInitialState () {
-    return deviceListStore.getInitialState();
-  },
 
   onDeviceListUpdate: function onDeviceListUpdate (devices) {
     if (devices.model) {

@@ -5,6 +5,7 @@ var Room = require('./room');
 var DeviceFinder = require('./device-finder');
 var Button = require('common/components/controls/button');
 
+var roomStore = require('stores/room');
 var roomActions = require('actions/room');
 
 var styleMixin = require('mixins/style-mixin');
@@ -12,7 +13,8 @@ var styleMixin = require('mixins/style-mixin');
 var DevicesSection = React.createClass({
 
   mixins: [
-    styleMixin(require('./style.scss'))
+    styleMixin(require('./style.scss')),
+    Reflux.connect(roomStore)
   ],
 
   render: function render () {
@@ -23,7 +25,11 @@ var DevicesSection = React.createClass({
             <DeviceFinder />
           </div>
         </div>
-        <Room title='Living Room' />
+        {
+          this.state.rooms.map((room) =>
+            <Room title={ room.title } />
+          )
+        }
         <div className='row fixed-height-1'/>
         <Button onClick={ this.handleAddRoom }> + Add Room </Button>
       </div>

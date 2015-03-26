@@ -4,6 +4,7 @@
 .main-screen {
   height: 100%;
   background-image: url('img/background.svg');
+  background-size: 700px 700px;
 
   &__top {
     @include grid-row();

@@ -9,36 +9,79 @@ var Button = require('common/components/controls/button');
 var Icon = require('common/components/icon');
 var SwitchControl = require('common/components/controls/switch');
 
-var DeviceDetail = React.createClass({
+var DeviceDetails = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
     Router.State
   ],
 
   getInitialState: function getInitialState () {
+
     return {
-      device: {},
+      device: {
+        id: '0',
+        name: 'yetu Home Gateway',
+        type: 'Home Gateway',
+        state: 'connected',
+        description: 'test description'
+      },
       selectedRoom: {},
-      rooms: []
+      rooms: [
+        {
+          title: 'Living room',
+          devices: [
+            {
+              id: '0',
+              name: 'yetu Home Gateway',
+              type: 'Home Gateway',
+              state: 'connected',
+              description: 'test description'
+            },
+            {
+              id: '1',
+              name: 'Nest',
+              type: 'Thermostat',
+              state: 'not conn.',
+              description: 'test description'
+            }
+          ]
+        },
+        {
+          title: 'Bed room',
+          devices: [
+            {
+              id: '2',
+              title: 'Nest',
+              type: 'Thermostat',
+              state: 'connected',
+              description: 'test description'
+            }
+          ]
+        },
+        {
+          title: 'Bath room',
+          devices: []
+        }
+      ]
     };
   },
 
   getRoomSelectOptions: function getRoomSelectOptions () {
     return this.state.rooms.map(function mapper (room, i) {
       return (
-        <option key={i} value={room.id}>{room.title}</option>
+        <option key={i} value={room.id}>{ room.title }</option>
       );
     });
   },
 
   onRoomChange: function onRoomChange (e) {
-    this.setState({selectedRoom: e.target.value});
+    this.setState({ selectedRoom: e.target.value });
   },
 
   onDescriptionChange: function onDescriptionChange (e) {
     var device = this.state.device;
     device.description = e.target.value;
-    this.setState({device: device});
+    this.setState({ device: device });
   },
 
   onSave: function onSave () {
@@ -50,18 +93,18 @@ var DeviceDetail = React.createClass({
   render: function render () {
     return (
 
-      <div className='cc-device-details grid-14 padded'>
+      <div className='cc-device-details grid-16'>
         <div className='cc-settings__header row fixed-height-3'>
           <Link className='cc-device-details__closeButton' to='devices'>
             <Icon type='close' size='small' />
           </Link>
-          <div className='columns'>
+          <div className='columns padded-left'>
             <h2>{ this.state.device.name }</h2>
           </div>
         </div>
 
-        <div className='row fixed-height-1'>
-          <div className='columns medium-4'>
+        <div className='row fixed-height-1 alternate-dark'>
+          <div className='columns medium-4 padded-left'>
             <h5>Controls</h5>
           </div>
           <div className='columns medium-10'>
@@ -70,7 +113,7 @@ var DeviceDetail = React.createClass({
         </div>
 
         <div className='row fixed-height-1'>
-          <div className='columns medium-4'>
+          <div className='columns medium-4 padded-left'>
             <h5>Description</h5>
           </div>
           <div className='columns medium-4'>
@@ -83,7 +126,7 @@ var DeviceDetail = React.createClass({
         </div>
 
         <div className='row fixed-height-1'>
-          <div className='columns medium-4'>
+          <div className='columns medium-4 padded-left'>
             <h5>Room</h5>
           </div>
           <div className='columns medium-4'>
@@ -95,15 +138,15 @@ var DeviceDetail = React.createClass({
           <div className='columns medium-6'></div>
         </div>
 
-        <div className='row fixed-height-1'>
-          <div className='columns medium-4'>
+        <div className='row fixed-height-1 alternate-dark'>
+          <div className='columns medium-4 padded-left'>
             <h3 className='bold'>Access rights</h3>
           </div>
           <div className='columns medium-10'></div>
         </div>
 
-        <div className='row fixed-height-1'>
-          <div className='columns medium-4'>
+        <div className='row fixed-height-1 alternate-dark'>
+          <div className='columns medium-4 padded-left'>
             <h5>Playback control</h5>
           </div>
           <div className='columns medium-4'>
@@ -112,8 +155,8 @@ var DeviceDetail = React.createClass({
           <div className='columns medium-6'></div>
         </div>
 
-        <div className='row fixed-height-1'>
-          <div className='columns medium-4'>
+        <div className='row fixed-height-1 alternate-dark'>
+          <div className='columns medium-4 padded-left'>
             <h5>Configuration</h5>
           </div>
           <div className='columns medium-4'>
@@ -123,7 +166,7 @@ var DeviceDetail = React.createClass({
         </div>
 
         <div className='row fixed-height-1'>
-          <div className='columns medium-4'>
+          <div className='columns medium-4 padded-left'>
             <h3 className='bold'>Device details</h3>
           </div>
           <div className='columns medium-10'>
@@ -131,7 +174,7 @@ var DeviceDetail = React.createClass({
         </div>
 
         <div className='row fixed-height-1'>
-          <div className='columns medium-4'>
+          <div className='columns medium-4 padded-left'>
             <h5>Type</h5>
           </div>
           <div className='columns medium-10'>
@@ -140,7 +183,7 @@ var DeviceDetail = React.createClass({
         </div>
 
         <div className='row fixed-height-1'>
-          <div className='columns medium-4'>
+          <div className='columns medium-4 padded-left'>
             <h5>ID</h5>
           </div>
           <div className='columns medium-4'>
@@ -153,7 +196,7 @@ var DeviceDetail = React.createClass({
         </div>
 
         <div className='row fixed-height-2'>
-          <div className='columns medium-4'>
+          <div className='columns medium-4 padded-left'>
             <Button onClick={ this.onSave }>
               Save changes
             </Button>
@@ -170,4 +213,4 @@ var DeviceDetail = React.createClass({
   }
 });
 
-module.exports = DeviceDetail;
+module.exports = DeviceDetails;

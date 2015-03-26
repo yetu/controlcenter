@@ -1,5 +1,6 @@
 @import "foundation/components/grid";
 @import "theme/variables/layout";
+@import "theme/variables/colors";
 @import "theme/mixins/alignment";
 
 @mixin grid-generator($columns_num) {
@@ -41,6 +42,14 @@
     .row { @include grid-row($behavior:nest);
       &.collapse { @include grid-row($behavior:nest-collapse); }
     }
+
+    &.group-header {
+      background-color: $shade-header;
+    }
+
+    &.alternate-dark {
+      background-color: $shade-header;
+    }
   }
 
   .column,
@@ -48,6 +57,10 @@
     @include grid-column($columns:$total-columns);
 
     &.padded-left {
+       padding-left: $basic-padding;
+    }
+
+    &.quarter-padded-left {
        padding-left: $quarter-padding;
     }
   }
@@ -94,7 +107,7 @@
     padding: 0 $basic-padding;
   }
 
-  // restore global grid settings;
+  // restore global grid settings
   $row-width: $row-width-old;
   $total-columns: $total-columns-old;
 }

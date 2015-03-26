@@ -24,6 +24,13 @@ var deviceStore = Reflux.createStore({
           type: 'Thermostat',
           state: 'not conn.',
           description: 'test description'
+        },
+        {
+          id: '2',
+          name: 'Nest',
+          type: 'Thermostat',
+          state: 'connected',
+          description: 'test description'
         }
       ],
       error: null

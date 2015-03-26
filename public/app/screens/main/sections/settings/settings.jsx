@@ -27,7 +27,7 @@ var SettingsPage = React.createClass({
         </div>
         <div className='cc-settings__section'>
           <div className='cc-settings__section-form row'>
-            <div className='columns medium-8 padded-left'>
+            <div className='columns medium-8 quarter-padded-left'>
               <UserForm />
             </div>
             <div className='columns medium-6'>
@@ -39,7 +39,7 @@ var SettingsPage = React.createClass({
         <div className='cc-settings__divider row fixed-height-1'></div>
 
         <div className='cc-settings__section row'>
-          <div className='cc-settings__section-info columns padded-left'>
+          <div className='cc-settings__section-info columns quarter-padded-left'>
             <UserInfo />
           </div>
         </div>

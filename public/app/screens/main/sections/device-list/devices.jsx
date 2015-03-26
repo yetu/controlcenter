@@ -14,7 +14,7 @@ var DevicesSection = React.createClass({
 
   mixins: [
     styleMixin(require('./style.scss')),
-    Reflux.connect(roomStore)
+    Reflux.connect(roomStore, 'rooms')
   ],
 
   render: function render () {

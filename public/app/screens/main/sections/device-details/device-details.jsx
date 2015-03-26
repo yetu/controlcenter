@@ -4,6 +4,9 @@ var Reflux = require('reflux');
 var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 
+var deviceListStore = require('stores/device-list');
+var roomStore = require('stores/room');
+
 var DeviceState = require('common/components/device-state');
 var Button = require('common/components/controls/button');
 var Icon = require('common/components/icon');
@@ -12,59 +15,10 @@ var SwitchControl = require('common/components/controls/switch');
 var DeviceDetails = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
+    Reflux.connect(deviceListStore, 'deviceList'),
+    Reflux.connect(roomStore, 'rooms'),
     Router.State
   ],
-
-  getInitialState: function getInitialState () {
-
-    return {
-      device: {
-        id: '0',
-        name: 'yetu Home Gateway',
-        type: 'Home Gateway',
-        state: 'connected',
-        description: 'test description'
-      },
-      selectedRoom: {},
-      rooms: [
-        {
-          title: 'Living room',
-          devices: [
-            {
-              id: '0',
-              name: 'yetu Home Gateway',
-              type: 'Home Gateway',
-              state: 'connected',
-              description: 'test description'
-            },
-            {
-              id: '1',
-              name: 'Nest',
-              type: 'Thermostat',
-              state: 'not conn.',
-              description: 'test description'
-            }
-          ]
-        },
-        {
-          title: 'Bed room',
-          devices: [
-            {
-              id: '2',
-              title: 'Nest',
-              type: 'Thermostat',
-              state: 'connected',
-              description: 'test description'
-            }
-          ]
-        },
-        {
-          title: 'Bath room',
-          devices: []
-        }
-      ]
-    };
-  },
 
   getRoomSelectOptions: function getRoomSelectOptions () {
     return this.state.rooms.map(function mapper (room, i) {
@@ -91,6 +45,9 @@ var DeviceDetails = React.createClass({
   },
 
   render: function render () {
+    var deviceId = this.context.getCurrentParams().deviceId;
+    var device = this.state.deviceList.deviceById[deviceId];
+
     return (
 
       <div className='cc-device-details grid-16'>
@@ -99,7 +56,7 @@ var DeviceDetails = React.createClass({
             <Icon type='close' size='small' />
           </Link>
           <div className='columns padded-left'>
-            <h2>{ this.state.device.name }</h2>
+            <h2>{ device.name }</h2>
           </div>
         </div>
 
@@ -108,7 +65,7 @@ var DeviceDetails = React.createClass({
             <h5>Controls</h5>
           </div>
           <div className='columns medium-10'>
-            <SwitchControl device={ this.state.device } />
+            <SwitchControl device={ device } />
           </div>
         </div>
 
@@ -119,7 +76,7 @@ var DeviceDetails = React.createClass({
           <div className='columns medium-4'>
             <input
               type='text' className='cc-device-details__input'
-              value={ this.state.device.description } onChange={ this.onDescriptionChange }>
+              value={ device.description } onChange={ this.onDescriptionChange }>
             </input>
           </div>
           <div className='columns medium-6'></div>
@@ -131,7 +88,7 @@ var DeviceDetails = React.createClass({
           </div>
           <div className='columns medium-4'>
             <select className='cc-device-details__select'
-              defaultValue={ this.state.selectedRoom.title } onChange={ this.onRoomChange }>
+              defaultValue={ this.state.rooms[0] } onChange={ this.onRoomChange }>
               { this.getRoomSelectOptions() }
             </select>
           </div>
@@ -178,7 +135,7 @@ var DeviceDetails = React.createClass({
             <h5>Type</h5>
           </div>
           <div className='columns medium-10'>
-            { this.state.device.type }
+            { device.type }
           </div>
         </div>
 
@@ -187,11 +144,11 @@ var DeviceDetails = React.createClass({
             <h5>ID</h5>
           </div>
           <div className='columns medium-4'>
-            { this.state.device.id }
+            { device.id }
           </div>
           <div className='columns medium-3'></div>
           <div className='columns medium-3'>
-            <DeviceState device={ this.state.device }/>
+            <DeviceState device={ device }/>
           </div>
         </div>
 

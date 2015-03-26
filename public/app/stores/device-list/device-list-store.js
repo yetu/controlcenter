@@ -34,12 +34,16 @@ var deviceStore = Reflux.createStore({
       }
     ];
 
-    this.deviceList = {
+    this.deviceList = this.createModel(devices);
+    this.onFetchList();
+  },
+
+  createModel: function createModel (devices) {
+    return {
       devices: devices,
       deviceById: _.indexBy(devices, 'id'),
       error: null
     };
-    this.onFetchList();
   },
 
   getInitialState: function getInitialState () {
@@ -58,11 +62,7 @@ var deviceStore = Reflux.createStore({
   },
 
   updateModel: function updateModel (devices) {
-    this.deviceList = {
-      devices: devices,
-      deviceById: _.indexBy(devices, 'id'),
-      error: null
-    };
+    this.deviceList = this.createModel(devices);
     this.trigger(this.deviceList);
   },
 

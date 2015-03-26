@@ -15,7 +15,7 @@ var MainScreen = React.createClass({
 
   render: function render () {
     var backButton =
-      <a href='http://home.yetu.me'>
+      <a href={config.homescreenURL}>
         <div className='main-screen__back'>&nbsp;</div>
       </a>;
     return (
@@ -37,7 +37,6 @@ var MainScreen = React.createClass({
         </div>
         <div className='main-screen__body'>
           <div className='main-screen__body-left hide-for-small-only'>
-            {/* TODO: Link back to correct domain yetudev vs. yetume */}
             <header className='main-screen__header'>
               {backButton}
               <h1>Control Center</h1>

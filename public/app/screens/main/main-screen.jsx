@@ -14,15 +14,31 @@ var MainScreen = React.createClass({
   ],
 
   render: function render () {
+    var backButton =
+      <a href={config.homescreenURL}>
+        <div className='main-screen__back'>&nbsp;</div>
+      </a>;
     return (
       <div className='main-screen'>
-        <div className='main-screen__top visible-for-small-only'>
-          <h1>Control Center</h1>
-          <Navigation items={this.state.navItems} orientation='horizontal'/>
+        <div className='main-screen__top grid-14 visible-for-small-only'>
+          <div className='row'>
+            <div className='column small-1'>
+              {backButton}
+            </div>
+            <div className='column small-13'>
+              <h1>Control Center</h1>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='column small-13 small-offset-1'>
+              <Navigation items={this.state.navItems} orientation='horizontal'/>
+            </div>
+          </div>
         </div>
         <div className='main-screen__body'>
           <div className='main-screen__body-left hide-for-small-only'>
-            <header className='main-screen__header'>
+            <header className='main-screen__header text-center'>
+              {backButton}
               <h1>Control Center</h1>
             </header>
             <div className='main-screen__nav'>

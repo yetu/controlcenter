@@ -3,6 +3,8 @@
 
 .main-screen {
   height: 100%;
+  background-image: url('img/background.svg');
+  background-size: 700px 700px;
 
   &__top {
     @include grid-row();
@@ -13,7 +15,7 @@
   }
 
   &__header {
-    padding: $basic-padding 0 $basic-padding $basic-padding;
+    padding: $basic-padding 0 $basic-padding 0;
   }
 
   &__nav {
@@ -27,6 +29,8 @@
     &-left {
       @include grid-column($side-nav-columns);
       height: 100%;
+      background-color: $light-gray;
+      position: relative;
     }
 
     &-content {
@@ -37,6 +41,27 @@
       @media #{$small-only} {
         @include grid-column($total-columns);
       }
+    }
+  }
+
+  .main-screen__back {
+    position: absolute;
+    left: -50px;
+    top: 50px;
+    width: 35px;
+    height: 35px;
+    background: url('img/back.svg') no-repeat;
+
+    @media #{$screen} and (max-width: 1220px) {
+      position: static;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    @media #{$small-only} {
+      margin-left: -20px;
+      margin-top: -5px;
     }
   }
 }

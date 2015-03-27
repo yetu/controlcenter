@@ -10,6 +10,13 @@
     text-align: left;
   }
 
+  &.horizontal {
+    .item {
+      width: 100px;
+      text-align: left;
+    }
+  }
+
   & * {
     cursor: pointer;
   }

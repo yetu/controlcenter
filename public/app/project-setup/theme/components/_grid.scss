@@ -8,7 +8,7 @@ $section-columns: $content-columns - 2;
 $column-gutter: rem-calc(0);
 
 $column-width: $row-width / $total-columns;
-$column-height: $column-width;
+$row-height: $column-width;
 
 .grid-22 {
   @include grid-generator($total-columns);

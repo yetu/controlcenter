@@ -19,11 +19,11 @@
     @for $i from 1 through 5 {
       &.fixed-height-#{$i} {
 
-        height: $i * $column-height; // should it be $basic-padding?
+        height: $i * $row-height;
 
         .columns {
           @include vertically-centered-content();
-          height: $i * $column-height; // should it be $basic-padding?
+          height: $i * $row-height;
 
           & * {
             @include vertically-centered();

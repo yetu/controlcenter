@@ -19,6 +19,10 @@
         "unicodeCodePointEscapes": true
     },
 
+    "plugins": [
+      "react"
+    ],
+
     "env": {
         "browser": true
     },
@@ -63,6 +67,10 @@
         "space-unary-ops": 2,
 
         // Legacy
-        "max-len": [2, 120]
+        "max-len": [2, 120],
+
+        // React
+        // https://github.com/yannickcr/eslint-plugin-react
+        "react/jsx-quotes": [1, "single"]
     }
 }

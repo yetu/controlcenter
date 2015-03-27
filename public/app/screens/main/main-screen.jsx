@@ -37,7 +37,7 @@ var MainScreen = React.createClass({
         </div>
         <div className='main-screen__body'>
           <div className='main-screen__body-left hide-for-small-only'>
-            <header className='main-screen__header'>
+            <header className='main-screen__header text-center'>
               {backButton}
               <h1>Control Center</h1>
             </header>

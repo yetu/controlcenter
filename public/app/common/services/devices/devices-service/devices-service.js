@@ -1,5 +1,4 @@
 var Rx = require('rx'),
-  _ = require('lodash'),
   qwest = require('qwest');
 
 var thingsUrl = 'http://householdmockapi000.yetudev.com:8080/things';
@@ -31,12 +30,12 @@ function extractThingsUrls (sirenThingsUrls) {
 
 function deviceInfo (deviceUrl) {
   return Rx.Observable.fromPromise(
-    qwest.get(deviceUrl, null, {responseType: 'json'})
+    qwest.get(deviceUrl, null, { responseType: 'json' })
   ).map(extractProperties);
 }
 
 // For now it's only for things from Household API
-var $deviceList = Rx.Observable.fromPromise(qwest.get(thingsUrl, null, {responseType: 'json'}));
+var $deviceList = Rx.Observable.fromPromise(qwest.get(thingsUrl, null, { responseType: 'json' }));
 
 // TODO add device control actions here (change room, remove adjust)
 module.exports = {

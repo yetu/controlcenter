@@ -70,6 +70,6 @@
 
         // React
         // https://github.com/yannickcr/eslint-plugin-react
-        "react/jsx-quotes": [1, "single"]
+        "react/jsx-quotes": [2, "single"]
     }
 }

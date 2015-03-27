@@ -14,13 +14,13 @@ var SliderControl = React.createClass({
 
   render: function render () {
     return (
-      <div className="cc-slider-control">
+      <div className='cc-slider-control'>
         <input
-          className="cc-slider-control__input"
-          type="range"
+          className='cc-slider-control__input'
+          type='range'
           min={this.state.min}
           max={this.state.max}
-          step="1"
+          step='1'
           value={this.state.value}
           onChange={this.onChange} />
       </div>

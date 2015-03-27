@@ -22,8 +22,8 @@ var ValueUpDown = React.createClass({
     return (
       <div className='cc-value-updown'>
         <div className='cc-value-updown__buttons'>
-          <div ref="down" className='cc-value-updown__down' onClick={this.onDownClick}>&nbsp;</div>
-          <div ref="up" className='cc-value-updown__up' onClick={this.onUpClick}>&nbsp;</div>
+          <div ref='down' className='cc-value-updown__down' onClick={this.onDownClick}>&nbsp;</div>
+          <div ref='up' className='cc-value-updown__up' onClick={this.onUpClick}>&nbsp;</div>
         </div>
         <h4 className='cc-value-updown__value'>{this.state.value}&nbsp;{this.state.unit}</h4>
       </div>
@@ -31,11 +31,11 @@ var ValueUpDown = React.createClass({
   },
 
   onDownClick: function onDownClick () {
-    this.setState({value: Math.max(this.state.value - this.state.step, this.state.min)});
+    this.setState({ value: Math.max(this.state.value - this.state.step, this.state.min) });
   },
 
   onUpClick: function onUpClick () {
-    this.setState({value: Math.min(this.state.value + this.state.step, this.state.max)});
+    this.setState({ value: Math.min(this.state.value + this.state.step, this.state.max) });
   }
 
 });

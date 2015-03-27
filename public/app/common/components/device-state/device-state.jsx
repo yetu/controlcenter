@@ -9,9 +9,9 @@ var DeviceState = React.createClass({
 
   render: function render () {
     return (
-      <div className="cc-device-state">
+      <div className='cc-device-state'>
         <Icon type='connected' />
-        <span className="cc-device-state__text">Connected</span>
+        <span className='cc-device-state__text'>Connected</span>
       </div>
     );
   }

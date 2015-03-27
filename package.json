@@ -71,7 +71,7 @@
     "jscs-tests": "node_modules/.bin/jsxcs `npm run -s test-files` --config ./jscs.json --esnext",
     "eslint": "npm run eslint-codebase && npm run eslint-tests",
     "jscs": "npm run jscs-codebase",
-    "lint": "npm run eslint",
+    "lint": "npm run eslint && npm run jscs",
     "fonts": "fontcustom compile",
     "precommit": "npm run lint && npm test"
   }

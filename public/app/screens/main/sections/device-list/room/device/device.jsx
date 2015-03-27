@@ -2,7 +2,6 @@ var React = require('react');
 var Link = require('react-router').Link;
 var styleMixin = require('mixins/style-mixin');
 var SwitchControl = require('common/components/controls/switch');
-var SliderControl = require('common/components/controls/slider');
 var DeviceState = require('common/components/device-state');
 
 var Device = React.createClass({
@@ -20,10 +19,10 @@ var Device = React.createClass({
         <div className='cc-device__type columns small-4 text-center'>
           <h5 className='subheader'>{this.props.device.type}</h5>
         </div>
-        <div className="cc-device__control columns small-3 text-left">
+        <div className='cc-device__control columns small-3 text-left'>
           <SwitchControl device={ this.props.device } />
         </div>
-        <div className="cc-device__state columns small-3 quarter-padded-left">
+        <div className='cc-device__state columns small-3 quarter-padded-left'>
           <DeviceState device={ this.props.device }/>
         </div>
       </div>

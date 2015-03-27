@@ -24,7 +24,7 @@ var SettingsStore = Reflux.createStore({
       self.updateError(error);
     }
 
-    return qwest.get('/profile', null, {responseType: 'json'})
+    return qwest.get('/profile', null, { responseType: 'json' })
       .then(onSaved)
       .catch(onError);
   },
@@ -44,7 +44,7 @@ var SettingsStore = Reflux.createStore({
       self.updateError(error);
     }
 
-    return qwest.get('/profile', null, {responseType: 'json'})
+    return qwest.get('/profile', null, { responseType: 'json' })
       .then(onUserData)
       .catch(onError);
   },

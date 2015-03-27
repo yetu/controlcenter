@@ -24,10 +24,6 @@
     padding-left: $basic-padding;
   }
 
-  &__left-header {
-    padding-left: $basic-padding;
-  }
-
   &__body {
     @include grid-row();
     height: 100%;
@@ -42,16 +38,17 @@
     &-content {
       @include grid-column($content-columns);
       height: 100%;
+      background-color: $shade-gray;
+
       @media #{$small-only} {
         @include grid-column($total-columns);
       }
     }
   }
 
-  .main-screen__back {
+  &__back {
     position: absolute;
     left: -50px;
-    top: 50px;
     width: 35px;
     height: 35px;
     background: url('img/back.svg') no-repeat;

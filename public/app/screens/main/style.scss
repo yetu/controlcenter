@@ -12,6 +12,8 @@
     padding-left: $basic-padding;
     padding-top: $half-padding;
     padding-right: $basic-padding;
+
+    background-color: $shade-white;
   }
 
   &__header {
@@ -37,17 +39,16 @@
       @include grid-column($content-columns);
       height: 100%;
       background-color: $shade-gray;
-      overflow: hidden;
+
       @media #{$small-only} {
         @include grid-column($total-columns);
       }
     }
   }
 
-  .main-screen__back {
+  &__back {
     position: absolute;
     left: -50px;
-    top: 50px;
     width: 35px;
     height: 35px;
     background: url('img/back.svg') no-repeat;

@@ -1,14 +1,10 @@
 @import "components-theme";
-@import "theme/components/grid";
 @import "theme/components/cc-label";
 
 .cc-user-info {
   .cc-user-info-item {
-    @include grid-row();
-    margin: convert-to-rem(20px) 0;
 
     &__label {
-      @include grid-column($columns: 10, $float: left);
 
       &-text {
         @include cc-label();
@@ -17,8 +13,6 @@
     }
 
     &__value {
-      @include grid-column($columns: 10);
-
       &-text {
         @include cc-label(16px);
       }

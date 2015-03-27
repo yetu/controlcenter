@@ -8,32 +8,20 @@ require('./style.scss');
 var Room = React.createClass({
 
   mixins: [
-    Reflux.listenTo(deviceListStore, 'onDeviceListUpdate')
+    Reflux.connect(deviceListStore)
   ],
 
-  getInitialState: function getInitialState () {
-    return deviceListStore.getInitialState();
-  },
-
-  onDeviceListUpdate: function onDeviceListUpdate (devices) {
-    if (devices.model) {
-      this.setState({
-        model: devices.model
-      });
-    }
-  },
-
   render: function render () {
-    var devices = this.state.model.map(function mapper (device, i) {
+    var devices = this.state.devices.map(function mapper (device, i) {
       return (
         <Device device={device} key={i}/>
       );
     });
 
     return (
-      <div className='cc-room '>
-        <div className='row fixed-height'>
-          <div className='columns small-14 padded-left'>
+      <div className='cc-room'>
+        <div className='row fixed-height-1 group-header'>
+          <div className='columns small-14 quarter-padded-left'>
             <h3 className='cc-room__header'>{this.props.title}</h3>
           </div>
         </div>

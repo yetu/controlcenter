@@ -8,12 +8,16 @@ var UserAvatar = React.createClass({
   ],
   render: function render () {
     return (
-      <div className='cc-user-avatar'>
-        <div className='cc-user-avatar__image-content'>
-          <img className='cc-user-avatar__image' src='http://placehold.it/80x80'/>
-        </div>
-        <div className='cc-user-avatar__button-content'>
-          <Button size='tiny'>Change picture</Button>
+      <div className='cc-user-avatar grid-14'>
+        <div className='row fixed-height-2'>
+          <div className='cc-user-avatar__image-content columns small-7 text-center'>
+            <img className='cc-user-avatar__image' src='http://placehold.it/80x80'/>
+          </div>
+          <div className='cc-user-avatar__button-content columns small-7'>
+            <div className='cc-user-avatar__button-container'>
+              <Button size='tiny'>Change picture</Button>
+            </div>
+          </div>
         </div>
       </div>
     );

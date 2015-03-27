@@ -1,4 +1,7 @@
 var React = require('react');
+
+var Icon = require('common/components/icon');
+
 var styleMixin = require('mixins/style-mixin');
 
 var DeviceState = React.createClass({
@@ -7,7 +10,7 @@ var DeviceState = React.createClass({
   render: function render () {
     return (
       <div className="cc-device-state">
-        <div className={'cc-device-state__image-connected'}/>
+        <Icon type='connected' />
         <span className="cc-device-state__text">Connected</span>
       </div>
     );

@@ -33,29 +33,29 @@ var UserInfo = React.createClass({
 
   render: function render () {
     return (
-      <div className='cc-user-info'>
-        <div className='cc-user-info-item'>
-          <div className='cc-user-info-item__label'>
+      <div className='cc-user-info grid-14'>
+        <div className='cc-user-info-item row fixed-height-1'>
+          <div className='cc-user-info-item__label columns medium-4'>
             <span className='cc-user-info-item__label-text'>
               Password
             </span>
           </div>
 
-          <div className='cc-user-info-item__value'>
+          <div className='cc-user-info-item__value columns medium-10'>
             <span className='cc-user-info-item__value-text'>
               .............
             </span>
           </div>
         </div>
 
-        <div className='cc-user-info-item'>
-          <div className='cc-user-info-item__label'>
+        <div className='cc-user-info-item row fixed-height-1'>
+          <div className='cc-user-info-item__label columns medium-4'>
             <span className='cc-user-info-item__label-text'>
               Email
             </span>
           </div>
 
-          <div className='cc-user-info-item__value'>
+          <div className='cc-user-info-item__value columns medium-10'>
             <span className='cc-user-info-item__value-text'>
               {this.state.model.email}
             </span>

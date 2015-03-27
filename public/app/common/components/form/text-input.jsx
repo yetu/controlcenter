@@ -4,6 +4,8 @@ var cx = require('react/lib/cx');
 function ccFormInput (locals) {
   var formGroupClasses = {
     'cc-form-item': true,
+    'row': true,
+    'fixed-height-1': true,
     'cc-form-item--error': locals.hasError
   };
 
@@ -16,13 +18,13 @@ function ccFormInput (locals) {
     <div className={cx(formGroupClasses)}>
       {
         locals.label
-          ? <div className='cc-form-item__label'>
+          ? <div className='cc-form-item__label columns medium-7'>
               <label for='right-label' className='cc-form-item__label-text'>{locals.label}</label>
             </div>
           : null
       }
 
-      <div className='cc-form-item__input'>
+      <div className='cc-form-item__input columns medium-7'>
         <input
           disabled={locals.disabled}
           className={cx(inputClasses)}

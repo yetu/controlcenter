@@ -2,14 +2,18 @@
 
 h1, h2, h3, h4, h5, h6 {
   @include vertically-centered();
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
 
   &.subheader {
     margin: 0;
   }
+
+  &.bold {
+    font-weight: bold;
+  }
 }
 
-h1, h3, h4 {
+h1, h3 {
   text-transform: uppercase;
 }

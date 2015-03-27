@@ -1,0 +1,35 @@
+@import "components-theme";
+
+.cc-icon {
+  display: inline-block;
+  width: rem-calc(20px);
+  height: rem-calc(20px);
+  background-repeat: no-repeat;
+
+  &.small {
+    width: rem-calc(15px);
+    height: rem-calc(15px);
+  }
+
+  &.medium {
+    width: rem-calc(20px);
+    height: rem-calc(20px);
+  }
+
+  &.large {
+    width: rem-calc(30px);
+    height: rem-calc(30px);
+  }
+
+  &-connected {
+    background-image: url('./images/state-connected.svg');
+  }
+
+  &-disconnected {
+    background-image: url('./images/state-disconnected.svg');
+  }
+
+  &-close {
+    background-image: url('./images/close.svg');
+  }
+}

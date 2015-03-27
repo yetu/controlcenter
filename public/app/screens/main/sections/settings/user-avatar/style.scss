@@ -1,30 +1,31 @@
 @import "components-theme";
-@import "theme/components/grid";
 @import "theme/components/buttons";
+@import "theme/mixins/alignment";
 
-$column-factor: $total-columns / 5;
+$avatar-size: 80px;
 
-.cc-user-avatar{
-  @include grid-row();
+.cc-user-avatar {
 
   position: relative;
-  margin: convert-to-rem(8px);
 
   .cc-user-avatar__image-content {
-    @include grid-column(2 * $column-factor);
-    .cc-user-avatar__image{
-      width: 75px;
-      height: 75px;
+    @include vertically-centered-content();
+
+    .cc-user-avatar__image {
+      @include vertically-centered();
+      width: $avatar-size;
+      height: $avatar-size;
     }
   }
 
-  .cc-user-avatar__button-content {
-    @include grid-column($columns: 2 * $column-factor, $offset: 1 * $column-factor);
+  &__button-container {
+    position: relative;
+    height: $avatar-size;
 
-    .cc-user-avatar__button {
-      margin-bottom: 0;
+    .cc-button {
       position: absolute;
       bottom: 0;
     }
   }
+
 }

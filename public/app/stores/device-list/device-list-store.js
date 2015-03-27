@@ -1,4 +1,5 @@
 var Reflux = require('reflux');
+var _ = require('lodash');
 
 var deviceActions = require('actions/device');
 var devicesService = require('services/devices/devices-service');
@@ -9,11 +10,40 @@ var deviceStore = Reflux.createStore({
     this.listenTo(discoveryStore, this.onDiscoveryUpdate);
     this.listenTo(deviceActions.fetchList, this.onFetchList);
 
-    this.deviceList = {
-      model: [],
+    var devices = [
+      {
+        id: '0',
+        name: 'yetu Home Gateway',
+        type: 'Home Gateway',
+        state: 'connected',
+        description: 'test description'
+      },
+      {
+        id: '1',
+        name: 'Nest',
+        type: 'Thermostat',
+        state: 'not conn.',
+        description: 'test description'
+      },
+      {
+        id: '2',
+        name: 'Nest',
+        type: 'Thermostat',
+        state: 'connected',
+        description: 'test description'
+      }
+    ];
+
+    this.deviceList = this.createModel(devices);
+    this.onFetchList();
+  },
+
+  createModel: function createModel (devices) {
+    return {
+      devices: devices,
+      deviceById: _.indexBy(devices, 'id'),
       error: null
     };
-    this.onFetchList();
   },
 
   getInitialState: function getInitialState () {
@@ -31,10 +61,8 @@ var deviceStore = Reflux.createStore({
       self.updateError.bind(self));
   },
 
-  updateModel: function updateModel (model) {
-    this.deviceList = {
-      model: model
-    };
+  updateModel: function updateModel (devices) {
+    this.deviceList = this.createModel(devices);
     this.trigger(this.deviceList);
   },
 
@@ -42,7 +70,6 @@ var deviceStore = Reflux.createStore({
     this.deviceList = {
       error: error
     };
-
     this.trigger(this.deviceList);
   }
 });

@@ -19,7 +19,7 @@ var MainScreen = React.createClass({
         <div className='main-screen__back'>&nbsp;</div>
       </a>;
     return (
-      <div className='main-screen'>
+      <div className='main-screen grid-22'>
         <div className='main-screen__top grid-14 visible-for-small-only'>
           <div className='row'>
             <div className='column small-1'>
@@ -37,10 +37,12 @@ var MainScreen = React.createClass({
         </div>
         <div className='main-screen__body'>
           <div className='main-screen__body-left hide-for-small-only'>
-            <header className='main-screen__header text-center'>
-              {backButton}
-              <h1>Control Center</h1>
-            </header>
+            <div className='main-screen__header row text-center'>
+              <div className='columns'>
+                {backButton}
+                <h1>Control Center</h1>
+              </div>
+            </div>
             <div className='main-screen__nav'>
               <Navigation items={this.state.navItems} orientation='vertical'/>
             </div>

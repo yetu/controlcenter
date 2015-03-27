@@ -24,7 +24,7 @@ var Form = React.createClass({
 
   render: function render () {
     return (
-      <div className='cc-form'>
+      <div className='cc-form grid-14'>
         <TForm ref='form' onChange={this.onChange} type={this.props.type} options={options} value={this.props.value} />
       </div>
     );

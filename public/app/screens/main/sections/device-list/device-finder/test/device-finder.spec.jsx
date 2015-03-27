@@ -11,7 +11,7 @@ describe('DeviceFinder', function () {
     jasmine.addMatchers($.jasmineMatchers);
   });
 
-  fit('initially only shows a button', function () {
+  it('initially only shows a button', function () {
     var deviceFinder = TestUtils.renderIntoDocument(
       <DeviceFinder />
     );

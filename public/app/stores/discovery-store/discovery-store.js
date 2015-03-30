@@ -17,7 +17,7 @@ var DiscoveryStore = Reflux.createStore({
     return this.discoveryData;
   },
 
-  onAddDevice: function startDiscovery () {
+  onAddDevice: function onAddDevice () {
     var self = this;
     deviceDiscovery.startDiscovery().subscribe(function onNext (next) {
       self.updateModel(next);

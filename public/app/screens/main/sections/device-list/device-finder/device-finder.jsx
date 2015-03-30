@@ -22,14 +22,6 @@ var DeviceFinder = React.createClass({
     Reflux.listenTo(deviceDiscoveryStore, 'onDiscoveryChange')
   ],
 
-  activityMap: function activityMap (ctx) {
-    return {
-      [DeviceFinderActivity.SEARCHING]: ctx.getSearchDialog,
-      [DeviceFinderActivity.NO_DEVICES]: ctx.getNoResultsDialog,
-      [DeviceFinderActivity.DEVICE_FOUND]: ctx.getDeviceFoundDialog
-    };
-  },
-
   getInitialState: function getInitialState () {
     return {
       activity: DeviceFinderActivity.CLOSED
@@ -49,24 +41,31 @@ var DeviceFinder = React.createClass({
   },
 
   render: function render () {
-    var fn = this.activityMap(this)[this.state.activity] || _.noop;
-    var findingDevicesDialog = fn();
+    var dialog = this.dialogForActivityMap(this)[this.state.activity] || _.noop;
     var button = this.state.activity === DeviceFinderActivity.CLOSED ? this.getButton() : null;
 
     return (
       <div className='cc-device-finder'>
-        { findingDevicesDialog }
+        { dialog() }
         { button }
       </div>
     );
   },
 
   getButton: function getButton () {
-
-    return this.state.activity === DeviceFinderActivity.CLOSED &&
+    return (
       <Button onClick={this.startSearching}>
         + Add device
-      </Button>;
+      </Button>
+    );
+  },
+
+  dialogForActivityMap: function activityMap (ctx) {
+    return {
+      [DeviceFinderActivity.SEARCHING]: ctx.getSearchDialog,
+      [DeviceFinderActivity.NO_DEVICES]: ctx.getNoResultsDialog,
+      [DeviceFinderActivity.DEVICE_FOUND]: ctx.getDeviceFoundDialog
+    };
   },
 
   getSearchDialog: function getSearchDialog () {
@@ -99,8 +98,8 @@ var DeviceFinder = React.createClass({
     return <DeviceFinderDialog
       status={status}
       showSeparator='true'
-      title='Searching for new devices'
-      description='Please make sure that all devices are in discovery mode'
+      title='TODO: Add title'
+      description='TODO: Add description'
       closeAction={this.closeDialog}
       actionText='Ok'
       action={this.showFoundDeviceInfo} />;

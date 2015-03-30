@@ -30,8 +30,11 @@ var DevicesSection = React.createClass({
             <Room title={ room.title } />
           )
         }
-        <div className='row fixed-height-1'/>
-        <Button onClick={ this.handleAddRoom }> + Add Room </Button>
+        <div className='row fixed-height-3'>
+          <div className='columns'>
+            <Button onClick={ this.handleAddRoom }> + Add Room </Button>
+          </div>
+        </div>
       </div>
     );
   },

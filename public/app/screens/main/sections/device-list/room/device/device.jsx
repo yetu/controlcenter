@@ -13,11 +13,11 @@ var Device = React.createClass({
       <div className='cc-device row fixed-height-1'>
         <div className='cc-device__title columns small-4 quarter-padded-left'>
           <Link to='device' params={{ deviceId: this.props.device.id }}>
-            <h5>{ this.props.device.name }</h5>
+            <h4>{ this.props.device.name }</h4>
           </Link>
         </div>
         <div className='cc-device__type columns small-4 text-center'>
-          <h5 className='subheader'>{this.props.device.type}</h5>
+          <h4 className='subheader'>{this.props.device.type}</h4>
         </div>
         <div className='cc-device__control columns small-3 text-left'>
           <SwitchControl device={ this.props.device } />

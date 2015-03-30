@@ -8,7 +8,7 @@ var roomStore = Reflux.createStore({
   getInitialState: function getInitialState () {
     return [
       {
-        title: 'Living room',
+        title: 'Home',
         devices: [
           {
             id: '0',

@@ -41,7 +41,7 @@ var DeviceFinder = React.createClass({
   },
 
   render: function render () {
-    var dialog = this.dialogForActivityMap(this)[this.state.activity] || _.noop;
+    var dialog = this.dialogForActivityMap()[this.state.activity] || _.noop;
     var button = this.state.activity === DeviceFinderActivity.CLOSED ? this.getButton() : null;
 
     return (
@@ -60,11 +60,11 @@ var DeviceFinder = React.createClass({
     );
   },
 
-  dialogForActivityMap: function activityMap (ctx) {
+  dialogForActivityMap: function activityMap () {
     return {
-      [DeviceFinderActivity.SEARCHING]: ctx.getSearchDialog,
-      [DeviceFinderActivity.NO_DEVICES]: ctx.getNoResultsDialog,
-      [DeviceFinderActivity.DEVICE_FOUND]: ctx.getDeviceFoundDialog
+      [DeviceFinderActivity.SEARCHING]: this.getSearchDialog,
+      [DeviceFinderActivity.NO_DEVICES]: this.getNoResultsDialog,
+      [DeviceFinderActivity.DEVICE_FOUND]: this.getDeviceFoundDialog
     };
   },
 

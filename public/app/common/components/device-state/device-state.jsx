@@ -10,14 +10,18 @@ var DeviceState = React.createClass({
   render: function render () {
     return (
       <div className='cc-device-state'>
-        <Icon type='connected' />
-        <span className='cc-device-state__text'>Connected</span>
+
+        <Icon type={this.props.connected ? 'connected' : 'disconnected'}/>
+        <span className='cc-device-state__text'>{
+          this.props.connected
+            ? 'Connected'
+            : 'Disconnected'
+        }
+        </span>
       </div>
     );
   }
 
-  // TODO implement connected disconnected switchers
-  // we don't have data in model for now
 });
 
 module.exports = DeviceState;

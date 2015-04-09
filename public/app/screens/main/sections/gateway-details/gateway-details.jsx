@@ -27,12 +27,12 @@ var DeviceDetails = React.createClass({
 
       <div className='cc-device-details grid-16'>
         <div className='cc-settings__header row fixed-height-3'>
-          <Link className='cc-device-details__closeButton' to='devices'>
-            <Icon type='close' size='small' />
-          </Link>
           <div className='columns padded-left'>
             <h2>Yetu Home Gateway</h2>
           </div>
+          <Link className='cc-device-details__closeButton' to='devices'>
+            <Icon type='close' size='small' />
+          </Link>
         </div>
 
         <div className='row fixed-height-1'>

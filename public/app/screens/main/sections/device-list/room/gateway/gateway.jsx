@@ -18,6 +18,7 @@ module.exports = React.createClass({
       <div className='cc-gateway row fixed-height-1'>
         <div className='cc-device__title columns small-11 quarter-padded-left'>
           {
+
             this.state.gateway.model.gatewayId
             ? this.showGatewayTemplate()
             : this.showLoadingTemplate()
@@ -35,7 +36,7 @@ module.exports = React.createClass({
   },
 
   showGatewayTemplate: function showLoadingTemplate () {
-    return <Link to='device' params={{ deviceId: this.state.gateway.model.gatewayId }}>
+    return <Link to='gateway'>
       <h4>Home gateway</h4>
     </Link>;
   }

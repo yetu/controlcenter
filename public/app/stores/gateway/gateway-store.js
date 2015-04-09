@@ -10,6 +10,9 @@ module.exports = Reflux.createStore({
   },
 
   getInitialState: function getInitialState () {
+    // fetch gateway status on each page view
+    // as we don't have polling
+    this.onFetchGateway();
     return {
       model: {}
     };

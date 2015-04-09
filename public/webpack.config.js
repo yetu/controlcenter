@@ -6,14 +6,12 @@ module.exports = {
 
   context: __dirname,
   entry: [
-    './app/app.jsx',
-    'webpack-dev-server/client?http://localhost:8899',
-    'webpack/hot/only-dev-server'
+    './app/app.jsx'
   ],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/dist'),
-    publicPath: 'http://localhost:8899/assets/dist/',
+    publicPath: '/assets/dist/',
     chunkFilename: '[id].chunk.js'
   },
 

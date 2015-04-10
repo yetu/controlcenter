@@ -10,31 +10,7 @@ var deviceStore = Reflux.createStore({
     this.listenTo(discoveryStore, this.onDiscoveryUpdate);
     this.listenTo(deviceActions.fetchList, this.onFetchList);
 
-    var devices = [
-      {
-        id: '0',
-        name: 'yetu Home Gateway',
-        type: 'Home Gateway',
-        state: 'connected',
-        description: 'test description'
-      },
-      {
-        id: '1',
-        name: 'Nest',
-        type: 'Thermostat',
-        state: 'not conn.',
-        description: 'test description'
-      },
-      {
-        id: '2',
-        name: 'Nest',
-        type: 'Thermostat',
-        state: 'connected',
-        description: 'test description'
-      }
-    ];
-
-    this.deviceList = this.createModel(devices);
+    this.deviceList = this.createModel([]);
     this.onFetchList();
   },
 

@@ -1,6 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var Device = require('./device');
+var Gateway = require('./gateway');
 
 var deviceListStore = require('stores/device-list');
 require('./style.scss');
@@ -25,6 +26,8 @@ var Room = React.createClass({
             <h3 className='cc-room__header'>{this.props.title}</h3>
           </div>
         </div>
+        <Gateway/>
+
         {devices}
       </div>
     );

@@ -2,7 +2,8 @@ var Reflux = require('reflux');
 
 var deviceActions = Reflux.createActions([
   'fetchList',
-  'fetchOne'
+  'fetchOne',
+  'fetchGateway'
 ]);
 
 module.exports = deviceActions;

@@ -17,7 +17,9 @@ var deviceStore = Reflux.createStore({
   createModel: function createModel (devices) {
     return {
       devices: devices,
-      deviceById: _.indexBy(devices, 'id'),
+      deviceById: _.indexBy(devices, function extractIdKey (d) {
+        return d.properties.id;
+      }),
       error: null
     };
   },

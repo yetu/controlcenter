@@ -1,49 +1,38 @@
-var Rx = require('rx'),
-  qwest = require('qwest');
+var Rx = require('rx');
+require('whatwg-fetch');
 
-var thingsUrl = 'http://householdmockapi000.yetudev.com:8080/things';
+
+// TODO pass params with fetch
+var thingsUrl = 'http://householdmockapi000.yetudev.com:8080/things?itr=true&istr=true';
+
 var MAX_DEVICES = 100; // allow to add up to 100 devices
 
-function extractProperties (sirenData) {
-  sirenData = sirenData || {};
-  return sirenData.properties;
+function extractJson (resp) {
+  return resp.json();
 }
 
-function extractThingsUrls (sirenThingsUrls) {
-  sirenThingsUrls = sirenThingsUrls || [];
-
-  function filterNullValues (item) {
-    return item !== null && item.href !== null;
-  }
-
-  function extractHref (item) {
-    return item.href;
-  }
-
-  var urls = sirenThingsUrls.entities
-    .filter(filterNullValues)
-    .map(extractHref);
-
-  // create observable from array of urls
-  return Rx.Observable.from(urls);
+function composeThing (thing) {
+  return {
+    properties: thing.properties,
+    components: thing.entities
+  };
 }
 
-function deviceInfo (deviceUrl) {
-  return Rx.Observable.fromPromise(
-    qwest.get(deviceUrl, null, { responseType: 'json' })
-  ).map(extractProperties);
+function extractThings (sirenResponse) {
+  var things = sirenResponse.entities || [];
+  return things.map(composeThing);
 }
 
 // For now it's only for things from Household API
-var $deviceList = Rx.Observable.fromPromise(qwest.get(thingsUrl, null, { responseType: 'json' }));
+var $deviceList = Rx.Observable
+  .fromPromise(fetch(thingsUrl).then(extractJson));
 
 // TODO add device control actions here (change room, remove adjust)
 module.exports = {
-  fetchDeviceInfo: deviceInfo,
 
   fetchDeviceList: function fetchDeviceList () {
-    return $deviceList.flatMap(extractThingsUrls)
-      .flatMap(deviceInfo)
+    return $deviceList
+      .flatMap(extractThings)
       .bufferWithCount(MAX_DEVICES);
   }
 };

@@ -28,7 +28,9 @@ var SliderControl = React.createClass({
   },
 
   onChange: function onChange (e) {
-    this.setState({ value: e.target.value });
+    this.setState({ value: e.target.value }, () => {
+      this.props.channel(this.state);
+    });
   }
 });
 

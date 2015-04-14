@@ -5,7 +5,7 @@ var SwitchControl = React.createClass({
   mixins: [ styleMixin(require('./style.scss')) ],
 
   getInitialState: function getInitialState () {
-    return { checked: this.props.checked || false };
+    return { checked: this.props.value || false };
   },
 
   render: function render () {
@@ -20,7 +20,9 @@ var SwitchControl = React.createClass({
   },
 
   toggle: function toggle () {
-    this.setState({ checked: !this.state.checked });
+    this.setState({ checked: !this.state.checked }, () => {
+      this.props.channel(this.state);
+    });
   }
 
 });

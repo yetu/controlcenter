@@ -34,5 +34,17 @@ module.exports = {
     return $deviceList
       .flatMap(extractThings)
       .bufferWithCount(MAX_DEVICES);
+  },
+
+  invokeDeviceAction: function doDeviceAction (action, data) {
+    var requestOptions = {
+      method: action.method,
+      body: JSON.stringify(data)
+    };
+    return Rx.Observable.fromPromise(
+      fetch(action.href, requestOptions)
+        .then(extractJson)
+    );
   }
+
 };

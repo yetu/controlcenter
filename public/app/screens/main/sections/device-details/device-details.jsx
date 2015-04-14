@@ -10,7 +10,8 @@ var roomStore = require('stores/room');
 var DeviceState = require('common/components/device-state');
 var Button = require('common/components/controls/button');
 var Icon = require('common/components/icon');
-var SwitchControl = require('common/components/controls/switch');
+
+var DeviceActionControl = require('common/components/device-action-control');
 
 var DeviceDetails = React.createClass({
   mixins: [
@@ -45,7 +46,7 @@ var DeviceDetails = React.createClass({
   },
 
   render: function render () {
-    var deviceId = this.context.getCurrentParams().deviceId;
+    var deviceId = this.context.router.getCurrentParams().deviceId;
     var device = this.state.deviceList.deviceById[deviceId] || {};
     var deviceProperties = device.properties || {};
     return (
@@ -65,7 +66,7 @@ var DeviceDetails = React.createClass({
             <h5>Controls</h5>
           </div>
           <div className='columns medium-12'>
-            <SwitchControl device={ device } />
+            <DeviceActionControl device={ device } />
           </div>
         </div>
 

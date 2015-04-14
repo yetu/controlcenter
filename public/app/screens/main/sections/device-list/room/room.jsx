@@ -15,7 +15,7 @@ var Room = React.createClass({
   render: function render () {
     var devices = this.state.devices.map(function mapper (device, i) {
       return (
-        <Device device={device.properties} key={i}/>
+        <Device device={device} key={i}/>
       );
     });
 

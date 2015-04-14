@@ -47,9 +47,7 @@ var UserInfo = React.createClass({
           </div>
 
           <div className='cc-user-info-item__value columns medium-10'>
-            <span className='cc-user-info-item__value-text'>
-              .............
-            </span>
+            <a href={window.config.authUrl + '/password'} target='_blank'>Change password</a>
           </div>
         </div>
 

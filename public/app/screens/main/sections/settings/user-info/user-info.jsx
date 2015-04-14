@@ -3,6 +3,7 @@ var Reflux = require('reflux');
 var styleMixin = require('mixins/style-mixin');
 
 var userDataStore = require('stores/user-data');
+var userDataActions = require('actions/user-data');
 
 var UserInfo = React.createClass({
 
@@ -16,6 +17,10 @@ var UserInfo = React.createClass({
       model: {},
       error: {}
     };
+  },
+
+  componentWillMount: function componentWillMount () {
+    userDataActions.fetchUserData();
   },
 
   onUserDataChanged: function onUserDataChanged (userData) {

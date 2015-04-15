@@ -1,23 +1,40 @@
 var Reflux = require('reflux');
 var _ = require('lodash');
 
-var deviceActions = require('actions/device');
-var devicesService = require('services/devices/devices-service');
+var DeviceActions = require('actions/device');
+var DevicesService = require('services/devices/devices-service');
 var discoveryStore = require('stores/discovery-store');
 
+var DeviceHelpers = require('helpers/device');
+
 var deviceStore = Reflux.createStore({
+
   init: function init () {
     this.listenTo(discoveryStore, this.onDiscoveryUpdate);
-    this.listenTo(deviceActions.fetchList, this.onFetchList);
+    this.listenTo(DeviceActions.fetchList, this.onFetchList);
+    this.listenTo(DeviceActions.invokeAction, this.onInvokeAction);
 
     this.deviceList = this.createModel([]);
     this.onFetchList();
   },
 
-  createModel: function createModel (devices) {
+  augmentDevice: function augmentDevice (device) {
+    var alterEgoComponent = DeviceHelpers.getAlterEgoComponent(device);
+    var deviceActions = _.indexBy(alterEgoComponent.actions, 'name');
+    var primaryCapability = DeviceHelpers.getPrimaryCapability(alterEgoComponent);
     return {
-      devices: devices,
-      deviceById: _.indexBy(devices, 'id'),
+      properties: device.properties,
+      alterEgoComponent: alterEgoComponent,
+      actions: deviceActions,
+      primaryCapability: primaryCapability
+    };
+  },
+
+  createModel: function createModel (devices) {
+    var augmentedDevices = _.map(devices, this.augmentDevice);
+    return {
+      devices: augmentedDevices,
+      deviceById: _.indexBy(augmentedDevices, (device) => device.properties.id),
       error: null
     };
   },
@@ -26,15 +43,20 @@ var deviceStore = Reflux.createStore({
     return this.deviceList;
   },
 
-  onDiscoveryUpdate: function onDisoveryUpdate () {
+  onDiscoveryUpdate: function onDiscoveryUpdate () {
     this.onFetchList();
   },
 
   onFetchList: function onFetchList () {
-    var self = this;
-    devicesService.fetchDeviceList()
-      .subscribe(self.updateModel.bind(self),
-      self.updateError.bind(self));
+    DevicesService.fetchDeviceList().subscribe(this.updateModel, this.updateError);
+  },
+
+  onInvokeAction: function doAction (action, data) {
+    DevicesService.invokeDeviceAction(action, data)
+      .subscribe(
+        () => {},
+        () => {}
+      );
   },
 
   updateModel: function updateModel (devices) {

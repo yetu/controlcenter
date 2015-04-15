@@ -47,7 +47,7 @@ var UserInfo = React.createClass({
           </div>
 
           <div className='cc-user-info-item__value columns medium-10'>
-            <a href={window.config.authUrl + '/password'} target='_blank'>Change password</a>
+            <a href={window.yetu.config.authChangePasswordURL} target='_blank'>Change password</a>
           </div>
         </div>
 

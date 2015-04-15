@@ -15,7 +15,7 @@ var MainScreen = React.createClass({
 
   render: function render () {
     var backButton =
-      <a href={window.config.homescreenURL}>
+      <a href={window.yetu.config.homescreenURL}>
         <div className='main-screen__back'>&nbsp;</div>
       </a>;
     return (

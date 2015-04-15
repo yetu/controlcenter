@@ -18,7 +18,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="icon" type="image/ico" href="favicon.ico"/>
-    <script>var config = @Html(config.underlying.root().render(ConfigRenderOptions.concise()));</script>
+    <script>
+    var yetu = {
+      config : @Html(config.underlying.root().render(ConfigRenderOptions.concise()))
+    };
+    </script>
 
   </head>
   <body>

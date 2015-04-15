@@ -13,8 +13,7 @@ var Icon = require('common/components/icon');
 var DeviceDetails = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
-    Reflux.connect(gatewayStore, 'gateway'),
-    Router.State
+    Reflux.connect(gatewayStore, 'gateway')
   ],
 
   onSave: function onSave () {
@@ -52,7 +51,6 @@ var DeviceDetails = React.createClass({
           <div className='columns medium-10'>
           </div>
         </div>
-
 
         <div className='row fixed-height-1'>
           <div className='columns medium-4 padded-left'>

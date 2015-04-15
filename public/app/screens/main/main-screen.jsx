@@ -31,7 +31,7 @@ var MainScreen = React.createClass({
           </div>
           <div className='row'>
             <div className='column small-13 small-offset-1'>
-              <Navigation items={this.state.navItems} orientation='horizontal'/>
+              <Navigation {...this.props} items={this.state.navItems} orientation='horizontal'/>
             </div>
           </div>
         </div>
@@ -44,11 +44,11 @@ var MainScreen = React.createClass({
               </div>
             </div>
             <div className='main-screen__nav'>
-              <Navigation items={this.state.navItems} orientation='vertical'/>
+              <Navigation {...this.props} items={this.state.navItems} orientation='vertical'/>
             </div>
           </div>
           <div className='main-screen__body-content'>
-            <RouteHandler/>
+            <RouteHandler {...this.props}/>
           </div>
         </div>
       </div>

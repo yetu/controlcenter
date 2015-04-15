@@ -1,5 +1,5 @@
 var React = require('react'),
-  cx = require('react/lib/cx'),
+  cx = require('classname'),
   Router = require('react-router'),
   Link = Router.Link,
   styleMixin = require('mixins/style-mixin');

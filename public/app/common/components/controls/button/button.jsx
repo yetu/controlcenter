@@ -1,6 +1,6 @@
 var React = require('react');
 var Pure = require('react/addons').addons.PureRenderMixin;
-var cx = require('react/lib/cx');
+var cx = require('classname');
 var styleMixin = require('mixins/style-mixin');
 
 module.exports = React.createClass({

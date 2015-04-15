@@ -1,6 +1,13 @@
 var Reflux = require('reflux');
-var qwest = require('qwest');
 var userDataActions = require('actions/user-data');
+
+function extractJson (response) {
+  var result = response;
+  if (response.json) {
+    result = response.json();
+  }
+  return result;
+}
 
 var SettingsStore = Reflux.createStore({
 
@@ -24,7 +31,8 @@ var SettingsStore = Reflux.createStore({
       self.updateError(error);
     }
 
-    return qwest.get('/profile', null, { responseType: 'json' })
+    return fetch('/profile')
+      .then(extractJson)
       .then(onSaved)
       .catch(onError);
   },
@@ -44,7 +52,8 @@ var SettingsStore = Reflux.createStore({
       self.updateError(error);
     }
 
-    return qwest.get('/profile', null, { responseType: 'json' })
+    return fetch('/profile')
+      .then(extractJson)
       .then(onUserData)
       .catch(onError);
   },

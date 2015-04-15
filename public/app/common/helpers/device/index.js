@@ -12,7 +12,7 @@ module.exports = {
     return component.properties.capabilities[0];
   },
 
-  // ideally this should be retrieved from the model
+  // TODO: ideally this should be retrieved from the model
   propertyByCapability: {
     switchable: 'on',
     settable: 'setValue'

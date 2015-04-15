@@ -62,7 +62,7 @@ module.exports = {
       .map(extractSessionUrl);
 
     var $discoverySession = $startDeviceDiscovery.flatMap(function flatMap () {
-      console.log('Fetched sicovery session');
+      console.log('Fetched discovery session');
       return $fetchDiscoverySession;
     });
 

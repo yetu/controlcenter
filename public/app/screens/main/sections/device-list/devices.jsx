@@ -26,8 +26,8 @@ var DevicesSection = React.createClass({
           </div>
         </div>
         {
-          this.state.rooms.map((room) =>
-            <Room title={ room.title } />
+          this.state.rooms.map((room, index) =>
+            <Room title={room.title} key={index} />
           )
         }
       </div>

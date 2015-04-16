@@ -1,5 +1,4 @@
 var React = require('react/addons'),
-  qwest = require('qwest'),
   PromiseHelper = require('helpers/promise'),
   userDataActions = require('actions/user-data');
 
@@ -26,9 +25,8 @@ describe('UserData Store', function () {
 
     it('handles request errors and updates error', function (done) {
       var error = {error: 'error'};
-      var stub = sinon.stub(qwest, 'get')
+      var stub = sinon.stub(window, 'fetch')
         .returns(PromiseHelper.fail(error));
-
       userDataActions.saveUserData.trigger();
 
       setTimeout(function () {
@@ -40,7 +38,7 @@ describe('UserData Store', function () {
 
     it('handles successful response and updates model', function (done) {
       var content = {message: 'testMessage'};
-      var stub = sinon.stub(qwest, 'get')
+      var stub = sinon.stub(window, 'fetch')
         .returns(PromiseHelper.when(content));
 
       userDataActions.saveUserData.trigger();
@@ -57,7 +55,7 @@ describe('UserData Store', function () {
 
     it('handles request errors and updates error', function (done) {
       var error = {error: 'someError'};
-      var stub = sinon.stub(qwest, 'get')
+      var stub = sinon.stub(window, 'fetch')
         .returns(PromiseHelper.fail(error));
 
       userDataActions.fetchUserData.trigger();
@@ -70,7 +68,7 @@ describe('UserData Store', function () {
 
     it('handles successful response and updates model', function (done) {
       var content = {message: 'testMessage'};
-      var stub = sinon.stub(qwest, 'get')
+      var stub = sinon.stub(window, 'fetch')
         .returns(PromiseHelper.when(content));
 
       userDataActions.fetchUserData.trigger();

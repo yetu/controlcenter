@@ -42,18 +42,6 @@ var UserInfo = React.createClass({
         <div className='cc-user-info-item row fixed-height-1'>
           <div className='cc-user-info-item__label columns medium-4'>
             <span className='cc-user-info-item__label-text'>
-              Password
-            </span>
-          </div>
-
-          <div className='cc-user-info-item__value columns medium-10'>
-            <a href={window.yetu.config.authChangePasswordURL} target='_blank'>Change password</a>
-          </div>
-        </div>
-
-        <div className='cc-user-info-item row fixed-height-1'>
-          <div className='cc-user-info-item__label columns medium-4'>
-            <span className='cc-user-info-item__label-text'>
               Email
             </span>
           </div>
@@ -62,6 +50,18 @@ var UserInfo = React.createClass({
             <span className='cc-user-info-item__value-text'>
               {this.state.model.email}
             </span>
+          </div>
+        </div>
+
+        <div className='cc-user-info-item row fixed-height-1'>
+          <div className='cc-user-info-item__label columns medium-4'>
+            <span className='cc-user-info-item__label-text'>
+              Password
+            </span>
+          </div>
+
+          <div className='cc-user-info-item__value columns medium-10'>
+            <a href={window.yetu.config.authChangePasswordURL} target='_blank'>Change password</a>
           </div>
         </div>
       </div>

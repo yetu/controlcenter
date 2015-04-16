@@ -7,13 +7,17 @@
   background-size: 700px 700px;
 
   &__top {
-    @include grid-row();
-
     padding-left: $basic-padding;
-    padding-top: $half-padding;
     padding-right: $basic-padding;
 
     background-color: $shade-white;
+
+    .row:first-child {
+      .column {
+        @include vertically-centered-content();
+        height: 100%;
+      }
+    }
   }
 
   &__nav {

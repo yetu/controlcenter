@@ -20,8 +20,8 @@ var MainScreen = React.createClass({
       </a>;
     return (
       <div className='main-screen grid-22'>
-        <div className='main-screen__top grid-14 visible-for-small-only'>
-          <div className='row'>
+        <div className='main-screen__top row fixed-height-2 grid-14 visible-for-small-only'>
+          <div className='row fixed-height-1'>
             <div className='column small-1'>
               {backButton}
             </div>
@@ -29,7 +29,7 @@ var MainScreen = React.createClass({
               <h1>Control Center</h1>
             </div>
           </div>
-          <div className='row'>
+          <div className='row fixed-height-1'>
             <div className='column small-13 small-offset-1'>
               <Navigation {...this.props} items={this.state.navItems} orientation='horizontal'/>
             </div>

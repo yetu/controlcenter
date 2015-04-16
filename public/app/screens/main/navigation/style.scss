@@ -4,6 +4,10 @@
 
 .cc_navigation {
 
+  @media #{$small-only} {
+    display: block;
+  }
+
   &.vertical {
     width: 100%;
   }
@@ -40,7 +44,6 @@
 
   &__linkLabel {
     font-size: $h2-font-size - $h2-font-reduction;
-
     @media #{$medium-up} {
       line-height: $header-line-height;
       font-size: $h2-font-size;

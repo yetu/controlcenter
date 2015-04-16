@@ -41,7 +41,7 @@
       background-color: $shade-gray;
       overflow: auto;
 
-      @media #{$small-only} {
+      @media #{$screen} and (max-width: 910px) {
         @include grid-column($total-columns);
       }
     }
@@ -65,5 +65,21 @@
       margin-left: -20px;
       margin-top: -5px;
     }
+  }
+}
+
+.visible-for-small-to-medium {
+  @media #{$screen} and (max-width: 910px) {
+    display: inherit;
+  }
+
+  @media #{$screen} and (min-width: 910px) {
+    display: none;
+  }
+}
+
+.hide-for-small-to-medium {
+  @media #{$screen} and (max-width: 910px) {
+    display: none;
   }
 }

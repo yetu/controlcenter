@@ -20,7 +20,7 @@ var MainScreen = React.createClass({
       </a>;
     return (
       <div className='main-screen grid-22'>
-        <div className='main-screen__top row fixed-height-2 grid-14 visible-for-small-only'>
+        <div className='main-screen__top row fixed-height-2 grid-14 visible-for-small-to-medium'>
           <div className='row fixed-height-1'>
             <div className='column small-1'>
               {backButton}
@@ -36,7 +36,7 @@ var MainScreen = React.createClass({
           </div>
         </div>
         <div className='main-screen__body'>
-          <div className='main-screen__body-left hide-for-small-only'>
+          <div className='main-screen__body-left hide-for-small-to-medium'>
             <div className='row fixed-height-3 text-center'>
               <div className='columns'>
                 {backButton}

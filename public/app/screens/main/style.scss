@@ -20,19 +20,16 @@
     }
   }
 
-  &__nav {
-    padding-left: $basic-padding;
-  }
-
   &__body {
     @include grid-row();
     height: 100%;
 
     &-left {
       @include grid-column($side-nav-columns);
-      height: 100%;
-      background-color: $light-gray;
       position: relative;
+      height: 100%;
+      padding-left: $basic-padding;;
+      background-color: $light-gray;
     }
 
     &-content {
@@ -49,21 +46,16 @@
 
   &__back {
     position: absolute;
-    left: -50px;
     width: 35px;
     height: 35px;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    left: -40px;
     background: url('img/back.svg') no-repeat;
 
-    @media #{$screen} and (max-width: 1220px) {
-      position: static;
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 10px;
-    }
-
-    @media #{$small-only} {
-      margin-left: -20px;
-      margin-top: -5px;
+    @media #{$screen} and (min-width: 1200px) {
+      left: -100px;
     }
   }
 }
@@ -73,7 +65,7 @@
     display: inherit;
   }
 
-  @media #{$screen} and (min-width: 910px) {
+  @media #{$screen} and (min-width: 911px) {
     display: none;
   }
 }

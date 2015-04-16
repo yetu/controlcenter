@@ -37,13 +37,13 @@ var MainScreen = React.createClass({
         </div>
         <div className='main-screen__body'>
           <div className='main-screen__body-left hide-for-small-to-medium'>
-            <div className='row fixed-height-3 text-center'>
+            <div className='row fixed-height-3'>
               <div className='columns'>
                 {backButton}
                 <h1>Control Center</h1>
               </div>
             </div>
-            <div className='main-screen__nav'>
+            <div className='row'>
               <Navigation {...this.props} items={this.state.navItems} orientation='vertical'/>
             </div>
           </div>

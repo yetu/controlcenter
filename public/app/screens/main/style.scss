@@ -38,7 +38,7 @@
       background-color: $shade-gray;
       overflow: auto;
 
-      @media #{$screen} and (max-width: 910px) {
+      @media #{$screen} and (max-width: $slim-layout-max-width) {
         @include grid-column($total-columns);
       }
     }
@@ -54,7 +54,7 @@
     left: 0;
     background: url('img/back.svg') no-repeat;
 
-    @media #{$screen} and (min-width: 910px) {
+    @media #{$screen} and (min-width: $slim-layout-max-width + 1) {
       left: -40px;
     }
 

@@ -1,11 +1,7 @@
 @import "components-theme";
 
 .cc-device-state {
-
-  &__text {
-    line-height: normal;
-    margin-left: $half-padding;
-    font-size: convert-to-rem(16px);
+  *:first-child {
+    margin-right: $quarter-padding;
   }
-
 }

@@ -2,7 +2,8 @@ var React = require('react');
 var Reflux = require('reflux');
 
 var Link = require('react-router').Link;
-var DeviceState = require('common/components/device-state');
+var DeviceStateIcon = require('common/components/device-state/device-state-icon');
+var DeviceStateText = require('common/components/device-state/device-state-text');
 
 
 var gatewayStore = require('stores/gateway');
@@ -24,8 +25,11 @@ module.exports = React.createClass({
             : this.showLoadingTemplate()
           }
         </div>
-        <div className='cc-device__state columns small-3 quarter-padded-left'>
-          <DeviceState connected={ this.state.gateway.model.online }/>
+        <div className='cc-device__state columns small-1 text-center'>
+          <DeviceStateIcon connected={ this.state.gateway.model.online } />
+        </div>
+        <div className='cc-device__state columns small-2 text-center'>
+          <DeviceStateText connected={ this.state.gateway.model.online } />
         </div>
       </div>
     );

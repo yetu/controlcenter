@@ -3,7 +3,8 @@ var Link = require('react-router').Link;
 var styleMixin = require('mixins/style-mixin');
 
 var DeviceActionControl = require('common/components/device-action-control');
-var DeviceState = require('common/components/device-state');
+var DeviceStateIcon = require('common/components/device-state/device-state-icon');
+var DeviceStateText = require('common/components/device-state/device-state-text');
 
 var Device = React.createClass({
   mixins: [styleMixin(require('./style.scss'))],
@@ -26,8 +27,11 @@ var Device = React.createClass({
         <div className='cc-device__control columns small-3 text-left'>
           <DeviceActionControl device={ this.props.device } />
         </div>
-        <div className='cc-device__state columns small-3 quarter-padded-left'>
-          <DeviceState device={ this.props.device }/>
+        <div className='cc-device__state columns small-1 text-center'>
+          <DeviceStateIcon connected={ this.props.device.connected } />
+        </div>
+        <div className='cc-device__state columns small-2 text-center'>
+          <DeviceStateText connected={ this.props.device.connected } />
         </div>
       </div>
     );

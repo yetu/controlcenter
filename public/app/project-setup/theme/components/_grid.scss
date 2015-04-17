@@ -21,3 +21,10 @@ $row-height: $column-width;
 .grid-14 {
   @include grid-generator($section-columns);
 }
+
+.grid-14,
+.grid-16 {
+  .row {
+    max-width: none;
+  }
+}

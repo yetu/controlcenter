@@ -22,15 +22,13 @@ var MainScreen = React.createClass({
       <div className='main-screen grid-22'>
         <div className='main-screen__top row fixed-height-2 grid-14 visible-for-small-to-medium'>
           <div className='row fixed-height-1'>
-            <div className='column small-1'>
+            <div className='column small-14 padded-left'>
               {backButton}
-            </div>
-            <div className='column small-13'>
               <h1>Control Center</h1>
             </div>
           </div>
           <div className='row fixed-height-1'>
-            <div className='column small-13 small-offset-1'>
+            <div className='column small-14 padded-left'>
               <Navigation {...this.props} items={this.state.navItems} orientation='horizontal'/>
             </div>
           </div>

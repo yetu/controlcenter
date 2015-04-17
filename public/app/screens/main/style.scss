@@ -11,13 +11,6 @@
     padding-right: $basic-padding;
 
     background-color: $shade-white;
-
-    .row:first-child {
-      .column {
-        @include vertically-centered-content();
-        height: 100%;
-      }
-    }
   }
 
   &__body {
@@ -49,7 +42,7 @@
     width: 35px;
     height: 35px;
     margin: auto 0;
-    top: 0;
+    top: -2px; // to compensate for the header misalignment
     bottom: 0;
     left: 0;
     background: url('img/back.svg') no-repeat;

@@ -44,7 +44,6 @@
   &__linkLabel {
     font-size: $h2-font-size - $h2-font-reduction;
     @media #{$medium-up} {
-      line-height: $header-line-height;
       font-size: $h2-font-size;
     }
   }

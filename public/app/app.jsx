@@ -19,7 +19,7 @@ var routes = (
   <Route path='/' handler={MainScreen}>
     <Route name='settings' path='settings' handler={SettingsRegion}/>
     <Route name='devices' path='devices' handler={DeviceListSection}/>
-    <Route name='gateway' path='gateway-info' handler={GatewayDetailsSection}/>
+    <Route name='gateway' path='devices/gateway' handler={GatewayDetailsSection}/>
     <Route name='device' path='devices/:deviceId' handler={DeviceDetailsSection}/>
     <Redirect from='/' to='devices'/>
   </Route>

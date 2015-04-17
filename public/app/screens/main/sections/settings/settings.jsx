@@ -31,7 +31,9 @@ var SettingsPage = React.createClass({
               <UserForm />
             </div>
             <div className='columns medium-6'>
+              {/*
               <UserAvatar />
+              */}
             </div>
           </div>
         </div>

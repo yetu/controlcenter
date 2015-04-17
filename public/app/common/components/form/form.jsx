@@ -3,6 +3,8 @@ var styleMixin = require('mixins/style-mixin');
 var TForm = require('tcomb-form').form.Form;
 
 var options = {
+  // TODO: Remove when we allow the user to change values
+  disabled: 'disabled',
   templates: {
     textbox: require('./text-input.jsx')
   }

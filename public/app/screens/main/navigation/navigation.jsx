@@ -16,9 +16,14 @@ var Navigation = React.createClass({
         'active': this.props.path.indexOf('/' + item.linkTo) === 0
       });
 
+
+      var icon = this.props.orientation === 'vertical' ?
+        <i className={'cc_navigation__linkImage ' + 'icon-' + item.image}></i> :
+        null;
+
       return (
         <Link to={item.linkTo} key={i} className={classNames}>
-          <i className={'cc_navigation__linkImage' + ' show-for-landscape ' + 'icon-' + item.image}></i>
+          {icon}
           <label className='cc_navigation__linkLabel'>{item.title}</label>
         </Link>
       );

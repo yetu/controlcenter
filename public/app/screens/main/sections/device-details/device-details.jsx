@@ -17,8 +17,7 @@ var DeviceDetails = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
     Reflux.connect(deviceListStore, 'deviceList'),
-    Reflux.connect(roomStore, 'rooms'),
-    Router.State
+    Reflux.connect(roomStore, 'rooms')
   ],
 
   getRoomSelectOptions: function getRoomSelectOptions () {
@@ -46,7 +45,7 @@ var DeviceDetails = React.createClass({
   },
 
   render: function render () {
-    var deviceId = this.context.router.getCurrentParams().deviceId;
+    var deviceId = this.props.params.deviceId;
     var device = this.state.deviceList.deviceById[deviceId] || {};
     var deviceProperties = device.properties || {};
     return (

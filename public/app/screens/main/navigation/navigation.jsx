@@ -1,12 +1,11 @@
 var React = require('react'),
-  cx = require('react/lib/cx'),
+  cx = require('classname'),
   Router = require('react-router'),
-  State = Router.State,
   Link = Router.Link,
   styleMixin = require('mixins/style-mixin');
 
 var Navigation = React.createClass({
-  mixins: [styleMixin(require('./style.scss')), State],
+  mixins: [styleMixin(require('./style.scss'))],
   render: function render () {
     var items = this.props.items.map(function mapper (item, i) {
 
@@ -14,7 +13,7 @@ var Navigation = React.createClass({
         'cc_navigation__link': true,
         'item': true,
         // also mark link as active, if subpath of link is opened
-        'active': this.getPath().indexOf('/' + item.linkTo) === 0
+        'active': this.props.path.indexOf('/' + item.linkTo) === 0
       });
 
       return (

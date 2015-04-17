@@ -1,5 +1,5 @@
 var React = require('react');
-var cx = require('react/lib/cx');
+var cx = require('classname');
 
 function ccFormInput (locals) {
   var formGroupClasses = {

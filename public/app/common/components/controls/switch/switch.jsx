@@ -1,6 +1,6 @@
 var React = require('react');
 var styleMixin = require('mixins/style-mixin');
-var cx = require('react/lib/cx');
+var cx = require('classname');
 
 var SwitchControl = React.createClass({
   mixins: [ styleMixin(require('./style.scss')) ],

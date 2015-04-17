@@ -4,7 +4,7 @@
 
 .cc_navigation {
 
-    display: block;
+  display: block;
 
   &.vertical {
     width: 100%;
@@ -27,7 +27,8 @@
 
   &__link {
     padding: 0;
-    height: $row-height;
+    // TODO: Padding shouldn't be used here, semantically not correct. Set height to 100% and set parent's height to row height
+    height: $basic-padding;
     @include vertically-centered-content();
 
     * {

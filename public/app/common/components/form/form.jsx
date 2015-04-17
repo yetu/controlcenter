@@ -2,14 +2,6 @@ var React = require('react');
 var styleMixin = require('mixins/style-mixin');
 var TForm = require('tcomb-form').form.Form;
 
-var options = {
-  // TODO: Remove when we allow the user to change values
-  disabled: 'disabled',
-  templates: {
-    textbox: require('./text-input.jsx')
-  }
-};
-
 var Form = React.createClass({
   mixins: [
     styleMixin(require('./style.scss'))
@@ -25,6 +17,13 @@ var Form = React.createClass({
   },
 
   render: function render () {
+    var options = {
+      disabled: this.props.disabled,
+      templates: {
+        textbox: require('./text-input.jsx')
+      }
+    };
+
     return (
       <div className='cc-form grid-14'>
         <TForm ref='form' onChange={this.onChange} type={this.props.type} options={options} value={this.props.value} />

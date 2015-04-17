@@ -40,7 +40,7 @@ var UserForm = React.createClass({
 
   render: function render () {
     return (
-      <Form type={ControlCenterUser} onValidChange={this.onValidChange} value={this.state}/>
+      <Form type={ControlCenterUser} onValidChange={this.onValidChange} value={this.state} disabled={true} />
     );
   }
 });

@@ -56,7 +56,7 @@ var DeviceDetails = React.createClass({
             <Icon type='close' size='small' />
           </Link>
           <div className='columns padded-left'>
-            <h2>{ deviceProperties.name }</h2>
+            <h2 className='bold'>{ deviceProperties.name }</h2>
           </div>
         </div>
 
@@ -82,7 +82,7 @@ var DeviceDetails = React.createClass({
             <h5>Type</h5>
           </div>
           <div className='columns medium-12'>
-            <strong>{ deviceProperties.displayType }</strong>
+            { deviceProperties.displayType }
           </div>
         </div>
 
@@ -91,7 +91,7 @@ var DeviceDetails = React.createClass({
             <h5>ID</h5>
           </div>
           <div className='columns medium-8'>
-            <strong>{ deviceProperties.id }</strong>
+            { deviceProperties.id }
           </div>
           <div className='columns medium-4'>
             <DeviceState device={ device }/>

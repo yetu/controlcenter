@@ -22,8 +22,9 @@ var SettingsPage = React.createClass({
   render: function render () {
     return (
       <div className='cc-settings grid-14 padded'>
-        <div className='cc-settings__header row fixed-height-3 hide-for-small'>
-          <div className='columns'></div>
+        <div className='cc-settings__header row fixed-height-3 hide-for-small-to-medium'>
+        </div>
+        <div className='cc-settings__header row fixed-height-1 show-for-small-to-medium'>
         </div>
         <div className='cc-settings__section'>
           <div className='cc-settings__section-form row'>

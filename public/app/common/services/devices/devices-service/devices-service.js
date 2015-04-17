@@ -3,7 +3,9 @@ require('whatwg-fetch');
 
 
 // TODO pass params with fetch
-var thingsUrl = 'http://householdmockapi000.yetudev.com:8080/things?itr=true&istr=true';
+var householdBaseUrl = 'http://householdmockapi000.yetudev.com:8080';
+var thingsUrl = householdBaseUrl + '/things?itr=true&istr=true';
+var thingUrl = householdBaseUrl + '/things';
 
 var MAX_DEVICES = 100; // allow to add up to 100 devices
 
@@ -27,6 +29,11 @@ function extractThings (sirenResponse) {
 var $deviceList = Rx.Observable
   .fromPromise(fetch(thingsUrl).then(extractJson));
 
+function initDeviceStreamById (deviceId) {
+  return Rx.Observable
+    .fromPromise(fetch(thingUrl + '/' + deviceId + '?istr=true').then(extractJson));
+}
+
 // TODO add device control actions here (change room, remove adjust)
 module.exports = {
 
@@ -34,6 +41,11 @@ module.exports = {
     return $deviceList
       .flatMap(extractThings)
       .bufferWithCount(MAX_DEVICES);
+  },
+
+  fetchDeviceById: function fetchDeviceById (deviceId) {
+    return initDeviceStreamById(deviceId)
+      .map(composeThing);
   },
 
   invokeDeviceAction: function doDeviceAction (action, data) {

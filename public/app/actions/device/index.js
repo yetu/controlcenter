@@ -2,7 +2,7 @@ var Reflux = require('reflux');
 
 var deviceActions = Reflux.createActions([
   'fetchList',
-  'fetchOne',
+  'fetchDeviceById',
   'fetchGateway',
   'invokeAction'
 ]);

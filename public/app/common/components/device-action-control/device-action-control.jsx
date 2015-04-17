@@ -40,10 +40,14 @@ var DeviceActionControl = React.createClass({
   render: function render () {
     var device = this.props.device;
 
-    return React.createElement(
-      this.controlByCapability[device.primaryCapability],
-      this.getControlProps(device)
-    );
+    var result = null;
+    if (device && device.alterEgoComponent) {
+      result = React.createElement(
+        this.controlByCapability[device.primaryCapability],
+        this.getControlProps(device)
+      );
+    }
+    return result;
   }
 });
 

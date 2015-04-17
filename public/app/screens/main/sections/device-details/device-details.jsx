@@ -4,7 +4,9 @@ var Reflux = require('reflux');
 var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 
-var deviceListStore = require('stores/device-list');
+var deviceActions = require('actions/device');
+
+var deviceDetailsStore = require('stores/device-details');
 var roomStore = require('stores/room');
 
 var DeviceState = require('common/components/device-state');
@@ -16,16 +18,18 @@ var DeviceActionControl = require('common/components/device-action-control');
 var DeviceDetails = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
-    Reflux.connect(deviceListStore, 'deviceList'),
-    Reflux.connect(roomStore, 'rooms')
+    Reflux.connect(deviceDetailsStore, 'device'),
+    Reflux.connect(roomStore, 'rooms'),
+    Router.State
   ],
 
-  getRoomSelectOptions: function getRoomSelectOptions () {
-    return this.state.rooms.map(function mapper (room, i) {
-      return (
-        <option key={i} value={room.id}>{ room.title }</option>
-      );
-    });
+  contextTypes: {
+    router: React.PropTypes.func
+  },
+
+  componentDidMount: function componentDidMount () {
+    var deviceId = this.context.getCurrentParams().deviceId;
+    deviceActions.fetchDeviceById(deviceId);
   },
 
   onRoomChange: function onRoomChange (e) {
@@ -45,18 +49,16 @@ var DeviceDetails = React.createClass({
   },
 
   render: function render () {
-    var deviceId = this.props.params.deviceId;
-    var device = this.state.deviceList.deviceById[deviceId] || {};
+    var device = this.state.device.device || {};
     var deviceProperties = device.properties || {};
     return (
-
       <div className='cc-device-details grid-16'>
         <div className='cc-settings__header row fixed-height-3'>
           <div className='columns padded-left'>
             <h2 className='bold'>{ deviceProperties.name }</h2>
           </div>
           <Link className='cc-device-details__closeButton' to='devices'>
-            <Icon type='close' size='small' />
+            <Icon type='close' size='small'/>
           </Link>
         </div>
 
@@ -65,7 +67,7 @@ var DeviceDetails = React.createClass({
             <h5>Controls</h5>
           </div>
           <div className='columns medium-12'>
-            <DeviceActionControl device={ device } />
+            <DeviceActionControl device={ device }/>
           </div>
         </div>
 

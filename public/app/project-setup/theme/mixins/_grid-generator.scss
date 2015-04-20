@@ -21,7 +21,7 @@
 
         height: $i * $row-height;
 
-        .columns {
+        .column, .columns {
           @include vertically-centered-content();
           height: $i * $row-height;
 

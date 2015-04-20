@@ -1,0 +1,17 @@
+$slim-layout-max-width: 910px;
+
+.show-for-slim-layout {
+  @media #{$screen} and (max-width: $slim-layout-max-width) {
+    display: inherit;
+  }
+
+  @media #{$screen} and (min-width: $slim-layout-max-width + 1px) {
+    display: none;
+  }
+}
+
+.hide-for-slim-layout {
+  @media #{$screen} and (max-width: $slim-layout-max-width) {
+    display: none;
+  }
+}

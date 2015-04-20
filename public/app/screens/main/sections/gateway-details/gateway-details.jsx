@@ -27,7 +27,7 @@ var DeviceDetails = React.createClass({
       <div className='cc-device-details grid-16'>
         <div className='cc-settings__header row fixed-height-3'>
           <div className='columns padded-left'>
-            <h2>Yetu Home Gateway</h2>
+            <h2 className='bold'>Yetu Home Gateway</h2>
           </div>
           <Link className='cc-device-details__closeButton' to='devices'>
             <Icon type='close' size='small' />
@@ -57,7 +57,7 @@ var DeviceDetails = React.createClass({
             <h5>Gateway Id</h5>
           </div>
           <div className='columns medium-6'>
-            <strong>{ gateway.gatewayId }</strong>
+            { gateway.gatewayId }
           </div>
           <div className='columns medium-3'>
             <DeviceState connected={ gateway.online }/>

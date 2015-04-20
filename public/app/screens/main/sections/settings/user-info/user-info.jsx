@@ -37,32 +37,41 @@ var UserInfo = React.createClass({
   },
 
   render: function render () {
+    var emailRow = this.row('Email',
+      (<span className='cc-user-info-item__value-text'>
+        {this.state.model.email}
+      </span>)
+    );
+
+    var registrationDateRow = this.row('Registration date',
+      (<span className='cc-user-info-item__value-text'>
+        {this.state.model.registrationDate}
+      </span>)
+    );
+
+    var passwordRow = this.row('Password',
+      (<a href={window.yetu.config.authChangePasswordURL} target='_blank'>Change password</a>)
+    );
+
     return (
       <div className='cc-user-info grid-14'>
-        <div className='cc-user-info-item row fixed-height-1'>
-          <div className='cc-user-info-item__label columns medium-4'>
-            <span className='cc-user-info-item__label-text'>
-              Password
-            </span>
-          </div>
+        {emailRow}
+        {registrationDateRow}
+        {passwordRow}
+      </div>
+    );
+  },
 
-          <div className='cc-user-info-item__value columns medium-10'>
-            <a href={window.yetu.config.authChangePasswordURL} target='_blank'>Change password</a>
-          </div>
+  row: function row (label, value) {
+    return (
+      <div className='cc-user-info-item row fixed-height-1'>
+        <div className='cc-user-info-item__label columns medium-4'>
+            <span className='cc-user-info-item__label-text'>
+              {label}
+            </span>
         </div>
-
-        <div className='cc-user-info-item row fixed-height-1'>
-          <div className='cc-user-info-item__label columns medium-4'>
-            <span className='cc-user-info-item__label-text'>
-              Email
-            </span>
-          </div>
-
-          <div className='cc-user-info-item__value columns medium-10'>
-            <span className='cc-user-info-item__value-text'>
-              {this.state.model.email}
-            </span>
-          </div>
+        <div className='cc-user-info-item__value columns medium-10'>
+          {value}
         </div>
       </div>
     );

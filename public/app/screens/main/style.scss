@@ -7,21 +7,10 @@
   background-size: 700px 700px;
 
   &__top {
-    @include grid-row();
-
     padding-left: $basic-padding;
-    padding-top: $half-padding;
     padding-right: $basic-padding;
 
     background-color: $shade-white;
-  }
-
-  &__header {
-    padding: $basic-padding 0 $basic-padding 0;
-  }
-
-  &__nav {
-    padding-left: $basic-padding;
   }
 
   &__body {
@@ -30,9 +19,10 @@
 
     &-left {
       @include grid-column($side-nav-columns);
-      height: 100%;
-      background-color: $light-gray;
       position: relative;
+      height: 100%;
+      padding-left: $basic-padding;
+      background-color: $light-gray;
     }
 
     &-content {
@@ -41,7 +31,7 @@
       background-color: $shade-gray;
       overflow: auto;
 
-      @media #{$small-only} {
+      @media #{$screen} and (max-width: $slim-layout-max-width) {
         @include grid-column($total-columns);
       }
     }
@@ -49,21 +39,20 @@
 
   &__back {
     position: absolute;
-    left: -50px;
     width: 35px;
     height: 35px;
+    margin: auto 0;
+    top: -2px; // to compensate for the header misalignment
+    bottom: 0;
+    left: 0;
     background: url('img/back.svg') no-repeat;
 
-    @media #{$screen} and (max-width: 1220px) {
-      position: static;
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 10px;
+    @media #{$screen} and (min-width: $slim-layout-max-width + 1) {
+      left: -40px;
     }
 
-    @media #{$small-only} {
-      margin-left: -20px;
-      margin-top: -5px;
+    @media #{$screen} and (min-width: 1200px) {
+      left: -100px;
     }
   }
 }

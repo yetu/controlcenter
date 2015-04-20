@@ -52,12 +52,12 @@ var DeviceDetails = React.createClass({
 
       <div className='cc-device-details grid-16'>
         <div className='cc-settings__header row fixed-height-3'>
+          <div className='columns padded-left'>
+            <h2 className='bold'>{ deviceProperties.name }</h2>
+          </div>
           <Link className='cc-device-details__closeButton' to='devices'>
             <Icon type='close' size='small' />
           </Link>
-          <div className='columns padded-left'>
-            <h2>{ deviceProperties.name }</h2>
-          </div>
         </div>
 
         <div className='row fixed-height-1 alternate-dark'>
@@ -82,7 +82,7 @@ var DeviceDetails = React.createClass({
             <h5>Type</h5>
           </div>
           <div className='columns medium-12'>
-            <strong>{ deviceProperties.displayType }</strong>
+            { deviceProperties.displayType }
           </div>
         </div>
 
@@ -91,7 +91,7 @@ var DeviceDetails = React.createClass({
             <h5>ID</h5>
           </div>
           <div className='columns medium-8'>
-            <strong>{ deviceProperties.id }</strong>
+            { deviceProperties.id }
           </div>
           <div className='columns medium-4'>
             <DeviceState device={ device }/>

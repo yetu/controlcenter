@@ -21,8 +21,7 @@ module.exports = Reflux.createStore({
   onFetchGateway: function onFetchGateway () {
     var self = this;
     gatewayService.fetchGatewayInfo()
-      .subscribe(self.updateModel.bind(self),
-      self.updateError.bind(self));
+      .subscribe(self.updateModel.bind(self), self.updateError.bind(self));
   },
 
   updateModel: function updateModel (gateway) {

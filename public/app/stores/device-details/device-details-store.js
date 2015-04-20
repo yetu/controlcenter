@@ -15,6 +15,10 @@ var deviceDetailsStore = Reflux.createStore({
     this.device = this.createModel();
   },
 
+  getInitialState: function getInitialState () {
+    return this.device;
+  },
+
   augmentDevice: function augmentDevice (device) {
     var alterEgoComponent = DeviceHelpers.getAlterEgoComponent(device);
     var deviceActions = _.indexBy(alterEgoComponent.actions, 'name');
@@ -29,13 +33,9 @@ var deviceDetailsStore = Reflux.createStore({
 
   createModel: function createModel (device) {
     return {
-      device: device ? this.augmentDevice(device) : null,
+      model: device ? this.augmentDevice(device) : null,
       error: null
     };
-  },
-
-  getInitialState: function getInitialState () {
-    return this.device;
   },
 
   onFetchDeviceById: function onFetchDeviceById (deviceId) {

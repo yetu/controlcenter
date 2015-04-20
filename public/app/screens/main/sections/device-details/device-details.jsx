@@ -28,28 +28,16 @@ var DeviceDetails = React.createClass({
   },
 
   componentDidMount: function componentDidMount () {
-    var deviceId = this.context.getCurrentParams().deviceId;
+    var deviceId = this.context.router.getCurrentParams().deviceId;
     deviceActions.fetchDeviceById(deviceId);
   },
 
-  onRoomChange: function onRoomChange (e) {
-    this.setState({ selectedRoom: e.target.value });
-  },
-
-  onDescriptionChange: function onDescriptionChange (e) {
-    var device = this.state.device;
-    device.description = e.target.value;
-    this.setState({ device: device });
-  },
-
   onSave: function onSave () {
-    console.log('Room:', this.state.selectedRoom);
-    console.log('Description:', this.state.device.description);
-    // TODO: implement saving changes
+    console.log('On Save clicked');
   },
 
   render: function render () {
-    var device = this.state.device.device || {};
+    var device = this.state.device.model || {};
     var deviceProperties = device.properties || {};
     return (
       <div className='cc-device-details grid-16'>

@@ -9,7 +9,7 @@ var Route = Router.Route;
 var Redirect = Router.Redirect;
 
 var MainScreen = require('./screens/main');
-var DeviceListSection = require('./screens/main/sections/device-list');
+var DeviceListSection = require('./screens/main/sections/devices');
 var DeviceDetailsSection = require('./screens/main/sections/device-details');
 var GatewayDetailsSection = require('./screens/main/sections/gateway-details');
 var SettingsRegion = require('./screens/main/sections/settings');

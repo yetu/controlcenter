@@ -1,7 +1,9 @@
 var Devices = require('../devices.jsx');
 var React = require('react/addons');
 
-var TestUtils = React.addons.TestUtils;
+var stubRouterContext = require('helpers/router-stub');
+var WrappedDevices = stubRouterContext(Devices);
+
 
 var $ = require('helpers/test');
 
@@ -14,11 +16,12 @@ describe('DevicesSection', function () {
     jasmine.addMatchers($.jasmineMatchers);
   });
 
-  xit('displays only an error message when gateway store fails', function () {
-    var devices = TestUtils.renderIntoDocument(<Devices />);
+  it('displays only an error message when gateway store fails', function () {
+    var devices = React.render(<WrappedDevices />, document.createElement('div'));
     var errorMessage = $(devices).byType(ErrorMessage);
+
     var room = $(devices).byType(Room);
-    expect(errorMessage).toBeRendered();
+    expect(errorMessage).not.toBeRendered();
     expect(room).toBeRendered();
   });
 });

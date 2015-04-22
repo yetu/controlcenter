@@ -3,9 +3,10 @@ var Reflux = require('reflux');
 
 var Room = require('./room');
 var DeviceFinder = require('./device-finder');
-var Button = require('common/components/controls/button');
+var ErrorMessage = require('common/components/error-message');
 
 var roomStore = require('stores/room');
+var gatewayStore = require('stores/gateway');
 var roomActions = require('actions/room');
 
 var styleMixin = require('mixins/style-mixin');
@@ -14,29 +15,39 @@ var DevicesSection = React.createClass({
 
   mixins: [
     styleMixin(require('./style.scss')),
-    Reflux.connect(roomStore, 'rooms')
+    Reflux.connect(roomStore, 'rooms'),
+    Reflux.connect(gatewayStore, 'gateway')
   ],
+
+  header: function header () {
+    return (
+      !this.state.gateway.error
+        ? <DeviceFinder />
+        : <ErrorMessage message='No Gateway found' />
+    );
+  },
+
+  content: function content () {
+    if (!this.state.gateway.error) {
+      return this.state.rooms.map((room, index) =>
+        <Room title={room.title} key={index} />
+      );
+    }
+  },
 
   render: function render () {
     return (
       <div className='cc-devices grid-14 padded'>
         <div className='row fixed-height-3'>
           <div className='columns'>
-            <DeviceFinder />
+            { this.header() }
           </div>
         </div>
-        {
-          this.state.rooms.map((room, index) =>
-            <Room title={room.title} key={index} />
-          )
-        }
+        { this.content() }
       </div>
     );
-  },
-
-  handleAddRoom: function handleAddRoom () {
-    roomActions.createRoom();
   }
+
 });
 
 module.exports = DevicesSection;

@@ -1,10 +1,7 @@
 @import "components-theme";
 
 .cc-slider-control {
-  display: table;
-
   &__input {
-    display: table-cell;
-    vertical-align: middle;
+    font-size: x-small; // range input's width is dependent on the font-size in Firefox
   }
 }

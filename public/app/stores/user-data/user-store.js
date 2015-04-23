@@ -1,4 +1,6 @@
 var Reflux = require('reflux');
+require('whatwg-fetch');
+
 var userDataActions = require('actions/user-data');
 
 function extractJson (response) {
@@ -52,7 +54,7 @@ var SettingsStore = Reflux.createStore({
       self.updateError(error);
     }
 
-    return fetch('/profile')
+    return fetch('/profile', { credentials: 'include' })
       .then(extractJson)
       .then(onUserData)
       .catch(onError);

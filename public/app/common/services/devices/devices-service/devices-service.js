@@ -25,10 +25,6 @@ function extractThings (sirenResponse) {
   return things.map(composeThing);
 }
 
-// For now it's only for things from Household API
-var $deviceList = Rx.Observable
-  .fromPromise(fetch(thingsUrl).then(extractJson));
-
 function initDeviceStreamById (deviceId) {
   return Rx.Observable
     .fromPromise(fetch(thingUrl + '/' + deviceId + '?istr=true').then(extractJson));
@@ -38,7 +34,8 @@ function initDeviceStreamById (deviceId) {
 module.exports = {
 
   fetchDeviceList: function fetchDeviceList () {
-    return $deviceList
+    return Rx.Observable
+      .fromPromise(fetch(thingsUrl).then(extractJson))
       .flatMap(extractThings)
       .bufferWithCount(MAX_DEVICES);
   },

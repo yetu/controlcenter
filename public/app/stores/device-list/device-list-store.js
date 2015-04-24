@@ -25,20 +25,8 @@ var deviceStore = Reflux.createStore({
     return this.deviceList;
   },
 
-  augmentDevice: function augmentDevice (device) {
-    var alterEgoComponent = DeviceHelpers.getAlterEgoComponent(device);
-    var deviceActions = _.indexBy(alterEgoComponent.actions, 'name');
-    var primaryCapability = DeviceHelpers.getPrimaryCapability(alterEgoComponent);
-    return {
-      properties: device.properties,
-      alterEgoComponent: alterEgoComponent,
-      actions: deviceActions,
-      primaryCapability: primaryCapability
-    };
-  },
-
   createModel: function createModel (devices) {
-    var augmentedDevices = _.map(devices, this.augmentDevice);
+    var augmentedDevices = _.map(devices, DeviceHelpers.augmentDevice);
     return {
       devices: augmentedDevices,
       deviceById: _.indexBy(augmentedDevices, (device) => device.properties.id),

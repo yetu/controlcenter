@@ -19,8 +19,7 @@ var DeviceDetails = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
     Reflux.connect(deviceDetailsStore, 'device'),
-    Reflux.connect(roomStore, 'rooms'),
-    Router.State
+    Reflux.connect(roomStore, 'rooms')
   ],
 
   contextTypes: {
@@ -28,7 +27,7 @@ var DeviceDetails = React.createClass({
   },
 
   componentDidMount: function componentDidMount () {
-    var deviceId = this.context.router.getCurrentParams().deviceId;
+    var deviceId = this.props.params.deviceId;
     deviceActions.fetchDeviceById(deviceId);
   },
 

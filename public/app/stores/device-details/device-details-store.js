@@ -1,5 +1,4 @@
 var Reflux = require('reflux');
-var _ = require('lodash');
 
 var DeviceActions = require('actions/device');
 var DevicesService = require('services/devices/devices-service');

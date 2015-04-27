@@ -1,7 +1,5 @@
 var React = require('react');
 
-var Icon = require('common/components/icon');
-
 var styleMixin = require('mixins/style-mixin');
 
 var DeviceStateText = React.createClass({

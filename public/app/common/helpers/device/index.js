@@ -1,11 +1,23 @@
 var _ = require('lodash');
 
-module.exports = {
+var Helpers = {
 
   getAlterEgoComponent: function getAlterEgoComponent (device) {
     return _.find(device.components, (component) =>
       component.properties.type === device.properties.displayType
     );
+  },
+
+  augmentDevice: function augmentDevice (device) {
+    var alterEgoComponent = Helpers.getAlterEgoComponent(device);
+    var deviceActions = _.indexBy(alterEgoComponent.actions, 'name');
+    var primaryCapability = Helpers.getPrimaryCapability(alterEgoComponent);
+    return {
+      properties: device.properties,
+      alterEgoComponent: alterEgoComponent,
+      actions: deviceActions,
+      primaryCapability: primaryCapability
+    };
   },
 
   getPrimaryCapability: function getPrimaryCapability (component) {
@@ -23,3 +35,6 @@ module.exports = {
   }
 
 };
+
+
+module.exports = Helpers;

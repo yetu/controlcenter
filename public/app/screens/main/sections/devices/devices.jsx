@@ -7,7 +7,6 @@ var ErrorMessage = require('common/components/error-message');
 
 var roomStore = require('stores/room');
 var gatewayStore = require('stores/gateway');
-var roomActions = require('actions/room');
 
 var styleMixin = require('mixins/style-mixin');
 

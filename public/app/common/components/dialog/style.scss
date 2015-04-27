@@ -1,0 +1,26 @@
+@import "components-theme";
+@import "theme/components/grid.scss";
+
+.cc-dialog {
+  height: 100%;
+  background-color: $dialog2-background-color;
+
+  &__header {
+    height: 3 * $row-height;
+  }
+
+  &__content {
+    height: 100%;
+  }
+
+  &__buttons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 10px;
+
+    .cc-button {
+      margin: 0 10px 0 10px;
+    }
+  }
+}

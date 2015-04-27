@@ -12,6 +12,8 @@ var roomStore = require('stores/room');
 var DeviceState = require('common/components/device-state');
 var Button = require('common/components/controls/button');
 var Icon = require('common/components/icon');
+var Overlay = require('common/components/overlay');
+var Dialog = require('common/components/dialog');
 
 var DeviceActionControl = require('common/components/device-action-control');
 
@@ -42,6 +44,7 @@ var DeviceDetails = React.createClass({
   render: function render () {
     var device = this.state.device.model || {};
     var deviceProperties = device.properties || {};
+
     return (
       <div className='cc-device-details grid-16'>
         <div className='cc-settings__header row fixed-height-3'>
@@ -52,6 +55,12 @@ var DeviceDetails = React.createClass({
             <Icon type='close' size='small'/>
           </Link>
         </div>
+
+        <Overlay ref="deleteDialog">
+          <Dialog title='Delete device' buttons={this.deleteDialogButtons()} >
+            <div>Q?!</div>
+          </Dialog>
+        </Overlay>
 
         <div className='row fixed-height-1 alternate-dark'>
           <div className='columns medium-4 padded-left'>
@@ -106,6 +115,29 @@ var DeviceDetails = React.createClass({
 
       </div>
     );
+  },
+
+  onDeleteClick: function onDeleteClick () {
+    // TODO Figure out how this can be avoided
+    arguments[0].preventDefault();
+    this.refs.deleteDialog.show();
+  },
+
+  deleteDialogButtons: function deleteDialogButtons () {
+    return [
+      ['yes', this.onDeleteDialogConfirm],
+      ['no', this.onDeleteDialogCancel]
+    ];
+  },
+
+  onDeleteDialogCancel: function onDeleteDialogCancel () {
+    this.refs.deleteDialog.hide();
+  },
+
+  onDeleteDialogConfirm: function onDeleteDialogCancel () {
+    console.log('Delete device');
+    // TODO: Figure out how to use react router for redirecting
+    window.location.replace('#/devices');
   }
 });
 

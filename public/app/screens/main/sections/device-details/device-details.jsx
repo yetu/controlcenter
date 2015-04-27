@@ -24,6 +24,7 @@ var DeviceDetails = React.createClass({
     Reflux.connect(roomStore, 'rooms')
   ],
 
+  // TODO: Replace w/ ES6 notion, see https://github.com/rackt/react-router/blob/master/docs/api/RouterContext.md
   contextTypes: {
     router: React.PropTypes.func
   },
@@ -56,7 +57,7 @@ var DeviceDetails = React.createClass({
           </Link>
         </div>
 
-        <Overlay ref="deleteDialog">
+        <Overlay ref='deleteDialog'>
           <Dialog title='Delete device' buttons={this.deleteDialogButtons()} >
             <div>Q?!</div>
           </Dialog>
@@ -118,8 +119,6 @@ var DeviceDetails = React.createClass({
   },
 
   onDeleteClick: function onDeleteClick () {
-    // TODO Figure out how this can be avoided
-    arguments[0].preventDefault();
     this.refs.deleteDialog.show();
   },
 
@@ -136,8 +135,7 @@ var DeviceDetails = React.createClass({
 
   onDeleteDialogConfirm: function onDeleteDialogCancel () {
     console.log('Delete device');
-    // TODO: Figure out how to use react router for redirecting
-    window.location.replace('#/devices');
+    this.context.router.transitionTo('devices');
   }
 });
 

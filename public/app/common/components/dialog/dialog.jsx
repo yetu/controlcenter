@@ -2,7 +2,7 @@ var React = require('react');
 
 var styleMixin = require('mixins/style-mixin');
 
-var Button = require('common/components/controls/button')
+var Button = require('common/components/controls/button');
 
 var TITLE = 0,
     ONCLICK = 1;

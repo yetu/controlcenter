@@ -44,6 +44,8 @@ scalacOptions ++= Seq(
   "-language:implicitConversions" //allow implicit convertions defined by implicit def convertAtoB(a:A):B type functions
 )
 
+javaOptions in Test += "-Dconfig.file=conf/application-test.conf"
+
 //********************************************************
 // Scalariform settings
 //********************************************************

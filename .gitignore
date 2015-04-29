@@ -16,6 +16,8 @@ server.pid
 dist/
 .cache
 .idea
+reference.conf
+application.conf
 
 ############################################################################
 # NodeJS specific gitignore

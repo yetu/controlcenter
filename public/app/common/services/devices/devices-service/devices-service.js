@@ -3,7 +3,7 @@ require('whatwg-fetch');
 
 
 // TODO pass params with fetch
-var householdBaseUrl = 'http://householdmockapi000.yetudev.com:8080';
+var householdBaseUrl = 'https://householdmockapi-dev.yetu.me';
 var thingsUrl = householdBaseUrl + '/things?itr=true&istr=true';
 var thingUrl = householdBaseUrl + '/things';
 

@@ -5,8 +5,8 @@ require('whatwg-fetch');
 
 var SessionState = require('./discovery-session-state.js');
 
-var startDiscoveryUrl = 'http://householdmockapi000.yetudev.com:8080/gateway/discoveries';
-var gatewayStatusUrl = 'http://householdmockapi000.yetudev.com:8080/gateway';
+var startDiscoveryUrl = 'https://householdmockapi-dev.yetu.me/gateway/discoveries';
+var gatewayStatusUrl = 'https://householdmockapi-dev.yetu.me/gateway';
 var POLLING_INTERVAL = 1000;
 
 function extractSessionUrl (data) {

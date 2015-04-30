@@ -6,7 +6,7 @@ require('whatwg-fetch');
 var SessionState = require('../discovery-session-state.js');
 var mock = require('./discovery-service.mock.js');
 
-var apiHost = 'http://householdmockapi000.yetudev.com:8080';
+var apiHost = 'https://householdmockapi-dev.yetu.me';
 
 describe('Device discovery service', function () {
 

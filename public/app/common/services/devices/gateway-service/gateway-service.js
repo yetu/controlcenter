@@ -10,7 +10,7 @@ var extractJson = function extractJson (response) {
   return response.json();
 };
 
-var gatewayInfoUrl = 'http://householdmockapi000.yetudev.com:8080/gateway';
+var gatewayInfoUrl = 'https://householdmockapi-dev.yetu.me/gateway';
 module.exports = {
   fetchGatewayInfo: function fetchGatewayInfo () {
     // we can enable polling here

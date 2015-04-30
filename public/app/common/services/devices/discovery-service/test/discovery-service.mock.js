@@ -10,21 +10,21 @@ module.exports = {
       },
       'entities': [{
         'rel': ['http://yetu.me/rels/gateway/discoverysession'],
-        'href': 'http://householdmockapi000.yetudev.com:8080/' +
+        'href': 'https://householdmockapi-dev.yetu.me/' +
         'gateway/discoveries/4d7f590e-c40d-11e4-8dfc-aa07a5b093db'
       }],
       'actions': [{
         'name': 'create-device-discovery-session',
-        'href': 'http://householdmockapi000.yetudev.com:8080/gateway/discoveries',
+        'href': 'https://householdmockapi-dev.yetu.me/gateway/discoveries',
         'method': 'POST'
       }, {
         'name': 'create-device-removal-session',
-        'href': 'http://householdmockapi000.yetudev.com:8080/gateway/removals',
+        'href': 'https://householdmockapi-dev.yetu.me/gateway/removals',
         'method': 'POST'
       }],
       'links': [{
         'rel': ['self'],
-        'href': 'http://householdmockapi000.yetudev.com:8080/gateway'
+        'href': 'https://householdmockapi-dev.yetu.me/gateway'
       }]
     },
 
@@ -129,16 +129,16 @@ module.exports = {
       },
       'entities': [{
         'rel': ['http://yetu.me/rels/subthing'],
-        'href': 'http://householdmockapi000.yetudev.com:8080/things/' +
+        'href': 'https://householdmockapi-dev.yetu.me/things/' +
         'bf8976f8-a9d9-4fde-9cfe-f3c623fe9977/subthings/f6e1fc58-e1f2-482a-8f82-9354755f0e99',
         'class': ['subthing']
       }],
       'links': [{
         'rel': ['self'],
-        'href': 'http://householdmockapi000.yetudev.com:8080/things/bf8976f8-a9d9-4fde-9cfe-f3c623fe9977'
+        'href': 'https://householdmockapi-dev.yetu.me/things/bf8976f8-a9d9-4fde-9cfe-f3c623fe9977'
       }, {
         'rel': ['next'],
-        'href': 'http://householdmockapi000.yetudev.com:8080/things/95c12117-adb0-42c9-92bc-d0aef5f07639'
+        'href': 'https://householdmockapi-dev.yetu.me/things/95c12117-adb0-42c9-92bc-d0aef5f07639'
       }]
     }
   }

@@ -17,7 +17,7 @@ pipelineStages := Seq(digest, gzip)
 lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb)
 
 libraryDependencies ++= Seq(
-  "com.yetu" %% "yetu-play-authenticator" % "0.1.13",
+  "com.yetu" %% "yetu-play-authenticator" % "0.1.15",
   cache,
   ws,
   filters

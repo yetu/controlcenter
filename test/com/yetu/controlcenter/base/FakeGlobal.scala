@@ -14,6 +14,7 @@ import com.yetu.play.authenticator.models.User
 import com.yetu.play.authenticator.models.daos.OAuth2InfoDAO
 import com.yetu.play.authenticator.utils.di.SilhouetteModule
 import net.codingwell.scalaguice.ScalaModule
+import play.api.Application
 import play.api.mvc.{ Handler, RequestHeader }
 
 /**
@@ -33,6 +34,8 @@ class FakeGlobal extends Global {
       case _ => super.onRouteRequest(req)
     }
   }
+
+  override def onStart(app: Application): Unit = ()
 
   /**
    * A fake Guice module.

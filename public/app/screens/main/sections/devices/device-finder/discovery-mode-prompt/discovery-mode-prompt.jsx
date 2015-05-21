@@ -14,8 +14,9 @@ var DiscoveryModePrompt = React.createClass({
           </div>
         </div>
         <div className='row fixed-height-4'>
-          { this.button('flashlight', 'Scan for devices in your network') }
-          { this.button('nest', 'Manually add device/service') }
+          {this.props.buttons.map(function (button) {
+            return this.button(button.image, button.text, button.onClick);
+          }.bind(this))}
         </div>
       </div>
     );

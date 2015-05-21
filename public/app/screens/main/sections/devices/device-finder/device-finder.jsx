@@ -26,8 +26,17 @@ var DeviceFinder = React.createClass({
   getInitialState: function getInitialState () {
     return {
       activity: DeviceFinderActivity.CLOSED,
-      discoveryModePromptVisible: true
+      discoveryModePromptVisible: false
     };
+  },
+
+  shouldComponentUpdate : function shouldComponentUpdate (nextProps, nextState) {
+    // Implicitly hide the discovery mode prompt when search dialog has appeared
+    if (nextState.discoveryModePromptVisible && nextState.activity !== DeviceFinderActivity.CLOSED) {
+      this.setState({ discoveryModePromptVisible: false });
+      return false;
+    }
+    return true;
   },
 
   onDiscoveryChange: function onDiscoveryChange (discoveryData) {
@@ -43,20 +52,24 @@ var DeviceFinder = React.createClass({
   },
 
   render: function render () {
-    // TODO: Make rendering of dialog OR button/prompt more explicit
-    var dialog = this.dialogForActivityMap()[this.state.activity] || _.noop;
-    var button = this.state.activity === DeviceFinderActivity.CLOSED ? this.getButton() : null;
-    var discoveryModePrompt = this.state.discoveryModePromptVisible ? <DiscoveryModePrompt /> : null;
+    var dialog = (this.dialogForActivityMap()[this.state.activity] || _.noop)();
 
     return (
       <div className='cc-device-finder'>
         <div className='row fixed-height-3'>
           <div className='columns'>
-            { dialog() }
-            { button }
+            {
+              dialog
+                ? dialog
+                : this.getButton()
+            }
           </div>
         </div>
-        { discoveryModePrompt }
+        {
+          !dialog && this.state.discoveryModePromptVisible
+            ? this.getDiscoveryPrompt()
+            : null
+        }
       </div>
     );
   },
@@ -69,10 +82,18 @@ var DeviceFinder = React.createClass({
     );
   },
 
+  getDiscoveryPrompt: function getDiscoveryPrompt () {
+    var buttons = [
+      { image: 'flashlight', text: 'Scan for devices in your network', onClick: this.startSearching },
+      { image: 'nest', text: 'Manually add device/service', onClick: this.startSearching }
+    ];
+    return <DiscoveryModePrompt buttons={buttons} />;
+  },
+
   dialogForActivityMap: function activityMap () {
     return {
       [DeviceFinderActivity.SEARCHING]: this.getSearchDialog,
-      [DeviceFinderActivity.NO_DEVICES]: this.getNoResultsDialog,
+      [DeviceFinderActivity.NO_DEVICES]: this.getNoDevicesFoundDialog,
       [DeviceFinderActivity.DEVICE_FOUND]: this.getDeviceFoundDialog
     };
   },
@@ -88,7 +109,7 @@ var DeviceFinder = React.createClass({
       action={this.stopSearching} />;
   },
 
-  getNoResultsDialog: function getNoResultsDialog () {
+  getNoDevicesFoundDialog: function getNoDevicesFoundDialog () {
     var status = <div className='cc-device-finder__status-warning'>No devices found</div>;
 
     return <DeviceFinderDialog

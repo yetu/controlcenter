@@ -11,7 +11,8 @@ module.exports = React.createClass({
     var className = cx({
       'cc-button': true,
       secondary: this.props.secondary,
-      [this.props.size]: this.props.size ? true : false
+      [this.props.size]: this.props.size ? true : false,
+      [this.props.className || ''] : true
     });
 
     return (

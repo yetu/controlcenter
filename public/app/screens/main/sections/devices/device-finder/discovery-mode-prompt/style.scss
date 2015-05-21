@@ -2,20 +2,48 @@
 @import "theme/components/grid.scss";
 
 .discovery-mode-prompt {
-  .cc-button {
+
+  &__caption {
+    display: inline-block;
+    width: 100%;
+    vertical-align: bottom !important;
+    padding-left: 18px;
+    background: $dialog-caption-background-color;
+  }
+
+  &__button-wrapper {
+    background: linear-gradient(180deg, $dialog-background-color $row-height * 3.5, transparent $row-height * 0.5);
+
+    .column > * {
+      vertical-align: top !important;
+      margin-top: 50px;
+    }
+  }
+
+  &__button {
     width: $column-width * 3;
     height: $row-height * 1.5;
-  }
+    padding: 0;
+    background-color: $gray-button-color;
 
-  &__flashlight {
-    width: 62px;
-    height: 24px;
-    background: url('./img/flashlight.png') no-repeat;
-  }
+    &-image {
+      width: 100%;
+      height: $row-height * 0.75;
 
-  &__nest {
-    width: 56px;
-    height: 26px;
-    background: url('./img/nest.png') no-repeat;
+      &.flashlight {
+        background: url('./img/flashlight.png') no-repeat center center;
+      }
+
+      &.nest {
+        background: url('./img/nest.png') no-repeat center center;
+      }
+    }
+
+    &-text {
+      text-transform: none;
+      font-size: rem-calc(14);
+      line-height: 0;
+      color: $gray-button-title-color;
+    }
   }
 }

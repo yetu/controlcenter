@@ -25,7 +25,7 @@
           @include vertically-centered-content();
           height: $i * $row-height;
 
-          & * {
+          & > * {
             @include vertically-centered();
           }
         }

@@ -7,10 +7,10 @@ var DiscoveryModePrompt = React.createClass({
 
   render: function render () {
     return (
-      <div className='discovery-mode-prompt'>
+      <div className='discovery-mode-prompt row'>
         <div className='row fixed-height-1'>
-          <div className='column small-8'>
-            <span>Select device discovery mode</span>
+          <div className='column small-5 discovery-mode-prompt-caption'>
+            <span className='discovery-mode-prompt__caption'>Select device discovery mode</span>
           </div>
         </div>
         <div className='row fixed-height-4'>
@@ -23,10 +23,10 @@ var DiscoveryModePrompt = React.createClass({
 
   button: function button (image, text, onClick) {
     return (
-      <div className='column small-4 end text-center'>
+      <div className='discovery-mode-prompt__button-wrapper column small-4 end text-center'>
         <Button className='discovery-mode-prompt__button' onClick={onClick}>
-          <div className={'discovery-mode-prompt__' + image} />
-          { text }
+          <div className={'discovery-mode-prompt__button-image ' + image} />
+          <span className='discovery-mode-prompt__button-text'>{ text }</span>
         </Button>
       </div>
     );

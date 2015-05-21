@@ -1,0 +1,21 @@
+@import "components-theme";
+@import "theme/components/grid.scss";
+
+.discovery-mode-prompt {
+  .cc-button {
+    width: $column-width * 3;
+    height: $row-height * 1.5;
+  }
+
+  &__flashlight {
+    width: 62px;
+    height: 24px;
+    background: url('./img/flashlight.png') no-repeat;
+  }
+
+  &__nest {
+    width: 56px;
+    height: 26px;
+    background: url('./img/nest.png') no-repeat;
+  }
+}

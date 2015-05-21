@@ -18,35 +18,32 @@ var DevicesSection = React.createClass({
     Reflux.connect(gatewayStore, 'gateway')
   ],
 
-  header: function header () {
-    return (
-      !this.state.gateway.error
-        ? <DeviceFinder />
-        : <ErrorMessage message='No Gateway found' />
-    );
-  },
-
-  content: function content () {
-    if (!this.state.gateway.error) {
-      return this.state.rooms.map((room, index) =>
-        <Room title={room.title} key={index} />
-      );
-    }
-  },
-
   render: function render () {
     return (
       <div className='cc-devices grid-14 padded'>
-        <div className='row fixed-height-3'>
-          <div className='columns'>
-            { this.header() }
-          </div>
-        </div>
-        { this.content() }
+        {this.state.gateway.error
+          ? this.gatewayNotFoundErrorMessage()
+          : [ <DeviceFinder />, this.rooms() ]
+        }
       </div>
     );
-  }
+  },
 
+  gatewayNotFoundErrorMessage: function gatewayNotFoundErrorMessage () {
+    return (
+      <div className='row fixed-height-3'>
+        <div className='columns'>
+          <ErrorMessage message='No Gateway found' />
+        </div>
+      </div>
+    );
+  },
+
+  rooms: function rooms () {
+    return this.state.rooms.map((room, index) =>
+        <Room title={room.title} key={index} />
+    );
+  }
 });
 
 module.exports = DevicesSection;

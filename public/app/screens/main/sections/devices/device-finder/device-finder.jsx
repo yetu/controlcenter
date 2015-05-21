@@ -3,6 +3,7 @@ var Reflux = require('reflux');
 var _ = require('lodash');
 
 var DeviceFinderDialog = require('./device-finder-dialog');
+var DiscoveryModePrompt = require('./discovery-mode-prompt');
 
 var deviceDiscoveryStore = require('stores/discovery-store');
 var deviceDiscoveryActions = require('actions/discovery');
@@ -24,7 +25,8 @@ var DeviceFinder = React.createClass({
 
   getInitialState: function getInitialState () {
     return {
-      activity: DeviceFinderActivity.CLOSED
+      activity: DeviceFinderActivity.CLOSED,
+      discoveryModePromptVisible: true
     };
   },
 
@@ -41,20 +43,27 @@ var DeviceFinder = React.createClass({
   },
 
   render: function render () {
+    // TODO: Make rendering of dialog OR button/prompt more explicit
     var dialog = this.dialogForActivityMap()[this.state.activity] || _.noop;
     var button = this.state.activity === DeviceFinderActivity.CLOSED ? this.getButton() : null;
+    var discoveryModePrompt = this.state.discoveryModePromptVisible ? <DiscoveryModePrompt /> : null;
 
     return (
       <div className='cc-device-finder'>
-        { dialog() }
-        { button }
+        <div className='row fixed-height-3'>
+          <div className='columns'>
+            { dialog() }
+            { button }
+          </div>
+        </div>
+        { discoveryModePrompt }
       </div>
     );
   },
 
   getButton: function getButton () {
     return (
-      <Button onClick={this.startSearching}>
+      <Button onClick={this.showDiscoveryModePrompt}>
         + Add device
       </Button>
     );
@@ -103,6 +112,10 @@ var DeviceFinder = React.createClass({
       closeAction={this.closeDialog}
       actionText='Ok'
       action={this.showFoundDeviceInfo} />;
+  },
+
+  showDiscoveryModePrompt: function showDiscoveryModePrompt () {
+    this.setState({ discoveryModePromptVisible: true });
   },
 
   startSearching: function startSearching () {

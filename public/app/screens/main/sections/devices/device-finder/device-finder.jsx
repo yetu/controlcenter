@@ -144,7 +144,7 @@ var DeviceFinder = React.createClass({
     var nestConfig = window.yetu.config.nest;
     // TODO: Pass a generated state argument (generate it in backend, that also validates it on back redirect?)
     var state = 'STATE';
-    window.location.replace(nestConfig.oauthUrl + '?client_id=' + nestConfig.clientId + '&state=' + state);
+    window.location.replace(nestConfig.loginUrl + '?client_id=' + nestConfig.clientId + '&state=' + state);
   },
 
   startSearching: function startSearching () {

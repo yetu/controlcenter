@@ -8,7 +8,7 @@ var AddNest = React.createClass({
 
   getInitialState: function getInitialState () {
     return {
-      token: this.props.params.token
+      successState: this.props.params.state
     };
   },
 
@@ -18,7 +18,7 @@ var AddNest = React.createClass({
 
   render: function render () {
     return (
-      <span>Nest token: { this.state.token }</span>
+      <span>Retrieved nest access token: { this.state.successState }</span>
     );
   }
 });

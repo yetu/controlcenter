@@ -1,5 +1,6 @@
 package com.yetu.controlcenter.controllers
 
+import java.net.ConnectException
 import java.util.NoSuchElementException
 import javax.inject.Inject
 
@@ -10,12 +11,15 @@ import com.yetu.controlcenter.views
 import com.yetu.play.authenticator.models.User
 import com.yetu.play.authenticator.models.daos.OAuth2InfoDAO
 import com.yetu.play.authenticator.utils.di.ConfigLoader
+import play.api.Play
 import play.api.Play.current
 import play.api.libs.ws.WS
 import play.api.mvc.{ AnyContent, Result }
+import play.api.libs.json._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.util.{ Failure, Success }
 
 /**
  * The ControlCenter application controller
@@ -93,12 +97,24 @@ class Application @Inject() (implicit val env: Environment[User, SessionAuthenti
    *
    * @return
    */
-  def redirectNestToken(code: String) = SecuredAction {
-    implicit request =>
-      {
-        // TODO: Send nest token to household service here?
+  def redirectNestToken(code: String) = SecuredAction.async { implicit request =>
+    val clientId = Play.configuration.getString("nest.clientId").get
+    val clientSecret = Play.configuration.getString("nest.clientSecret").get
+    val oauthUrl = Play.configuration.getString("nest.oauthUrl").get
+    val accessTokenUrl: String = s"$oauthUrl/access_token?code=$code&client_id=$clientId&client_secret=$clientSecret&grant_type=authorization_code"
+    println(accessTokenUrl)
+
+    // TODO: Handle ConnectException (e.g. nest API not reachable)
+    WS.url(accessTokenUrl).execute("POST").map { response =>
+      if (response.status == 200) {
         // TODO: Check "state" query parameter for consistency
-        Redirect(s"/#/devices/add/nest/$code")
+        val accessToken = (Json.parse(response.body) \ "access_token").asOpt[String].getOrElse("")
+        // TODO: Send access token to household API
+        println(s"Nest access token = $accessToken")
+        Redirect(s"/#/devices/add/nest/ok")
+      } else {
+        Redirect(s"/#/devices/add/nest/failed")
       }
+    }
   }
 }

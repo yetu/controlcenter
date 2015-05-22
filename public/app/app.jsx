@@ -22,7 +22,7 @@ var routes = (
     <Route name='devices' path='devices' handler={DeviceListSection}/>
     <Route name='gateway' path='devices/gateway' handler={GatewayDetailsSection}/>
     <Route name='device' path='devices/:deviceId' handler={DeviceDetailsSection}/>
-    <Route name='add-nest' path='devices/add/nest/:token' handler={AddNestSection}/>
+    <Route name='add-nest' path='devices/add/nest/:state' handler={AddNestSection}/>
     <Redirect from='/' to='devices'/>
   </Route>
 );

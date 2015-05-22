@@ -12,6 +12,7 @@ var MainScreen = require('./screens/main');
 var DeviceListSection = require('./screens/main/sections/devices');
 var DeviceDetailsSection = require('./screens/main/sections/device-details');
 var GatewayDetailsSection = require('./screens/main/sections/gateway-details');
+var AddNestSection = require('./screens/main/sections/add-nest');
 var SettingsRegion = require('./screens/main/sections/settings');
 
 
@@ -21,6 +22,7 @@ var routes = (
     <Route name='devices' path='devices' handler={DeviceListSection}/>
     <Route name='gateway' path='devices/gateway' handler={GatewayDetailsSection}/>
     <Route name='device' path='devices/:deviceId' handler={DeviceDetailsSection}/>
+    <Route name='add-nest' path='devices/add/nest/:token' handler={AddNestSection}/>
     <Redirect from='/' to='devices'/>
   </Route>
 );

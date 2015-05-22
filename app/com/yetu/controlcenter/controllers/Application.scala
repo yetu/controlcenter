@@ -88,4 +88,17 @@ class Application @Inject() (implicit val env: Environment[User, SessionAuthenti
     } yield accessToken
   }
 
+  /**
+   * Redirects to the frontend handler passing the nest token
+   *
+   * @return
+   */
+  def redirectNestToken(code: String) = SecuredAction {
+    implicit request =>
+      {
+        // TODO: Send nest token to household service here?
+        // TODO: Check "state" query parameter for consistency
+        Redirect(s"/#/devices/add/nest/$code")
+      }
+  }
 }

@@ -9,7 +9,7 @@ var AddNest = React.createClass({
   getInitialState: function getInitialState () {
     return {
       token: this.props.params.token
-    }
+    };
   },
 
   componentDidMount: function componentDidMount () {

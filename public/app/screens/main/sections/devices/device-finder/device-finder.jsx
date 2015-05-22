@@ -30,7 +30,7 @@ var DeviceFinder = React.createClass({
     };
   },
 
-  shouldComponentUpdate : function shouldComponentUpdate (nextProps, nextState) {
+  shouldComponentUpdate: function shouldComponentUpdate (nextProps, nextState) {
     // Implicitly hide the discovery mode prompt when search dialog has appeared
     if (nextState.discoveryModePromptVisible && nextState.activity !== DeviceFinderActivity.CLOSED) {
       this.setState({ discoveryModePromptVisible: false });
@@ -143,8 +143,8 @@ var DeviceFinder = React.createClass({
     event.preventDefault();
     var nestConfig = window.yetu.config.nest;
     // TODO: Pass a generated state argument (generate it in backend, that also validates it on back redirect?)
-    var state = "STATE";
-    window.location.replace(nestConfig.oauthUrl + "?client_id=" + nestConfig.clientId + "&state=" + state);
+    var state = 'STATE';
+    window.location.replace(nestConfig.oauthUrl + '?client_id=' + nestConfig.clientId + '&state=' + state);
   },
 
   startSearching: function startSearching () {

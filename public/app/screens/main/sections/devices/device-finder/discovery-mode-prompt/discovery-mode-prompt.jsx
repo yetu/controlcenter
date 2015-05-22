@@ -14,9 +14,11 @@ var DiscoveryModePrompt = React.createClass({
           </div>
         </div>
         <div className='row fixed-height-4'>
-          {this.props.buttons.map(function (button) {
-            return this.button(button.image, button.text, button.onClick);
-          }.bind(this))}
+          {
+            this.props.buttons.map(function mapButtonToComponent (button) {
+              return this.button(button.image, button.text, button.onClick);
+            }.bind(this))
+          }
         </div>
       </div>
     );

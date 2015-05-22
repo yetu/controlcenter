@@ -3,6 +3,7 @@ var Reflux = require('reflux');
 var _ = require('lodash');
 
 var DeviceFinderDialog = require('./device-finder-dialog');
+var DiscoveryModePrompt = require('./discovery-mode-prompt');
 
 var deviceDiscoveryStore = require('stores/discovery-store');
 var deviceDiscoveryActions = require('actions/discovery');
@@ -24,8 +25,18 @@ var DeviceFinder = React.createClass({
 
   getInitialState: function getInitialState () {
     return {
-      activity: DeviceFinderActivity.CLOSED
+      activity: DeviceFinderActivity.CLOSED,
+      discoveryModePromptVisible: false
     };
+  },
+
+  shouldComponentUpdate: function shouldComponentUpdate (nextProps, nextState) {
+    // Implicitly hide the discovery mode prompt when search dialog has appeared
+    if (nextState.discoveryModePromptVisible && nextState.activity !== DeviceFinderActivity.CLOSED) {
+      this.setState({ discoveryModePromptVisible: false });
+      return false;
+    }
+    return true;
   },
 
   onDiscoveryChange: function onDiscoveryChange (discoveryData) {
@@ -41,29 +52,48 @@ var DeviceFinder = React.createClass({
   },
 
   render: function render () {
-    var dialog = this.dialogForActivityMap()[this.state.activity] || _.noop;
-    var button = this.state.activity === DeviceFinderActivity.CLOSED ? this.getButton() : null;
+    var dialog = (this.dialogForActivityMap()[this.state.activity] || _.noop)();
 
     return (
       <div className='cc-device-finder'>
-        { dialog() }
-        { button }
+        <div className='row fixed-height-3'>
+          <div className='columns'>
+            {
+              dialog
+                ? dialog
+                : this.getButton()
+            }
+          </div>
+        </div>
+        {
+          !dialog && this.state.discoveryModePromptVisible
+            ? this.getDiscoveryPrompt()
+            : null
+        }
       </div>
     );
   },
 
   getButton: function getButton () {
     return (
-      <Button onClick={this.startSearching}>
+      <Button onClick={this.showDiscoveryModePrompt}>
         + Add device
       </Button>
     );
   },
 
+  getDiscoveryPrompt: function getDiscoveryPrompt () {
+    var buttons = [
+      { image: 'flashlight', text: 'Scan for devices in your network', onClick: this.startSearching },
+      { image: 'nest', text: 'Manually add device/service', onClick: this.redirectToNestLogin }
+    ];
+    return <DiscoveryModePrompt buttons={buttons} />;
+  },
+
   dialogForActivityMap: function activityMap () {
     return {
       [DeviceFinderActivity.SEARCHING]: this.getSearchDialog,
-      [DeviceFinderActivity.NO_DEVICES]: this.getNoResultsDialog,
+      [DeviceFinderActivity.NO_DEVICES]: this.getNoDevicesFoundDialog,
       [DeviceFinderActivity.DEVICE_FOUND]: this.getDeviceFoundDialog
     };
   },
@@ -79,7 +109,7 @@ var DeviceFinder = React.createClass({
       action={this.stopSearching} />;
   },
 
-  getNoResultsDialog: function getNoResultsDialog () {
+  getNoDevicesFoundDialog: function getNoDevicesFoundDialog () {
     var status = <div className='cc-device-finder__status-warning'>No devices found</div>;
 
     return <DeviceFinderDialog
@@ -103,6 +133,18 @@ var DeviceFinder = React.createClass({
       closeAction={this.closeDialog}
       actionText='Ok'
       action={this.showFoundDeviceInfo} />;
+  },
+
+  showDiscoveryModePrompt: function showDiscoveryModePrompt () {
+    this.setState({ discoveryModePromptVisible: true });
+  },
+
+  redirectToNestLogin: function redirectToNestLogin (event) {
+    event.preventDefault();
+    var nestConfig = window.yetu.config.nest;
+    // TODO: Pass a generated state argument (generate it in backend, that also validates it on back redirect?)
+    var state = 'STATE';
+    window.location.replace(nestConfig.oauthUrl + '?client_id=' + nestConfig.clientId + '&state=' + state);
   },
 
   startSearching: function startSearching () {

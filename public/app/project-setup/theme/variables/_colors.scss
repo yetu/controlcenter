@@ -22,3 +22,9 @@ $shadow: #c0c0c0;
 
 // TODO: Use color variable
 $font-active-color:#666666;
+
+// ---- semantic color (only these colors should be addressed directly) ----
+$dialog-background-color: $shade-white;
+$dialog-caption-background-color: #e6e6e6;
+$gray-button-color: $shade-gray;
+$gray-button-title-color: $active-gray;

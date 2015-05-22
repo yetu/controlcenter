@@ -85,7 +85,7 @@ var DeviceFinder = React.createClass({
   getDiscoveryPrompt: function getDiscoveryPrompt () {
     var buttons = [
       { image: 'flashlight', text: 'Scan for devices in your network', onClick: this.startSearching },
-      { image: 'nest', text: 'Manually add device/service', onClick: this.startSearching }
+      { image: 'nest', text: 'Manually add device/service', onClick: this.redirectToNestLogin }
     ];
     return <DiscoveryModePrompt buttons={buttons} />;
   },
@@ -137,6 +137,14 @@ var DeviceFinder = React.createClass({
 
   showDiscoveryModePrompt: function showDiscoveryModePrompt () {
     this.setState({ discoveryModePromptVisible: true });
+  },
+
+  redirectToNestLogin: function redirectToNestLogin (event) {
+    event.preventDefault();
+    var nestConfig = window.yetu.config.nest;
+    // TODO: Pass a generated state argument (generate it in backend, that also validates it on back redirect?)
+    var state = "STATE";
+    window.location.replace(nestConfig.oauthUrl + "?client_id=" + nestConfig.clientId + "&state=" + state);
   },
 
   startSearching: function startSearching () {

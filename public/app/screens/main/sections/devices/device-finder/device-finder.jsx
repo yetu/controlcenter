@@ -137,8 +137,9 @@ var DeviceFinder = React.createClass({
       action={this.showFoundDeviceInfo} />;
   },
 
-  toggleDiscoveryModePromptVisibility: function toggleDiscoveryModePromptVisibility () {
+  toggleDiscoveryModePromptVisibility: function toggleDiscoveryModePromptVisibility (event) {
     this.setState({ discoveryModePromptVisible: !this.state.discoveryModePromptVisible });
+    event.preventDefault();
   },
 
   redirectToNestLogin: function redirectToNestLogin (event) {

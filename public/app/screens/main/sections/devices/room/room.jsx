@@ -24,8 +24,8 @@ var Room = React.createClass({
     return (
       <div className='cc-room'>
         <div className='row fixed-height-1 group-header'>
-          <div className='columns small-14 quarter-padded-left'>
-            <h3 className='cc-room__header'>{this.props.title}</h3>
+          <div className='column small-14 quarter-padded-left'>
+            <h3 className='align-text-top'>{this.props.title}</h3>
           </div>
         </div>
         <Gateway/>

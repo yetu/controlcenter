@@ -1,9 +1,13 @@
 .align-bottom {
-  vertical-align: bottom;
+  vertical-align: bottom !important;
 }
 
 .content-align-bottom {
   > * {
     vertical-align: bottom !important;
   }
+}
+
+.align-text-top {
+  vertical-align: text-top !important;
 }

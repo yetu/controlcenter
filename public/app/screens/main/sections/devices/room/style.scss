@@ -1,10 +1,7 @@
 @import "components-theme";
-@import "theme/components/grid";
 
 .cc-room {
-  @extend vertically-centered-content();
-
-  &__header {
-    height: $basic-padding;
+  > .row:not(:first-child):not(:last-child) {
+    border-bottom: solid 1px $separator-color;
   }
 }

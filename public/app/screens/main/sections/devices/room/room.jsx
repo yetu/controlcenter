@@ -1,15 +1,17 @@
 var React = require('react');
 var Reflux = require('reflux');
-var Device = require('./device');
-var Gateway = require('./gateway');
+var styleMixin = require('mixins/style-mixin');
 
 var deviceListStore = require('stores/device-list');
-require('./style.scss');
+
+var Device = require('./device');
+var Gateway = require('./gateway');
 
 var Room = React.createClass({
 
   mixins: [
-    Reflux.connect(deviceListStore)
+    Reflux.connect(deviceListStore),
+    styleMixin(require('./style.scss'))
   ],
 
   render: function render () {

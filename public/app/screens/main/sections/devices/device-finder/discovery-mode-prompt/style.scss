@@ -1,5 +1,6 @@
 @import "components-theme";
 @import "theme/components/grid.scss";
+@import "theme/components/buttons.scss";
 
 .discovery-mode-prompt {
 
@@ -54,6 +55,10 @@
       font-size: rem-calc(14);
       line-height: 0;
       color: $gray-button-title-color;
+    }
+
+    &:hover &-text {
+      color: $button-font-color;
     }
   }
 }

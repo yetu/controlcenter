@@ -2,6 +2,7 @@ $button-tny: rem-calc(2);
 $button-font-tny: rem-calc(16);
 $button-med: rem-calc(16);
 
+$button-font-color: $light-gray;
 
 .cc-button {
   @extend .button;

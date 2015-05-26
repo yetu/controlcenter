@@ -1,6 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var _ = require('lodash');
+var cx = require('classname');
 
 var DeviceFinderDialog = require('./device-finder-dialog');
 var DiscoveryModePrompt = require('./discovery-mode-prompt');
@@ -53,11 +54,12 @@ var DeviceFinder = React.createClass({
 
   render: function render () {
     var dialog = (this.dialogForActivityMap()[this.state.activity] || _.noop)();
+    var promptVisible = !dialog && this.state.discoveryModePromptVisible;
 
     return (
       <div className='cc-device-finder'>
-        <div className='row fixed-height-3'>
-          <div className='columns'>
+        <div className={'row fixed-height-' + (promptVisible ? '2' : '3')}>
+          <div className={'column ' + (promptVisible ? 'content-align-bottom' : '')}>
             {
               dialog
                 ? dialog
@@ -66,7 +68,7 @@ var DeviceFinder = React.createClass({
           </div>
         </div>
         {
-          !dialog && this.state.discoveryModePromptVisible
+          promptVisible
             ? this.getDiscoveryPrompt()
             : null
         }

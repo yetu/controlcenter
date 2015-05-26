@@ -1,0 +1,9 @@
+.align-bottom {
+  vertical-align: bottom;
+}
+
+.content-align-bottom {
+  > * {
+    vertical-align: bottom !important;
+  }
+}

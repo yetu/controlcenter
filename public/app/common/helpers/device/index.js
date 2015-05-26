@@ -21,17 +21,18 @@ var Helpers = {
   },
 
   getPrimaryCapability: function getPrimaryCapability (component) {
-    return component.properties.capabilities[0].toLowerCase();
+    return component.properties.capabilities[0];
   },
 
   // TODO: ideally this should be retrieved from the model
   propertyByCapability: {
-    switchable: 'on',
-    settable: 'setValue'
+    SWITCHABLE: 'SWITCHABLE-on',
+    SETTABLE: 'setValue'
   },
 
-  getActionForProperty: function getActionForProperty (component, propertyName, operation) {
-    return component.actions[operation + '-' + propertyName];
+  getActionForCapability: function getActionForCapability (component, capability, operation) {
+    var actionName = operation + '-' + Helpers.propertyByCapability[capability];
+    return _.find(component.actions, 'name', actionName);
   }
 
 };

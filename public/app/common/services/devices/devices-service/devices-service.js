@@ -50,10 +50,14 @@ module.exports = {
       .map(composeThing);
   },
 
-  invokeDeviceAction: function doDeviceAction (action, data) {
+  invokeDeviceAction: function invokeDeviceAction (action, data) {
     var requestOptions = {
       method: action.method,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + authToken
+      }
     };
     return Rx.Observable.fromPromise(
       fetch(action.href, requestOptions)

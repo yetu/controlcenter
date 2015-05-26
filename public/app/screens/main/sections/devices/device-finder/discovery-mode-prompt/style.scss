@@ -37,14 +37,16 @@
     &-image {
       width: 100%;
       height: $row-height * 0.75;
+      background: no-repeat center center;
+      background-size: 50%;
 
-      &.flashlight {
-        background: url('./img/flashlight.png') no-repeat center center;
-      }
+      &.flashlight { background-image: url('./img/flashlight.svg'); }
+      &.nest {       background-image: url('./img/nest.svg'); }
+    }
 
-      &.nest {
-        background: url('./img/nest.png') no-repeat center center;
-      }
+    &:hover {
+      .flashlight {  background-image: url('./img/flashlight-hover.svg'); }
+      .nest {        background-image: url('./img/nest-hover.svg'); }
     }
 
     &-text {

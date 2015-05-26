@@ -20,6 +20,14 @@
     }
   }
 
+  &__button-wrapper:first-child {
+    padding-left: $column-width / 3;
+  }
+
+  &__button-wrapper:last-child {
+    padding-right: $column-width / 3;
+  }
+
   &__button {
     width: $column-width * 3;
     height: $row-height * 1.5;

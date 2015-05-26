@@ -78,7 +78,7 @@ var DeviceFinder = React.createClass({
 
   getButton: function getButton () {
     return (
-      <Button onClick={this.showDiscoveryModePrompt}>
+      <Button onClick={this.toggleDiscoveryModePromptVisibility}>
         + Add device
       </Button>
     );
@@ -137,8 +137,8 @@ var DeviceFinder = React.createClass({
       action={this.showFoundDeviceInfo} />;
   },
 
-  showDiscoveryModePrompt: function showDiscoveryModePrompt () {
-    this.setState({ discoveryModePromptVisible: true });
+  toggleDiscoveryModePromptVisibility: function toggleDiscoveryModePromptVisibility () {
+    this.setState({ discoveryModePromptVisible: !this.state.discoveryModePromptVisible });
   },
 
   redirectToNestLogin: function redirectToNestLogin (event) {

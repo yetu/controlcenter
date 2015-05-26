@@ -12,11 +12,11 @@
   }
 
   &__button-wrapper {
+    padding-top: $row-height;
     background: linear-gradient(180deg, $dialog-background-color $row-height * 3.5, transparent $row-height * 0.5);
 
-    .column > * {
+    > * {
       vertical-align: top !important;
-      margin-top: 50px;
     }
   }
 

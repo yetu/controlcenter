@@ -33,11 +33,12 @@ class Application @Inject() (implicit val env: Environment[User, SessionAuthenti
    * * Main entry point that loads the frontend
    * @return
    */
-  def entryPoint = SecuredAction {
-    implicit request =>
-      {
-        Ok(views.html.index(Config.frontendConfig.get))
-      }
+  def entryPoint = SecuredAction.async { implicit request =>
+    val result = for {
+      accessToken <- getAccessToken(request)
+      result = Ok(views.html.index(Config.frontendConfig.get, accessToken))
+    } yield result
+    result.recover(withErrorHandling)
   }
 
   /**

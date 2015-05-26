@@ -1,6 +1,6 @@
 @import play.api.Play
 @import com.typesafe.config.ConfigRenderOptions
-@(config: play.api.Configuration)
+@(config: play.api.Configuration, token: String)
 <!doctype html>
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -20,7 +20,8 @@
     <link rel="icon" type="image/ico" href="favicon.ico"/>
     <script>
     var yetu = {
-      config : @Html(config.underlying.root().render(ConfigRenderOptions.concise()))
+      config : @Html(config.underlying.root().render(ConfigRenderOptions.concise())),
+      authToken: '@Html(token)'
     };
     </script>
 

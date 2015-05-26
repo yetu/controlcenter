@@ -21,7 +21,7 @@ var Helpers = {
   },
 
   getPrimaryCapability: function getPrimaryCapability (component) {
-    return component.properties.capabilities[0];
+    return component.properties.capabilities[0].toLowerCase();
   },
 
   // TODO: ideally this should be retrieved from the model

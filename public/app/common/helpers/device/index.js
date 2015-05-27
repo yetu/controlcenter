@@ -3,6 +3,12 @@ var _ = require('lodash');
 var Helpers = {
 
   getAlterEgoComponent: function getAlterEgoComponent (device) {
+    if (device.properties.displayType === 'LAMP') {
+      return _.find(device.components, (component) =>
+        component.properties.type === 'SOCKET'
+      );
+    }
+
     return _.find(device.components, (component) =>
       component.properties.type === device.properties.displayType
     );

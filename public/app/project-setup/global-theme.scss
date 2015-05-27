@@ -36,6 +36,9 @@ $include-xl-html-grid-classes: true;
 @import "theme/components/type";
 @import "theme/components/grid";
 
+@import "alignment";
+//@import "debug.scss";
+
 body {
   background-color: transparent;
 }

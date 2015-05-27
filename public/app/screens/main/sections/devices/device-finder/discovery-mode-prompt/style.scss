@@ -1,5 +1,6 @@
 @import "components-theme";
 @import "theme/components/grid.scss";
+@import "theme/components/buttons.scss";
 
 .discovery-mode-prompt {
 
@@ -12,12 +13,20 @@
   }
 
   &__button-wrapper {
+    padding-top: $row-height;
     background: linear-gradient(180deg, $dialog-background-color $row-height * 3.5, transparent $row-height * 0.5);
 
-    .column > * {
+    > * {
       vertical-align: top !important;
-      margin-top: 50px;
     }
+  }
+
+  &__button-wrapper:first-child {
+    padding-left: $column-width / 3;
+  }
+
+  &__button-wrapper:last-child {
+    padding-right: $column-width / 3;
   }
 
   &__button {
@@ -29,14 +38,16 @@
     &-image {
       width: 100%;
       height: $row-height * 0.75;
+      background: no-repeat center center;
+      background-size: 50%;
 
-      &.flashlight {
-        background: url('./img/flashlight.png') no-repeat center center;
-      }
+      &.flashlight { background-image: url('./img/flashlight.svg'); }
+      &.nest {       background-image: url('./img/nest.svg'); }
+    }
 
-      &.nest {
-        background: url('./img/nest.png') no-repeat center center;
-      }
+    &:hover {
+      .flashlight {  background-image: url('./img/flashlight-hover.svg'); }
+      .nest {        background-image: url('./img/nest-hover.svg'); }
     }
 
     &-text {
@@ -44,6 +55,10 @@
       font-size: rem-calc(14);
       line-height: 0;
       color: $gray-button-title-color;
+    }
+
+    &:hover &-text {
+      color: $button-font-color;
     }
   }
 }

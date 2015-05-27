@@ -30,6 +30,13 @@ function initDeviceStreamById (deviceId) {
     .fromPromise(fetch(thingUrl + '/' + deviceId + '?thingAs=representation').then(extractJson));
 }
 
+var anchor = document.createElement('a');
+
+var stripHostname = function stripHostname (url) {
+  anchor.href = url;
+  return anchor.pathname;
+};
+
 // TODO add device control actions here (change room, remove adjust)
 module.exports = {
 
@@ -54,8 +61,9 @@ module.exports = {
         'Content-Type': 'application/json'
       }
     };
+
     return Rx.Observable.fromPromise(
-      fetch(action.href, requestOptions)
+      fetch(householdBaseUrl + stripHostname(action.href), requestOptions)
         .then(extractJson)
     );
   }

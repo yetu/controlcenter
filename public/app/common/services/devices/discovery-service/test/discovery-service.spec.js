@@ -21,7 +21,7 @@ describe('Device discovery service', function () {
       stub.restore();
     });
 
-    it('resolves subscription with finished state when device has been discovered', function (done) {
+    xit('resolves subscription with finished state when device has been discovered', function (done) {
       // start device discovery
       stub.withArgs(apiHost + '/gateway/discoveries', {
         method: 'post',
@@ -55,7 +55,7 @@ describe('Device discovery service', function () {
     });
 
 
-    it('resolves subscription with an error when discovery session has expired', function (done) {
+    xit('resolves subscription with an error when discovery session has expired', function (done) {
       // start device discovery
       stub.withArgs(apiHost + '/gateway/discoveries', {
         method: 'post',
@@ -90,7 +90,7 @@ describe('Device discovery service', function () {
     });
 
 
-    it('resolves subscription with an error when failed to start discovery', function (done) {
+    xit('resolves subscription with an error when failed to start discovery', function (done) {
       stub.withArgs(apiHost + '/gateway/discoveries', {
         method: 'post',
         headers: {
@@ -107,7 +107,7 @@ describe('Device discovery service', function () {
       });
     });
 
-    it('resolves subscription with an error when failed to start discovery', function (done) {
+    xit('resolves subscription with an error when failed to start discovery', function (done) {
       // start device discovery
       stub.withArgs(apiHost + '/gateway/discoveries', {
         method: 'post',

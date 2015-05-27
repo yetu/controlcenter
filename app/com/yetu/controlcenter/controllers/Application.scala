@@ -61,9 +61,10 @@ class Application @Inject() (implicit val env: Environment[User, SessionAuthenti
   def household(path: String) = SecuredAction.async { implicit request =>
     val result = for {
       accessToken <- getAccessToken(request)
+      // TODO: Content-Type header must not be set explicitly but forwarded from original request
       result <- WSUtils.wrapResponse(WS.url(s"${Config.householdServicesHost}${WSUtils.addLeadingSlash(path)}?${request.rawQueryString}")
-        .withHeaders(WSUtils.authorizationHeader(accessToken))
-        .withBody(request.body.asText.getOrElse("")),
+        .withHeaders(WSUtils.authorizationHeader(accessToken), ("Content-Type", "application/json"))
+        .withBody(request.body.asJson.getOrElse("").toString),
         request.method)
     } yield result
     result.recover(withErrorHandling)

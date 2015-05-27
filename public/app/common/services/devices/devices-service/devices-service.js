@@ -3,10 +3,9 @@ require('whatwg-fetch');
 
 
 // TODO pass params with fetch
-var householdBaseUrl = 'https://household-https000.dev.yetu.me';
+var householdBaseUrl = '/household';
 var thingsUrl = householdBaseUrl + '/things?thingAs=representation&componentAs=representation';
 var thingUrl = householdBaseUrl + '/things';
-var authToken = window.yetu && window.yetu.authToken;
 
 var MAX_DEVICES = 100; // allow to add up to 100 devices
 
@@ -36,11 +35,7 @@ module.exports = {
 
   fetchDeviceList: function fetchDeviceList () {
     return Rx.Observable
-      .fromPromise(fetch(thingsUrl, {
-        headers: {
-          'Authorization': 'Bearer ' + authToken
-        }
-      }).then(extractJson))
+      .fromPromise(fetch(thingsUrl, { credentials: 'include' }).then(extractJson))
       .flatMap(extractThings)
       .bufferWithCount(MAX_DEVICES);
   },
@@ -54,9 +49,9 @@ module.exports = {
     var requestOptions = {
       method: action.method,
       body: JSON.stringify(data),
+      credentials: 'include',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + authToken
+        'Content-Type': 'application/json'
       }
     };
     return Rx.Observable.fromPromise(

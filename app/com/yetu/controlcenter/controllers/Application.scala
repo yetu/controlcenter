@@ -33,12 +33,11 @@ class Application @Inject() (implicit val env: Environment[User, SessionAuthenti
    * * Main entry point that loads the frontend
    * @return
    */
-  def entryPoint = SecuredAction.async { implicit request =>
-    val result = for {
-      accessToken <- getAccessToken(request)
-      result = Ok(views.html.index(Config.frontendConfig.get, accessToken))
-    } yield result
-    result.recover(withErrorHandling)
+  def entryPoint = SecuredAction {
+    implicit request =>
+      {
+        Ok(views.html.index(Config.frontendConfig.get))
+      }
   }
 
   /**
@@ -62,7 +61,7 @@ class Application @Inject() (implicit val env: Environment[User, SessionAuthenti
   def household(path: String) = SecuredAction.async { implicit request =>
     val result = for {
       accessToken <- getAccessToken(request)
-      result <- WSUtils.wrapResponse(WS.url(s"${Config.householdServicesHost}${WSUtils.addLeadingSlash(path)}")
+      result <- WSUtils.wrapResponse(WS.url(s"${Config.householdServicesHost}${WSUtils.addLeadingSlash(path)}?${request.rawQueryString}")
         .withHeaders(WSUtils.authorizationHeader(accessToken))
         .withBody(request.body.asText.getOrElse("")),
         request.method)

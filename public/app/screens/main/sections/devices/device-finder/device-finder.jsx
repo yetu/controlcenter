@@ -138,8 +138,8 @@ var DeviceFinder = React.createClass({
   },
 
   toggleDiscoveryModePromptVisibility: function toggleDiscoveryModePromptVisibility (event) {
-    this.setState({ discoveryModePromptVisible: !this.state.discoveryModePromptVisible });
     event.preventDefault();
+    this.setState({ discoveryModePromptVisible: !this.state.discoveryModePromptVisible });
   },
 
   redirectToNestLogin: function redirectToNestLogin (event) {

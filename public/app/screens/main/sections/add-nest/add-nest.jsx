@@ -30,11 +30,7 @@ var AddNest = React.createClass({
         </div>
         <div className='row fixed-height-1'>
           <div className='column'>
-            {
-              this.state.devicesButtonVisible
-                ? <Link to='devices'>Show devices</Link>
-                : null
-            }
+            { this.state.devicesButtonVisible && <Link to='devices'>Show devices</Link> }
           </div>
         </div>
       </div>

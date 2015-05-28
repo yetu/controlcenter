@@ -32,5 +32,5 @@ var routes = (
 );
 
 Router.run(routes, (Handler, state) =>
-    React.render(<Handler {...state} />, document.body)
+  React.render(<Handler {...state} />, document.body)
 );

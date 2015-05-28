@@ -10,12 +10,12 @@ var extractJson = function extractJson (response) {
   return response.json();
 };
 
-var gatewayInfoUrl = 'https://householdmockapi-dev.yetu.me/gateway';
+var gatewayInfoUrl = '/household/gateway';
 module.exports = {
   fetchGatewayInfo: function fetchGatewayInfo () {
     // we can enable polling here
     return Rx.Observable
-      .fromPromise(fetch(gatewayInfoUrl)
+      .fromPromise(fetch(gatewayInfoUrl, { credentials: 'include' })
         .then(extractJson))
       .map(transformGatewayResponse);
   }

@@ -11,13 +11,13 @@ var Slider = require('common/components/controls/slider');
 var DeviceActionControl = React.createClass({
 
   controlByCapability: {
-    switchable: Switch,
-    settable: Slider
+    SWITCHABLE: Switch,
+    SETTABLE: Slider
   },
 
   controlStateToActionData: {
-    switchable: (state) => state.checked,
-    settable: (state) => state.value
+    SWITCHABLE: (state) => state.checked,
+    SETTABLE: (state) => state.value
   },
 
   getControlProps: function getControlState (device) {
@@ -31,9 +31,8 @@ var DeviceActionControl = React.createClass({
     var device = this.props.device;
     var capability = device.primaryCapability;
     var transform = this.controlStateToActionData[capability];
-    var property = DeviceHelpers.propertyByCapability[capability];
-    var data = { [property]: transform(state) };
-    var action = DeviceHelpers.getActionForProperty(device, property, 'set');
+    var data = { value: transform(state) };
+    var action = DeviceHelpers.getActionForCapability(device, capability, 'set');
     DeviceActions.invokeAction(action, data);
   },
 

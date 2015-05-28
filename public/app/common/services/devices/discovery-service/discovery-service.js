@@ -5,8 +5,8 @@ require('whatwg-fetch');
 
 var SessionState = require('./discovery-session-state.js');
 
-var startDiscoveryUrl = 'https://householdmockapi-dev.yetu.me/gateway/discoveries';
-var gatewayStatusUrl = 'https://householdmockapi-dev.yetu.me/gateway';
+var startDiscoveryUrl = '/household/gateway/discoveries';
+var gatewayStatusUrl = '/household/gateway';
 var POLLING_INTERVAL = 1000;
 
 function extractSessionUrl (data) {
@@ -46,6 +46,7 @@ module.exports = {
       .fromPromise(
       fetch(startDiscoveryUrl, {
         method: 'post',
+        credentials: 'include',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

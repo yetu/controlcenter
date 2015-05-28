@@ -4,7 +4,8 @@ var deviceActions = Reflux.createActions([
   'fetchList',
   'fetchDeviceById',
   'fetchGateway',
-  'invokeAction'
+  'invokeAction',
+  'delete'
 ]);
 
 module.exports = deviceActions;

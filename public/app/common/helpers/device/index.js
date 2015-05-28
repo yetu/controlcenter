@@ -3,6 +3,13 @@ var _ = require('lodash');
 var Helpers = {
 
   getAlterEgoComponent: function getAlterEgoComponent (device) {
+    // TODO: remove this ugly hack when mainComponentId is there
+    if (device.properties.displayType === 'LAMP') {
+      return _.find(device.components, (component) =>
+        component.properties.type === 'SOCKET'
+      );
+    }
+
     return _.find(device.components, (component) =>
       component.properties.type === device.properties.displayType
     );
@@ -26,12 +33,13 @@ var Helpers = {
 
   // TODO: ideally this should be retrieved from the model
   propertyByCapability: {
-    switchable: 'on',
-    settable: 'setValue'
+    SWITCHABLE: 'SWITCHABLE-on',
+    SETTABLE: 'setValue'
   },
 
-  getActionForProperty: function getActionForProperty (component, propertyName, operation) {
-    return component.actions[operation + '-' + propertyName];
+  getActionForCapability: function getActionForCapability (component, capability, operation) {
+    var actionName = operation + '-' + Helpers.propertyByCapability[capability];
+    return _.find(component.actions, 'name', actionName);
   }
 
 };

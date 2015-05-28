@@ -10,7 +10,6 @@ var deviceDetailsStore = Reflux.createStore({
 
   init: function init () {
     this.listenTo(DeviceActions.fetchDeviceById, this.onFetchDeviceById);
-    this.listenTo(DeviceActions.invokeAction, this.onInvokeAction);
     this.listenTo(deviceListStore, this.onDeviceListStoreUpdate);
 
     this.device = this.createModel();
@@ -43,14 +42,6 @@ var deviceDetailsStore = Reflux.createStore({
 
   augmentAndUpdateDevice: function augmentAndUpdateDevice (device) {
     this.updateModel(DeviceHelpers.augmentDevice(device));
-  },
-
-  onInvokeAction: function doAction (action, data) {
-    DevicesService.invokeDeviceAction(action, data)
-      .subscribe(
-        () => {},
-        () => {}
-      );
   },
 
   updateModel: function updateModel (device) {

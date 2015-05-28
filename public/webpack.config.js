@@ -39,7 +39,10 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: [ 'react-hot', 'babel' ],
+        // TODO: Add 'react-hot' only for local dev deployment. Create a separate config.
+        // TODO: See react-hot-loader/docs/Troubleshooting.md for details.
+        // loaders: [ 'react-hot', 'babel' ],
+        loaders: [ 'babel' ],
         exclude: /(node_modules|bower_components)/
       },
       // style! attaches the css to the DOM automatically,

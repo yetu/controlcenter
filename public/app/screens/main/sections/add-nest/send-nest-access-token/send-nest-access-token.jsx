@@ -59,6 +59,8 @@ var SendNestAccessToken = React.createClass({
       case Actions.NEST_SERVICE_NOT_FOUND:
       case Actions.SEND_AUTH_TOKEN_FAILURE:
         return 'Cannot connect your nest account to your gateway';
+      case Actions.SEND_AUTH_TOKEN_SUCCESS:
+        return 'Your nest account is now connected to your gateway';
       default:
         return 'An unexpected error occurred';
     }

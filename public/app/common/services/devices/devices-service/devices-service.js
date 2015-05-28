@@ -52,6 +52,11 @@ module.exports = {
       .map(composeThing);
   },
 
+  deleteDevice: function deleteDevice (deviceId) {
+    return Rx.Observable
+      .fromPromise(fetch(thingUrl + '/' + deviceId, { method: 'DELETE' }));
+  },
+
   invokeDeviceAction: function invokeDeviceAction (action, data) {
     var requestOptions = {
       method: action.method,

@@ -13,6 +13,7 @@ var deviceStore = Reflux.createStore({
     this.listenTo(discoveryStore, this.onDiscoveryUpdate);
     this.listenTo(DeviceActions.fetchList, this.onFetchList);
     this.listenTo(DeviceActions.invokeAction, this.onInvokeAction);
+    this.listenTo(DeviceActions.delete, this.onDelete);
 
     this.deviceList = this.createModel([]);
   },
@@ -48,6 +49,10 @@ var deviceStore = Reflux.createStore({
         () => {},
         () => {}
       );
+  },
+
+  onDelete: function onDelete (deviceId) {
+    DevicesService.deleteDevice(deviceId).subscribe(this.onFetchList);
   },
 
   updateModel: function updateModel (devices) {

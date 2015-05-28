@@ -35,7 +35,7 @@ var DeviceDetails = React.createClass({
     console.log('On Save clicked');
   },
 
-  onDelete: function onDelete () {
+  onDeleteClick: function onDelete () {
     deviceActions.delete(this.props.params.deviceId);
   },
 
@@ -98,7 +98,7 @@ var DeviceDetails = React.createClass({
             </Button>
           </div>
           <div className='columns medium-10'>
-            <Button secondary='true' onClick={this.onDelete}>
+            <Button secondary='true' onClick={this.onDeleteClick}>
               Delete this device
             </Button>
           </div>

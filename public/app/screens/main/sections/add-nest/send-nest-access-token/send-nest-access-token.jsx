@@ -29,17 +29,6 @@ var SendNestAccessToken = React.createClass({
     };
   },
 
-  shouldComponentUpdate: function shouldComponentUpdate (nextProps, nextState) {
-    // Implicitly call the onComplete() handler when no more action is performed
-    switch (nextState.action) {
-      case Actions.NEST_SERVICE_NOT_FOUND:
-      case Actions.SEND_AUTH_TOKEN_SUCCESS:
-      case Actions.SEND_AUTH_TOKEN_FAILURE:
-        this.props.onComplete();
-    }
-    return true;
-  },
-
   componentDidMount: function componentDidMount () {
     this.listenTo(deviceListStore, this.onDeviceListStoreUpdate);
   },
@@ -48,6 +37,19 @@ var SendNestAccessToken = React.createClass({
     return (
       <span>{ this.messageForAction(this.state.action) }</span>
     );
+  },
+
+  setAction: function setAction (action) {
+    if (this.state.action === action) {
+      return;
+    }
+    switch (action) {
+      case Actions.NEST_SERVICE_NOT_FOUND:
+      case Actions.SEND_AUTH_TOKEN_SUCCESS:
+      case Actions.SEND_AUTH_TOKEN_FAILURE:
+        this.props.onComplete();
+    }
+    this.setState( { action: action });
   },
 
   messageForAction: function messageForAction (action) {
@@ -70,7 +72,7 @@ var SendNestAccessToken = React.createClass({
     // Look for nest web service among all things
     var nestService = _.find(this.state.devices, function isNestWebservice (device) {
       // TODO: Use a more sophisticated way to identify the nest webservice device
-      return (device.properties.name === 'WEBSERVICE oauth');
+      return device.properties.name === 'WEBSERVICE oauth';
     });
     // Set nest access token as the service's property
     if (nestService) {
@@ -79,13 +81,13 @@ var SendNestAccessToken = React.createClass({
         .invokeDeviceAction(action, { value: this.state.accessToken })
         .subscribe(
           function onSuccess () {
-            this.setState({ action: Actions.SEND_AUTH_TOKEN_SUCCESS });
+            this.setAction( Actions.SEND_AUTH_TOKEN_SUCCESS );
           }.bind(this),
           function onError () {
-            this.setState({ action: Actions.SEND_AUTH_TOKEN_FAILURE });
+            this.setAction( Actions.SEND_AUTH_TOKEN_FAILURE );
           }.bind(this));
     } else {
-      this.setState({ action: Actions.NEST_SERVICE_NOT_FOUND });
+      this.setAction( Actions.NEST_SERVICE_NOT_FOUND );
     }
   }
 });

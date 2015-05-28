@@ -3,6 +3,7 @@ var _ = require('lodash');
 var Helpers = {
 
   getAlterEgoComponent: function getAlterEgoComponent (device) {
+    // TODO: remove this ugly hack when mainComponentId is there
     if (device.properties.displayType === 'LAMP') {
       return _.find(device.components, (component) =>
         component.properties.type === 'SOCKET'

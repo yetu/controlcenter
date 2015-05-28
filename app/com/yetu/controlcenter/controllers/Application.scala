@@ -103,18 +103,15 @@ class Application @Inject() (implicit val env: Environment[User, SessionAuthenti
     val clientSecret = Play.configuration.getString("nest.clientSecret").get
     val oauthUrl = Play.configuration.getString("nest.oauthUrl").get
     val accessTokenUrl: String = s"$oauthUrl/access_token?code=$code&client_id=$clientId&client_secret=$clientSecret&grant_type=authorization_code"
-    println(accessTokenUrl)
 
     // TODO: Handle ConnectException (e.g. nest API not reachable)
     WS.url(accessTokenUrl).execute("POST").map { response =>
       if (response.status == 200) {
         // TODO: Check "state" query parameter for consistency
         val accessToken = (Json.parse(response.body) \ "access_token").asOpt[String].getOrElse("")
-        // TODO: Send access token to household API
-        println(s"Nest access token = $accessToken")
-        Redirect(s"/#/devices/add/nest/ok")
+        Redirect(s"/#/devices/add/nest/success/" + accessToken)
       } else {
-        Redirect(s"/#/devices/add/nest/failed")
+        Redirect(s"/#/devices/add/nest/failure/unknown")
       }
     }
   }

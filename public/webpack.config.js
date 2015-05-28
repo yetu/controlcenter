@@ -6,7 +6,7 @@ module.exports = {
 
   context: __dirname,
   entry: [
-    './app/app.jsx',
+    './app/app.jsx'
 //    'webpack-dev-server/client?http://localhost:8899',
 //    'webpack/hot/only-dev-server'
   ],

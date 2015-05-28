@@ -1,6 +1,7 @@
 var Rx = require('rx');
 require('whatwg-fetch');
 
+var UrlHelpers = require('helpers/url');
 
 // TODO pass params with fetch
 var householdBaseUrl = '/household';
@@ -30,13 +31,6 @@ function initDeviceStreamById (deviceId) {
     .fromPromise(fetch(thingUrl + '/' + deviceId + '?thingAs=representation').then(extractJson));
 }
 
-var anchor = document.createElement('a');
-
-var stripHostname = function stripHostname (url) {
-  anchor.href = url;
-  return anchor.pathname;
-};
-
 // TODO add device control actions here (change room, remove adjust)
 module.exports = {
 
@@ -54,7 +48,7 @@ module.exports = {
 
   deleteDevice: function deleteDevice (deviceId) {
     return Rx.Observable
-      .fromPromise(fetch(thingUrl + '/' + deviceId, { method: 'DELETE' }));
+      .fromPromise(fetch(thingUrl + '/' + deviceId, { credentials: 'include', method: 'DELETE' }));
   },
 
   invokeDeviceAction: function invokeDeviceAction (action, data) {
@@ -68,7 +62,7 @@ module.exports = {
     };
 
     return Rx.Observable.fromPromise(
-      fetch(householdBaseUrl + stripHostname(action.href), requestOptions)
+      fetch(householdBaseUrl + UrlHelpers.stripHostname(action.href), requestOptions)
         .then(extractJson)
     );
   }

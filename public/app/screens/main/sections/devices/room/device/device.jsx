@@ -14,11 +14,12 @@ var Device = React.createClass({
     var properties = this.props.device.properties;
 
     // Should have been a separate grid-14 but we live in a cruel world...
+    // TODO: Use a better strategy to shorten display name
     return (
       <div className='cc-device row fixed-height-1'>
         <div className='cc-device__title columns small-4 quarter-padded-left'>
           <Link to='device' params={{ deviceId: properties.id }}>
-            <h4>{ properties.name }</h4>
+            <h4>{ properties.name.substr(0, 20) }</h4>
           </Link>
         </div>
         <div className='cc-device__type columns small-4 text-center'>

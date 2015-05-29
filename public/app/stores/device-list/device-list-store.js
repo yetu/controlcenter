@@ -10,7 +10,7 @@ var DeviceHelpers = require('helpers/device');
 var deviceStore = Reflux.createStore({
 
   init: function init () {
-    this.listenTo(discoveryStore, this.onDiscoveryUpdate);
+    this.listenTo(discoveryStore, this.onDiscoveryStateChange);
     this.listenTo(DeviceActions.fetchList, this.onFetchList);
     this.listenTo(DeviceActions.invokeAction, this.onInvokeAction);
     this.listenTo(DeviceActions.delete, this.onDelete);
@@ -35,7 +35,7 @@ var deviceStore = Reflux.createStore({
     };
   },
 
-  onDiscoveryUpdate: function onDiscoveryUpdate () {
+  onDiscoveryStateChange: function onDiscoveryStateChange () {
     this.onFetchList();
   },
 

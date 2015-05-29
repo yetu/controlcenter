@@ -1,50 +1,31 @@
 var Reflux = require('reflux'),
-  deviceDiscovery = require('services/devices/discovery-service'),
-  deviceDiscoveryActions = require('actions/discovery');
+  discoveryService = require('services/devices/discovery-service'),
+  discoveryActions = require('actions/discovery');
 
 var DiscoveryStore = Reflux.createStore({
 
-  listenables: deviceDiscoveryActions,
-
-  init: function init () {
-    this.discoveryData = {
-      model: {},
-      error: {}
-    };
-  },
+  listenables: discoveryActions,
 
   getInitialState: function getInitialState () {
-    return this.discoveryData;
+    return {};
   },
 
-  onAddDevice: function onAddDevice () {
-    var self = this;
-    deviceDiscovery.startDiscovery().subscribe(function onNext (next) {
-      self.updateModel(next);
-    }, function onError (error) {
-      console.error('Error', error);
-      self.updateError(error);
-    });
+  update: function update (state, error) {
+    this.trigger({ state, error });
+  },
+
+  onStartDiscovery: function onStartDiscovery () {
+    discoveryService
+      .discover()
+      .then((state) => {
+        this.update(state);
+      });
   },
 
   onStopDiscovery: function onStopDiscovery () {
-    deviceDiscovery.cancelDiscovery();
-  },
-
-  updateModel: function updateModel (model) {
-    this.discoveryData = {
-      model: model
-    };
-    this.trigger(this.discoveryData);
-  },
-
-  updateError: function updateError (error) {
-    this.discoveryData = {
-      error: error
-    };
-
-    this.trigger(this.discoveryData);
+    discoveryService.stopDiscovery();
   }
+
 });
 
 module.exports = DiscoveryStore;

@@ -1,5 +1,5 @@
 module.exports = {
-  addDevice: {
+  discoverySession: {
     sessionCreatedResponse: {},
 
     gatewayResponse: {
@@ -9,7 +9,7 @@ module.exports = {
         'online': true
       },
       'entities': [{
-        'rel': ['http://yetu.me/rels/gateway/discoverysession'],
+        'rel': ['http://api.yetu.me/rels/gateway/discoverysession'],
         'href': 'https://householdmockapi-dev.yetu.me/' +
         'gateway/discoveries/4d7f590e-c40d-11e4-8dfc-aa07a5b093db'
       }],
@@ -66,14 +66,14 @@ module.exports = {
       ]
     },
 
-    sessionStateFinished: {
+    sessionStateStopped: {
       'class': [
         'session',
         'discovery'
       ],
       'properties': {
         'sessionId': '4d7f590e-c40d-11e4-8dfc-aa07a5b093db',
-        'state': 'FINISHED'
+        'state': 'STOPPED'
       },
       'links': [
         {

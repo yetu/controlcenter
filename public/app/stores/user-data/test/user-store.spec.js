@@ -39,7 +39,7 @@ describe('UserData Store', function () {
     it('handles successful response and updates model', function (done) {
       var content = {message: 'testMessage'};
       var stub = sinon.stub(window, 'fetch')
-        .returns(PromiseHelper.when(content));
+        .returns(PromiseHelper.resolveWith(content));
 
       userDataActions.saveUserData.trigger();
 
@@ -69,7 +69,7 @@ describe('UserData Store', function () {
     it('handles successful response and updates model', function (done) {
       var content = {message: 'testMessage'};
       var stub = sinon.stub(window, 'fetch')
-        .returns(PromiseHelper.when(content));
+        .returns(PromiseHelper.resolveWith(content));
 
       userDataActions.fetchUserData.trigger();
 

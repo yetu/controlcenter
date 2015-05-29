@@ -34,14 +34,6 @@ var DeviceDetails = React.createClass({
     deviceActions.fetchDeviceById(deviceId);
   },
 
-  onSave: function onSave () {
-    console.log('On Save clicked');
-  },
-
-  onDeleteClick: function onDelete () {
-    deviceActions.delete(this.props.params.deviceId);
-  },
-
   render: function render () {
     var device = this.state.device.model || {};
     var deviceProperties = device.properties || {};
@@ -59,7 +51,7 @@ var DeviceDetails = React.createClass({
 
         <Overlay ref='deleteDialog'>
           <Dialog title='Delete device' buttons={this.deleteDialogButtons()} >
-            <div>Q?!</div>
+            <div>Do you really want to remove this device?</div>
           </Dialog>
         </Overlay>
 
@@ -113,9 +105,13 @@ var DeviceDetails = React.createClass({
             </Button>
           </div>
         </div>
-
       </div>
     );
+  },
+
+  onSave: function onSave () {
+    console.log('On Save clicked');
+    this.context.router.transitionTo('devices');
   },
 
   onDeleteClick: function onDeleteClick () {
@@ -124,8 +120,8 @@ var DeviceDetails = React.createClass({
 
   deleteDialogButtons: function deleteDialogButtons () {
     return [
-      ['yes', this.onDeleteDialogConfirm],
-      ['no', this.onDeleteDialogCancel]
+      ['Remove device', this.onDeleteDialogConfirm],
+      ['Cancel', this.onDeleteDialogCancel]
     ];
   },
 
@@ -134,7 +130,7 @@ var DeviceDetails = React.createClass({
   },
 
   onDeleteDialogConfirm: function onDeleteDialogCancel () {
-    console.log('Delete device');
+    deviceActions.delete(this.props.params.deviceId);
     this.context.router.transitionTo('devices');
   }
 });

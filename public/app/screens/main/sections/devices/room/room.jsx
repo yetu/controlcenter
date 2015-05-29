@@ -1,6 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var styleMixin = require('mixins/style-mixin');
+var _ = require('lodash');
 
 var deviceListStore = require('stores/device-list');
 
@@ -15,11 +16,10 @@ var Room = React.createClass({
   ],
 
   render: function render () {
-    var devices = this.state.devices.map(function mapper (device, i) {
-      return (
-        <Device device={device} key={i}/>
-      );
-    });
+    var devices = _(this.state.devices)
+      .reject((device) => device.hidden)
+      .map((device, i) => <Device device={device} key={i}/>)
+      .value();
 
     return (
       <div className='cc-room'>

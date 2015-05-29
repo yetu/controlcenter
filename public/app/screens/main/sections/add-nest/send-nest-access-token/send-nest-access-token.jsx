@@ -59,6 +59,7 @@ var SendNestAccessToken = React.createClass({
       case Actions.SENDING_AUTH_TOKEN:
         return 'Connecting your nest account to your gateway...';
       case Actions.NEST_SERVICE_NOT_FOUND:
+        return 'Gateway does not provide a nest webservice';
       case Actions.SEND_AUTH_TOKEN_FAILURE:
         return 'Cannot connect your nest account to your gateway';
       case Actions.SEND_AUTH_TOKEN_SUCCESS:
@@ -72,7 +73,8 @@ var SendNestAccessToken = React.createClass({
     // Look for nest web service among all things
     var nestService = _.find(this.state.devices, function isNestWebservice (device) {
       // TODO: Use a more sophisticated way to identify the nest webservice device
-      return device.properties.name === 'WEBSERVICE oauth';
+      // TODO: Share logic with filter that flags device as hidden
+      return device.properties.name.toLowerCase().indexOf('webservice') > -1;
     });
     // Set nest access token as the service's property
     if (nestService) {

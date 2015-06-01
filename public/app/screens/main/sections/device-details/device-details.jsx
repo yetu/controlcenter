@@ -110,7 +110,7 @@ var DeviceDetails = React.createClass({
   },
 
   onSave: function onSave () {
-    console.log('On Save clicked');
+    // TODO: Implement change save
     this.context.router.transitionTo('devices');
   },
 

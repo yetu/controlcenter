@@ -51,8 +51,10 @@ var deviceStore = Reflux.createStore({
       );
   },
 
-  onDelete: function onDelete (deviceId) {
-    DevicesService.deleteDevice(deviceId).subscribe(this.onFetchList);
+  onDelete: function onDelete (device) {
+    DevicesService
+      .deleteDevice(device)
+      .then(this.onFetchList);
   },
 
   updateModel: function updateModel (devices) {

@@ -1,10 +1,16 @@
 function Poll (options) {
+
   this.options = options;
+  this.options.predicate = this.options.predicate || function truthSayer () { return true; };
+
   this.promise = new Promise((resolve, reject) => {
+
     var request = () => {
-      fetch(this.options.url, { credentials: 'include' }).then(handler);
+      fetch(this.options.url, { credentials: 'include' })
+        .then(successHandler, errorHandler);
     };
-    var handler = (response) => {
+
+    var successHandler = (response) => {
       response.json().then((data) => {
         if (this.options.predicate(data)) {
           this.timeoutId = window.setTimeout(() => {
@@ -15,6 +21,11 @@ function Poll (options) {
         }
       });
     };
+
+    var errorHandler = (response) => {
+      reject(response);
+    };
+
     request();
   });
 }

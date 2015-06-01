@@ -28,7 +28,7 @@ function extractThings (sirenResponse) {
 
 function initDeviceStreamById (deviceId) {
   return Rx.Observable
-    .fromPromise(fetch(thingUrl + '/' + deviceId + '?thingAs=representation').then(extractJson));
+    .fromPromise(fetch(thingUrl + '/' + deviceId + '?componentAs=representation', { credentials: 'include' }).then(extractJson));
 }
 
 // TODO add device control actions here (change room, remove adjust)

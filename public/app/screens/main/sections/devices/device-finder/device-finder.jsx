@@ -137,13 +137,11 @@ var DeviceFinder = React.createClass({
       action={this.showFoundDeviceInfo} />;
   },
 
-  toggleDiscoveryModePromptVisibility: function toggleDiscoveryModePromptVisibility (event) {
-    event.preventDefault();
+  toggleDiscoveryModePromptVisibility: function toggleDiscoveryModePromptVisibility () {
     this.setState({ discoveryModePromptVisible: !this.state.discoveryModePromptVisible });
   },
 
-  redirectToNestLogin: function redirectToNestLogin (event) {
-    event.preventDefault();
+  redirectToNestLogin: function redirectToNestLogin () {
     var nestConfig = window.yetu.config.nest;
     // TODO: Pass a generated state argument (generate it in backend, that also validates it on back redirect?)
     var state = 'STATE';

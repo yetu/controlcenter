@@ -12,13 +12,13 @@ var DeviceActionControl = React.createClass({
 
   controlByCapability: {
     'SWITCHABLE': Switch,
-    // TODO: Fix typo "set<t>able" in household API
+    // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
     'SETABLE': ValueUpDown
   },
 
   controlStateToActionData: {
     'SWITCHABLE': (state) => state.checked,
-    // TODO: Fix typo "set<t>able" in household API
+    // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
     'SETABLE': (state) => state.value
   },
 

@@ -39,8 +39,9 @@ var Helpers = {
 
   // TODO: ideally this should be retrieved from the model
   propertyByCapability: {
-    SWITCHABLE: 'SWITCHABLE-on',
-    SETTABLE: 'setValue'
+    'SWITCHABLE': 'SWITCHABLE-on',
+    // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
+    'SETABLE': 'SETABLE-value'
   },
 
   getActionForCapability: function getActionForCapability (component, capability, operation) {

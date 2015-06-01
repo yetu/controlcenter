@@ -22,7 +22,7 @@ describe('Device discovery service', function () {
       stub.restore();
     });
 
-    it('resolves promise when device discovery session is complete', function (done) {
+    it('stops when device discovery session is complete', function (done) {
       // start device discovery
       stub.withArgs(apiHost + '/gateway/discoveries', {
         credentials: 'include',
@@ -42,7 +42,8 @@ describe('Device discovery service', function () {
       var discoverySessionUrl = UrlHelpers.toHouseholdUrl(
         mock.discoverySession.gatewayResponse.entities[0].href
       );
-      stub.withArgs(discoverySessionUrl, { credentials: 'include' }).onFirstCall()
+      stub.withArgs(discoverySessionUrl, { credentials: 'include' })
+        .onFirstCall()
         .returns(
           promiseHelper.resolveWith(
             promiseHelper.jsonResponse(mock.discoverySession.sessionStateRequested)

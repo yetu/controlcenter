@@ -26,10 +26,10 @@ var DeviceActionControl = React.createClass({
     var capability = device.primaryCapability;
     var property = DeviceHelpers.propertyByCapability[capability];
     var value = device.alterEgoComponent.properties[property];
-    return { value: value, channel: this.generateAction };
+    return { value: value, onChange: this.onChangeInvokeAction };
   },
 
-  generateAction: function generateActionData (state) {
+  onChangeInvokeAction: function onChangeInvokeAction (state) {
     var device = this.props.device;
     var capability = device.primaryCapability;
     var transform = this.controlStateToActionData[capability];

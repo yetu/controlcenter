@@ -6,10 +6,10 @@ $success-color: #43AC6A;
 $warning-color: #f08a24;
 $info-color: #a0d3e8;
 
-$gray-9: #9c9c9c;
+$gray-9c: #9c9c9c;
 $active-gray: #333333;
 $passive-gray: #dadada;
-$hint-gray: #c6c6c6;
+$gray-c6: #c6c6c6;
 $light-gray: #F6F6F6;
 $medium-gray: #cfcfcf;
 
@@ -27,7 +27,8 @@ $font-active-color:#666666;
 // ---- semantic color (only these colors should be addressed directly) ----
 $dialog-background-color: $shade-white;
 $dialog-caption-background-color: #e6e6e6;
+$dialog-overlay-background-color: $gray-c6;
 $gray-button-color: $shade-gray;
 $gray-button-title-color: $active-gray;
 $separator-color: $medium-gray;
-$subheader-gray: $gray-9;
+$subheader-gray: $gray-9c;

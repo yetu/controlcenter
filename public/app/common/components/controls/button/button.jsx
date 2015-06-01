@@ -16,8 +16,13 @@ module.exports = React.createClass({
     });
 
     return (
-      <a className={ className } href='#' onClick={this.props.onClick}> { this.props.children }</a>
+      <a className={ className } href='#' onClick={this.onClick}> { this.props.children }</a>
     );
+  },
+
+  onClick: function onClick (e) {
+    e.preventDefault();
+    this.props.onClick();
   }
 
 });

@@ -12,6 +12,8 @@ var roomStore = require('stores/room');
 var DeviceState = require('common/components/device-state');
 var Button = require('common/components/controls/button');
 var Icon = require('common/components/icon');
+var Overlay = require('common/components/overlay');
+var Dialog = require('common/components/dialog');
 
 var DeviceActionControl = require('common/components/device-action-control');
 
@@ -22,6 +24,7 @@ var DeviceDetails = React.createClass({
     Reflux.connect(roomStore, 'rooms')
   ],
 
+  // TODO: Replace w/ ES6 notion, see https://github.com/rackt/react-router/blob/master/docs/api/RouterContext.md
   contextTypes: {
     router: React.PropTypes.func
   },
@@ -31,17 +34,10 @@ var DeviceDetails = React.createClass({
     deviceActions.fetchDeviceById(deviceId);
   },
 
-  onSave: function onSave () {
-    console.log('On Save clicked');
-  },
-
-  onDeleteClick: function onDelete () {
-    deviceActions.delete(this.props.params.deviceId);
-  },
-
   render: function render () {
     var device = this.state.device.model || {};
     var deviceProperties = device.properties || {};
+
     return (
       <div className='cc-device-details grid-16'>
         <div className='cc-settings__header row fixed-height-3'>
@@ -52,6 +48,12 @@ var DeviceDetails = React.createClass({
             <Icon type='close' size='small'/>
           </Link>
         </div>
+
+        <Overlay ref='deleteDialog'>
+          <Dialog title='Delete device' buttons={this.deleteDialogButtons()} >
+            <div>Do you really want to remove this device?</div>
+          </Dialog>
+        </Overlay>
 
         <div className='row fixed-height-1 alternate-dark'>
           <div className='columns medium-4 padded-left'>
@@ -103,9 +105,33 @@ var DeviceDetails = React.createClass({
             </Button>
           </div>
         </div>
-
       </div>
     );
+  },
+
+  onSave: function onSave () {
+    // TODO: Implement change save
+    this.context.router.transitionTo('devices');
+  },
+
+  onDeleteClick: function onDeleteClick () {
+    this.refs.deleteDialog.show();
+  },
+
+  deleteDialogButtons: function deleteDialogButtons () {
+    return [
+      ['Remove device', this.onDeleteDialogConfirm],
+      ['Cancel', this.onDeleteDialogCancel]
+    ];
+  },
+
+  onDeleteDialogCancel: function onDeleteDialogCancel () {
+    this.refs.deleteDialog.hide();
+  },
+
+  onDeleteDialogConfirm: function onDeleteDialogCancel () {
+    deviceActions.delete(this.props.params.deviceId);
+    this.context.router.transitionTo('devices');
   }
 });
 

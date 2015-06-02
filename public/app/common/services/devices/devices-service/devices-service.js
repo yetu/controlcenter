@@ -19,7 +19,8 @@ function extractJson (resp) {
 function composeThing (thing) {
   return {
     properties: thing.properties,
-    components: thing.entities
+    components: thing.entities,
+    links: thing.links
   };
 }
 
@@ -53,17 +54,18 @@ module.exports = {
   deleteDevice: function deleteDevice (device) {
     var POLLING_INTERVAL = 1000;
 
-    var deviceUrl = UrlHelpers.toHouseholdUrl('');
+    var deviceUrl = UrlHelpers.toHouseholdUrl(device.url);
 
     return new Promise((resolve, reject) => {
       fetch(deviceUrl, { credentials: 'include', method: 'DELETE' })
         .then(() => {
           // Wait for Household API to remove the device entity
           // and, consequently, the promise to be rejected
-          new Poll({
+          var poll = new Poll({
             url: deviceUrl,
             interval: POLLING_INTERVAL
-          }).catch(() => {
+          });
+          poll.promise.catch(() => {
             resolve();
           });
         });

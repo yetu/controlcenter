@@ -19,6 +19,7 @@ var Helpers = {
       alterEgoComponent: alterEgoComponent,
       actions: deviceActions,
       primaryCapability: primaryCapability,
+      url: Helpers.getDeviceUrl(device),
       hidden: hidden
     };
   },
@@ -31,6 +32,13 @@ var Helpers = {
 
   getPrimaryCapability: function getPrimaryCapability (component) {
     return component.properties.capabilities[0];
+  },
+
+  getDeviceUrl: function getDeviceUrl (device) {
+    var link = _.find(device.links, function getLinkToSelf (linkObject) {
+      return linkObject.rel[0] === 'self';
+    });
+    return link.href;
   },
 
   isHiddenDevice: function isHiddenDevice (device) {

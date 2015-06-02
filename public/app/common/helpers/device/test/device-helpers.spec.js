@@ -7,7 +7,8 @@ describe('DeviceHelpers', function () {
       var nestWebservice = {
         properties: { name: 'WEBSERVICE oauth', displayType: 'nest' },
         actions: [],
-        components: [ { properties: { type: 'nest', capabilities: [ { } ] } } ]
+        components: [ { properties: { type: 'nest', capabilities: [ { } ] } } ],
+        links: [{ rel: ['self'] }]
       };
       var device = DeviceHelpers.augmentDevice(nestWebservice);
       expect(device.hidden).toBeTruthy();

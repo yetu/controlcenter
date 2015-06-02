@@ -11,15 +11,21 @@ function Poll (options) {
     };
 
     var successHandler = (response) => {
-      response.json().then((data) => {
-        if (this.options.predicate(data)) {
-          this.timeoutId = window.setTimeout(() => {
-            request();
-          }, this.options.interval);
-        } else {
-          resolve(data);
-        }
-      });
+      // clone the response to avoid the 'Already read' error
+      // http://jakearchibald.com/2015/thats-so-fetch/
+      if (response.clone().ok) {
+        response.clone().json().then((data) => {
+          if (this.options.predicate(data)) {
+            this.timeoutId = window.setTimeout(() => {
+              request();
+            }, this.options.interval);
+          } else {
+            resolve(data);
+          }
+        });
+      } else {
+        reject(response);
+      }
     };
 
     var errorHandler = (response) => {

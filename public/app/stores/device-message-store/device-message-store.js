@@ -9,12 +9,6 @@ var DeviceMessageStore = Reflux.createStore({
     this.message = null;
   },
 
-  getInitialState: function getInitialState () {
-    return {
-      message: this.message
-    };
-  },
-
   onPushMessage: function onPushMessage (text, level) {
     this.message = {
       text: text,

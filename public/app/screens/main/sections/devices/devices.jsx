@@ -47,7 +47,7 @@ var DevicesSection = React.createClass({
     return (
       <div className='row fixed-height-1' ref='message'>
         <div className='column'>
-          <Message message='This is the message' />
+          <Message />
         </div>
       </div>
     );

@@ -1,4 +1,6 @@
 var React = require('react');
+var Router = require('react-router');
+var RouteHandler = Router.RouteHandler;
 var Reflux = require('reflux');
 
 var Room = require('./room');
@@ -25,6 +27,7 @@ var DevicesSection = React.createClass({
           ? this.gatewayNotFoundErrorMessage()
           : [ <DeviceFinder />, this.rooms() ]
         }
+        <RouteHandler />
       </div>
     );
   },

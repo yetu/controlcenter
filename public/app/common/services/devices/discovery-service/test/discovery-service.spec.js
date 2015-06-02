@@ -7,7 +7,7 @@ var SessionState = require('../discovery-session-state.js');
 var UrlHelpers = require('helpers/url');
 var mock = require('./discovery-service.mock.js');
 
-var apiHost = '/household';
+var householdApiUrl = '/household';
 
 describe('Device discovery service', function () {
 
@@ -24,7 +24,7 @@ describe('Device discovery service', function () {
 
     it('stops when device discovery session is complete', function (done) {
       // start device discovery
-      stub.withArgs(apiHost + '/gateway/discoveries', {
+      stub.withArgs(householdApiUrl + '/gateway/discoveries', {
         credentials: 'include',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -33,7 +33,7 @@ describe('Device discovery service', function () {
         .returns(promiseHelper.resolveWith(mock.discoverySession.sessionCreatedResponse));
 
       // get gateway status
-      stub.withArgs(apiHost + '/gateway', { credentials: 'include' })
+      stub.withArgs(householdApiUrl + '/gateway', { credentials: 'include' })
         .returns(promiseHelper.resolveWith(
           promiseHelper.jsonResponse(mock.discoverySession.gatewayResponse)
         ));

@@ -49,7 +49,8 @@ var Helpers = {
   propertyByCapability: {
     'SWITCHABLE': 'SWITCHABLE-on',
     // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
-    'SETABLE': 'SETABLE-value'
+    'SETABLE': 'SETABLE-value',
+    'MEASUREMENT': 'MEASUREMENT-measurement'
   },
 
   getActionForCapability: function getActionForCapability (component, capability, operation) {

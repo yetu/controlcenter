@@ -6,8 +6,10 @@ var cx = require('classname');
 var DeviceFinderDialog = require('./device-finder-dialog');
 var DiscoveryModePrompt = require('./discovery-mode-prompt');
 
-var deviceDiscoveryStore = require('stores/discovery-store');
-var deviceDiscoveryActions = require('actions/discovery');
+var discoveryStore = require('stores/discovery-store');
+var discoveryActions = require('actions/discovery');
+var DiscoverySessionState = require('services/devices/discovery-service/discovery-session-state.js');
+
 var styleMixin = require('mixins/style-mixin');
 var Button = require('common/components/controls/button');
 
@@ -21,7 +23,7 @@ var DeviceFinderActivity = {
 var DeviceFinder = React.createClass({
   mixins: [
     styleMixin(require('./style.scss')),
-    Reflux.listenTo(deviceDiscoveryStore, 'onDiscoveryChange')
+    Reflux.listenTo(discoveryStore, 'onDiscoveryStateChange')
   ],
 
   getInitialState: function getInitialState () {
@@ -40,16 +42,16 @@ var DeviceFinder = React.createClass({
     return true;
   },
 
-  onDiscoveryChange: function onDiscoveryChange (discoveryData) {
-    if (discoveryData.model) {
-      this.setState({
-        activity: DeviceFinderActivity.DEVICE_FOUND
-      });
-    } else if (discoveryData.error) {
-      this.setState({
-        activity: DeviceFinderActivity.NO_DEVICES
-      });
-    }
+  discoverySessionStateToActivity: {
+    [DiscoverySessionState.STOPPED]: DeviceFinderActivity.DEVICE_FOUND,
+    [DiscoverySessionState.EXPIRED]: DeviceFinderActivity.NO_DEVICES,
+    [DiscoverySessionState.FAILED]: DeviceFinderActivity.NO_DEVICES
+  },
+
+  onDiscoveryStateChange: function onDiscoveryStateChange (data) {
+    this.setState({
+      activity: this.discoverySessionStateToActivity[data.state]
+    });
   },
 
   render: function render () {
@@ -150,7 +152,7 @@ var DeviceFinder = React.createClass({
 
   startSearching: function startSearching () {
     this.setState({ activity: DeviceFinderActivity.SEARCHING });
-    deviceDiscoveryActions.addDevice();
+    discoveryActions.startDiscovery();
   },
 
   showFoundDeviceInfo: function showFoundDeviceInfo () {
@@ -160,6 +162,7 @@ var DeviceFinder = React.createClass({
   stopSearching: function stopSearching () {
     this.setState({ activity: DeviceFinderActivity.CLOSED });
     this.closeDialog();
+    discoveryActions.stopDiscovery();
   },
 
   closeDialog: function closeDialog () {

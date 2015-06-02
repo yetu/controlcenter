@@ -1,33 +1,18 @@
-var deviceDiscovery = require('services/devices/discovery-service');
-
+var discoveryService = require('services/devices/discovery-service');
 var discoveryStore = require('../discovery-store');
 
-describe('UserData Store', function () {
-
-  describe('init', function () {
-    it('defines discoveryData', function () {
-      discoveryStore.init();
-      expect(discoveryStore.discoveryData).toBeDefined();
-    });
-
-    it('defines discoveryData which has model and error fields', function () {
-      discoveryStore.init();
-      expect(discoveryStore.discoveryData.model).toEqual({});
-      expect(discoveryStore.discoveryData.error).toEqual({});
-    });
-  });
+describe('Discovery Store', function () {
 
   describe('getInitialState', function () {
-    it('returns initial model', function () {
-      expect(discoveryStore.getInitialState()).toEqual(discoveryStore.discoveryData);
+    it('returns an empty object', function () {
+      expect(discoveryStore.getInitialState()).toEqual({});
     });
   });
 
-  describe('onAddDevice', function () {
-
-    it('calls Device Discovery service', function () {
-      var spy = sinon.spy(deviceDiscovery, 'startDiscovery');
-      discoveryStore.onAddDevice();
+  describe('onStartDiscovery', function () {
+    it('calls discovery service\'s `discover` method', function () {
+      var spy = sinon.spy(discoveryService, 'discover');
+      discoveryStore.onStartDiscovery();
       expect(spy.called).toBe(true);
     });
   });

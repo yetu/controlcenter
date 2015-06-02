@@ -1,80 +1,72 @@
 var Rx = require('rx'),
   _ = require('lodash');
-
 require('whatwg-fetch');
 
-var SessionState = require('./discovery-session-state.js');
+var UrlHelpers = require('helpers/url');
+var Poll = require('helpers/poll');
 
-var startDiscoveryUrl = '/household/gateway/discoveries';
-var gatewayStatusUrl = '/household/gateway';
+var DiscoverySessionState = require('./discovery-session-state.js');
+
+var discoveriesUrl = '/household/gateway/discoveries';
+var gatewayUrl = '/household/gateway';
+
 var POLLING_INTERVAL = 1000;
 
-function extractSessionUrl (data) {
-  return data.entities[0].href;
-}
-
-function handleError (observer, discoveryStatus, subject) {
-  observer.onError(discoveryStatus);
-  subject.onNext('Finished');
-}
-
-function handleFinishedState (observer, discoveryStatus, subject) {
-  observer.onNext(discoveryStatus);
-  observer.onCompleted();
-
-  subject.onNext('Finished');
-}
-
-var statesMap = {
-  [SessionState.EXPIRED]: handleError.bind(this),
-  [SessionState.FINISHED]: handleFinishedState.bind(this)
+var isSessionInProgress = (session) => {
+  var terminalStates = [
+    DiscoverySessionState.STOPPED,
+    DiscoverySessionState.EXPIRED,
+    DiscoverySessionState.FAILED
+  ];
+  return terminalStates.indexOf(session.properties.state) === -1;
 };
 
-function handleDiscoveryStatus (discoveryStatus, subject) {
-  return function create (observer) {
-    var func = statesMap[discoveryStatus.properties.state] || _.noop;
-    return func(observer, discoveryStatus, subject);
-  };
-}
+var getDiscoverySession = function getDiscoverySession (data) {
+  return _.find(
+    data.entities,
+    (entity) => {
+      return entity.rel[0] === 'http://api.yetu.me/rels/gateway/discoverysession';
+    }
+  );
+};
+
+var sessionPoll;
 
 module.exports = {
 
-  startDiscovery: function startDiscovery () {
-    var subject = new Rx.Subject();
-
-    var $startDeviceDiscovery = Rx.Observable
-      .fromPromise(
-      fetch(startDiscoveryUrl, {
-        method: 'post',
+  discover: function discover () {
+    return new Promise((resolve, reject) => {
+      fetch(discoveriesUrl, {
         credentials: 'include',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-      }));
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}'
+      })
+        .then(function queryGateway () {
+          fetch(gatewayUrl, { credentials: 'include' })
+            .then(function pollSession (response) {
+              response.json().then((data) => {
+                var discoverySession = getDiscoverySession(data);
 
-    var $pollInterval = Rx.Observable
-      .interval(POLLING_INTERVAL)
-      .takeUntil(subject);
+                sessionPoll = new Poll({
+                  url: UrlHelpers.toHouseholdUrl(discoverySession.href),
+                  predicate: isSessionInProgress,
+                  interval: POLLING_INTERVAL
+                });
 
-    var $fetchDiscoverySession = Rx.Observable
-      .fromPromise(fetch(gatewayStatusUrl))
-      .map(extractSessionUrl);
-
-    var $discoverySession = $startDeviceDiscovery.flatMap(function flatMap () {
-      console.log('Fetched discovery session');
-      return $fetchDiscoverySession;
+                sessionPoll
+                  .promise
+                  .then((session) => {
+                    resolve(session.properties.state);
+                  });
+              });
+            });
+        });
     });
+  },
 
-    return Rx.Observable.combineLatest($discoverySession, $pollInterval,
-      (discoveryUrl) => {
-        return discoveryUrl;
-      }).flatMap((discoveryUrl) => {
-        return Rx.Observable.fromPromise(
-          fetch(discoveryUrl));
-      }).flatMap((discoveryStatus) => {
-        return Rx.Observable.create(handleDiscoveryStatus(discoveryStatus, subject));
-      });
+  stopDiscovery: function stopDiscovery () {
+    sessionPoll.cancel();
   }
+
 };

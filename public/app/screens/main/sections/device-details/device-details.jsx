@@ -130,7 +130,7 @@ var DeviceDetails = React.createClass({
   },
 
   onDeleteDialogConfirm: function onDeleteDialogCancel () {
-    deviceActions.delete(this.props.params.deviceId);
+    deviceActions.delete(this.state.device.model);
     this.context.router.transitionTo('devices');
   }
 });

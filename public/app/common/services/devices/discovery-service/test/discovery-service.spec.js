@@ -1,12 +1,13 @@
-var deviceService = require('../discovery-service'),
-  promiseHelper = require('helpers/promise');
+var discoveryService = require('../discovery-service'),
+    promiseHelper = require('helpers/promise');
+
 require('whatwg-fetch');
 
-
 var SessionState = require('../discovery-session-state.js');
+var UrlHelpers = require('helpers/url');
 var mock = require('./discovery-service.mock.js');
 
-var apiHost = 'https://householdmockapi-dev.yetu.me';
+var householdApiUrl = '/household';
 
 describe('Device discovery service', function () {
 
@@ -21,113 +22,53 @@ describe('Device discovery service', function () {
       stub.restore();
     });
 
-    xit('resolves subscription with finished state when device has been discovered', function (done) {
+    it('stops when device discovery session is complete', function (done) {
       // start device discovery
-      stub.withArgs(apiHost + '/gateway/discoveries', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
+      stub.withArgs(householdApiUrl + '/gateway/discoveries', {
+        credentials: 'include',
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}'
       })
-        .returns(promiseHelper.when(mock.addDevice.sessionCreatedResponse));
+        .returns(promiseHelper.resolveWith(mock.discoverySession.sessionCreatedResponse));
 
       // get gateway status
-      stub.withArgs(apiHost + '/gateway')
-        .returns(promiseHelper.when(mock.addDevice.gatewayResponse));
+      stub.withArgs(householdApiUrl + '/gateway', { credentials: 'include' })
+        .returns(promiseHelper.resolveWith(
+          promiseHelper.jsonResponse(mock.discoverySession.gatewayResponse)
+        ));
 
-      // responce for polling discovery session
-      var discoverySessionUrl = mock.addDevice.gatewayResponse.entities[0].href;
-      stub.withArgs(discoverySessionUrl).onFirstCall()
-        .returns(promiseHelper.when(mock.addDevice.sessionStateRequested))
+      // response for polling discovery session
+      var discoverySessionUrl = UrlHelpers.toHouseholdUrl(
+        mock.discoverySession.gatewayResponse.entities[0].href
+      );
+      stub.withArgs(discoverySessionUrl, { credentials: 'include' })
+        .onFirstCall()
+        .returns(
+          promiseHelper.resolveWith(
+            promiseHelper.jsonResponse(mock.discoverySession.sessionStateRequested)
+          )
+        )
         .onSecondCall()
-        .returns(promiseHelper.when(mock.addDevice.sessionStateCreated));
+        .returns(
+          promiseHelper.resolveWith(
+            promiseHelper.jsonResponse(mock.discoverySession.sessionStateCreated)
+          )
+        );
 
-      // responce for polling discovery session
-      stub.withArgs(discoverySessionUrl)
-        .returns(promiseHelper.when(mock.addDevice.sessionStateFinished));
+      // response for polling discovery session
+      stub.withArgs(discoverySessionUrl, { credentials: 'include' })
+        .returns(
+          promiseHelper.resolveWith(
+            promiseHelper.jsonResponse(mock.discoverySession.sessionStateStopped)
+          )
+        );
 
-      deviceService.startDiscovery().subscribeOnNext(function onNext (next) {
-        expect(next.properties.state).toEqual(SessionState.FINISHED);
+      discoveryService.discover().then(function next (state) {
+        expect(state).toEqual(SessionState.STOPPED);
         done();
       });
     });
 
-
-    xit('resolves subscription with an error when discovery session has expired', function (done) {
-      // start device discovery
-      stub.withArgs(apiHost + '/gateway/discoveries', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-      })
-        .returns(promiseHelper.when(mock.addDevice.sessionCreatedResponse));
-
-      // get gateway status
-      stub.withArgs(apiHost + '/gateway')
-        .returns(promiseHelper.when(mock.addDevice.gatewayResponse));
-
-      // responce for polling discovery session
-      var discoverySessionUrl = mock.addDevice.gatewayResponse.entities[0].href;
-      stub.withArgs(discoverySessionUrl).onFirstCall()
-        .returns(promiseHelper.when(mock.addDevice.sessionStateRequested))
-        .onSecondCall()
-        .returns(promiseHelper.when(mock.addDevice.sessionStateCreated));
-
-
-      // responce for polling discovery session
-      stub.withArgs(discoverySessionUrl)
-        .returns(promiseHelper.when(mock.addDevice.sessionStateExpired));
-
-      deviceService.startDiscovery().subscribeOnError(function onError (error) {
-        expect(error).toBeDefined();
-        done();
-      });
-    });
-
-
-    xit('resolves subscription with an error when failed to start discovery', function (done) {
-      stub.withArgs(apiHost + '/gateway/discoveries', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-      }).returns(promiseHelper.fail(new Error('error')));
-
-      stub.returns(promiseHelper.fail());
-      deviceService.startDiscovery().subscribeOnError(function onError (error) {
-        expect(error).toBeDefined();
-        done();
-      });
-    });
-
-    xit('resolves subscription with an error when failed to start discovery', function (done) {
-      // start device discovery
-      stub.withArgs(apiHost + '/gateway/discoveries', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-      })
-        .returns(promiseHelper.when(mock.addDevice.sessionCreatedResponse));
-
-      // get gateway status
-      stub.withArgs(apiHost + '/gateway')
-        .returns(promiseHelper.fail(new Error('connection error')));
-      stub.returns(promiseHelper.fail());
-
-      deviceService.startDiscovery().subscribeOnError(function onError (error) {
-        expect(error).toBeDefined();
-        done();
-      });
-    });
   });
 });

@@ -7,13 +7,15 @@ var DeviceHelpers = require('helpers/device');
 /* Controls */
 var Switch = require('common/components/controls/switch');
 var ValueUpDown = require('common/components/controls/value-updown');
+var Measurement = require('common/components/controls/measurement');
 
 var DeviceActionControl = React.createClass({
 
   controlByCapability: {
     'SWITCHABLE': Switch,
     // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
-    'SETABLE': ValueUpDown
+    'SETABLE': ValueUpDown,
+    'MEASUREMENT': Measurement
   },
 
   controlStateToActionData: {

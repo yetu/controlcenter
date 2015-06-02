@@ -2,11 +2,13 @@ var Rx = require('rx');
 require('whatwg-fetch');
 
 var UrlHelpers = require('helpers/url');
+var Poll = require('helpers/poll');
 
 // TODO pass params with fetch
 var householdBaseUrl = '/household';
 var thingsUrl = householdBaseUrl + '/things?thingAs=representation&componentAs=representation';
 var thingUrl = householdBaseUrl + '/things';
+
 
 var MAX_DEVICES = 100; // allow to add up to 100 devices
 
@@ -17,7 +19,8 @@ function extractJson (resp) {
 function composeThing (thing) {
   return {
     properties: thing.properties,
-    components: thing.entities
+    components: thing.entities,
+    links: thing.links
   };
 }
 
@@ -48,9 +51,25 @@ module.exports = {
       .map(composeThing);
   },
 
-  deleteDevice: function deleteDevice (deviceId) {
-    return Rx.Observable
-      .fromPromise(fetch(thingUrl + '/' + deviceId, { credentials: 'include', method: 'DELETE' }));
+  deleteDevice: function deleteDevice (device) {
+    var POLLING_INTERVAL = 1000;
+
+    var deviceUrl = UrlHelpers.toHouseholdUrl(device.url);
+
+    return new Promise((resolve, reject) => {
+      fetch(deviceUrl, { credentials: 'include', method: 'DELETE' })
+        .then(() => {
+          // Wait for Household API to remove the device entity
+          // and, consequently, the promise to be rejected
+          var poll = new Poll({
+            url: deviceUrl,
+            interval: POLLING_INTERVAL
+          });
+          poll.promise.catch(() => {
+            resolve();
+          });
+        });
+    });
   },
 
   invokeDeviceAction: function invokeDeviceAction (action, data) {

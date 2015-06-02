@@ -19,6 +19,7 @@ var Helpers = {
       alterEgoComponent: alterEgoComponent,
       actions: deviceActions,
       primaryCapability: primaryCapability,
+      url: Helpers.getDeviceUrl(device),
       hidden: hidden
     };
   },
@@ -33,6 +34,13 @@ var Helpers = {
     return component.properties.capabilities[0];
   },
 
+  getDeviceUrl: function getDeviceUrl (device) {
+    var link = _.find(device.links, function getLinkToSelf (linkObject) {
+      return linkObject.rel[0] === 'self';
+    });
+    return link.href;
+  },
+
   isHiddenDevice: function isHiddenDevice (device) {
     return _.reduce(hiddenDeviceFilters, (rejected, isHidden) => rejected || isHidden(device), false);
   },
@@ -41,7 +49,8 @@ var Helpers = {
   propertyByCapability: {
     'SWITCHABLE': 'SWITCHABLE-on',
     // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
-    'SETABLE': 'SETABLE-value'
+    'SETABLE': 'SETABLE-value',
+    'MEASUREMENT': 'MEASUREMENT-measurement'
   },
 
   getActionForCapability: function getActionForCapability (component, capability, operation) {

@@ -1,7 +1,7 @@
 var Reflux = require('reflux');
 
 var discoveryActions = Reflux.createActions([
-  'addDevice',
+  'startDiscovery',
   'stopDiscovery',
   'removeDevice'
 ]);

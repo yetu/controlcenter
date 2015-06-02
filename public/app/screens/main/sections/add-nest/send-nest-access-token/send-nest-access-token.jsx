@@ -74,7 +74,7 @@ var SendNestAccessToken = React.createClass({
     var nestService = _.find(this.state.devices, function isNestWebservice (device) {
       // TODO: Use a more sophisticated way to identify the nest webservice device
       // TODO: Share logic with filter that flags device as hidden
-      return device.properties.name.toLowerCase().indexOf('nest') > -1;
+      return device.properties.name.toLowerCase().indexOf('nest account') > -1;
     });
     // Set nest access token as the service's property
     if (nestService) {

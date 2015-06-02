@@ -3,7 +3,7 @@ var _ = require('lodash');
 var hiddenDeviceFilters = [
   function isNestWebservice (device) {
     // TODO: Use a more sophisticated way to identify the nest webservice device
-    return device.properties.name.toLowerCase().indexOf('webservice') > -1;
+    return device.properties.name.toLowerCase().indexOf('nest account') > -1;
   }
 ];
 

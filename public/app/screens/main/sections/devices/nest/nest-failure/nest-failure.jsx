@@ -15,7 +15,7 @@ var SendNestAccessToken = React.createClass({
 
   componentDidMount: function componentDidMount () {
     // TODO: Map this.state.error to error message
-    deviceMessageActions.pushMessage('Failed to connect with your nest account');
+    deviceMessageActions.pushMessage('Failed to connect with your nest account', deviceMessageActions.Levels.ERROR);
   },
 
   render: function render () {

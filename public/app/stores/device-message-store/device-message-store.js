@@ -15,10 +15,15 @@ var DeviceMessageStore = Reflux.createStore({
     };
   },
 
-  onPushMessage: function onPushMessage (message) {
-    this.message = message;
+  onPushMessage: function onPushMessage (text, level) {
+    this.message = {
+      text: text,
+      level: level || deviceMessageActions.Levels.INFO
+    };
     this.trigger(this.message);
   }
 });
+
+DeviceMessageStore.Levels = deviceMessageActions.Levels;
 
 module.exports = DeviceMessageStore;

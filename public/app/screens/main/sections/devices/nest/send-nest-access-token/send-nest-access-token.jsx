@@ -38,10 +38,10 @@ var SendNestAccessToken = React.createClass({
   },
 
   setAction: function setAction (action) {
-    deviceMessageActions.pushMessage(this.messageForAction(action));
+    deviceMessageActions.pushMessage(this.messageTextForAction(action), this.messageLevelForAction(action));
   },
 
-  messageForAction: function messageForAction (action) {
+  messageTextForAction: function messageTextForAction (action) {
     // TODO: i18n
     switch (action) {
       case Actions.RETRIEVING_DEVICES:
@@ -55,6 +55,16 @@ var SendNestAccessToken = React.createClass({
         return 'Please wait while all your nest devices are added';
       default:
         return 'An unexpected error occurred';
+    }
+  },
+
+  messageLevelForAction: function messageLevelForAction (action) {
+    switch (action) {
+      case Actions.NEST_SERVICE_NOT_FOUND:
+      case Actions.SEND_AUTH_TOKEN_FAILURE:
+        return deviceMessageActions.Levels.ERROR;
+      default:
+        return deviceMessageActions.Levels.INFO;
     }
   },
 

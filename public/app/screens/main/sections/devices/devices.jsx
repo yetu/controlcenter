@@ -6,6 +6,7 @@ var Reflux = require('reflux');
 var Room = require('./room');
 var DeviceFinder = require('./device-finder');
 var ErrorMessage = require('common/components/error-message');
+var Message = require('common/components/message');
 
 var roomStore = require('stores/room');
 var gatewayStore = require('stores/gateway');
@@ -25,7 +26,7 @@ var DevicesSection = React.createClass({
       <div className='cc-devices grid-14 padded'>
         {this.state.gateway.error
           ? this.gatewayNotFoundErrorMessage()
-          : [ <DeviceFinder />, this.rooms() ]
+          : [ <DeviceFinder />, this.message(), this.rooms() ]
         }
         <RouteHandler />
       </div>
@@ -37,6 +38,16 @@ var DevicesSection = React.createClass({
       <div className='row fixed-height-3'>
         <div className='columns'>
           <ErrorMessage message='No Gateway found' />
+        </div>
+      </div>
+    );
+  },
+
+  message: function message () {
+    return (
+      <div className='row fixed-height-1' ref='message'>
+        <div className='column'>
+          <Message message='This is the message' />
         </div>
       </div>
     );

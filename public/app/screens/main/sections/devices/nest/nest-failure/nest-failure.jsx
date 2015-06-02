@@ -12,13 +12,11 @@ var SendNestAccessToken = React.createClass({
   },
 
   componentDidMount: function componentDidMount () {
-    this.props.onComplete();
+    // TODO: Push message to store
   },
 
   render: function render () {
-    return (
-      <span>Cannot connect to nest API</span>
-    );
+    return null;
   }
 });
 

@@ -34,22 +34,14 @@ var SendNestAccessToken = React.createClass({
   },
 
   render: function render () {
-    return (
-      <span>{ this.messageForAction(this.state.action) }</span>
-    );
+    return null;
   },
 
   setAction: function setAction (action) {
     if (this.state.action === action) {
       return;
     }
-    switch (action) {
-      case Actions.NEST_SERVICE_NOT_FOUND:
-      case Actions.SEND_AUTH_TOKEN_SUCCESS:
-      case Actions.SEND_AUTH_TOKEN_FAILURE:
-        this.props.onComplete();
-    }
-    this.setState( { action: action });
+    // TODO: Push message to store instead of modifying state
   },
 
   messageForAction: function messageForAction (action) {

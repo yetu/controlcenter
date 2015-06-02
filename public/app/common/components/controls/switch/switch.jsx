@@ -25,7 +25,7 @@ var SwitchControl = React.createClass({
 
   toggle: function toggle () {
     this.setState({ checked: !this.state.checked }, () => {
-      this.props.channel(this.state);
+      this.props.onChange(this.state);
     });
   }
 

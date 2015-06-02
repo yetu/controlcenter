@@ -31,13 +31,20 @@ var ValueUpDown = React.createClass({
   },
 
   onDownClick: function onDownClick () {
-    this.setState({ value: Math.max(this.state.value - this.state.step, this.state.min) });
+    this.setState({ value: Math.max(this.state.value - this.state.step, this.state.min) }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(this.state);
+      }
+    });
   },
 
   onUpClick: function onUpClick () {
-    this.setState({ value: Math.min(this.state.value + this.state.step, this.state.max) });
+    this.setState({ value: Math.min(this.state.value + this.state.step, this.state.max) }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(this.state);
+      }
+    });
   }
-
 });
 
 module.exports = ValueUpDown;

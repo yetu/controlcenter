@@ -6,28 +6,30 @@ var DeviceHelpers = require('helpers/device');
 
 /* Controls */
 var Switch = require('common/components/controls/switch');
-var Slider = require('common/components/controls/slider');
+var ValueUpDown = require('common/components/controls/value-updown');
 
 var DeviceActionControl = React.createClass({
 
   controlByCapability: {
-    SWITCHABLE: Switch,
-    SETTABLE: Slider
+    'SWITCHABLE': Switch,
+    // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
+    'SETABLE': ValueUpDown
   },
 
   controlStateToActionData: {
-    SWITCHABLE: (state) => state.checked,
-    SETTABLE: (state) => state.value
+    'SWITCHABLE': (state) => state.checked,
+    // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
+    'SETABLE': (state) => state.value
   },
 
   getControlProps: function getControlState (device) {
     var capability = device.primaryCapability;
     var property = DeviceHelpers.propertyByCapability[capability];
     var value = device.alterEgoComponent.properties[property];
-    return { value: value, channel: this.generateAction };
+    return { value: value, onChange: this.invokeValueChangeAction };
   },
 
-  generateAction: function generateActionData (state) {
+  invokeValueChangeAction: function invokeValueChangeAction (state) {
     var device = this.props.device;
     var capability = device.primaryCapability;
     var transform = this.controlStateToActionData[capability];

@@ -5,9 +5,11 @@
   user-select: none;
 
   &__buttons {
+    display: inline-block;
     width: 90px;
     height: 29px;
     > * {
+      display: inline-block;
       background-repeat: no-repeat;
       background-size: cover;
       width: 50%;

@@ -24,15 +24,8 @@ var Helpers = {
   },
 
   getAlterEgoComponent: function getAlterEgoComponent (device) {
-    // TODO: remove this ugly hack when mainComponentId is there
-    if (device.properties.displayType === 'LAMP') {
-      return _.find(device.components, (component) =>
-        component.properties.type === 'SOCKET'
-      );
-    }
-
     return _.find(device.components, (component) =>
-      component.properties.type === device.properties.displayType
+      component.properties.id === device.properties.mainComponentId
     );
   },
 
@@ -46,8 +39,9 @@ var Helpers = {
 
   // TODO: ideally this should be retrieved from the model
   propertyByCapability: {
-    SWITCHABLE: 'SWITCHABLE-on',
-    SETTABLE: 'setValue'
+    'SWITCHABLE': 'SWITCHABLE-on',
+    // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
+    'SETABLE': 'SETABLE-value'
   },
 
   getActionForCapability: function getActionForCapability (component, capability, operation) {

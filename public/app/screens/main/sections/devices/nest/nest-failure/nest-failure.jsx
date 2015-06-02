@@ -1,5 +1,7 @@
 var React = require('react');
 
+var deviceMessageActions = require('actions/device-message-actions');
+
 var SendNestAccessToken = React.createClass({
   contextTypes: {
     router: React.PropTypes.func
@@ -12,7 +14,8 @@ var SendNestAccessToken = React.createClass({
   },
 
   componentDidMount: function componentDidMount () {
-    // TODO: Push message to store
+    // TODO: Map this.state.error to error message
+    deviceMessageActions.pushMessage('Failed to connect with your nest account');
   },
 
   render: function render () {

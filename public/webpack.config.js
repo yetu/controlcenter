@@ -40,7 +40,7 @@ module.exports = {
       {
         test: /\.coffee?$/,
         loader: 'coffee-loader'
-      }
+      },
       {
         test: /\.cjsx$/,
         loaders: ['coffee', 'cjsx']

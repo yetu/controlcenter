@@ -1,10 +1,12 @@
 var React = require('react');
 var Reflux = require('reflux');
 var _ = require('lodash');
+var Poll = require('helpers/poll');
 
 var deviceListStore = require('stores/device-list');
 var devicesService = require('services/devices/devices-service');
 var deviceMessageActions = require('actions/device-message-actions');
+var deviceActions = require('actions/device');
 
 var Actions = {
   RETRIEVING_DEVICES: 'RETRIEVING_DEVICES',
@@ -83,6 +85,7 @@ var SendNestAccessToken = React.createClass({
         .subscribe(
           function onSuccess () {
             this.setAction( Actions.SEND_AUTH_TOKEN_SUCCESS );
+            this.pollForNestDevices();
           }.bind(this),
           function onError () {
             this.setAction( Actions.SEND_AUTH_TOKEN_FAILURE );
@@ -90,6 +93,24 @@ var SendNestAccessToken = React.createClass({
     } else {
       this.setAction( Actions.NEST_SERVICE_NOT_FOUND );
     }
+  },
+
+  pollForNestDevices: function pollForNestDevices () {
+    var isWithoutNestDevices = function isWithoutNestDevices (things) {
+      return !_(things.entities).some(function isNestDevice (thing) {
+        return thing.properties.name.match(/^Nest /) && (thing.properties.displayType !== 'WEBSERVICE');
+      }, false);
+    };
+
+    var poll = new Poll({
+      url: '/household/things?thingAs=representation&componentAs=representation',
+      predicate: isWithoutNestDevices,
+      interval: 1000
+    });
+    poll.promise.then(() => {
+      deviceMessageActions.clearMessage();
+      this.context.router.transitionTo('devices');
+    });
   }
 });
 

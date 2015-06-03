@@ -1,0 +1,17 @@
+@import "components-theme";
+
+.cc-message {
+  width: 100%;
+  color: white;
+  background-color: $success-color;
+  text-transform: uppercase;
+  text-align: center;
+
+  &.warning {
+    background-color: $warning-color;
+  }
+
+  &.error {
+    background-color: $alert-color;
+  }
+}

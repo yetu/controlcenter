@@ -4,6 +4,7 @@ var _ = require('lodash');
 
 var deviceListStore = require('stores/device-list');
 var devicesService = require('services/devices/devices-service');
+var deviceMessageActions = require('actions/device-message-actions');
 
 var Actions = {
   RETRIEVING_DEVICES: 'RETRIEVING_DEVICES',
@@ -24,8 +25,7 @@ var SendNestAccessToken = React.createClass({
 
   getInitialState: function getInitialState () {
     return {
-      accessToken: this.context.router.getCurrentParams().accessToken,
-      action: Actions.RETRIEVING_DEVICES
+      accessToken: this.context.router.getCurrentParams().accessToken
     };
   },
 
@@ -34,25 +34,14 @@ var SendNestAccessToken = React.createClass({
   },
 
   render: function render () {
-    return (
-      <span>{ this.messageForAction(this.state.action) }</span>
-    );
+    return null;
   },
 
   setAction: function setAction (action) {
-    if (this.state.action === action) {
-      return;
-    }
-    switch (action) {
-      case Actions.NEST_SERVICE_NOT_FOUND:
-      case Actions.SEND_AUTH_TOKEN_SUCCESS:
-      case Actions.SEND_AUTH_TOKEN_FAILURE:
-        this.props.onComplete();
-    }
-    this.setState( { action: action });
+    deviceMessageActions.pushMessage(this.messageTextForAction(action), this.messageLevelForAction(action));
   },
 
-  messageForAction: function messageForAction (action) {
+  messageTextForAction: function messageTextForAction (action) {
     // TODO: i18n
     switch (action) {
       case Actions.RETRIEVING_DEVICES:
@@ -63,9 +52,19 @@ var SendNestAccessToken = React.createClass({
       case Actions.SEND_AUTH_TOKEN_FAILURE:
         return 'Cannot connect your nest account to your gateway';
       case Actions.SEND_AUTH_TOKEN_SUCCESS:
-        return 'Your nest account is now connected to your gateway';
+        return 'Please wait while all your nest devices are added';
       default:
         return 'An unexpected error occurred';
+    }
+  },
+
+  messageLevelForAction: function messageLevelForAction (action) {
+    switch (action) {
+      case Actions.NEST_SERVICE_NOT_FOUND:
+      case Actions.SEND_AUTH_TOKEN_FAILURE:
+        return deviceMessageActions.Levels.ERROR;
+      default:
+        return deviceMessageActions.Levels.INFO;
     }
   },
 

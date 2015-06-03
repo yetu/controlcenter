@@ -60,8 +60,8 @@ var DeviceFinder = React.createClass({
 
     return (
       <div className='cc-device-finder'>
-        <div className={'row fixed-height-' + (promptVisible ? '2' : '3')}>
-          <div className={'column ' + (promptVisible ? 'content-align-bottom' : '')}>
+        <div className={'row fixed-height-2'}>
+          <div className={'column content-align-bottom'}>
             {
               dialog
                 ? dialog

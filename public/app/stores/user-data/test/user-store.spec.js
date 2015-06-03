@@ -80,7 +80,7 @@ describe('UserData Store', function () {
       }, 0);
     });
   });
-  
+
   describe('onUpdateUserData', function () {
     it('calls userModel with arguments received from action', function () {
       var content = {test: 'stubdata'};
@@ -97,7 +97,6 @@ describe('UserData Store', function () {
       expect(userDataStore.userData.model).toEqual(content);
     });
   });
-
 
   describe('updateError', function () {
     it('updates userData error', function () {

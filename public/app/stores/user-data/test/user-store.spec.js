@@ -8,13 +8,13 @@ var userDataStore = require('../user-store');
 describe('UserData Store', function () {
 
   describe('init', function () {
-    xit('init userData', function () {
+    it('init userData', function () {
       userDataStore.init();
       TestUtils.isElementOfType();
       expect(userDataStore.userData).toBeDefined();
     });
 
-    xit('init userData has model and error fields', function () {
+    it('init userData has model and error fields', function () {
       userDataStore.init();
       expect(userDataStore.userData.model).toEqual({});
       expect(userDataStore.userData.error).toEqual({});
@@ -23,7 +23,7 @@ describe('UserData Store', function () {
 
   describe('onSaveUserData', function () {
 
-    xit('handles request errors and updates error', function (done) {
+    it('handles request errors and updates error', function (done) {
       var error = {error: 'error'};
       var stub = sinon.stub(window, 'fetch')
         .returns(PromiseHelper.fail(error));
@@ -36,7 +36,7 @@ describe('UserData Store', function () {
       }, 0);
     });
 
-    xit('handles successful response and updates model', function (done) {
+    it('handles successful response and updates model', function (done) {
       var content = {message: 'testMessage'};
       var stub = sinon.stub(window, 'fetch')
         .returns(PromiseHelper.resolveWith(content));
@@ -53,7 +53,7 @@ describe('UserData Store', function () {
 
   describe('onFetchUserData', function () {
 
-    xit('handles request errors and updates error', function (done) {
+    it('handles request errors and updates error', function (done) {
       var error = {error: 'someError'};
       var stub = sinon.stub(window, 'fetch')
         .returns(PromiseHelper.fail(error));
@@ -66,7 +66,7 @@ describe('UserData Store', function () {
       }, 0);
     });
 
-    xit('handles successful response and updates model', function (done) {
+    it('handles successful response and updates model', function (done) {
       var content = {message: 'testMessage'};
       var stub = sinon.stub(window, 'fetch')
         .returns(PromiseHelper.resolveWith(content));
@@ -80,10 +80,9 @@ describe('UserData Store', function () {
       }, 0);
     });
   });
-
-
+  
   describe('onUpdateUserData', function () {
-    xit('calls userModel with arguments received from action', function () {
+    it('calls userModel with arguments received from action', function () {
       var content = {test: 'stubdata'};
       var spyUpdateModel = sinon.spy(userDataStore, 'updateModel');
       userDataActions.updateUserData.trigger(content);
@@ -92,7 +91,7 @@ describe('UserData Store', function () {
   });
 
   describe('updateModel', function () {
-    xit('updates userData model', function () {
+    it('updates userData model', function () {
       var content = {test: 'stubdata'};
       userDataStore.updateModel(content);
       expect(userDataStore.userData.model).toEqual(content);
@@ -101,7 +100,7 @@ describe('UserData Store', function () {
 
 
   describe('updateError', function () {
-    xit('updates userData error', function () {
+    it('updates userData error', function () {
       var error = {errorInfo: 'some error info'};
       userDataStore.updateError(error);
       expect(userDataStore.userData.error).toEqual(error);

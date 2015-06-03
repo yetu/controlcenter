@@ -29,7 +29,7 @@ module.exports = {
       'helpers': path.join(__dirname, 'app/common/helpers'),
       'services': path.join(__dirname, 'app/common/services')
     },
-    extensions: [ '', '.js', '.jsx' ]
+    extensions: [ '', '.coffee', '.js', '.jsx' ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -37,6 +37,10 @@ module.exports = {
   ],
   module: {
     loaders: [
+      {
+        test: /\.coffee?$/,
+        loader: 'coffee-loader'
+      },
       {
         test: /\.jsx?$/,
         // TODO: Add 'react-hot' only for local dev deployment. Create a separate config.

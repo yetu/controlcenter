@@ -33,24 +33,15 @@ var DeviceFinder = React.createClass({
     };
   },
 
-  shouldComponentUpdate: function shouldComponentUpdate (nextProps, nextState) {
-    // Implicitly hide the discovery mode prompt when search dialog has appeared
-    if (nextState.discoveryModePromptVisible && nextState.activity !== DeviceFinderActivity.CLOSED) {
-      this.setState({ discoveryModePromptVisible: false });
-      return false;
-    }
-    return true;
-  },
-
-  discoverySessionStateToActivity: {
-    [DiscoverySessionState.STOPPED]: DeviceFinderActivity.DEVICE_FOUND,
-    [DiscoverySessionState.EXPIRED]: DeviceFinderActivity.NO_DEVICES,
-    [DiscoverySessionState.FAILED]: DeviceFinderActivity.NO_DEVICES
-  },
-
   onDiscoveryStateChange: function onDiscoveryStateChange (data) {
+    var discoverySessionStateToActivity = {
+      [DiscoverySessionState.STOPPED]: DeviceFinderActivity.DEVICE_FOUND,
+      [DiscoverySessionState.EXPIRED]: DeviceFinderActivity.NO_DEVICES,
+      [DiscoverySessionState.FAILED]: DeviceFinderActivity.NO_DEVICES
+    };
+
     this.setState({
-      activity: this.discoverySessionStateToActivity[data.state]
+      activity: discoverySessionStateToActivity[data.state]
     });
   },
 
@@ -140,7 +131,13 @@ var DeviceFinder = React.createClass({
   },
 
   toggleDiscoveryModePromptVisibility: function toggleDiscoveryModePromptVisibility () {
-    this.setState({ discoveryModePromptVisible: !this.state.discoveryModePromptVisible });
+    this.setState({ discoveryModePromptVisible: !this.state.discoveryModePromptVisible }, () => {
+      if (this.state.discoveryModePromptVisible) {
+        this.props.onPromptOpened();
+      } else {
+        this.props.onPromptClosed();
+      }
+    });
   },
 
   redirectToNestLogin: function redirectToNestLogin () {
@@ -151,22 +148,32 @@ var DeviceFinder = React.createClass({
   },
 
   startSearching: function startSearching () {
-    this.setState({ activity: DeviceFinderActivity.SEARCHING });
+    this.setActivity(DeviceFinderActivity.SEARCHING);
     discoveryActions.startDiscovery();
   },
 
   showFoundDeviceInfo: function showFoundDeviceInfo () {
-    this.setState({ activity: DeviceFinderActivity.CLOSED });
+    this.setActivity(DeviceFinderActivity.CLOSED);
   },
 
   stopSearching: function stopSearching () {
-    this.setState({ activity: DeviceFinderActivity.CLOSED });
     this.closeDialog();
     discoveryActions.stopDiscovery();
   },
 
   closeDialog: function closeDialog () {
-    this.setState({ activity: DeviceFinderActivity.CLOSED });
+    this.setActivity(DeviceFinderActivity.CLOSED);
+  },
+
+  setActivity: function setActivity (activity) {
+    if (activity === this.state.activity) {
+      return;
+    }
+
+    // Implicitly hide the discovery mode prompt when search dialog has appeared
+    if (this.state.discoveryModePromptVisible && activity !== DeviceFinderActivity.CLOSED) {
+      this.toggleDiscoveryModePromptVisibility();
+    }
   }
 });
 

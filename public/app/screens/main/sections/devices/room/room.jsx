@@ -4,6 +4,7 @@ var styleMixin = require('mixins/style-mixin');
 var _ = require('lodash');
 
 var deviceListStore = require('stores/device-list');
+var deviceActions = require('actions/device');
 
 var Device = require('./device');
 var Gateway = require('./gateway');
@@ -14,6 +15,20 @@ var Room = React.createClass({
     Reflux.connect(deviceListStore),
     styleMixin(require('./style.scss'))
   ],
+
+  componentDidMount: function componentDidMount () {
+    var REFETCH_INTERVAL = 5000;
+
+    // Refetch devices every some seconds as long as we have no push messages
+    this.refetchIntervalId = window.setInterval(() => {
+      deviceActions.fetchList();
+    }, REFETCH_INTERVAL);
+  },
+
+  componentWillUnmount: function componentWillUnmount () {
+    // Stop refetching devices
+    window.clearInterval(this.refetchIntervalId);
+  },
 
   render: function render () {
     var devices = _(this.state.devices)

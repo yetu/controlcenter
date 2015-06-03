@@ -29,7 +29,7 @@ module.exports = {
       'helpers': path.join(__dirname, 'app/common/helpers'),
       'services': path.join(__dirname, 'app/common/services')
     },
-    extensions: [ '', '.coffee', '.js', '.jsx' ]
+    extensions: [ '', '.coffee', '.cjsx', '.js', '.jsx' ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -40,6 +40,10 @@ module.exports = {
       {
         test: /\.coffee?$/,
         loader: 'coffee-loader'
+      }
+      {
+        test: /\.cjsx$/,
+        loaders: ['coffee', 'cjsx']
       },
       {
         test: /\.jsx?$/,

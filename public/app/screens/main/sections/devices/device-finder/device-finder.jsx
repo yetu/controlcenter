@@ -169,7 +169,7 @@ var DeviceFinder = React.createClass({
     if (activity === this.state.activity) {
       return;
     }
-
+    this.setState({ activity: activity });
     // Implicitly hide the discovery mode prompt when search dialog has appeared
     if (this.state.discoveryModePromptVisible && activity !== DeviceFinderActivity.CLOSED) {
       this.toggleDiscoveryModePromptVisibility();

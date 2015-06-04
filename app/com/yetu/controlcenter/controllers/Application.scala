@@ -36,7 +36,7 @@ class Application @Inject() (implicit val env: Environment[User, SessionAuthenti
   def entryPoint = SecuredAction {
     implicit request =>
       {
-        Ok(views.html.index(Config.frontendConfig.get))
+        Ok(views.html.index(Config.frontendConfig))
       }
   }
 

@@ -1,11 +1,14 @@
 package com.yetu.controlcenter.utils
 
+import com.typesafe.config.ConfigFactory
 import play.api.Play
 import play.api.Play.current
+import com.yetu.typesafeconfigextentension.ConfigExtension
 
-object ConfigLoader {
+object ConfigLoader extends ConfigExtension {
+  val config = ConfigFactory.load().substitutePropertyValues("application.environmentUrl")
 
-  lazy val householdServicesHost = Play.configuration.getString("householdServicesHost").get
+  lazy val householdServicesHost = config.getString("householdServicesHost")
 
-  lazy val frontendConfig = Play.configuration.getConfig("frontend")
+  lazy val frontendConfig = config.getConfig("frontend")
 }

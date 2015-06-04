@@ -50,8 +50,12 @@ var DeviceDetails = React.createClass({
         </div>
 
         <Overlay ref='deleteDialog'>
-          <Dialog title='Delete device' buttons={this.deleteDialogButtons()} >
-            <div>Do you really want to remove this device?</div>
+          <Dialog title='Do you want to remove this device from your device list?' buttons={this.deleteDialogButtons()}>
+            <div className='row'>
+              <div className='column'>
+                {/* TODO: List here other devices that would be effected from removal */}
+              </div>
+            </div>
           </Dialog>
         </Overlay>
 
@@ -66,7 +70,7 @@ var DeviceDetails = React.createClass({
 
         <div className='row fixed-height-1'>
           <div className='columns medium-4 padded-left'>
-            <h3 className='bold'>Device details</h3>
+            <h3 className='uppercase bold'>Device details</h3>
           </div>
           <div className='columns medium-12'>
           </div>
@@ -120,7 +124,7 @@ var DeviceDetails = React.createClass({
 
   deleteDialogButtons: function deleteDialogButtons () {
     return [
-      ['Remove device', this.onDeleteDialogConfirm],
+      ['Remove', this.onDeleteDialogConfirm],
       ['Cancel', this.onDeleteDialogCancel]
     ];
   },

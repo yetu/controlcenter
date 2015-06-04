@@ -46,7 +46,7 @@ var DeviceDetails = React.createClass({
 
         <div className='row fixed-height-1'>
           <div className='columns medium-4 padded-left'>
-            <h3 className='bold'>Device details</h3>
+            <h3 className='uppercase bold'>Device details</h3>
           </div>
           <div className='columns medium-10'>
           </div>

@@ -9,11 +9,20 @@ var DeviceMessageStore = Reflux.createStore({
     this.message = null;
   },
 
+  getInitialState: function getInitialState () {
+    return this.message;
+  },
+
   onPushMessage: function onPushMessage (text, level) {
     this.message = {
       text: text,
       level: level || deviceMessageActions.Levels.INFO
     };
+    this.trigger(this.message);
+  },
+
+  onClearMessage: function onClearMessage () {
+    this.message = null;
     this.trigger(this.message);
   }
 });

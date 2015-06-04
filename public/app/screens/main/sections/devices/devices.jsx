@@ -2,6 +2,7 @@ var React = require('react');
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 var Reflux = require('reflux');
+var styleMixin = require('mixins/style-mixin');
 
 var Room = require('./room');
 var DeviceFinder = require('./device-finder');
@@ -10,8 +11,7 @@ var Message = require('common/components/message');
 
 var roomStore = require('stores/room');
 var gatewayStore = require('stores/gateway');
-
-var styleMixin = require('mixins/style-mixin');
+var deviceMessageActions = require('actions/device-message-actions');
 
 var DevicesSection = React.createClass({
 
@@ -21,12 +21,22 @@ var DevicesSection = React.createClass({
     Reflux.connect(gatewayStore, 'gateway')
   ],
 
+  getInitialState: function getInitialState () {
+    return {
+      messageVisible: true
+    };
+  },
+
   render: function render () {
     return (
       <div className='cc-devices grid-14 padded'>
         {this.state.gateway.error
           ? this.gatewayNotFoundErrorMessage()
-          : [ <DeviceFinder />, this.message(), this.rooms() ]
+          : [
+              <DeviceFinder onPromptOpened={this.hideMessage} onPromptClosed={this.showMessage} />,
+              this.state.messageVisible && this.message(),
+              this.rooms()
+            ]
         }
         <RouteHandler />
       </div>
@@ -57,6 +67,15 @@ var DevicesSection = React.createClass({
     return this.state.rooms.map((room, index) =>
         <Room title={room.title} key={index} />
     );
+  },
+
+  hideMessage: function hideMessage () {
+    deviceMessageActions.clearMessage();
+    this.setState({ messageVisible: false });
+  },
+
+  showMessage: function showMessage () {
+    this.setState({ messageVisible: true });
   }
 });
 

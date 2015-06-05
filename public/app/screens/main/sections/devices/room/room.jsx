@@ -40,7 +40,7 @@ var Room = React.createClass({
       <div className='cc-room'>
         <div className='row fixed-height-1 group-header'>
           <div className='column small-14 quarter-padded-left'>
-            <h3 className='align-text-top'>{this.props.title}</h3>
+            <h3 className='align-text-top uppercase'>{this.props.title}</h3>
           </div>
         </div>
         <Gateway/>

@@ -15,14 +15,20 @@ var Dialog = React.createClass({
   render: function render () {
 
     return (
-      <div className='cc-dialog'>
-        <header className='cc-dialog__header text-center'>{this.props.title}</header>
-        <div className='cc-dialog__content'>
+      <div className='cc-dialog grid-14 padded'>
+        <div className='row fixed-height-1'>
+          <div className='column'><h3>{this.props.title}</h3></div>
+        </div>
+        <div>
           {this.props.children}
         </div>
-        <div className='cc-dialog__buttons text-center'>
+        <div className='row fixed-height-3 vertical-align-center'>
           {this.props.buttons.map((button, index) => {
-            return (<Button onClick={button[ONCLICK]} key={index}>{button[TITLE]}</Button>);
+            return (
+              <div className={'column small-3 ' + (index === this.props.buttons.length - 1 ? 'end' : '')}>
+                <Button onClick={button[ONCLICK]} key={index}>{button[TITLE]}</Button>
+              </div>
+            );
           })}
         </div>
       </div>

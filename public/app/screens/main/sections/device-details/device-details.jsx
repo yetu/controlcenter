@@ -53,7 +53,7 @@ var DeviceDetails = React.createClass({
           <Dialog title='Do you want to remove this device from your device list?' buttons={this.deleteDialogButtons()}>
             <div className='row'>
               <div className='column'>
-                {/* TODO: List here other devices that would be effected from removal */}
+                {/* TODO: List here other devices that would be affected from removal */}
               </div>
             </div>
           </Dialog>

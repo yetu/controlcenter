@@ -36,7 +36,7 @@ var deviceDetailsStore = Reflux.createStore({
     } else {
       DevicesService
         .fetchDeviceById(deviceId)
-        .subscribe(this.augmentAndUpdateDevice, this.updateError);
+        .then(this.augmentAndUpdateDevice, this.updateError);
     }
   },
 

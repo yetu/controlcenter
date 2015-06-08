@@ -84,7 +84,7 @@ var SendNestAccessToken = React.createClass({
       var action = nestService.actions['set-SETABLE-value'];
       devicesService
         .invokeDeviceAction(action, { value: this.state.accessToken })
-        .subscribe(
+        .then(
           function onSuccess () {
             this.setAction( Actions.SEND_AUTH_TOKEN_SUCCESS );
             this.pollForNestDevices();

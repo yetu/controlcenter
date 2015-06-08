@@ -45,7 +45,7 @@ var deviceStore = Reflux.createStore({
 
   onInvokeAction: function doAction (action, data) {
     DevicesService.invokeDeviceAction(action, data)
-      .subscribe(
+      .then(
         () => {},
         () => {}
       );

@@ -9,10 +9,6 @@ var householdBaseUrl = '/household';
 var thingsUrl = householdBaseUrl + '/things?thingAs=representation&componentAs=representation';
 var thingUrl = householdBaseUrl + '/things';
 
-function extractJson (resp) {
-  return resp.json();
-}
-
 function composeThing (thing) {
   return {
     properties: thing.properties,
@@ -26,31 +22,25 @@ function extractThings (data) {
   return things.map(composeThing);
 }
 
-function initDeviceStreamById (deviceId) {
-  return Rx.Observable
-    .fromPromise(
-      fetch(thingUrl + '/' + deviceId + '?componentAs=representation', { credentials: 'include' })
-        .then(extractJson));
-}
-
 // TODO add device control actions here (change room, remove adjust)
 module.exports = {
 
   fetchDeviceList: function fetchDeviceList () {
-    return new Promise((resolve, reject) => {
-      fetch(thingsUrl, { credentials: 'include' })
-        .then((response) => {
-          response.json().then((data) => {
-            resolve(extractThings(data));
-          });
-        })
-        .catch(reject);
-    });
+    return fetch(thingsUrl, { credentials: 'include' })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        return extractThings(data);
+      });
   },
 
   fetchDeviceById: function fetchDeviceById (deviceId) {
-    return initDeviceStreamById(deviceId)
-      .map(composeThing);
+    return fetch(thingUrl + '/' + deviceId + '?componentAs=representation', { credentials: 'include' })
+      .then((response) => {
+        return response.json();
+      })
+      .then(composeThing);
   },
 
   deleteDevice: function deleteDevice (device) {
@@ -84,9 +74,10 @@ module.exports = {
       }
     };
 
-    return Rx.Observable.fromPromise(
-      fetch(householdBaseUrl + UrlHelpers.stripHostname(action.href), requestOptions)
-        .then(extractJson)
+    return fetch(householdBaseUrl + UrlHelpers.stripHostname(action.href), requestOptions)
+      .then((response) => {
+        return response.json();
+      });
     );
   }
 

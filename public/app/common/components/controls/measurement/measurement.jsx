@@ -1,19 +1,21 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var styleMixin = require('mixins/style-mixin');
 
 var Measurement = React.createClass({
-  mixins: [ styleMixin(require('./style.scss')) ],
+  mixins: [
+    styleMixin(require('./style.scss')),
+    PureRenderMixin
+  ],
 
-  getInitialState: function getInitialState () {
-    return {
-      value: this.props.value || 0
-    };
+  getDefaultProps: function getDefaultProps () {
+    return { value: 0 };
   },
 
   render: function render () {
     return (
       <div className='cc-measurement-control'>
-        {this.state.value}
+        {this.props.value}
       </div>
     );
   }

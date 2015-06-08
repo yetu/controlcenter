@@ -27,7 +27,14 @@ var deviceStore = Reflux.createStore({
   },
 
   createModel: function createModel (devices) {
-    var augmentedDevices = _.map(devices, DeviceHelpers.augmentDevice);
+    var augmentedDevices = _.map(devices, DeviceHelpers.augmentDevice)
+      .sort(function comparator (firstDevice, secondDevice) {
+        var result = firstDevice.properties.name.localeCompare(secondDevice.properties.name);
+        if (result === 0) {
+          return firstDevice.properties.id.localeCompare(secondDevice.properties.id);
+        }
+        return result;
+      });
     return {
       devices: augmentedDevices,
       deviceById: _.indexBy(augmentedDevices, (device) => device.properties.id),

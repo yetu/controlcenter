@@ -112,6 +112,7 @@ var SendNestAccessToken = React.createClass({
     poll.promise.then(() => {
       deviceMessageActions.clearMessage();
       this.context.router.transitionTo('devices');
+      deviceActions.fetchList();
     });
   }
 });

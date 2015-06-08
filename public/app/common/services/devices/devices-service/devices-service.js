@@ -1,4 +1,3 @@
-var Rx = require('rx');
 require('whatwg-fetch');
 
 var UrlHelpers = require('helpers/url');
@@ -78,7 +77,6 @@ module.exports = {
       .then((response) => {
         return response.json();
       });
-    );
   }
 
 };

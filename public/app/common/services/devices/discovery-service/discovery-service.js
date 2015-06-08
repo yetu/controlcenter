@@ -1,5 +1,4 @@
-var Rx = require('rx'),
-  _ = require('lodash');
+var _ = require('lodash');
 require('whatwg-fetch');
 
 var UrlHelpers = require('helpers/url');

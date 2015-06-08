@@ -32,6 +32,7 @@ var SendNestAccessToken = React.createClass({
   },
 
   componentDidMount: function componentDidMount () {
+    this.setAction(Actions.RETRIEVING_DEVICES);
     this.listenTo(deviceListStore, this.onDeviceListStoreUpdate);
   },
 
@@ -79,6 +80,7 @@ var SendNestAccessToken = React.createClass({
     });
     // Set nest access token as the service's property
     if (nestService) {
+      this.setAction(Actions.SENDING_AUTH_TOKEN);
       var action = nestService.actions['set-SETABLE-value'];
       devicesService
         .invokeDeviceAction(action, { value: this.state.accessToken })

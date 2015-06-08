@@ -9,9 +9,6 @@ var householdBaseUrl = '/household';
 var thingsUrl = householdBaseUrl + '/things?thingAs=representation&componentAs=representation';
 var thingUrl = householdBaseUrl + '/things';
 
-
-var MAX_DEVICES = 100; // allow to add up to 100 devices
-
 function extractJson (resp) {
   return resp.json();
 }
@@ -24,8 +21,8 @@ function composeThing (thing) {
   };
 }
 
-function extractThings (sirenResponse) {
-  var things = sirenResponse.entities || [];
+function extractThings (data) {
+  var things = data.entities || [];
   return things.map(composeThing);
 }
 
@@ -40,10 +37,15 @@ function initDeviceStreamById (deviceId) {
 module.exports = {
 
   fetchDeviceList: function fetchDeviceList () {
-    return Rx.Observable
-      .fromPromise(fetch(thingsUrl, { credentials: 'include' }).then(extractJson))
-      .flatMap(extractThings)
-      .bufferWithCount(MAX_DEVICES);
+    return new Promise((resolve, reject) => {
+      fetch(thingsUrl, { credentials: 'include' })
+        .then((response) => {
+          response.json().then((data) => {
+            resolve(extractThings(data));
+          });
+        })
+        .catch(reject);
+    });
   },
 
   fetchDeviceById: function fetchDeviceById (deviceId) {

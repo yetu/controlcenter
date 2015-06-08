@@ -40,7 +40,7 @@ var deviceStore = Reflux.createStore({
   },
 
   onFetchList: function onFetchList () {
-    DevicesService.fetchDeviceList().subscribe(this.updateModel, this.updateError);
+    DevicesService.fetchDeviceList().then(this.updateModel, this.updateError);
   },
 
   onInvokeAction: function doAction (action, data) {

@@ -118,13 +118,13 @@ var DeviceFinder = React.createClass({
   },
 
   getDeviceFoundDialog: function getDeviceFoundDialog () {
-    var status = <div className='cc-device-finder__status-warning'>Device found!</div>;
+    var status = <div className='cc-device-finder__status-warning'>Device found</div>;
 
     return <DeviceFinderDialog
       status={status}
       showSeparator='true'
-      title='TODO: Add title'
-      description='TODO: Add description'
+      title='Search complete'
+      description='A new device has been successfully added'
       closeAction={this.closeDialog}
       actionText='Ok'
       action={this.showFoundDeviceInfo} />;

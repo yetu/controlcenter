@@ -13,9 +13,10 @@ var Measurement = React.createClass({
   },
 
   render: function render () {
+    var value = this.props.value;
     return (
       <div className='cc-measurement-control'>
-        {this.props.value}
+        {value === null ? null : value.toString()}
       </div>
     );
   }

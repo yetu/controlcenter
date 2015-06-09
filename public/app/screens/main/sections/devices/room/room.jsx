@@ -17,7 +17,7 @@ var Room = React.createClass({
   ],
 
   componentDidMount: function componentDidMount () {
-    var REFETCH_INTERVAL = 5000;
+    var REFETCH_INTERVAL = 1000;
 
     // Refetch devices every some seconds as long as we have no push messages
     this.refetchIntervalId = window.setInterval(() => {

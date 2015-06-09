@@ -9,6 +9,11 @@ var SwitchControl = React.createClass({
     return { checked: this.props.value || false };
   },
 
+  // TODO: Remove this (and only use props)
+  componentWillReceiveProps: function componentWillReceiveProps (nextProps) {
+    this.setState({ checked: nextProps.value || false });
+  },
+
   render: function render () {
 
     var className = cx(

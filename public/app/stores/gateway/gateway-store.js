@@ -1,7 +1,7 @@
 var Reflux = require('reflux');
 var _ = require('lodash');
-var platform = require('platform');
 
+var ConfigHelpers = require('helpers/config');
 var deviceActions = require('actions/device');
 var gatewayService = require('services/devices/gateway-service');
 
@@ -11,24 +11,9 @@ module.exports = Reflux.createStore({
     this.onFetchGateway();
   },
 
-  getSetupAppUrl: function getSetupAppUrl () {
-
-    function isOSX () {
-      var userAgentString = navigator.userAgent;
-      var environment = platform.parse(userAgentString);
-      return /OS X/.test(environment.os.family);
-    }
-
-    if (isOSX(platform)) {
-      return window.yetu.config.setupDownloadUrlMac;
-    } else {
-      return window.yetu.config.setupDownloadUrlWin;
-    }
-  },
-
   createModel: function createModel (data) {
     return _.assign(data, {
-      setupAppUrl: this.getSetupAppUrl()
+      setupAppUrl: ConfigHelpers.getSetupAppUrl()
     });
   },
 

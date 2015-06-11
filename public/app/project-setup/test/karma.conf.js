@@ -15,6 +15,7 @@ module.exports = function (config) {
     frameworks: ['jasmine', 'sinon'],
     files: [
       './app/project-setup/test/phantomjs-bind.polyfill.js',
+      './app/project-setup/test/config.stub.js',
       './**/*.spec.js*'
     ],
 

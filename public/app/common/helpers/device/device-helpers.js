@@ -42,7 +42,7 @@ var Helpers = {
   },
 
   isHiddenDevice: function isHiddenDevice (device) {
-    return _.reduce(hiddenDeviceFilters, (rejected, isHidden) => rejected || isHidden(device), false);
+    return _.some(hiddenDeviceFilters, (filter) => filter(device));
   },
 
   // TODO: ideally this should be retrieved from the model

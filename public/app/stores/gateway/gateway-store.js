@@ -1,5 +1,7 @@
 var Reflux = require('reflux');
+var _ = require('lodash');
 
+var ConfigHelpers = require('helpers/config');
 var deviceActions = require('actions/device');
 var gatewayService = require('services/devices/gateway-service');
 
@@ -9,24 +11,30 @@ module.exports = Reflux.createStore({
     this.onFetchGateway();
   },
 
+  createModel: function createModel (data) {
+    return _.assign(data, {
+      setupAppUrl: ConfigHelpers.getSetupAppUrl()
+    });
+  },
+
   getInitialState: function getInitialState () {
     // fetch gateway status on each page view
     // as we don't have polling
     this.onFetchGateway();
     return {
-      model: {}
+      model: this.createModel({})
     };
   },
 
   onFetchGateway: function onFetchGateway () {
-    var self = this;
     gatewayService.fetchGatewayInfo()
-      .subscribe(self.updateModel.bind(self), self.updateError.bind(self));
+      .subscribe(this.updateModel, this.updateError);
   },
 
-  updateModel: function updateModel (gateway) {
+  updateModel: function updateModel (gatewayData) {
+    var model = this.createModel(gatewayData);
     this.trigger({
-      model: gateway
+      model: model
     });
   },
 

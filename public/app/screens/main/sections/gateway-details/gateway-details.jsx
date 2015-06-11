@@ -39,7 +39,7 @@ var DeviceDetails = React.createClass({
             <h5>Get setup app</h5>
           </div>
           <div className='columns medium-4'>
-            <a className='link' href='#'>Download setup app</a>
+            <a className='link' href={gateway.setupAppUrl}>Download setup app</a>
           </div>
           <div className='columns medium-6'></div>
         </div>

@@ -26,6 +26,9 @@ describe('DeviceHelpers', function () {
     it('flags nest webservice as hidden', function () {
       var nestService = DeviceHelpers.augmentDevice(nestWebservice);
       expect(nestService.hidden).toEqual(true);
+    });
+
+    it('does not flag regular device as hidden', function () {
       var augmentedDevice = DeviceHelpers.augmentDevice(device);
       expect(augmentedDevice.hidden).toEqual(false);
     });
@@ -54,7 +57,7 @@ describe('DeviceHelpers', function () {
   });
 
   describe('isHiddenDevice', function () {
-    it('returns true if device has the string "nest acccount" in its name property', function () {
+    it('returns a boolean value depending on whether "nest acccount" is in device\'s name property', function () {
       var isHidden = DeviceHelpers.isHiddenDevice(device);
       expect(isHidden).toEqual(false);
       isHidden = DeviceHelpers.isHiddenDevice(nestWebservice);

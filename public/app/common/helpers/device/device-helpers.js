@@ -1,3 +1,6 @@
+// refer to
+// https://github.com/yetu/thing-specification/blob/master/src/main/resources/ThingSpecification.xmi
+
 var _ = require('lodash');
 
 var hiddenDeviceFilters = [
@@ -30,8 +33,20 @@ var Helpers = {
     );
   },
 
+  primaryCapabilityByType: {
+    SOCKET: 'SWITCHABLE',
+    LAMP: 'SWITCHABLE',
+    METER: 'MEASUREMENT',
+    SENSOR: 'MEASUREMENT',
+    BATTERY: 'SETABLE',
+    WEBSERVICE: 'SETABLE',
+
+    THERMOSTAT: 'SETABLE'
+  },
+
   getPrimaryCapability: function getPrimaryCapability (component) {
-    return component.properties.capabilities[0];
+    var componentType = component.properties.type;
+    return Helpers.primaryCapabilityByType[componentType];
   },
 
   getDeviceUrl: function getDeviceUrl (device) {
@@ -47,10 +62,10 @@ var Helpers = {
 
   // TODO: ideally this should be retrieved from the model
   propertyByCapability: {
-    'SWITCHABLE': 'SWITCHABLE-on',
+    SWITCHABLE: 'SWITCHABLE-on',
     // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
-    'SETABLE': 'SETABLE-value',
-    'MEASUREMENT': 'MEASUREMENT-measurement'
+    SETABLE: 'SETABLE-value',
+    MEASUREMENT: 'MEASUREMENT-measurement'
   },
 
   getActionForCapability: function getActionForCapability (component, capability, operation) {

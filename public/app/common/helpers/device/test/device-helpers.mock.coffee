@@ -7,89 +7,136 @@ module.exports =
 
         links: [
           {
-            rel: ['self']
-            href: 'https://household-https.prod.yetu.me/things/0af194e6-ca4a-40ad-927d-d2d37e52e149/components/thermostat'
+            rel: ['self'],
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led'
           }
         ]
 
         properties:
-          capabilities: ['SETABLE']
-          name: 'Thermostat'
-          'SETABLE-value': 22.0
-          id: 'thermostat'
-          type: 'THERMOSTAT'
+          id: 'led'
+          name: 'Lamp'
+          type: 'LAMP'
+          capabilities:
+            SWITCHABLE:
+              on:
+                value: null
+                unit: 'BOOLEAN'
+                symbol: null
+            COLORABLE:
+              color:
+                value: null
+                unit: 'HSBCOLOR'
+                symbol: null
 
         actions: [
           {
-            name: 'get-SETABLE-value'
-            href: 'https://household-https.prod.yetu.me/things/0af194e6-ca4a-40ad-927d-d2d37e52e149/components/thermostat/actions/SETABLE-value'
+            name: 'get-SWITCHABLE-on'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/SWITCHABLE-on'
             method: 'GET'
           }
           {
             method: 'PUT'
-            name: 'set-SETABLE-value'
+            name: 'set-SWITCHABLE-on'
             fields: [
               {
                 name: 'value'
-                type: 'number'
+                type: 'checkbox'
               }
             ]
             type: 'application/json'
-            href: 'https://household-https.prod.yetu.me/things/0af194e6-ca4a-40ad-927d-d2d37e52e149/components/thermostat/actions/SETABLE-value'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/SWITCHABLE-on'
           }
-        ]
-
-        class: ['component']
-      }
-
-      {
-        rel: ['http://api.yetu.me/rels/component']
-
-        links: [
           {
-            rel: ['self']
-            href: 'https://household-https.prod.yetu.me/things/0af194e6-ca4a-40ad-927d-d2d37e52e149/components/humidity'
-          }
-        ]
-
-        properties:
-          capabilities: ['MEASUREMENT']
-          name: 'Sensor2'
-          'MEASUREMENT-measurement': 35
-          id: 'humidity'
-          type: 'SENSOR'
-
-        actions: [
-          {
-            name: 'get-MEASUREMENT-measurement'
-            href: 'https://household-https.prod.yetu.me/things/0af194e6-ca4a-40ad-927d-d2d37e52e149/components/humidity/actions/MEASUREMENT-measurement'
+            name: 'get-COLORABLE-color'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/COLORABLE-color'
             method: 'GET'
           }
+          {
+            method: 'PUT'
+            name: 'set-COLORABLE-color'
+            fields: [
+              {
+                name: 'value'
+                type: 'color'
+              }
+            ]
+            type: 'application/json'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/COLORABLE-color'
+          }
         ]
-
         class: ['component']
       }
 
       {
         rel: ['http://api.yetu.me/rels/component']
+
         links: [
           {
-            rel: ['self']
-            href: 'https://household-https.prod.yetu.me/things/0af194e6-ca4a-40ad-927d-d2d37e52e149/components/temperature'
+          rel: ['self']
+          href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/power'
           }
         ]
+
         properties:
-          capabilities: ['MEASUREMENT']
+          id: 'power'
           name: 'Sensor'
-          'MEASUREMENT-measurement': 24.0
-          id: 'temperature'
           type: 'SENSOR'
+          capabilities:
+            MEASUREMENT:
+              measurement:
+                value: null
+                unit: 'WATT'
+                symbol: 'W'
 
         actions: [
           {
             name: 'get-MEASUREMENT-measurement'
-            href: 'https://household-https.prod.yetu.me/things/0af194e6-ca4a-40ad-927d-d2d37e52e149/components/temperature/actions/MEASUREMENT-measurement'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/power/actions/MEASUREMENT-measurement'
             method: 'GET'
+          }
+        ]
+
+        class: ['component']
+      }
+
+      {
+        rel: ['http://api.yetu.me/rels/component']
+
+        links: [
+          {
+            rel: ['self']
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket'
+          }
+        ]
+
+        properties:
+          id: 'socket'
+          name: 'Socket'
+          type: 'SOCKET'
+          capabilities:
+            SWITCHABLE:
+              on:
+                value: false
+                unit: 'BOOLEAN'
+                symbol: null
+
+        actions: [
+          {
+            name: 'get-SWITCHABLE-on'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/SWITCHABLE-on'
+            method: 'GET'
+          }
+          {
+            method: 'PUT'
+            name: 'set-SWITCHABLE-on'
+            fields: [
+              {
+                name: 'value'
+                type: 'checkbox'
+              }
+            ]
+            type: 'application/json'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/SWITCHABLE-on'
           }
         ]
         class: ['component']
@@ -97,20 +144,24 @@ module.exports =
     ]
 
     rel: ['http://api.yetu.me/rels/thing']
+
     links: [
       {
         rel: ['self']
-        href: 'https://household-https.prod.yetu.me/things/0af194e6-ca4a-40ad-927d-d2d37e52e149'
+        href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba'
       }
     ]
 
     properties:
-      name: 'Nest Thermostat'
-      displayType: 'THERMOSTAT'
+      name: 'Fibaro Wallplug'
+      displayType: 'SOCKET'
       tags: []
-      id: '0af194e6-ca4a-40ad-927d-d2d37e52e149'
-      mainComponentId: 'thermostat'
+      id: '79802756-46a7-4e8f-b3f5-6bfd22a2c5ba'
+      mainComponentId: 'socket'
+      status: 'unknown'
       manufacturer: null
+
+    class: ['thing']
 
   # mock the device service transformation
   extractProperties: (device) ->

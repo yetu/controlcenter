@@ -37,15 +37,17 @@ describe('DeviceHelpers', function () {
   describe('getAlterEgoComponent', function () {
     it('returns a component belonging to a device if its id matches mainComponentId', function () {
       var alterEgoComponent = DeviceHelpers.getAlterEgoComponent(device);
-      expect(alterEgoComponent).toEqual(device.components[0]);
+      expect(alterEgoComponent).toEqual(device.components[2]);
     });
   });
 
   describe('getPrimaryCapability', function () {
-    it('returns components\'s first capability', function () {
+    it('returns components\'s primary capability using type-capability mapping', function () {
       var alterEgoComponent = DeviceHelpers.getAlterEgoComponent(device);
       var primaryCapability = DeviceHelpers.getPrimaryCapability(alterEgoComponent);
-      expect(primaryCapability).toEqual(alterEgoComponent.properties.capabilities[0]);
+      var alterEgoComponentType = alterEgoComponent.properties.type;
+      var primaryCapabilityName = DeviceHelpers.primaryCapabilityByType[alterEgoComponentType];
+      expect(primaryCapability).toEqual(primaryCapabilityName);
     });
   });
 

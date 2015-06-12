@@ -47,7 +47,7 @@ module.exports = function (config) {
     logLevel: config.LOG_ERROR,
     autoWatch: true,
     // Chrome, ChromeCanary, Firefox, Safari, PhantomJS, IE
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
     captureTimeout: 60000,
     browserDisconnectTimeout : 60000,
     browserDisconnectTolerance : 2,

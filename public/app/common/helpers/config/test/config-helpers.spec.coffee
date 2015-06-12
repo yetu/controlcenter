@@ -12,18 +12,17 @@ describe 'ConfigHelpers', ->
       # mock config
       config = window.yetu.config
       window.yetu.config = mock.config
-      userAgent = navigator.userAgent
 
     afterEach ->
-      navigator.userAgent = userAgent
       window.yetu.config = config
+      do mock.restoreUserAgent
 
     it 'returns the url pointing to the Windows version of the setup app on Windows', ->
-      navigator.userAgent = mock.UserAgentString.WINDOWS
-      url = do ConfigHelper.getSetupAppUrl
+      mock.setUserAgent mock.UserAgentString.WINDOWS
+      url = do ConfigHelpers.getSetupAppUrl
       expect(url).toEqual window.yetu.config.setupDownloadUrlWin
 
     it 'returns the url pointing to the OS X version of the setup app on OS X', ->
-      navigator.userAgent = mock.UserAgentString.OSX
-      url = do ConfigHelper.getSetupAppUrl
+      mock.setUserAgent mock.UserAgentString.OSX
+      url = do ConfigHelpers.getSetupAppUrl
       expect(url).toEqual window.yetu.config.setupDownloadUrlMac

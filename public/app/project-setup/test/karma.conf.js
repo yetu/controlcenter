@@ -16,14 +16,14 @@ module.exports = function (config) {
     files: [
       './app/project-setup/test/phantomjs-bind.polyfill.js',
       './app/project-setup/test/config.stub.js',
-      './**/*.spec.js*'
+      './**/*.spec.*'
     ],
 
 //		preprocessors: {
 //			'app/**/(!test|specific)/*.js': 'coverage'
 //		},
     preprocessors: {
-      './**/*.spec.js*': ['webpack']
+      './**/*.spec.*': ['webpack']
     },
 
     webpack: {
@@ -47,7 +47,7 @@ module.exports = function (config) {
     logLevel: config.LOG_ERROR,
     autoWatch: true,
     // Chrome, ChromeCanary, Firefox, Safari, PhantomJS, IE
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
     captureTimeout: 60000,
     browserDisconnectTimeout : 60000,
     browserDisconnectTolerance : 2,

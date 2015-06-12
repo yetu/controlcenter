@@ -1,8 +1,17 @@
+navigatorPropertyDescriptor = null
+
 module.exports =
 
   config:
     setupDownloadUrlWin: 'win-url.exe'
     setupDownloadUrlMac: 'mac-url.dmg'
+
+  setUserAgent: (string) ->
+    navigatorPropertyDescriptor = Object.getOwnPropertyDescriptor window, 'navigator'
+    Object.defineProperty window, 'navigator', value: { userAgent: string }
+
+  restoreUserAgent: ->
+    Object.defineProperty window, 'navigator', navigatorPropertyDescriptor
 
   UserAgentString:
     WINDOWS: 'Mozilla/5.0 (MSIE 10.0; Windows NT 6.1; Trident/5.0)'

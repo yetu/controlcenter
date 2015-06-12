@@ -25,6 +25,7 @@ libraryDependencies ++= Seq(
 
 // test libraries
 libraryDependencies ++= Seq(
+  "com.yetu" %% "yetu-play-common-views"  % "0.0.2",
   "com.mohiva" %% "play-silhouette-testkit" % "2.0-RC1" % "test",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test",
   "org.scalatestplus"  %% "play"  % "1.2.0" % "test"

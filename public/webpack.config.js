@@ -26,6 +26,7 @@ module.exports = {
       'stores': path.join(__dirname, 'app/stores'),
       'common': path.join(__dirname, 'app/common'),
       'mixins': path.join(__dirname, 'app/common/mixins'),
+      'models': path.join(__dirname, 'app/common/models'),
       'helpers': path.join(__dirname, 'app/common/helpers'),
       'services': path.join(__dirname, 'app/common/services')
     },

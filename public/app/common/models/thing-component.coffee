@@ -1,8 +1,7 @@
 _ = require 'lodash'
 
 class ThingComponent
-  constructor: (data)->
-    {@properties, actions} = data
+  constructor: ({@properties, actions})->
     actions = _.indexBy actions, 'name'
 
     @actions = {}

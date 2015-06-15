@@ -30,9 +30,14 @@ var Room = React.createClass({
     window.clearInterval(this.refetchIntervalId);
   },
 
+  isNestWebservice: function isNestWebservice (device) {
+    // TODO: Use a more sophisticated way to identify the nest webservice device
+    return device.properties.name.toLowerCase().indexOf('nest account') > -1;
+  },
+
   render: function render () {
     var devices = _(this.state.devices)
-      .reject((device) => device.hidden)
+      .reject((device) => this.isNestWebservice(device))
       .map((device, i) => <Device device={device} key={i}/>)
       .value();
 

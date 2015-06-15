@@ -2,7 +2,7 @@ var React = require('react');
 var Reflux = require('reflux');
 
 var DeviceActions = require('actions/device');
-var DeviceHelpers = require('helpers/device');
+var Capability = require('models/capability');
 
 /* Controls */
 var Switch = require('common/components/controls/switch');
@@ -12,22 +12,21 @@ var Measurement = require('common/components/controls/measurement');
 var DeviceActionControl = React.createClass({
 
   controlByCapability: {
-    'SWITCHABLE': Switch,
+    [Capability.SWITCHABLE]: Switch,
     // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
-    'SETABLE': ValueUpDown,
-    'MEASUREMENT': Measurement
+    [Capability.SETABLE]: ValueUpDown,
+    [Capability.MEASUREMENT]: Measurement
   },
 
   controlStateToActionData: {
-    'SWITCHABLE': (state) => state.checked,
+    [Capability.SWITCHABLE]: (state) => state.checked,
     // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
-    'SETABLE': (state) => state.value
+    [Capability.SETABLE]: (state) => state.value
   },
 
   getControlProps: function getControlState (device) {
     var capability = device.primaryCapability;
-    var property = DeviceHelpers.propertyByCapability[capability];
-    var value = device.alterEgoComponent.properties[property];
+    var value = device.alterEgoComponent.properties[capability];
     return { value: value, onChange: this.invokeValueChangeAction };
   },
 
@@ -36,7 +35,9 @@ var DeviceActionControl = React.createClass({
     var capability = device.primaryCapability;
     var transform = this.controlStateToActionData[capability];
     var data = { value: transform(state) };
-    var action = DeviceHelpers.getActionForCapability(device, capability, 'set');
+    var alterEgoComponent = device.alterEgoComponent;
+    var capabilityProperty = Capability.propertyOf[capability];
+    var action = alterEgoComponent.actions[capability][capabilityProperty].set;
     DeviceActions.invokeAction(action, data);
   },
 

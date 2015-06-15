@@ -12,7 +12,6 @@ describe 'Thing', ->
     thing = new Thing ThingMock.FibaroWallplug
 
   describe 'constructor', ->
-
       it 'extracts device properties, actions and url', ->
         expect(thing.properties).toEqual ThingMock.FibaroWallplug.properties
         expect(thing.url).toEqual(do ThingMock.FibaroWallplug.getUrl)

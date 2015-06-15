@@ -3,7 +3,7 @@ var Reflux = require('reflux');
 var DeviceActions = require('actions/device');
 var DevicesService = require('services/devices/devices-service');
 
-var DeviceHelpers = require('helpers/device');
+var Thing = require('models/thing');
 
 var deviceListStore = require('stores/device-list');
 var deviceDetailsStore = Reflux.createStore({
@@ -41,7 +41,7 @@ var deviceDetailsStore = Reflux.createStore({
   },
 
   augmentAndUpdateDevice: function augmentAndUpdateDevice (device) {
-    this.updateModel(DeviceHelpers.augmentDevice(device));
+    this.updateModel(new Thing(device));
   },
 
   updateModel: function updateModel (device) {

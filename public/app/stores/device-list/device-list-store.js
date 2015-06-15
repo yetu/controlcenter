@@ -5,7 +5,7 @@ var DeviceActions = require('actions/device');
 var DevicesService = require('services/devices/devices-service');
 var discoveryStore = require('stores/discovery-store');
 
-var DeviceHelpers = require('helpers/device');
+var Thing = require('models/thing');
 
 var deviceStore = Reflux.createStore({
 
@@ -27,7 +27,7 @@ var deviceStore = Reflux.createStore({
   },
 
   createModel: function createModel (devices) {
-    var augmentedDevices = _.map(devices, DeviceHelpers.augmentDevice)
+    var things = _.map(devices, (data) => new Thing(data))
       .sort(function comparator (firstDevice, secondDevice) {
         var result = firstDevice.properties.name.localeCompare(secondDevice.properties.name);
         if (result === 0) {
@@ -36,8 +36,8 @@ var deviceStore = Reflux.createStore({
         return result;
       });
     return {
-      devices: augmentedDevices,
-      deviceById: _.indexBy(augmentedDevices, (device) => device.properties.id),
+      devices: things,
+      deviceById: _.indexBy(things, (device) => device.properties.id),
       error: null
     };
   },

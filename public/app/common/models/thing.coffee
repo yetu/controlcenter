@@ -14,7 +14,6 @@ class Thing
     @alterEgoComponent = _.find @components, (component) =>
       component.properties.id is @properties.mainComponentId
 
-    debugger
     alterEgoType = @alterEgoComponent.properties.type
     @primaryCapability = Capability.byComponentType[alterEgoType]
 

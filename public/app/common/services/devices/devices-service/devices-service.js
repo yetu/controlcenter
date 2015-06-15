@@ -8,19 +8,6 @@ var householdBaseUrl = '/household';
 var thingsUrl = householdBaseUrl + '/things?thingAs=representation&componentAs=representation';
 var thingUrl = householdBaseUrl + '/things';
 
-function composeThing (thing) {
-  return {
-    properties: thing.properties,
-    components: thing.entities,
-    links: thing.links
-  };
-}
-
-function extractThings (data) {
-  var things = data.entities || [];
-  return things.map(composeThing);
-}
-
 // TODO add device control actions here (change room, remove adjust)
 module.exports = {
 
@@ -30,7 +17,7 @@ module.exports = {
         return response.json();
       })
       .then((data) => {
-        return extractThings(data);
+        return data.entities;
       });
   },
 
@@ -38,8 +25,7 @@ module.exports = {
     return fetch(thingUrl + '/' + deviceId + '?componentAs=representation', { credentials: 'include' })
       .then((response) => {
         return response.json();
-      })
-      .then(composeThing);
+      });
   },
 
   deleteDevice: function deleteDevice (device) {

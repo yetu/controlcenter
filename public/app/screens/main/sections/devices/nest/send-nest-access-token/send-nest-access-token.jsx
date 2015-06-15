@@ -81,6 +81,7 @@ var SendNestAccessToken = React.createClass({
     // Set nest access token as the service's property
     if (nestService) {
       this.setAction(Actions.SENDING_AUTH_TOKEN);
+      // TODO: use the Thing model
       var action = nestService.actions['set-SETABLE-value'];
       devicesService
         .invokeDeviceAction(action, { value: this.state.accessToken })

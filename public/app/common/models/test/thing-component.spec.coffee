@@ -30,9 +30,12 @@ describe 'ThingComponent', ->
               href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/SWITCHABLE-on'
 
   describe 'get', ->
-    it 'gets a property value by capability name', ->
-      value = component.get 'SWITCHABLE'
-      expect(value).toEqual false
+    it 'gets a property by capability name', ->
+      property = component.get 'SWITCHABLE'
+      expect(property).toEqual
+        value: false
+        unit: 'BOOLEAN'
+        symbol: null
 
 
 

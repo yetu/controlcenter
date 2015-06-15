@@ -17,6 +17,6 @@ class ThingComponent
   get: (capabilityName) ->
     capability = @properties.capabilities[capabilityName]
     [propertyName] = Object.keys capability
-    capability[propertyName].value
+    capability[propertyName]
 
 module.exports = ThingComponent

@@ -1,4 +1,3 @@
-var Rx = require('rx');
 require('whatwg-fetch');
 
 var transformGatewayResponse = function transformGatewayResponse (resp) {
@@ -6,17 +5,13 @@ var transformGatewayResponse = function transformGatewayResponse (resp) {
   return result.properties || {};
 };
 
-var extractJson = function extractJson (response) {
-  return response.json();
-};
-
 var gatewayInfoUrl = '/household/gateway';
 module.exports = {
   fetchGatewayInfo: function fetchGatewayInfo () {
-    // we can enable polling here
-    return Rx.Observable
-      .fromPromise(fetch(gatewayInfoUrl, { credentials: 'include' })
-        .then(extractJson))
-      .map(transformGatewayResponse);
+    return fetch(gatewayInfoUrl, { credentials: 'include' })
+      .then(function getJson (response) {
+        return response.json();
+      })
+      .then(transformGatewayResponse);
   }
 };

@@ -10,7 +10,7 @@ Measurement = React.createClass
 
   getDefaultProps: ->
     value: 0
-    symbol: null
+    unit: null
 
   render: ->
     value = @props.value

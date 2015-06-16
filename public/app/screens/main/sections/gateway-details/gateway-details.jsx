@@ -6,7 +6,7 @@ var styleMixin = require('mixins/style-mixin');
 
 var gatewayStore = require('stores/gateway');
 
-var DeviceState = require('common/components/device-state');
+var DeviceStatus = require('common/components/device-status');
 var Button = require('common/components/controls/button');
 var Icon = require('common/components/icon');
 
@@ -60,7 +60,7 @@ var DeviceDetails = React.createClass({
             { gateway.gatewayId }
           </div>
           <div className='columns medium-3'>
-            <DeviceState connected={ gateway.online }/>
+            <DeviceStatus status={ gateway.online ? 'connected' : 'disconnected' }/>
           </div>
         </div>
 

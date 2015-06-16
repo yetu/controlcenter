@@ -3,8 +3,8 @@ var Reflux = require('reflux');
 var _ = require('lodash');
 
 var Link = require('react-router').Link;
-var DeviceStateIcon = require('common/components/device-state/device-state-icon');
-var DeviceStateText = require('common/components/device-state/device-state-text');
+var DeviceStatusIcon = require('common/components/device-status/device-status-icon');
+var DeviceStatusText = require('common/components/device-status/device-status-text');
 
 var gatewayStore = require('stores/gateway');
 
@@ -31,6 +31,7 @@ module.exports = React.createClass({
   },
 
   content: function content () {
+    var isOnline = this.state.gateway.model.online;
     return [
       <div className='cc-device__title columns small-11 quarter-padded-left'>
         <Link to='gateway'>
@@ -38,10 +39,10 @@ module.exports = React.createClass({
         </Link>
       </div>,
       <div className='cc-device__state columns small-1 text-center'>
-        <DeviceStateIcon connected={ this.state.gateway.model.online } />
+        <DeviceStatusIcon status={ isOnline ? 'connected' : 'disconnected' } />
       </div>,
       <div className='cc-device__state columns small-2 text-center'>
-        <DeviceStateText connected={ this.state.gateway.model.online } />
+        <DeviceStatusText status={ isOnline ? 'connected' : 'disconnected' } />
       </div>
     ];
   },

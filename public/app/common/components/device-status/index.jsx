@@ -1,1 +1,1 @@
-module.exports = require('./device-status.jsx');
+module.exports = require('./device-status.cjsx');

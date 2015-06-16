@@ -16,7 +16,7 @@ Measurement = React.createClass
     value = @props.value
     unit = @props.unit
     <div className='cc-measurement-control'>
-      {if value isnt null then "#{do value.toString} #{unit}"}
+      {if value isnt null then "#{do value.toString} #{unit ?= ''}"}
     </div>
 
 module.exports = Measurement

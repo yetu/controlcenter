@@ -26,8 +26,12 @@ var DeviceActionControl = React.createClass({
 
   getControlProps: function getControlState (device) {
     var capability = device.primaryCapability;
-    var value = device.alterEgoComponent.properties[capability];
-    return { value: value, onChange: this.invokeValueChangeAction };
+    var property = device.alterEgoComponent.get(capability);
+    return {
+      value: property.value,
+      unit: property.symbol,
+      onChange: this.invokeValueChangeAction
+    };
   },
 
   invokeValueChangeAction: function invokeValueChangeAction (state) {

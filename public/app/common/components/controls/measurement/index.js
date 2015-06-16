@@ -1,1 +1,1 @@
-module.exports = require('./measurement.jsx');
+module.exports = require('./measurement.cjsx');

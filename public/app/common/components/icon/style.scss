@@ -29,6 +29,10 @@
     background-image: url('./images/state-disconnected.svg');
   }
 
+  &-unknown {
+    background-image: url('./images/state-check-configuration.svg');
+  }
+
   &-close {
     background-image: url('./images/close.svg');
   }

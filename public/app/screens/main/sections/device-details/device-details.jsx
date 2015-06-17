@@ -9,7 +9,7 @@ var deviceActions = require('actions/device');
 var deviceDetailsStore = require('stores/device-details');
 var roomStore = require('stores/room');
 
-var DeviceState = require('common/components/device-state');
+var DeviceStatus = require('common/components/device-status');
 var Button = require('common/components/controls/button');
 var Icon = require('common/components/icon');
 var Overlay = require('common/components/overlay');
@@ -93,7 +93,7 @@ var DeviceDetails = React.createClass({
             { deviceProperties.id }
           </div>
           <div className='columns medium-4'>
-            <DeviceState device={ device }/>
+            <DeviceStatus status={ deviceProperties.status }/>
           </div>
         </div>
 

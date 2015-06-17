@@ -1,6 +1,7 @@
 @import "components-theme";
 
-.cc-device-state-text {
+.cc-device-status-text {
   line-height: normal;
   font-size: convert-to-rem(16px);
+  text-transform: capitalize;
 }

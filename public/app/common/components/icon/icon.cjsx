@@ -14,6 +14,7 @@ module.exports = React.createClass
       "cc-icon-#{@props.type}"
     else
       ''
+
   render: ->
     className = cx
       'cc-icon':                 yes

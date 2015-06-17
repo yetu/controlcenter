@@ -4,11 +4,14 @@ var Reflux = require('reflux');
 var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 
+var gatewayService = require('services/devices/gateway-service');
 var gatewayStore = require('stores/gateway');
 
 var DeviceStatus = require('common/components/device-status');
 var Button = require('common/components/controls/button');
 var Icon = require('common/components/icon');
+var Overlay = require('common/components/overlay');
+var Dialog = require('common/components/dialog');
 
 var DeviceDetails = React.createClass({
   mixins: [
@@ -16,8 +19,9 @@ var DeviceDetails = React.createClass({
     Reflux.connect(gatewayStore, 'gateway')
   ],
 
-  onSave: function onSave () {
-    console.log('Save button clicked!!!');
+  // TODO: Replace w/ ES6 notion, see https://github.com/rackt/react-router/blob/master/docs/api/RouterContext.md
+  contextTypes: {
+    router: React.PropTypes.func
   },
 
   render: function render () {
@@ -33,6 +37,11 @@ var DeviceDetails = React.createClass({
             <Icon type='close' size='small' />
           </Link>
         </div>
+
+        <Overlay ref='resetDialog'>
+          <Dialog title='Do you want to delete your gateway?' buttons={this.resetDialogButtons()}>
+          </Dialog>
+        </Overlay>
 
         <div className='row fixed-height-1'>
           <div className='columns medium-4 padded-left'>
@@ -66,15 +75,45 @@ var DeviceDetails = React.createClass({
 
         <div className='row fixed-height-2'>
           <div className='columns medium-4 padded-left'>
-            <Button onClick={ this.onSave }>
+            <Button onClick={ this.save }>
               Save changes
+            </Button>
+          </div>
+          <div className='columns medium-10'>
+            <Button secondary='true' onClick={this.showResetDialog}>
+              Reset my gateway
             </Button>
           </div>
         </div>
 
       </div>
     );
+  },
+
+  save: function onSave () {
+  },
+
+  showResetDialog: function showResetDialog () {
+    this.refs.resetDialog.show();
+  },
+
+  resetDialogButtons: function resetDialogButtons () {
+    return [
+      ['Delete', this.reset],
+      ['Cancel', this.hideResetDialog]
+    ];
+  },
+
+  hideResetDialog: function hideResetDialog () {
+    this.refs.resetDialog.hide();
+  },
+
+  reset: function reset () {
+    gatewayService.resetGateway().then(() => {
+      this.context.router.transitionTo('/');
+    });
   }
+
 });
 
 module.exports = DeviceDetails;

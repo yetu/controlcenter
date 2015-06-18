@@ -1,8 +1,10 @@
 @import "components-theme";
+@import "theme/components/grid";
 @import "theme/components/buttons";
 
 .cc-device-details {
   position: relative;
+  height: 100%;
 
   &__closeButton {
     position: absolute;
@@ -14,4 +16,17 @@
     width: 100%;
   }
 
+  .cc-overlay {
+    top: 2.5 * $row-height;
+    bottom: 0;
+
+    .cc-dialog {
+      padding-top: $row-height * 0.5 !important;
+      background-color: rgba($dialog-overlay-background-color, 0.85);
+    }
+  }
+
+  .cc-overlay:not(.hide) ~ * {
+    filter: blur(2px);
+  }
 }

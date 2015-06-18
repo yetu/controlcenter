@@ -11,7 +11,7 @@ module.exports =
   fetchGatewayInfo: ->
     return fetch gatewayInfoUrl, { credentials: 'include' }
       .then (response) ->
-        do response.json()
+        do response.json
       .then transformGatewayResponse
 
   resetGateway: ->

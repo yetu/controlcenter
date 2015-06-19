@@ -53,7 +53,7 @@ For more information on how to develop yetu apps, please see [this page](https:/
 ./dev.sh
 ```
 
-3. Open your browser and point it to [http://localhost:9000](http://localhost.com:9000)
+3. Open your browser and point it to [http://localhost:9000](http://localhost:9000)
 
 ### Hot reloading components and styles
 

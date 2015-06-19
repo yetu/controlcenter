@@ -12,14 +12,6 @@ If you want to make changes to this project, best is to install prerequisites an
 
 ### prerequisites
 
-Add **local.yetudev.com** to your hosts file:
-
- 1. Open `/etc/hosts` with any editor, for example `sudo nano /etc/hosts`
- 2. Add this line `127.0.0.1 local.yetudev.com`
- 3. Save the file
-
-You should access the project using [http://local.yetudev.com:9000](http://local.yetudev.com:9000)
-
 You need to have the following installed in your system:
 
 * npm
@@ -60,6 +52,8 @@ For more information on how to develop yetu apps, please see [this page](https:/
 ```
 ./dev.sh
 ```
+
+3. Open your browser and point it to [http://localhost:9000](http://localhost.com:9000)
 
 ### Hot reloading components and styles
 

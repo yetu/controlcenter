@@ -12,7 +12,7 @@ module.exports = function (config) {
   config.set({
     // base path, that will be used to resolve files and exclude
     basePath: '../../../',
-    frameworks: ['jasmine', 'sinon'],
+    frameworks: ['mocha', 'chai-sinon'],
     files: [
       './app/project-setup/test/phantomjs-bind.polyfill.js',
       './app/project-setup/test/config.stub.js',

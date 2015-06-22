@@ -10,7 +10,7 @@ describe 'ThingComponent', ->
 
   describe 'constructor', ->
     it 'creates an actions map using capability and property as keys', ->
-      expect(component.actions).toEqual
+      component.actions.should.deep.equal
         SWITCHABLE:
           on:
             get:
@@ -32,7 +32,7 @@ describe 'ThingComponent', ->
   describe 'get', ->
     it 'gets a property by capability name', ->
       property = component.get 'SWITCHABLE'
-      expect(property).toEqual
+      property.should.deep.equal
         value: false
         unit: 'BOOLEAN'
         symbol: null

@@ -13,16 +13,16 @@ describe 'Thing', ->
 
   describe 'constructor', ->
       it 'extracts device properties, actions and url', ->
-        expect(thing.properties).toEqual ThingMock.FibaroWallplug.properties
-        expect(thing.url).toEqual(do ThingMock.FibaroWallplug.getUrl)
+        thing.properties.should.deep.equal ThingMock.FibaroWallplug.properties
+        thing.url.should.deep.equal(do ThingMock.FibaroWallplug.getUrl)
 
       it 'creates ThingComponent instances for all thing\'s components', ->
         for component in thing.components
-          expect(component).toEqual jasmine.any(ThingComponent)
+          component.should.be.an.instanceOf ThingComponent
 
       it 'adds a reference to the alter ego component, which has the same id as the thing', ->
         alterEgoComponent = new ThingComponent(do ThingMock.FibaroWallplug.getAlterEgoComponent)
-        expect(thing.alterEgoComponent).toEqual alterEgoComponent
+        thing.alterEgoComponent.should.deep.equal alterEgoComponent
 
       it 'uses thing type to get primary capability', ->
-        expect(thing.primaryCapability).toEqual(do ThingMock.FibaroWallplug.getPrimaryCapability)
+        thing.primaryCapability.should.deep.equal(do ThingMock.FibaroWallplug.getPrimaryCapability)

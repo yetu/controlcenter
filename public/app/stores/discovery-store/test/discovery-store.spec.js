@@ -5,7 +5,7 @@ describe('Discovery Store', function () {
 
   describe('getInitialState', function () {
     it('returns an empty object', function () {
-      expect(discoveryStore.getInitialState()).toEqual({});
+      discoveryStore.getInitialState().should.deep.equal({});
     });
   });
 
@@ -13,7 +13,7 @@ describe('Discovery Store', function () {
     it('calls discovery service\'s `discover` method', function () {
       var spy = sinon.spy(discoveryService, 'discover');
       discoveryStore.onStartDiscovery();
-      expect(spy.called).toBe(true);
+      spy.should.have.been.called;
     });
   });
 });

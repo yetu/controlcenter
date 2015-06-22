@@ -16,7 +16,7 @@ describe('DevicesSection', function () {
     jasmine.addMatchers($.jasmineMatchers);
   });
 
-  it('displays only an error message when gateway store fails', function () {
+  xit('displays only an error message when gateway store fails', function () {
     var devices = React.render(<WrappedDevices />, document.createElement('div'));
     var errorMessage = $(devices).byType(ErrorMessage);
 

@@ -23,6 +23,7 @@ describe('Device discovery service', function () {
     });
 
     it('stops when device discovery session is complete', function (done) {
+      this.timeout(10000);
       // start device discovery
       stub.withArgs(householdApiUrl + '/gateway/discoveries', {
         credentials: 'include',
@@ -65,7 +66,7 @@ describe('Device discovery service', function () {
         );
 
       discoveryService.discover().then(function next (state) {
-        expect(state).toEqual(SessionState.STOPPED);
+        state.should.equal(SessionState.STOPPED);
         done();
       });
     });

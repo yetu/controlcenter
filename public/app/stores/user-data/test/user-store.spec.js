@@ -11,13 +11,13 @@ describe('UserData Store', function () {
     it('init userData', function () {
       userDataStore.init();
       TestUtils.isElementOfType();
-      expect(userDataStore.userData).toBeDefined();
+      userDataStore.should.have.property('userData');
     });
 
     it('init userData has model and error fields', function () {
       userDataStore.init();
-      expect(userDataStore.userData.model).toEqual({});
-      expect(userDataStore.userData.error).toEqual({});
+      userDataStore.userData.model.should.deep.equal({});
+      userDataStore.userData.error.should.deep.equal({});
     });
   });
 
@@ -30,7 +30,7 @@ describe('UserData Store', function () {
       userDataActions.saveUserData.trigger();
 
       setTimeout(function () {
-        expect(userDataStore.userData.error).toEqual(error);
+        userDataStore.userData.error.should.deep.equal(error);
         stub.restore();
         done();
       }, 0);
@@ -44,7 +44,7 @@ describe('UserData Store', function () {
       userDataActions.saveUserData.trigger();
 
       setTimeout(function () {
-        expect(userDataStore.userData.model).toEqual(content);
+        userDataStore.userData.model.should.deep.equal(content);
         stub.restore();
         done();
       }, 0);
@@ -60,7 +60,7 @@ describe('UserData Store', function () {
 
       userDataActions.fetchUserData.trigger();
       setTimeout(function () {
-        expect(userDataStore.userData.error).toEqual(error);
+        userDataStore.userData.error.should.deep.equal(error);
         stub.restore();
         done();
       }, 0);
@@ -74,7 +74,7 @@ describe('UserData Store', function () {
       userDataActions.fetchUserData.trigger();
 
       setTimeout(function () {
-        expect(userDataStore.userData.model).toEqual(content);
+        userDataStore.userData.model.should.deep.equal(content);
         stub.restore();
         done();
       }, 0);
@@ -86,7 +86,7 @@ describe('UserData Store', function () {
       var content = {test: 'stubdata'};
       var spyUpdateModel = sinon.spy(userDataStore, 'updateModel');
       userDataActions.updateUserData.trigger(content);
-      expect(spyUpdateModel.called).toBe(true);
+      spyUpdateModel.should.have.been.called;
     });
   });
 
@@ -94,7 +94,7 @@ describe('UserData Store', function () {
     it('updates userData model', function () {
       var content = {test: 'stubdata'};
       userDataStore.updateModel(content);
-      expect(userDataStore.userData.model).toEqual(content);
+      userDataStore.userData.model.should.deep.equal(content);
     });
   });
 
@@ -102,7 +102,7 @@ describe('UserData Store', function () {
     it('updates userData error', function () {
       var error = {errorInfo: 'some error info'};
       userDataStore.updateError(error);
-      expect(userDataStore.userData.error).toEqual(error);
+      userDataStore.userData.error.should.deep.equal(error);
     });
   });
 });

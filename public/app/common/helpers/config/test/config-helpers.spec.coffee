@@ -20,9 +20,9 @@ describe 'ConfigHelpers', ->
     it 'returns the url pointing to the Windows version of the setup app on Windows', ->
       mock.setUserAgent mock.UserAgentString.WINDOWS
       url = do ConfigHelpers.getSetupAppUrl
-      expect(url).toEqual window.yetu.config.setupDownloadUrlWin
+      url.should.equal window.yetu.config.setupDownloadUrlWin
 
     it 'returns the url pointing to the OS X version of the setup app on OS X', ->
       mock.setUserAgent mock.UserAgentString.OSX
       url = do ConfigHelpers.getSetupAppUrl
-      expect(url).toEqual window.yetu.config.setupDownloadUrlMac
+      url.should.equal window.yetu.config.setupDownloadUrlMac

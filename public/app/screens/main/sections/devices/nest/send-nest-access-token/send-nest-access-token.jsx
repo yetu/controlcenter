@@ -72,6 +72,7 @@ var SendNestAccessToken = React.createClass({
   },
 
   onDeviceListStoreUpdate: function onDeviceListStoreUpdate () {
+    this.stopListeningTo(deviceListStore);
     // Look for nest web service among all things
     var nestService = _.find(this.state.devices, function isNestWebservice (device) {
       // TODO: Use a more sophisticated way to identify the nest webservice device
@@ -81,8 +82,7 @@ var SendNestAccessToken = React.createClass({
     // Set nest access token as the service's property
     if (nestService) {
       this.setAction(Actions.SENDING_AUTH_TOKEN);
-      // TODO: use the Thing model
-      var action = nestService.actions['set-SETABLE-value'];
+      var action = nestService.alterEgoComponent.actions.setable.value.set;
       devicesService
         .invokeDeviceAction(action, { value: this.state.accessToken })
         .then(

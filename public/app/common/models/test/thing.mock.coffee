@@ -1,3 +1,5 @@
+Capability = require '../capability'
+
 module.exports =
 
   FibaroWallplug:
@@ -17,12 +19,12 @@ module.exports =
           name: 'Lamp'
           type: 'LAMP'
           capabilities:
-            SWITCHABLE:
+            switchable:
               on:
                 value: null
                 unit: 'BOOLEAN'
                 symbol: null
-            COLORABLE:
+            colorable:
               color:
                 value: null
                 unit: 'HSBCOLOR'
@@ -30,13 +32,13 @@ module.exports =
 
         actions: [
           {
-            name: 'get-SWITCHABLE-on'
-            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/SWITCHABLE-on'
+            name: 'get-switchable-on'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/switchable-on'
             method: 'GET'
           }
           {
             method: 'PUT'
-            name: 'set-SWITCHABLE-on'
+            name: 'set-switchable-on'
             fields: [
               {
                 name: 'value'
@@ -44,16 +46,16 @@ module.exports =
               }
             ]
             type: 'application/json'
-            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/SWITCHABLE-on'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/switchable-on'
           }
           {
-            name: 'get-COLORABLE-color'
-            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/COLORABLE-color'
+            name: 'get-colorable-color'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/colorable-color'
             method: 'GET'
           }
           {
             method: 'PUT'
-            name: 'set-COLORABLE-color'
+            name: 'set-colorable-color'
             fields: [
               {
                 name: 'value'
@@ -61,7 +63,7 @@ module.exports =
               }
             ]
             type: 'application/json'
-            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/COLORABLE-color'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/led/actions/colorable-color'
           }
         ]
         class: ['component']
@@ -82,7 +84,7 @@ module.exports =
           name: 'Sensor'
           type: 'SENSOR'
           capabilities:
-            MEASUREMENT:
+            measurement:
               measurement:
                 value: null
                 unit: 'WATT'
@@ -90,8 +92,8 @@ module.exports =
 
         actions: [
           {
-            name: 'get-MEASUREMENT-measurement'
-            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/power/actions/MEASUREMENT-measurement'
+            name: 'get-measurement-measurement'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/power/actions/measurement-measurement'
             method: 'GET'
           }
         ]
@@ -114,7 +116,7 @@ module.exports =
           name: 'Socket'
           type: 'SOCKET'
           capabilities:
-            SWITCHABLE:
+            switchable:
               on:
                 value: false
                 unit: 'BOOLEAN'
@@ -122,13 +124,13 @@ module.exports =
 
         actions: [
           {
-            name: 'get-SWITCHABLE-on'
-            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/SWITCHABLE-on'
+            name: 'get-switchable-on'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/switchable-on'
             method: 'GET'
           }
           {
             method: 'PUT'
-            name: 'set-SWITCHABLE-on'
+            name: 'set-switchable-on'
             fields: [
               {
                 name: 'value'
@@ -136,7 +138,7 @@ module.exports =
               }
             ]
             type: 'application/json'
-            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/SWITCHABLE-on'
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/switchable-on'
           }
         ]
         class: ['component']
@@ -168,8 +170,8 @@ module.exports =
       @entities[2]
 
     getPrimaryCapability: ->
-      # socket --> SWITCHABLE
-      'SWITCHABLE'
+      # socket --> switchable
+      Capability.SWITCHABLE
 
     getUrl: ->
       @links[0].href
@@ -183,13 +185,13 @@ module.exports =
       {
         actions: [
           {
-            name: 'get-SETABLE-value'
-            href: 'https://household-https.prod.yetu.me/things/be770898-bb11-4b65-be95-7fe468be5734/components/webservice/actions/SETABLE-value'
+            name: 'get-setable-value'
+            href: 'https://household-https.prod.yetu.me/things/be770898-bb11-4b65-be95-7fe468be5734/components/webservice/actions/setable-value'
             method: 'GET'
           }
           {
             method: 'PUT'
-            name: 'set-SETABLE-value'
+            name: 'set-setable-value'
             fields: [
               {
                 name: 'value'
@@ -197,7 +199,7 @@ module.exports =
               }
             ]
             type: 'application/json'
-            href: 'https://household-https.prod.yetu.me/things/be770898-bb11-4b65-be95-7fe468be5734/components/webservice/actions/SETABLE-value'
+            href: 'https://household-https.prod.yetu.me/things/be770898-bb11-4b65-be95-7fe468be5734/components/webservice/actions/setable-value'
           }
         ]
         properties:

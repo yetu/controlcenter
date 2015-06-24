@@ -1,5 +1,6 @@
-ThingMock = require './thing.mock'
+ThingMock      = require './thing.mock'
 ThingComponent = require '../thing-component'
+Capability     = require '../capability'
 
 describe 'ThingComponent', ->
 
@@ -11,14 +12,14 @@ describe 'ThingComponent', ->
   describe 'constructor', ->
     it 'creates an actions map using capability and property as keys', ->
       component.actions.should.deep.equal
-        SWITCHABLE:
+        "#{Capability.SWITCHABLE}":
           on:
             get:
-              name: 'get-SWITCHABLE-on'
-              href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/SWITCHABLE-on'
+              name: 'get-switchable-on'
+              href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/switchable-on'
               method: 'GET'
             set:
-              name: 'set-SWITCHABLE-on'
+              name: 'set-switchable-on'
               method: 'PUT'
               fields: [
                 {
@@ -27,11 +28,11 @@ describe 'ThingComponent', ->
                 }
               ]
               type: 'application/json'
-              href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/SWITCHABLE-on'
+              href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/socket/actions/switchable-on'
 
   describe 'get', ->
     it 'gets a property by capability name', ->
-      property = component.get 'SWITCHABLE'
+      property = component.get Capability.SWITCHABLE
       property.should.deep.equal
         value: false
         unit: 'BOOLEAN'

@@ -2,10 +2,10 @@
 # https://github.com/yetu/thing-specification/blob/master/src/main/resources/ThingSpecification.xmi
 
 Capability =
-  COLORABLE:   'COLORABLE'
-  SWITCHABLE:  'SWITCHABLE'
-  MEASUREMENT: 'MEASUREMENT'
-  SETTABLE:    'SETABLE'
+  COLORABLE:   'colorable'
+  SWITCHABLE:  'switchable'
+  MEASUREMENT: 'measurement'
+  SETTABLE:    'setable'
 
   # get capability by component type
 Capability.byComponentType =

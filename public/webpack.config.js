@@ -32,11 +32,19 @@ module.exports = {
     },
     extensions: [ '', '.coffee', '.cjsx', '.js', '.jsx' ]
   },
+
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
+
   module: {
+    preLoaders: [
+      {
+        test: /\.coffee?$/,
+        loader: 'coffeelint-loader'
+      }
+    ],
     loaders: [
       {
         test: /\.coffee?$/,
@@ -78,6 +86,7 @@ module.exports = {
     ],
     noParse: []
   },
+
   externals: {},
   devtool: 'eval'
 };

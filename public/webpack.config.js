@@ -32,11 +32,20 @@ module.exports = {
     },
     extensions: [ '', '.coffee', '.cjsx', '.js', '.jsx' ]
   },
+
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
+
   module: {
+    preLoaders: [
+      {
+        test: /\.coffee?$/,
+        loader: 'coffee-lint-loader',
+        exclude: /node_modules/
+      }
+    ],
     loaders: [
       {
         test: /\.coffee?$/,
@@ -78,6 +87,13 @@ module.exports = {
     ],
     noParse: []
   },
+
+  coffeelint: {
+    configFile: path.join(__dirname, '../coffee-lint.json')
+  },
+
   externals: {},
   devtool: 'eval'
 };
+
+console.log(path.join(__dirname, '../coffee-lint.json'));

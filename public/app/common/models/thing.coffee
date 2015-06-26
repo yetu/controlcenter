@@ -5,7 +5,7 @@ ThingComponent = require './thing-component'
 
 class Thing
 
-  constructor: ({entities, links, @properties}) ->
+  constructor: ({ entities, links, @properties }) ->
     @components = entities.map (entity) -> new ThingComponent entity
 
     link = _.find links, (link) -> link.rel[0] is 'self'

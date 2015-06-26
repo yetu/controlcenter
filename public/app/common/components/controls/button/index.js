@@ -1,1 +1,1 @@
-module.exports = require('./button.jsx');
+module.exports = require('./button.cjsx');

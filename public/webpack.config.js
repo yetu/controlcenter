@@ -42,7 +42,8 @@ module.exports = {
     preLoaders: [
       {
         test: /\.coffee?$/,
-        loader: 'coffeelint-loader'
+        loader: 'coffee-lint-loader',
+        exclude: /node_modules/
       }
     ],
     loaders: [
@@ -85,6 +86,10 @@ module.exports = {
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000' }
     ],
     noParse: []
+  },
+
+  coffeelint: {
+    configFile: path.join(__dirname, '../coffee-lint.json')
   },
 
   externals: {},

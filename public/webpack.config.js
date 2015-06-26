@@ -95,5 +95,3 @@ module.exports = {
   externals: {},
   devtool: 'eval'
 };
-
-console.log(path.join(__dirname, '../coffee-lint.json'));

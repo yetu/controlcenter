@@ -29,6 +29,7 @@ module.exports = function (config) {
     webpack: {
       resolve: webpackConfig.resolve,
       module: webpackConfig.module,
+      coffeelint: webpackConfig.coffeelint,
       entry: {}
     },
 

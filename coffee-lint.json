@@ -1,6 +1,4 @@
 {
-  "emitErrors": true,
-
   "arrow_spacing": {
     "level": "error"
   },
@@ -48,7 +46,7 @@
   },
   "max_line_length": {
     "value": 120,
-    "level": "error",
+    "level": "ignore",
     "limitComments": true
   },
   "missing_fat_arrows": {

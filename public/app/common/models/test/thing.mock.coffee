@@ -74,8 +74,8 @@ module.exports =
 
         links: [
           {
-          rel: ['self']
-          href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/power'
+            rel: ['self']
+            href: 'https://household-https.dev.yetu.me/things/79802756-46a7-4e8f-b3f5-6bfd22a2c5ba/components/power'
           }
         ]
 

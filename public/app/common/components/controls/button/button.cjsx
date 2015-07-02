@@ -11,7 +11,6 @@ module.exports = React.createClass
   ]
 
   render: ->
-
     className = cx
       'cc-button': true,
       secondary: this.props.secondary,

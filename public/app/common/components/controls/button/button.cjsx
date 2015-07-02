@@ -12,10 +12,10 @@ module.exports = React.createClass
 
   render: ->
     className = cx
-      'cc-button': true,
-      secondary: this.props.secondary,
-      "#{this.props.size}":             @props.size?
-      "#{this.props.className or ''}":  true
+      'cc-button':                     true,
+      secondary:                       this.props.secondary,
+      "#{this.props.size}":            @props.size?
+      "#{this.props.className or ''}": true
 
     <a className={ className } href='#' onClick={this.onClick}> { this.props.children }</a>
 

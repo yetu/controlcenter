@@ -18,7 +18,6 @@ module.exports = React.createClass
       "#{this.props.size}":             @props.size?
       "#{this.props.className or ''}":  true
 
-
     <a className={ className } href='#' onClick={this.onClick}> { this.props.children }</a>
 
   onClick: (event) ->

@@ -39,10 +39,10 @@ module.exports = React.createClass({
         </Link>
       </div>,
       <div className='cc-device__state columns small-1 text-center'>
-        <DeviceStatusIcon status={ isOnline ? 'connected' : 'disconnected' } />
+        <DeviceStatusIcon status={ isOnline ? 'available' : 'unavailable' } />
       </div>,
       <div className='cc-device__state columns small-2 text-center'>
-        <DeviceStatusText status={ isOnline ? 'connected' : 'disconnected' } />
+        <DeviceStatusText status={ isOnline ? 'available' : 'unavailable' } />
       </div>
     ];
   },

@@ -1,1 +1,1 @@
-module.exports = require('./user-info.jsx');
+module.exports = require('./user-info.cjsx');

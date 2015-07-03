@@ -21,16 +21,16 @@
     height: rem-calc(30px);
   }
 
-  &-connected {
-    background-image: url('./images/state-connected.svg');
+  &-available {
+    background-image: url('./images/state-available.svg');
   }
 
-  &-disconnected {
-    background-image: url('./images/state-disconnected.svg');
+  &-unavailable {
+    background-image: url('./images/state-unavailable.svg');
   }
 
   &-unknown {
-    background-image: url('./images/state-check-configuration.svg');
+    background-image: url('./images/state-unknown.svg');
   }
 
   &-close {

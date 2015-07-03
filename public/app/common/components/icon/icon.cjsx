@@ -5,7 +5,7 @@ styleMixin         = require 'mixins/style-mixin'
 
 module.exports = React.createClass
   mixins: [
-    styleMixin require('./style.scss')
+    styleMixin require './style.scss'
     PureRenderMixin
   ]
 

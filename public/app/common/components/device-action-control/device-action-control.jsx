@@ -15,7 +15,8 @@ var DeviceActionControl = React.createClass({
     [Capability.SWITCHABLE]: Switch,
     // TODO: Fix typo "set<t>able" in household API (4 fixes total!)
     [Capability.SETTABLE]: ValueUpDown,
-    [Capability.MEASUREMENT]: Measurement
+    [Capability.MEASUREMENT]: Measurement,
+    [Capability.LOCKABLE]: Switch
   },
 
   controlStateToActionData: {

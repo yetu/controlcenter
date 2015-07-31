@@ -1,0 +1,19 @@
+@import "components-theme";
+
+.cc-lock-control {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 150px;
+  height: 30px;
+  cursor: default;
+  user-select: none;
+
+  &__unlocked {
+    background-image: url('./images/unlocked.svg');
+  }
+
+  &__locked {
+    background-image: url('./images/locked.svg');
+  }
+
+}

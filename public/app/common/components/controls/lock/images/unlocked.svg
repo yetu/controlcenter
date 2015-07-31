@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 132 25" enable-background="new 0 0 132 25" xml:space="preserve">
+<g>
+	<g>
+		<path fill="#FFFFFF" d="M131,23c0,0.5-0.4,1-1,1H2c-0.6,0-1-0.5-1-1V2c0-0.5,0.5-1,1-1h128c0.6,0,1,0.5,1,1V23z"/>
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="66" y1="0.5" x2="66" y2="24.5">
+			<stop  offset="4.405286e-03" style="stop-color:#575756;stop-opacity:0.7"/>
+			<stop  offset="0.4421" style="stop-color:#595958;stop-opacity:0.5681"/>
+			<stop  offset="0.5997" style="stop-color:#60605F;stop-opacity:0.5206"/>
+			<stop  offset="0.7121" style="stop-color:#6B6B6A;stop-opacity:0.4867"/>
+			<stop  offset="0.803" style="stop-color:#7C7C7B;stop-opacity:0.4594"/>
+			<stop  offset="0.8808" style="stop-color:#929291;stop-opacity:0.4359"/>
+			<stop  offset="0.9485" style="stop-color:#ACACAC;stop-opacity:0.4155"/>
+			<stop  offset="1" style="stop-color:#C6C6C6;stop-opacity:0.4"/>
+		</linearGradient>
+		<path fill="none" stroke="url(#SVGID_1_)" stroke-miterlimit="10" d="M131,23c0,0.5-0.4,1-1,1H2c-0.6,0-1-0.5-1-1V2
+			c0-0.5,0.5-1,1-1h128c0.6,0,1,0.5,1,1V23z"/>
+	</g>
+	<g opacity="0.79">
+		<path fill="#DADADA" d="M130.5,23c0,0.3-0.2,0.5-0.5,0.5H2c-0.3,0-0.5-0.2-0.5-0.5V2c0-0.3,0.2-0.5,0.5-0.5h128
+			c0.3,0,0.5,0.2,0.5,0.5V23z"/>
+	</g>
+</g>
+<line fill="none" stroke="#B2B2B2" stroke-width="0.5" stroke-miterlimit="10" x1="66.2" y1="3.8" x2="66.2" y2="20.2"/>
+<g>
+	<rect x="13.2" y="7.9" fill="none" width="43" height="9.9"/>
+	<text transform="matrix(1 0 0 1 13.1742 16.4319)" fill="#B2B2B2" font-family="'SourceSansPro-Regular'" font-size="12">LOCKED</text>
+</g>
+<g>
+	<rect x="70.4" y="8.1" fill="none" width="58.4" height="9.9"/>
+	<text transform="matrix(1 0 0 1 70.3801 16.6096)" fill="#009900" font-family="'SourceSansPro-Semibold'" font-size="12">UNLOCKED</text>
+</g>
+</svg>

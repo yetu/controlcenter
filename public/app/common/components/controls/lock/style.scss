@@ -2,18 +2,18 @@
 
 .cc-lock-control {
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   width: 150px;
   height: 30px;
   cursor: default;
   user-select: none;
 
   &__unlocked {
-    background-image: url('./images/unlocked.svg');
+    background-image: url('./images/unlocked.png');
   }
 
   &__locked {
-    background-image: url('./images/locked.svg');
+    background-image: url('./images/locked.png');
   }
 
 }

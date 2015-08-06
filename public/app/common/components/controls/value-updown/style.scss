@@ -18,10 +18,12 @@
   }
 
   &__down {
+    cursor: pointer;
     background-image: url('./img/down.png');
   }
 
   &__up {
+    cursor: pointer;
     background-image: url('./img/up.png');
   }
 

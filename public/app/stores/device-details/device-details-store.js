@@ -1,6 +1,7 @@
 var Reflux = require('reflux');
 
 var DeviceActions = require('actions/device');
+var DeviceDetailsActions = require('actions/device-details');
 var DevicesService = require('services/devices/devices-service');
 
 var Thing = require('models/thing');
@@ -10,6 +11,8 @@ var deviceDetailsStore = Reflux.createStore({
 
   init: function init () {
     this.listenTo(DeviceActions.fetchDeviceById, this.onFetchDeviceById);
+    this.listenTo(DeviceDetailsActions.edit, this.onDeviceDetailsEdit);
+    this.listenTo(DeviceDetailsActions.save, this.onDeviceDetailsSave);
     this.listenTo(deviceListStore, this.onDeviceListStoreUpdate);
 
     this.device = this.createModel();
@@ -19,8 +22,16 @@ var deviceDetailsStore = Reflux.createStore({
     return this.device;
   },
 
-  createModel: function createModel (device) {
+  createModel: function createModel (device, viewmodel) {
+
+    viewmodel = viewmodel || {
+      editables: {
+        name: false
+      }
+    };
+
     return {
+      viewmodel: viewmodel,
       model: device || null,
       error: null
     };
@@ -38,6 +49,19 @@ var deviceDetailsStore = Reflux.createStore({
         .fetchDeviceById(deviceId)
         .then(this.augmentAndUpdateDevice, this.updateError);
     }
+  },
+
+  onDeviceDetailsEdit: function onDeviceDetailsEdit (editable) {
+    var state = this.device.viewmodel.editables[editable];
+    this.device.viewmodel.editables[editable] = !state;
+    this.trigger(this.device);
+  },
+
+  onDeviceDetailsSave: function onDeviceDetailsSave (data) {
+    var key = Object.keys(data)[0];
+    this.device.model.properties[key] = data[key];
+    this.trigger(this.device);
+    DevicesService.updateProperties(this.device.model, data);
   },
 
   augmentAndUpdateDevice: function augmentAndUpdateDevice (device) {

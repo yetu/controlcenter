@@ -63,6 +63,19 @@ module.exports = {
       .then((response) => {
         return response.json();
       });
+  },
+
+  updateProperties: function updateProperties (device, data) {
+    var deviceUrl = UrlHelpers.toHouseholdUrl(device.url);
+    var requestOptions = {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    return fetch(deviceUrl + '/properties', requestOptions);
   }
 
 };

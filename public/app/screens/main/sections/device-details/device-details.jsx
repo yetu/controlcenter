@@ -5,6 +5,7 @@ var Link = Router.Link;
 var styleMixin = require('mixins/style-mixin');
 
 var deviceActions = require('actions/device');
+var deviceDetailsActions = require('actions/device-details');
 
 var deviceDetailsStore = require('stores/device-details');
 var roomStore = require('stores/room');
@@ -34,6 +35,39 @@ var DeviceDetails = React.createClass({
     deviceActions.fetchDeviceById(deviceId);
   },
 
+  componentDidUpdate: function componentDidUpdate () {
+    var node;
+    if (this.refs.headerInput) {
+      node = React.findDOMNode(this.refs.headerInput);
+      node.focus();
+      node.select();
+    }
+  },
+
+  header: function header (text) {
+    return (
+      <div className='cc-device-details__device-name'>
+        <h2 className='bold'>{ text }</h2>
+        <span className='cc-device-details__device-name-edit' onClick={this.onDeviceNameEditClick}>&#9998;</span>
+      </div>
+    );
+  },
+
+  headerInput: function headerInput (text) {
+    return (
+      <div className='cc-device-details__device-name'>
+        <input
+          ref='headerInput'
+          type='text'
+          defaultValue={ text }
+          // onBlur={this.onDeviceNameInputBlur}
+          onKeyUp={this.onDeviceNameInputKeyUp}>
+        </input>
+        <span className='cc-device-details__device-name-save' onClick={this.onDeviceNameInputBlur}>&#10003;</span>
+      </div>
+    );
+  },
+
   render: function render () {
     var device = this.state.device.model || {};
     var deviceProperties = device.properties || {};
@@ -42,7 +76,10 @@ var DeviceDetails = React.createClass({
       <div className='cc-device-details grid-16'>
         <div className='cc-settings__header row fixed-height-3'>
           <div className='columns padded-left'>
-            <h2 className='bold'>{ deviceProperties.name }</h2>
+            {this.state.device.viewmodel.editables.name
+              ? this.headerInput(deviceProperties.name)
+              : this.header(deviceProperties.name)
+            }
           </div>
           <Link className='cc-device-details__closeButton' to='devices'>
             <Icon type='close' size='small'/>
@@ -99,9 +136,11 @@ var DeviceDetails = React.createClass({
 
         <div className='row fixed-height-2'>
           <div className='columns medium-4 padded-left'>
-            <Button onClick={ this.onSave }>
-              Save changes
-            </Button>
+            {/*
+              <Button onClick={ this.onSave }>
+                Save changes
+              </Button>
+            */}
           </div>
           <div className='columns medium-10'>
             <Button secondary='true' onClick={this.onDeleteClick}>
@@ -136,7 +175,24 @@ var DeviceDetails = React.createClass({
   onDeleteDialogConfirm: function onDeleteDialogCancel () {
     deviceActions.delete(this.state.device.model);
     this.context.router.transitionTo('devices');
+  },
+
+  onDeviceNameEditClick: function onDeviceNameEditClick () {
+    deviceDetailsActions.edit('name');
+  },
+
+  onDeviceNameInputBlur: function onDeviceNameInputBlur () {
+    deviceDetailsActions.save({ name: React.findDOMNode(this.refs.headerInput).value });
+    deviceDetailsActions.edit('name');
+  },
+
+  onDeviceNameInputKeyUp: function onDeviceNameInputKeyUp (event) {
+    const KEY_ENTER = 13;
+    if (event.keyCode === KEY_ENTER) {
+      this.onDeviceNameInputBlur(event);
+    }
   }
+
 });
 
 module.exports = DeviceDetails;

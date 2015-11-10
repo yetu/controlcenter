@@ -29,4 +29,19 @@
   .cc-overlay:not(.hide) ~ * {
     filter: blur(2px);
   }
+
+  &__device-name-edit {
+    display: inline-block;
+    transform: scale(-1.5, 1.5) translate(-3px, 1px);
+    cursor: pointer;
+  }
+
+  &__device-name-save {
+    display: inline-block;
+    transform: scale(1.5, 1.5) translate(4px, 1px);
+    color: $primary-color;
+    cursor: pointer;
+  }
 }
+
+
